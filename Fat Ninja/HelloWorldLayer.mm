@@ -2,7 +2,7 @@
 //  HelloWorldLayer.mm
 //  Fat Ninja
 //
-//  Created by Florian Weiß on 12/29/12.
+//  Created by Florian Weiß on 12/10/12.
 //  Copyright Florian Weiß 2012. All rights reserved.
 //
 
@@ -14,6 +14,8 @@
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
+
+#import "GameScene.h"
 
 
 enum {
@@ -76,12 +78,12 @@ enum {
 		[self addChild:parent z:0 tag:kTagParentNode];
 		
 		
-		[self addNewSpriteAtPosition:ccp(s.width/2, s.height/2)];
+//		[self addNewSpriteAtPosition:ccp(s.width/2, s.height/2)];
 		
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Tap screen" fontName:@"Marker Felt" fontSize:32];
-		[self addChild:label z:0];
-		[label setColor:ccc3(0,0,255)];
-		label.position = ccp( s.width/2, s.height-50);
+//		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Tap screen" fontName:@"Marker Felt" fontSize:32];
+//		[self addChild:label z:0];
+//		[label setColor:ccc3(0,0,255)];
+//		label.position = ccp( s.width/2, s.height-50);
 		
 		[self scheduleUpdate];
 	}
@@ -105,9 +107,8 @@ enum {
 	[CCMenuItemFont setFontSize:22];
 	
 	// Reset Button
-	CCMenuItemLabel *reset = [CCMenuItemFont itemWithString:@"Reset" block:^(id sender){
-		[[CCDirector sharedDirector] replaceScene: [HelloWorldLayer scene]];
-	}];
+	CCMenuItemLabel *reset = [CCMenuItemFont itemWithString:@"Play" target:self selector:@selector(startGame:)];
+	;
 	
 	// Achievement Menu Item using blocks
 	CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
@@ -283,9 +284,19 @@ enum {
 		
 		location = [[CCDirector sharedDirector] convertToGL: location];
 		
-		[self addNewSpriteAtPosition: location];
+		//[self addNewSpriteAtPosition: location];
 	}
 }
+
+#pragma mark Eigene Methoden
+
+- (void) startGame: (id) sender
+{
+    [[CCDirector sharedDirector] replaceScene:[GameScene node]];
+}
+
+
+
 
 #pragma mark GameKit delegate
 

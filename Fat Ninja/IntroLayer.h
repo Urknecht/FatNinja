@@ -2,7 +2,7 @@
 //  IntroLayer.h
 //  Fat Ninja
 //
-//  Created by Florian Weiß on 12/29/12.
+//  Created by Florian Weiß on 12/10/12.
 //  Copyright Florian Weiß 2012. All rights reserved.
 //
 
