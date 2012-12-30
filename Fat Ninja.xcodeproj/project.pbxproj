@@ -188,6 +188,7 @@
 		71C3C7A416760E6C00623738 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C7A316760E6C00623738 /* player.png */; };
 		71C3C7A616760E7400623738 /* projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C7A516760E7400623738 /* projectile.png */; };
 		71C3C7A91676113100623738 /* Ninja.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C3C7A81676113100623738 /* Ninja.mm */; };
+		E79AB7D31690A95200C21308 /* test.m in Sources */ = {isa = PBXBuildFile; fileRef = E79AB7D21690A95200C21308 /* test.m */; };
 		E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */; };
 		E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */; };
 		E79D6DF2167E1E9C001E8724 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = E79D6DF1167E1E9C001E8724 /* enemy.png */; };
@@ -574,6 +575,8 @@
 		71C3C7A516760E7400623738 /* projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile.png; sourceTree = "<group>"; };
 		71C3C7A71676113100623738 /* Ninja.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ninja.h; sourceTree = "<group>"; };
 		71C3C7A81676113100623738 /* Ninja.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ninja.mm; sourceTree = "<group>"; };
+		E79AB7D11690A95200C21308 /* test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = test.h; path = ../test.h; sourceTree = "<group>"; };
+		E79AB7D21690A95200C21308 /* test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = test.m; path = ../test.m; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
 		E79D6DEE167E1D45001E8724 /* EnemyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyLayer.h; sourceTree = "<group>"; };
@@ -642,6 +645,8 @@
 		71C3C57316760B6600623738 /* Fat Ninja */ = {
 			isa = PBXGroup;
 			children = (
+				E79AB7D11690A95200C21308 /* test.h */,
+				E79AB7D21690A95200C21308 /* test.m */,
 				71C3C78D16760B6B00623738 /* AppDelegate.h */,
 				71C3C78E16760B6B00623738 /* AppDelegate.mm */,
 				71C3C79016760B6B00623738 /* HelloWorldLayer.h */,
@@ -1446,6 +1451,7 @@
 				E7A5EC751678C49A006AA447 /* GameScene.mm in Sources */,
 				E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */,
 				E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */,
+				E79AB7D31690A95200C21308 /* test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
