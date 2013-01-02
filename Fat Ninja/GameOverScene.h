@@ -10,5 +10,6 @@
 #import "cocos2d.h"
 
 @interface GameOverScene : CCScene
+-(id)initWith: (int) distance;
 
 @end

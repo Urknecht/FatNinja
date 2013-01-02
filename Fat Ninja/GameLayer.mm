@@ -17,6 +17,7 @@
 
 @implementation GameLayer
 @synthesize isPaused;
+@synthesize distance;
 
 //startpunkt für swipe ueberpruefung
 CGPoint _startPoint;
@@ -26,6 +27,12 @@ CGPoint _endPoint;
 bool isJumping;
 //array welches die wurfsterne enthaelt
 NSMutableArray * _projectiles;
+//geschwindigkeit
+int geschwindigkeit;
+// Distanz
+int distance;
+//Punkte Label
+CCLabelTTF *punkte;
 
 
 - (id) init
@@ -49,13 +56,29 @@ NSMutableArray * _projectiles;
         _projectiles = [[NSMutableArray alloc] init];
 
         [self schedule:@selector(update:)]; // ueberpruefen ob monster abgeworfen wurden
+        //geschwindigkeit
+        geschwindigkeit= 1;
+        //Distanz
+        distance=0;
         
+        //punkte anzeige
+        punkte = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:25];
+        [self addChild:punkte z:0];
+        punkte.position = ccp(winSize.width-20, winSize.height-20);
+        [self schedule:@selector(updateDistance:)interval:geschwindigkeit];
     }
     
     [self setTouchEnabled:YES];
 
     
     return self;
+    
+    
+}
+
+- (void)updateDistance:(ccTime)dt {
+    distance ++;
+    [punkte setString:[NSString stringWithFormat:@"%i",distance]];
     
     
 }
@@ -67,7 +90,7 @@ NSMutableArray * _projectiles;
     if (CGRectIntersectsRect(ninja.boundingBox, enemy.boundingBox)) {
         isJumping=false;
         // zu GameOver Scene 
-        [[CCDirector sharedDirector] replaceScene:[GameOverScene node]];
+        [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
 
     }
     }

@@ -12,9 +12,17 @@
 #import "GameScene.h"
 
 @implementation GameOverScene
--(id)init {
+int endDistance;
+int score;
+
+-(id)initWith: (int) distance {
     self = [super init];
     if (self != nil) {
+        //Distanz
+        endDistance=distance;
+        //Score dann aufaddieren
+        score=distance;
+        
         CCSprite *backgroundImage= [CCSprite spriteWithFile:@"gameOverBackground.png"];
         CGSize winSize = [CCDirector sharedDirector].winSize;
         [backgroundImage setPosition: CGPointMake(winSize.width/2, winSize.height/2)];
@@ -55,10 +63,24 @@
 	[self addChild: menu z:1];
         
         
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"Highscore" fontName:@"Marker Felt" fontSize:30];
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"Run Finished" fontName:@"Marker Felt" fontSize:30];
         [self addChild:label z:2];
-        //[label setColor:ccc3(0,0,255)];
         label.position = ccp( size.width/2, size.height-50);
+    
+        //Distanz
+        CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:@"Distance:" fontName:@"Marker Felt" fontSize:25];
+        [distanceLabel setString:[NSString stringWithFormat:@"Distance:     %i",distance]];
+
+        [self addChild:distanceLabel z:2];
+        distanceLabel.position = ccp( size.width/2, size.height-90);
+        
+        //Distanz
+        CCLabelTTF *scoreLabel = [CCLabelTTF labelWithString:@"Score:" fontName:@"Marker Felt" fontSize:25];
+        [scoreLabel setString:[NSString stringWithFormat:@"Score:     %i",score]];
+        
+        [self addChild:scoreLabel z:2];
+        scoreLabel.position = ccp( size.width/2, size.height-120);
+
         
     }
     return self;

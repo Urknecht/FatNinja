@@ -20,8 +20,11 @@
     bool isJumping;
     
     bool isPaused;
+    int distance;
 }
 @property (readwrite) bool isPaused;
+@property (readwrite) int distance;
+
 -(void) pauseGame;
 
 @end
