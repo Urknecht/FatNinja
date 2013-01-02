@@ -16,8 +16,6 @@
 -(id)init {
     self = [super init];
     if (self != nil) {
-        // position,animation enemy
-        
         
         // position,animation box
 //        boxImage= [CCSprite spriteWithFile:@"blocks.png"];

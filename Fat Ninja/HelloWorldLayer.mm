@@ -289,9 +289,10 @@ enum {
 }
 
 #pragma mark Eigene Methoden
-
+//wechselt auf die game scene um das spiel zu starten
 - (void) startGame: (id) sender
 {
+
     [[CCDirector sharedDirector] replaceScene:[GameScene node]];
 }
 

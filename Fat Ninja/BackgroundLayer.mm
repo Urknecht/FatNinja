@@ -12,11 +12,11 @@
 -(id)init {
     self = [super init];
     if (self != nil) {
-        // 3
+        // load background images
         CCSprite *backgroundImage= [CCSprite spriteWithFile:@"background1.png"];
         CCSprite *backgroundImage2= [CCSprite spriteWithFile:@"background2.png"];
 
-        // 1 // 2
+        // set position
         CGSize winSize = [CCDirector sharedDirector].winSize;
         [backgroundImage setPosition: CGPointMake(winSize.width/2, winSize.height/2)];
         [backgroundImage2 setPosition: CGPointMake(winSize.width+winSize.width/2, winSize.height/2)];
@@ -24,7 +24,7 @@
         [self addChild:backgroundImage z:0 tag:0];
         [self addChild:backgroundImage2 z:0 tag:0];
 
-        
+        //move image 1
         CCMoveTo * actionMove = [CCMoveTo actionWithDuration:7.0
                                                     position:ccp(backgroundImage.position.x
                                                                  -backgroundImage.contentSize.width, winSize.height/2)];
@@ -41,6 +41,7 @@
         CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
         [backgroundImage runAction:sequence];
         
+        //move image 2
         CCMoveTo * actionMove2 = [CCMoveTo actionWithDuration:14.0
                                                     position:ccp(backgroundImage2.position.x
                                                                  -backgroundImage2.contentSize.width*2, winSize.height/2)];
@@ -51,6 +52,11 @@
     
     }
     return self;
+    
+}
+
+-(void)dealloc{
+    [super dealloc];
     
 }
 @end

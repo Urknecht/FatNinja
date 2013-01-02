@@ -15,7 +15,6 @@
 }
 
 -(id) initWithGameLayer:(GameLayer*)gl;
--(void) jump;
 
 
 @end

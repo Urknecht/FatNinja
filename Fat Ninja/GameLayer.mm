@@ -10,43 +10,43 @@
 #import "Ninja.h"
 #import "EnemyLayer.h"
 #import "HelloWorldLayer.h"
+#import "GameOverScene.h"
+#import "GameScene.h"
+
 
 
 @implementation GameLayer
-@synthesize ninja;
+//startpunkt für swipe ueberpruefung
 CGPoint _startPoint;
+//endpunkt für swipe ueberpruefung
 CGPoint _endPoint;
+//gibt an ob ninja gerade springt
 bool isJumping;
+//array welches die wurfsterne enthaelt
 NSMutableArray * _projectiles;
 
-//+(id) scene
-//{
-//    CCScene *scene = [CCScene node];
-//    
-//    GameLayer *layer = [GameLayer node];
-//    
-//    [scene addChild: layer];
-//    
-//    return scene;
-//}
 
 - (id) init
 {
     if ((self = [super init])) {
+        //ninja initialisieren
         ninja = [[Ninja alloc] initWithGameLayer:self];
-        CGSize winSize = [CCDirector sharedDirector].winSize;
+        
         //position ninja
+        CGSize winSize = [CCDirector sharedDirector].winSize;
         ninja.position = ccp(ninja.contentSize.width/2, winSize.height/3);
         [self addChild:ninja];
+        
         isJumping=false;
+        
         //enemy layer
         enemyLayer=[EnemyLayer node];
         [self addChild:enemyLayer z:2];
-        [self schedule:@selector(updateNinjaIsHit:)];
+        [self schedule:@selector(updateNinjaIsHit:)]; // immer wieder pruefen ob ninja getroffen wurde
 
         _projectiles = [[NSMutableArray alloc] init];
 
-        [self schedule:@selector(update:)];
+        [self schedule:@selector(update:)]; // ueberpruefen ob monster abgeworfen wurden
         
     }
     
@@ -57,17 +57,21 @@ NSMutableArray * _projectiles;
     
     
 }
+
+//ueberprueft ob ninja getroffen wurde
 -(void) updateNinjaIsHit:(ccTime)delta{
     for (CCSprite *enemy in enemyLayer._enemyArray) {
 
     if (CGRectIntersectsRect(ninja.boundingBox, enemy.boundingBox)) {
         isJumping=false;
-        [[CCDirector sharedDirector] replaceScene:[HelloWorldLayer scene]];
+        // zu GameOver Scene 
+        [[CCDirector sharedDirector] replaceScene:[GameOverScene node]];
 
     }
     }
 }
 
+//pruefen ob monster agbeschossen wurden
 - (void)update:(ccTime)dt {
     NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
     for (CCSprite *projectile in _projectiles) {
@@ -129,7 +133,7 @@ NSMutableArray * _projectiles;
     // Set up initial location of projectile
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCSprite *projectile = [CCSprite spriteWithFile:@"projectile.png"];
-    projectile.position = ccp(20, winSize.height/3);
+    projectile.position = ninja.position;
     
     // Determine offset of location to projectile
     CGPoint offset = ccpSub(location, projectile.position);
@@ -170,7 +174,8 @@ NSMutableArray * _projectiles;
             [ninja runAction:
              [CCSequence actions:
               [CCJumpBy actionWithDuration:1.0f
-                                  position:ccp(0, 0)                                                height:55.0f
+                                  position:ccp(0, 0)
+                                    height:65.0f
                                   jumps:1],
               [CCCallBlockN actionWithBlock:^(CCNode *node) {
                  isJumping=false;             }],
@@ -178,7 +183,6 @@ NSMutableArray * _projectiles;
 
         }else{}
         
-        //[ninja jump];
     }
     
 }
@@ -189,6 +193,8 @@ NSMutableArray * _projectiles;
     [super dealloc];
     [_projectiles release];
     _projectiles = nil;
+        
+    
 }
 
 @end

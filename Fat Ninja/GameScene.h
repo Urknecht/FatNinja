@@ -15,8 +15,10 @@
 
 @interface GameScene : CCScene
 {
-BackgroundLayer *background;
-// Gameplay Layer
-GameLayer *gameplayLayer;
+    BackgroundLayer *background;
+    // Gameplay Layer
+    GameLayer *gameplayLayer;
 }
+
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "GameLayer.h"
 
 @implementation GameScene
 
@@ -18,13 +19,15 @@
         [self addChild:background z:0];
             // Gameplay Layer
         gameplayLayer = [GameLayer node];
-        [self addChild:gameplayLayer z:5];
-        
+        [self addChild:gameplayLayer z:5];        
     }
 
     return self;
 }
 
+-(void)dealloc{
+    [super dealloc];
+}
 
 
 @end

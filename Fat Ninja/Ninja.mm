@@ -34,11 +34,11 @@
     return self;
 }
 
--(void) jump
-{
-    //Jump Methode WUHU
-    
 
+-(void)dealloc{
+    [super dealloc];
+    
+    
 }
 
 @end
