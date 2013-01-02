@@ -10,7 +10,6 @@
 #import "cocos2d.h"
 @class EnemyLayer;
 @class Ninja;
-@class GameScene;
 
 @interface GameLayer : CCLayerColor {
    //Ninja
@@ -19,6 +18,10 @@
     EnemyLayer *enemyLayer;
     //gibt an ob ninja gerade springt
     bool isJumping;
+    
+    bool isPaused;
 }
+@property (readwrite) bool isPaused;
+-(void) pauseGame;
 
 @end

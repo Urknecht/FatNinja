@@ -8,16 +8,18 @@
 
 #import "CCScene.h"
 #import "cocos2d.h"
-#import "GameLayer.h"
-#import "BackgroundLayer.h"
-#import "EnemyLayer.h"
+
+@class PauseLayer, GameLayer, BackgroundLayer;
+
 
 
 @interface GameScene : CCScene
 {
+
     BackgroundLayer *background;
     // Gameplay Layer
     GameLayer *gameplayLayer;
+    PauseLayer *pauseLayer;
 }
 
 

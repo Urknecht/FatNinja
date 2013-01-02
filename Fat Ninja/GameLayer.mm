@@ -16,6 +16,8 @@
 
 
 @implementation GameLayer
+@synthesize isPaused;
+
 //startpunkt für swipe ueberpruefung
 CGPoint _startPoint;
 //endpunkt für swipe ueberpruefung
@@ -36,7 +38,7 @@ NSMutableArray * _projectiles;
         CGSize winSize = [CCDirector sharedDirector].winSize;
         ninja.position = ccp(ninja.contentSize.width/2, winSize.height/3);
         [self addChild:ninja];
-        
+        isPaused=false;
         isJumping=false;
         
         //enemy layer
@@ -124,9 +126,11 @@ NSMutableArray * _projectiles;
     }
     // Choose one of the touches to work with
     UITouch *touch = [touches anyObject];
-    
+    if(isPaused){
+        
+    }
     //ueberpruefen wie weit start und endpunkt in x richtung von einander entfernt sind --> swipe
-    if (_endPoint.x-_startPoint.x>10) {
+    else if (_endPoint.x-_startPoint.x>10) {
 
     CGPoint location = [self convertTouchToNodeSpace:touch];
     
@@ -185,6 +189,11 @@ NSMutableArray * _projectiles;
         
     }
     
+}
+
+-(void)pauseGame
+{
+    [[CCDirector sharedDirector] pause];
 }
 
 - (void) dealloc

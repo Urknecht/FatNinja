@@ -197,6 +197,8 @@
 		E7A5EC751678C49A006AA447 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7A5EC741678C49A006AA447 /* GameScene.mm */; };
 		E7AA87561694326800C71551 /* GameOverScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA87551694326800C71551 /* GameOverScene.mm */; };
 		E7AA87591694560800C71551 /* gameOverBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E7AA87581694560800C71551 /* gameOverBackground.png */; };
+		E7AA875B16945DA900C71551 /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E7AA875A16945DA900C71551 /* pauseButton.png */; };
+		E7AA875E16945DE000C71551 /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA875D16945DE000C71551 /* PauseLayer.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -589,6 +591,9 @@
 		E7AA87541694326800C71551 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		E7AA87551694326800C71551 /* GameOverScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameOverScene.mm; sourceTree = "<group>"; };
 		E7AA87581694560800C71551 /* gameOverBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameOverBackground.png; sourceTree = "<group>"; };
+		E7AA875A16945DA900C71551 /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseButton.png; sourceTree = "<group>"; };
+		E7AA875C16945DDF00C71551 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
+		E7AA875D16945DE000C71551 /* PauseLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseLayer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -670,6 +675,8 @@
 				E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */,
 				E7AA87541694326800C71551 /* GameOverScene.h */,
 				E7AA87551694326800C71551 /* GameOverScene.mm */,
+				E7AA875C16945DDF00C71551 /* PauseLayer.h */,
+				E7AA875D16945DE000C71551 /* PauseLayer.mm */,
 			);
 			path = "Fat Ninja";
 			sourceTree = "<group>";
@@ -677,6 +684,7 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E7AA875A16945DA900C71551 /* pauseButton.png */,
 				E7AA87581694560800C71551 /* gameOverBackground.png */,
 				E79E21551680CF8E00FE0CD5 /* background2.png */,
 				E79E21561680CF8E00FE0CD5 /* background1.png */,
@@ -1285,6 +1293,7 @@
 				E79E21571680CF8E00FE0CD5 /* background2.png in Resources */,
 				E79E21581680CF8E00FE0CD5 /* background1.png in Resources */,
 				E7AA87591694560800C71551 /* gameOverBackground.png in Resources */,
+				E7AA875B16945DA900C71551 /* pauseButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1456,6 +1465,7 @@
 				E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */,
 				E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */,
 				E7AA87561694326800C71551 /* GameOverScene.mm in Sources */,
+				E7AA875E16945DE000C71551 /* PauseLayer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,8 @@
 
 #import "GameScene.h"
 #import "GameLayer.h"
+#import "PauseLayer.h"
+#import "BackgroundLayer.h"
 
 @implementation GameScene
 
@@ -19,7 +21,10 @@
         [self addChild:background z:0];
             // Gameplay Layer
         gameplayLayer = [GameLayer node];
-        [self addChild:gameplayLayer z:5];        
+        [self addChild:gameplayLayer z:3 tag:1];
+        //pause layer
+        pauseLayer =[PauseLayer node];
+        [self addChild: pauseLayer z:5];
     }
 
     return self;
