@@ -199,6 +199,7 @@
 		E7AA87591694560800C71551 /* gameOverBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E7AA87581694560800C71551 /* gameOverBackground.png */; };
 		E7AA875B16945DA900C71551 /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E7AA875A16945DA900C71551 /* pauseButton.png */; };
 		E7AA875E16945DE000C71551 /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA875D16945DE000C71551 /* PauseLayer.mm */; };
+		E7B517141695EBBC002B0D97 /* ninjaNew.png in Resources */ = {isa = PBXBuildFile; fileRef = E7B517131695EBBC002B0D97 /* ninjaNew.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -594,6 +595,8 @@
 		E7AA875A16945DA900C71551 /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseButton.png; sourceTree = "<group>"; };
 		E7AA875C16945DDF00C71551 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
 		E7AA875D16945DE000C71551 /* PauseLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseLayer.mm; sourceTree = "<group>"; };
+		E7B517111695DD81002B0D97 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		E7B517131695EBBC002B0D97 /* ninjaNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ninjaNew.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -677,6 +680,7 @@
 				E7AA87551694326800C71551 /* GameOverScene.mm */,
 				E7AA875C16945DDF00C71551 /* PauseLayer.h */,
 				E7AA875D16945DE000C71551 /* PauseLayer.mm */,
+				E7B517111695DD81002B0D97 /* Constants.h */,
 			);
 			path = "Fat Ninja";
 			sourceTree = "<group>";
@@ -684,6 +688,7 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E7B517131695EBBC002B0D97 /* ninjaNew.png */,
 				E7AA875A16945DA900C71551 /* pauseButton.png */,
 				E7AA87581694560800C71551 /* gameOverBackground.png */,
 				E79E21551680CF8E00FE0CD5 /* background2.png */,
@@ -1294,6 +1299,7 @@
 				E79E21581680CF8E00FE0CD5 /* background1.png in Resources */,
 				E7AA87591694560800C71551 /* gameOverBackground.png in Resources */,
 				E7AA875B16945DA900C71551 /* pauseButton.png in Resources */,
+				E7B517141695EBBC002B0D97 /* ninjaNew.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

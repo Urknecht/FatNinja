@@ -50,10 +50,15 @@ enum {
 
 -(id) init
 {
-	if( (self=[super init])) {
-		
+	if( (self=[super initWithColor: ccc4(80,100,80,255)])) {
+		CCSprite *backgroundNinja= [CCSprite spriteWithFile:@"ninjaNew.png"];
+        
+        // set position
+        CGSize winSize = [CCDirector sharedDirector].winSize;
+        [backgroundNinja setPosition: CGPointMake(winSize.width/4, winSize.height/3)];
+        [self addChild:backgroundNinja z:1];
+
 		// enable events
-		
 		self.touchEnabled = YES;
 		self.accelerometerEnabled = YES;
 		CGSize s = [CCDirector sharedDirector].winSize;
@@ -146,7 +151,7 @@ enum {
 	[menu setPosition:ccp( size.width/2, size.height/2)];
 	
 	
-	[self addChild: menu z:-1];	
+	[self addChild: menu z:2];
 }
 
 -(void) initPhysics

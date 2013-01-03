@@ -10,6 +10,7 @@
 #import "GameLayer.h"
 #import "PauseLayer.h"
 #import "BackgroundLayer.h"
+#import "Constants.h"
 
 @implementation GameScene
 
@@ -18,10 +19,10 @@
     if (self != nil) {
         // backgorund layer
         background =[BackgroundLayer node];
-        [self addChild:background z:0 tag:0];
+        [self addChild:background z:0 tag:backgroundLayerTag];
             // Gameplay Layer
         gameplayLayer = [GameLayer node];
-        [self addChild:gameplayLayer z:3 tag:1];
+        [self addChild:gameplayLayer z:3 tag:gameLayerTag];
         //pause layer
         pauseLayer =[PauseLayer node];
         [self addChild: pauseLayer z:5];

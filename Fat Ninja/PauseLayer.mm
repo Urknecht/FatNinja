@@ -8,7 +8,7 @@
 
 #import "PauseLayer.h"
 #import "GameLayer.h"
-
+#import "Constants.h"
 
 @implementation PauseLayer
 CCMenu * menu;
@@ -51,7 +51,7 @@ GameLayer * gl;
 }
 
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    gl = (GameLayer *)[self.parent getChildByTag:1];
+    gl = (GameLayer *)[self.parent getChildByTag:gameLayerTag];
 
     for( UITouch *touch in touches )
     {

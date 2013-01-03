@@ -153,6 +153,10 @@ CCLabelTTF *punkte;
     }
 }
 
+-(void) ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+}
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     //endpunkt speichern
     for (UITouch *touch in touches){
