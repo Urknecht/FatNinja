@@ -18,7 +18,7 @@
     if (self != nil) {
         // backgorund layer
         background =[BackgroundLayer node];
-        [self addChild:background z:0];
+        [self addChild:background z:0 tag:0];
             // Gameplay Layer
         gameplayLayer = [GameLayer node];
         [self addChild:gameplayLayer z:3 tag:1];

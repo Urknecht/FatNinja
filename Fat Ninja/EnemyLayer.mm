@@ -11,12 +11,16 @@
 @implementation EnemyLayer
 @synthesize _enemyArray;
 @synthesize boxImage;
+@synthesize nextStage;
 
+int enemyCounter;
+double geschwindigkeitEnemy;
+double geschwindigkeitSpawn;
 
 -(id)init {
     self = [super init];
     if (self != nil) {
-        
+        nextStage=false;
         // position,animation box
 //        boxImage= [CCSprite spriteWithFile:@"blocks.png"];
 //        [boxImage setPosition: CGPointMake(winSize.width/2, winSize.height/3)];
@@ -28,8 +32,11 @@
 //        CCSequence *sequenceBox=[CCSequence actionOne:actionBoxMove two:actionBoxMoveDone];
 //        CCRepeatForever *repeatBox=[CCRepeatForever actionWithAction:sequenceBox];
 //        [boxImage runAction:repeatBox];
+        geschwindigkeitEnemy=5.0;
+        geschwindigkeitSpawn=3.0;
+        
         _enemyArray = [[NSMutableArray alloc] init];
-        [self schedule:@selector(spawnEnemy:)interval:3.0];
+        [self schedule:@selector(spawnEnemy:)interval:geschwindigkeitSpawn];
 
 
         
@@ -38,6 +45,18 @@
     }
 -(void) spawnEnemy:(ccTime)dt{
     [self addEnemy];
+    enemyCounter++;
+    if(enemyCounter==5){ // nach 5 gegnern
+        nextStage=true;
+        if(geschwindigkeitEnemy>1.0){ // wird die geschwindigkeit der animation bis zu einem miminum erhoeht
+            geschwindigkeitEnemy-=1.0;
+        }
+        if(geschwindigkeitSpawn>0.5){ // und der abstand zwischen den gegnern veringert
+            geschwindigkeitSpawn-=0.5;
+            [self schedule:@selector(spawnEnemy:)interval:geschwindigkeitSpawn];
+        }
+        enemyCounter=0;
+    }
 }
 
 -(void) addEnemy{
@@ -45,7 +64,7 @@
     CGSize winSize = [CCDirector sharedDirector].winSize;
     [enemy setPosition: CGPointMake(winSize.width, winSize.height/3)];
     [self addChild:enemy z:0 tag:0];
-    CCMoveTo * actionMove = [CCMoveTo actionWithDuration:5.0
+    CCMoveTo * actionMove = [CCMoveTo actionWithDuration:geschwindigkeitEnemy
                                                 position:ccp(enemy.position.x
                                                              -winSize.width, winSize.height/3)];
     CCCallBlockN* actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node){

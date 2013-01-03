@@ -9,6 +9,9 @@
 #import "CCLayer.h"
 #import "cocos2d.h"
 
-@interface BackgroundLayer : CCLayer
+@interface BackgroundLayer : CCLayer{
+double geschwindigkeitBackground;
 
+}
+@property(readwrite) double geschwindigkeitBackground;
 @end

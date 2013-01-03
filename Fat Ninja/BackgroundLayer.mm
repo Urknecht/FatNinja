@@ -9,9 +9,13 @@
 #import "BackgroundLayer.h"
 
 @implementation BackgroundLayer
+@synthesize geschwindigkeitBackground;
+
 -(id)init {
     self = [super init];
     if (self != nil) {
+        
+        geschwindigkeitBackground=14.0;
         // load background images
         CCSprite *backgroundImage= [CCSprite spriteWithFile:@"background1.png"];
         CCSprite *backgroundImage2= [CCSprite spriteWithFile:@"background2.png"];

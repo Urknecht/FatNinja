@@ -12,6 +12,7 @@
 #import "HelloWorldLayer.h"
 #import "GameOverScene.h"
 #import "GameScene.h"
+#import "BackgroundLayer.h"
 
 
 
@@ -28,7 +29,7 @@ bool isJumping;
 //array welches die wurfsterne enthaelt
 NSMutableArray * _projectiles;
 //geschwindigkeit
-int geschwindigkeit;
+double geschwindigkeit;
 // Distanz
 int distance;
 //Punkte Label
@@ -56,8 +57,8 @@ CCLabelTTF *punkte;
         _projectiles = [[NSMutableArray alloc] init];
 
         [self schedule:@selector(update:)]; // ueberpruefen ob monster abgeworfen wurden
-        //geschwindigkeit
-        geschwindigkeit= 1;
+        //geschwindigkeit in der die distanz erhoeht wird
+        geschwindigkeit= 1.0;
         //Distanz
         distance=0;
         
@@ -76,9 +77,21 @@ CCLabelTTF *punkte;
     
 }
 
+
 - (void)updateDistance:(ccTime)dt {
     distance ++;
-    [punkte setString:[NSString stringWithFormat:@"%i",distance]];
+    [punkte setString:[NSString stringWithFormat:@"%i",distance]]; // anzeige anpassen
+    if(enemyLayer.nextStage){ //nach bestimmter anzahl
+        if(geschwindigkeit>0.21){ // wird bis zu minimum geschwindigkeit
+            geschwindigkeit-=0.2; // die geschiwndigkeit angepasst
+            [self schedule:@selector(updateDistance:)interval:geschwindigkeit];
+//            BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:0];
+//            double set= bl.geschwindigkeitBackground-2.0;
+//            [bl setGeschwindigkeitBackground: set];
+        }
+    [enemyLayer setNextStage:false];
+            
+    }
     
     
 }
