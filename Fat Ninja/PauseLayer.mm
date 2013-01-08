@@ -9,6 +9,7 @@
 #import "PauseLayer.h"
 #import "GameLayer.h"
 #import "Constants.h"
+#import "HelloWorldLayer.h"
 
 @implementation PauseLayer
 CCMenu * menu;
@@ -35,9 +36,16 @@ GameLayer * gl;
             [menu setVisible:NO];
             [gl setIsPaused:false];
              }];
-        menu = [CCMenu menuWithItems:resume, nil];
+        CCMenuItemLabel *backToMain = [CCMenuItemFont itemWithString:@"Main Menu" block:^(id sender){
+            [[CCDirector sharedDirector] resume];
+            [[CCDirector sharedDirector] replaceScene: [HelloWorldLayer node]];
+            [menu setVisible:NO];
+            [gl setIsPaused:false];
+        }];
+
+        menu = [CCMenu menuWithItems:backToMain,resume, nil];
         
-        [menu alignItemsHorizontally];
+        [menu alignItemsHorizontallyWithPadding:10.0];
         
         CGSize size = [[CCDirector sharedDirector] winSize];
         [menu setPosition:ccp( size.width/2, size.height/3)];
