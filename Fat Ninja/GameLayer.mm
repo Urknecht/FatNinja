@@ -13,6 +13,7 @@
 #import "GameOverScene.h"
 #import "GameScene.h"
 #import "BackgroundLayer.h"
+#import "math.h"
 
 
 
@@ -24,8 +25,7 @@
 CGPoint _startPoint;
 //endpunkt für swipe ueberpruefung
 CGPoint _endPoint;
-//gibt an ob ninja gerade springt
-bool isJumping;
+bool isRolling;
 //array welches die wurfsterne enthaelt
 NSMutableArray * _projectiles;
 //geschwindigkeit
@@ -34,6 +34,8 @@ double geschwindigkeit;
 int distance;
 //Punkte Label
 CCLabelTTF *punkte;
+//Punkte Label
+CCLabelTTF *sushi;
 
 
 - (id) init
@@ -45,7 +47,7 @@ CCLabelTTF *punkte;
         //        ninja = [[Ninja alloc] initWithGameLayer:self];
         //
         
-        
+        isRolling=false;
         isPaused=false;
         
         //ninja layer
@@ -71,6 +73,15 @@ CCLabelTTF *punkte;
         [self addChild:punkte z:0];
         punkte.position = ccp(winSize.width-20, winSize.height-20);
         [self schedule:@selector(updateDistance:)interval:geschwindigkeit];
+        
+        //Sushi anzeige
+        CCSprite *sushiImage= [CCSprite spriteWithFile:@"sushi.png"];
+        [self addChild:sushiImage];
+        sushiImage.position= ccp(winSize.width-80, winSize.height-50);
+        
+        sushi = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:25];
+        [self addChild:sushi];
+        sushi.position = ccp(winSize.width-20, winSize.height-50);
     }
     
     [self setTouchEnabled:YES];
@@ -100,15 +111,26 @@ CCLabelTTF *punkte;
 
 //ueberprueft ob ninja getroffen wurde
 -(void) updateNinjaIsHit:(ccTime)delta{
+    NSMutableArray *enemyToDeleteRolling = [[NSMutableArray alloc] init];
+
     for (CCSprite *enemy in enemyLayer._enemyArray) {
         
         if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
             isJumping=false;
             // zu GameOver Scene
-            [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
-            
+            if(!isRolling){
+                [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
+            }
+            else{
+                [enemyToDeleteRolling addObject:enemy];
+            }
         }
     }
+    for (CCSprite *enemy in enemyToDeleteRolling) {
+        [enemyLayer removeEnemy:enemy];
+        [self removeChild:enemy cleanup:YES];
+    }
+    [enemyToDeleteRolling release];
 }
 
 //pruefen ob monster agbeschossen wurden
@@ -156,19 +178,32 @@ CCLabelTTF *punkte;
 }
 
 -(void) ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    
+    for (UITouch *touch in touches){
+        CGPoint location = [touch locationInView:[touch view]];
+        location = [[CCDirector sharedDirector] convertToGL:location];
+        _endPoint=location;
+    }
+    if (_startPoint.y-_endPoint.y>10 and abs(_endPoint.x-_startPoint.x)<3) {
+        isRolling=true;
+    }
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    NSUInteger tapCount = [touch tapCount];
     //endpunkt speichern
     for (UITouch *touch in touches){
         CGPoint location = [touch locationInView:[touch view]];
         location = [[CCDirector sharedDirector] convertToGL:location];
         _endPoint = location;
     }
+
+    if(isRolling){
+        isRolling=false;
+    }
+    
     // Choose one of the touches to work with
-    UITouch *touch = [touches anyObject];
-    if(isPaused){
+    else if(isPaused){
         
     }
     //ueberpruefen wie weit start und endpunkt in x richtung von einander entfernt sind --> swipe
@@ -214,12 +249,29 @@ CCLabelTTF *punkte;
           nil]];
         projectile.tag = 2;
         [_projectiles addObject:projectile];
-    }else {
+    }
+    //Hier werden die Fälle für Single und DoubleTap abgeprüft
+    else if (tapCount == 1){
+        //Wenn Single Tap ist führt er die Methode für normalen Jump aus
+        [self performSelector:@selector(singleTapMethod) withObject:nil afterDelay:.4];
         
-        [ninjaLayer jump];
+    }else if (tapCount == 2){
+        //Im Fall von DoubleTap bricht er die Animation vo, normalen Jump ab und startet die für den DoubleJump
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(singleTapMethod) object:nil];
+        [self performSelector:@selector(doubleTapMethod) withObject:nil afterDelay:.4];
         
     }
     
+    
+    
+}
+
+-(void)singleTapMethod{
+    [ninjaLayer jump];
+}
+
+-(void)doubleTapMethod{
+    [ninjaLayer doubleJump];
 }
 
 -(void)pauseGame
