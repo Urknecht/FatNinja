@@ -39,8 +39,16 @@
 		31738564169C726900B86E48 /* NinjaRunning7.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738550169C726900B86E48 /* NinjaRunning7.png */; };
 		31738565169C726900B86E48 /* NinjaRunning8.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738551169C726900B86E48 /* NinjaRunning8.png */; };
 		31738568169C746700B86E48 /* NinjaLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 31738567169C746700B86E48 /* NinjaLayer.mm */; };
-		3173856B169C74BA00B86E48 /* NinjaRunning.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31738569169C74B900B86E48 /* NinjaRunning.plist */; };
-		3173856C169C74BA00B86E48 /* NinjaRunning.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173856A169C74B900B86E48 /* NinjaRunning.png */; };
+		3173858B169C7FC100B86E48 /* NinjaRoll.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31738581169C7FC100B86E48 /* NinjaRoll.plist */; };
+		3173858C169C7FC100B86E48 /* NinjaRoll.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738582169C7FC100B86E48 /* NinjaRoll.png */; };
+		3173858D169C7FC100B86E48 /* NinjaRoll1.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738583169C7FC100B86E48 /* NinjaRoll1.png */; };
+		3173858E169C7FC100B86E48 /* NinjaRoll2.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738584169C7FC100B86E48 /* NinjaRoll2.png */; };
+		3173858F169C7FC100B86E48 /* NinjaRoll3.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738585169C7FC100B86E48 /* NinjaRoll3.png */; };
+		31738590169C7FC100B86E48 /* NinjaRoll4.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738586169C7FC100B86E48 /* NinjaRoll4.png */; };
+		31738591169C7FC100B86E48 /* NinjaRoll5.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738587169C7FC100B86E48 /* NinjaRoll5.png */; };
+		31738592169C7FC100B86E48 /* NinjaRoll6.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738588169C7FC100B86E48 /* NinjaRoll6.png */; };
+		31738593169C7FC100B86E48 /* NinjaRoll7.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738589169C7FC100B86E48 /* NinjaRoll7.png */; };
+		31738594169C7FC100B86E48 /* NinjaRoll8.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173858A169C7FC100B86E48 /* NinjaRoll8.png */; };
 		71C3C56216760B6600623738 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56116760B6600623738 /* QuartzCore.framework */; };
 		71C3C56416760B6600623738 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56316760B6600623738 /* OpenGLES.framework */; };
 		71C3C56616760B6600623738 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56516760B6600623738 /* OpenAL.framework */; };
@@ -261,8 +269,16 @@
 		31738551169C726900B86E48 /* NinjaRunning8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunning8.png; path = Resources/NinjaRunning8.png; sourceTree = "<group>"; };
 		31738566169C746700B86E48 /* NinjaLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NinjaLayer.h; sourceTree = "<group>"; };
 		31738567169C746700B86E48 /* NinjaLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NinjaLayer.mm; sourceTree = "<group>"; };
-		31738569169C74B900B86E48 /* NinjaRunning.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NinjaRunning.plist; sourceTree = "<group>"; };
-		3173856A169C74B900B86E48 /* NinjaRunning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRunning.png; sourceTree = "<group>"; };
+		31738581169C7FC100B86E48 /* NinjaRoll.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NinjaRoll.plist; sourceTree = "<group>"; };
+		31738582169C7FC100B86E48 /* NinjaRoll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRoll.png; sourceTree = "<group>"; };
+		31738583169C7FC100B86E48 /* NinjaRoll1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRoll1.png; sourceTree = "<group>"; };
+		31738584169C7FC100B86E48 /* NinjaRoll2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRoll2.png; sourceTree = "<group>"; };
+		31738585169C7FC100B86E48 /* NinjaRoll3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRoll3.png; sourceTree = "<group>"; };
+		31738586169C7FC100B86E48 /* NinjaRoll4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRoll4.png; sourceTree = "<group>"; };
+		31738587169C7FC100B86E48 /* NinjaRoll5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRoll5.png; sourceTree = "<group>"; };
+		31738588169C7FC100B86E48 /* NinjaRoll6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRoll6.png; sourceTree = "<group>"; };
+		31738589169C7FC100B86E48 /* NinjaRoll7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRoll7.png; sourceTree = "<group>"; };
+		3173858A169C7FC100B86E48 /* NinjaRoll8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRoll8.png; sourceTree = "<group>"; };
 		71C3C55D16760B6600623738 /* Fat Ninja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fat Ninja.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C3C56116760B6600623738 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		71C3C56316760B6600623738 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -713,8 +729,6 @@
 		71C3C57316760B6600623738 /* Fat Ninja */ = {
 			isa = PBXGroup;
 			children = (
-				31738569169C74B900B86E48 /* NinjaRunning.plist */,
-				3173856A169C74B900B86E48 /* NinjaRunning.png */,
 				71C3C78D16760B6B00623738 /* AppDelegate.h */,
 				71C3C78E16760B6B00623738 /* AppDelegate.mm */,
 				71C3C79016760B6B00623738 /* HelloWorldLayer.h */,
@@ -750,6 +764,16 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				31738581169C7FC100B86E48 /* NinjaRoll.plist */,
+				31738582169C7FC100B86E48 /* NinjaRoll.png */,
+				31738583169C7FC100B86E48 /* NinjaRoll1.png */,
+				31738584169C7FC100B86E48 /* NinjaRoll2.png */,
+				31738585169C7FC100B86E48 /* NinjaRoll3.png */,
+				31738586169C7FC100B86E48 /* NinjaRoll4.png */,
+				31738587169C7FC100B86E48 /* NinjaRoll5.png */,
+				31738588169C7FC100B86E48 /* NinjaRoll6.png */,
+				31738589169C7FC100B86E48 /* NinjaRoll7.png */,
+				3173858A169C7FC100B86E48 /* NinjaRoll8.png */,
 				3173853E169C726900B86E48 /* NinjaJumping.plist */,
 				3173853F169C726900B86E48 /* NinjaJumping.png */,
 				31738540169C726900B86E48 /* NinjaJumping1.png */,
@@ -1407,8 +1431,16 @@
 				31738563169C726900B86E48 /* NinjaRunning6.png in Resources */,
 				31738564169C726900B86E48 /* NinjaRunning7.png in Resources */,
 				31738565169C726900B86E48 /* NinjaRunning8.png in Resources */,
-				3173856B169C74BA00B86E48 /* NinjaRunning.plist in Resources */,
-				3173856C169C74BA00B86E48 /* NinjaRunning.png in Resources */,
+				3173858B169C7FC100B86E48 /* NinjaRoll.plist in Resources */,
+				3173858C169C7FC100B86E48 /* NinjaRoll.png in Resources */,
+				3173858D169C7FC100B86E48 /* NinjaRoll1.png in Resources */,
+				3173858E169C7FC100B86E48 /* NinjaRoll2.png in Resources */,
+				3173858F169C7FC100B86E48 /* NinjaRoll3.png in Resources */,
+				31738590169C7FC100B86E48 /* NinjaRoll4.png in Resources */,
+				31738591169C7FC100B86E48 /* NinjaRoll5.png in Resources */,
+				31738592169C7FC100B86E48 /* NinjaRoll6.png in Resources */,
+				31738593169C7FC100B86E48 /* NinjaRoll7.png in Resources */,
+				31738594169C7FC100B86E48 /* NinjaRoll8.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

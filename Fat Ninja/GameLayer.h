@@ -23,6 +23,7 @@
     bool isPaused;
     int distance;
 }
+@property (readwrite)double geschwindigkeit;
 @property (readwrite) bool isPaused;
 @property (readwrite) int distance;
 

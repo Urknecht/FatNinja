@@ -28,8 +28,7 @@ CGPoint _endPoint;
 bool isRolling;
 //array welches die wurfsterne enthaelt
 NSMutableArray * _projectiles;
-//geschwindigkeit
-double geschwindigkeit;
+
 // Distanz
 int distance;
 //Punkte Label
@@ -63,7 +62,7 @@ CCLabelTTF *sushi;
         
         [self schedule:@selector(update:)]; // ueberpruefen ob monster abgeworfen wurden
         //geschwindigkeit in der die distanz erhoeht wird
-        geschwindigkeit= 1.0;
+        self.geschwindigkeit= 1.0;
         //Distanz
         distance=0;
         
@@ -72,7 +71,7 @@ CCLabelTTF *sushi;
         punkte = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:25];
         [self addChild:punkte z:0];
         punkte.position = ccp(winSize.width-20, winSize.height-20);
-        [self schedule:@selector(updateDistance:)interval:geschwindigkeit];
+        [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
         
         //Sushi anzeige
         CCSprite *sushiImage= [CCSprite spriteWithFile:@"sushi.png"];
@@ -95,9 +94,10 @@ CCLabelTTF *sushi;
     distance ++;
     [punkte setString:[NSString stringWithFormat:@"%i",distance]]; // anzeige anpassen
     if(enemyLayer.nextStage){ //nach bestimmter anzahl
-        if(geschwindigkeit>0.21){ // wird bis zu minimum geschwindigkeit
-            geschwindigkeit-=0.2; // die geschiwndigkeit angepasst
-            [self schedule:@selector(updateDistance:)interval:geschwindigkeit];
+        if(self.geschwindigkeit>0.21){ // wird bis zu minimum geschwindigkeit
+            self.geschwindigkeit-=0.2; // die geschiwndigkeit angepasst
+            [ninjaLayer reloadAnimsWithSpeed:self.geschwindigkeit];
+            [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
             //            BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:0];
             //            double set= bl.geschwindigkeitBackground-2.0;
             //            [bl setGeschwindigkeitBackground: set];
@@ -182,8 +182,11 @@ CCLabelTTF *sushi;
         location = [[CCDirector sharedDirector] convertToGL:location];
         _endPoint=location;
     }
-    if (_startPoint.y-_endPoint.y>10 and abs(_endPoint.x-_startPoint.x)<3) {
+    if (_startPoint.y-_endPoint.y>10 and abs(_endPoint.x-_startPoint.x)<5) {
         isRolling=true;
+        [ninjaLayer startRoll];
+        
+        
     }
 }
 
@@ -199,6 +202,7 @@ CCLabelTTF *sushi;
 
     if(isRolling){
         isRolling=false;
+        [ninjaLayer endRoll];
     }
     
     // Choose one of the touches to work with
