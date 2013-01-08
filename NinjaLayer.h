@@ -22,5 +22,6 @@
 @property (readwrite)bool isJumping;
 
 -(void) jump;
+-(void) doubleJump;
 
 @end

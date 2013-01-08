@@ -82,6 +82,26 @@
     }
 }
 
+-(void) doubleJump{
+    if(!isJumping){
+        
+        isJumping=true;
+        [_ninja runAction:
+         [CCSequence actions:
+          [CCJumpBy actionWithDuration:1.0f
+                              position:ccp(0, 0)
+                                height:65.0f
+                                 jumps:1],        
+          [CCJumpBy actionWithDuration:2.0f
+                              position:ccp(0, 0)
+                                height:165.0f
+                                 jumps:1],
+          [CCCallBlockN actionWithBlock:^(CCNode *node) {
+             isJumping=false;             }],
+          nil]];
+    }
+}
+
 
 
 -(void)dealloc{
