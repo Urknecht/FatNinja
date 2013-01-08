@@ -202,6 +202,7 @@ CCLabelTTF *sushi;
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     NSUInteger tapCount = [touch tapCount];
+    
     //endpunkt speichern
     for (UITouch *touch in touches){
         CGPoint location = [touch locationInView:[touch view]];
@@ -265,12 +266,12 @@ CCLabelTTF *sushi;
     //Hier werden die Fälle für Single und DoubleTap abgeprüft
     else if (tapCount == 1){
         //Wenn Single Tap ist führt er die Methode für normalen Jump aus
-        [self performSelector:@selector(singleTapMethod) withObject:nil afterDelay:.4];
+        [self performSelector:@selector(singleTapMethod) withObject:nil afterDelay:0.4];
         
     }else if (tapCount == 2){
         //Im Fall von DoubleTap bricht er die Animation vo, normalen Jump ab und startet die für den DoubleJump
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(singleTapMethod) object:nil];
-        [self performSelector:@selector(doubleTapMethod) withObject:nil afterDelay:.4];
+        [self performSelector:@selector(doubleTapMethod) withObject:nil afterDelay:0];
         
     }
     
