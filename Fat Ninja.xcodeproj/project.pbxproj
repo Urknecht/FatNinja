@@ -16,7 +16,7 @@
 		71C3C56E16760B6600623738 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56D16760B6600623738 /* Foundation.framework */; };
 		71C3C57016760B6600623738 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56F16760B6600623738 /* CoreGraphics.framework */; };
 		71C3C57216760B6600623738 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C57116760B6600623738 /* GameKit.framework */; };
-		71C3C57616760B6600623738 /* Default_alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C57516760B6600623738 /* Default_alt.png */; };
+		71C3C57616760B6600623738 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C57516760B6600623738 /* Default.png */; };
 		71C3C57816760B6700623738 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C57716760B6700623738 /* Default@2x.png */; };
 		71C3C57A16760B6700623738 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C57916760B6700623738 /* Default-568h@2x.png */; };
 		71C3C57C16760B6700623738 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C57B16760B6700623738 /* Default-Landscape~ipad.png */; };
@@ -188,7 +188,6 @@
 		71C3C7A416760E6C00623738 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C7A316760E6C00623738 /* player.png */; };
 		71C3C7A616760E7400623738 /* projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C7A516760E7400623738 /* projectile.png */; };
 		71C3C7A91676113100623738 /* Ninja.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C3C7A81676113100623738 /* Ninja.mm */; };
-		71DF421D169C427E005BC414 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 71DF421C169C427E005BC414 /* Default.png */; };
 		E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */; };
 		E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */; };
 		E79D6DF2167E1E9C001E8724 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = E79D6DF1167E1E9C001E8724 /* enemy.png */; };
@@ -214,7 +213,7 @@
 		71C3C56D16760B6600623738 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		71C3C56F16760B6600623738 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		71C3C57116760B6600623738 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		71C3C57516760B6600623738 /* Default_alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default_alt.png; path = Resources/Default_alt.png; sourceTree = "<group>"; };
+		71C3C57516760B6600623738 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
 		71C3C57716760B6700623738 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 		71C3C57916760B6700623738 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		71C3C57B16760B6700623738 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -580,7 +579,6 @@
 		71C3C7A516760E7400623738 /* projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile.png; sourceTree = "<group>"; };
 		71C3C7A71676113100623738 /* Ninja.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ninja.h; sourceTree = "<group>"; };
 		71C3C7A81676113100623738 /* Ninja.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ninja.mm; sourceTree = "<group>"; };
-		71DF421C169C427E005BC414 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
 		E79D6DEE167E1D45001E8724 /* EnemyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyLayer.h; sourceTree = "<group>"; };
@@ -690,7 +688,6 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				71DF421C169C427E005BC414 /* Default.png */,
 				E7B517131695EBBC002B0D97 /* ninjaNew.png */,
 				E7AA875A16945DA900C71551 /* pauseButton.png */,
 				E7AA87581694560800C71551 /* gameOverBackground.png */,
@@ -700,7 +697,7 @@
 				E79D6DF1167E1E9C001E8724 /* enemy.png */,
 				71C3C7A516760E7400623738 /* projectile.png */,
 				71C3C7A316760E6C00623738 /* player.png */,
-				71C3C57516760B6600623738 /* Default_alt.png */,
+				71C3C57516760B6600623738 /* Default.png */,
 				71C3C57716760B6700623738 /* Default@2x.png */,
 				71C3C57916760B6700623738 /* Default-568h@2x.png */,
 				71C3C57B16760B6700623738 /* Default-Landscape~ipad.png */,
@@ -1281,7 +1278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71C3C57616760B6600623738 /* Default_alt.png in Resources */,
+				71C3C57616760B6600623738 /* Default.png in Resources */,
 				71C3C57816760B6700623738 /* Default@2x.png in Resources */,
 				71C3C57A16760B6700623738 /* Default-568h@2x.png in Resources */,
 				71C3C57C16760B6700623738 /* Default-Landscape~ipad.png in Resources */,
@@ -1303,7 +1300,6 @@
 				E7AA87591694560800C71551 /* gameOverBackground.png in Resources */,
 				E7AA875B16945DA900C71551 /* pauseButton.png in Resources */,
 				E7B517141695EBBC002B0D97 /* ninjaNew.png in Resources */,
-				71DF421D169C427E005BC414 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
