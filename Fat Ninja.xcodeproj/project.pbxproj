@@ -199,6 +199,7 @@
 		71C3C7A416760E6C00623738 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C7A316760E6C00623738 /* player.png */; };
 		71C3C7A616760E7400623738 /* projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C7A516760E7400623738 /* projectile.png */; };
 		71C3C7A91676113100623738 /* Ninja.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C3C7A81676113100623738 /* Ninja.mm */; };
+		71DF4237169C5103005BC414 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 71DF4236169C5103005BC414 /* Default.png */; };
 		E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */; };
 		E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */; };
 		E79D6DF2167E1E9C001E8724 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = E79D6DF1167E1E9C001E8724 /* enemy.png */; };
@@ -602,6 +603,7 @@
 		71C3C7A516760E7400623738 /* projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile.png; sourceTree = "<group>"; };
 		71C3C7A71676113100623738 /* Ninja.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ninja.h; sourceTree = "<group>"; };
 		71C3C7A81676113100623738 /* Ninja.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ninja.mm; sourceTree = "<group>"; };
+		71DF4236169C5103005BC414 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
 		E79D6DEE167E1D45001E8724 /* EnemyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyLayer.h; sourceTree = "<group>"; };
@@ -730,6 +732,7 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				71DF4236169C5103005BC414 /* Default.png */,
 				31738455169C4D7C00B86E48 /* Test */,
 				E7B517131695EBBC002B0D97 /* ninjaNew.png */,
 				E7AA875A16945DA900C71551 /* pauseButton.png */,
@@ -1353,6 +1356,7 @@
 				31738494169C502800B86E48 /* bear6.png in Resources */,
 				31738495169C502800B86E48 /* bear7.png in Resources */,
 				31738496169C502800B86E48 /* bear8.png in Resources */,
+				71DF4237169C5103005BC414 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
