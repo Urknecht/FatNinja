@@ -126,7 +126,9 @@ CCLabelTTF *sushi;
         
         if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
             // zu GameOver Scene
-            if(!isRolling){                
+            if(!isRolling){
+               // [self setIsPaused:true];
+                //[self pauseGame];
                 [ninjaLayer die:self];
             }
             else{
@@ -140,6 +142,7 @@ CCLabelTTF *sushi;
     }
     [enemyToDeleteRolling release];
 }
+
 
 -(void) endGame{
     NSLog(@"ninja gamelayer die");
