@@ -13,6 +13,7 @@
 #import "GameOverScene.h"
 #import "GameScene.h"
 #import "BackgroundLayer.h"
+#import "math.h"
 
 
 
@@ -24,8 +25,7 @@
 CGPoint _startPoint;
 //endpunkt für swipe ueberpruefung
 CGPoint _endPoint;
-//gibt an ob ninja gerade springt
-bool isJumping;
+bool isRolling;
 //array welches die wurfsterne enthaelt
 NSMutableArray * _projectiles;
 //geschwindigkeit
@@ -47,7 +47,7 @@ CCLabelTTF *sushi;
         //        ninja = [[Ninja alloc] initWithGameLayer:self];
         //
         
-        
+        isRolling=false;
         isPaused=false;
         
         //ninja layer
@@ -111,15 +111,25 @@ CCLabelTTF *sushi;
 
 //ueberprueft ob ninja getroffen wurde
 -(void) updateNinjaIsHit:(ccTime)delta{
+    NSMutableArray *enemyToDeleteRolling = [[NSMutableArray alloc] init];
+
     for (CCSprite *enemy in enemyLayer._enemyArray) {
         
         if (CGRectIntersectsRect(ninjaLayer.ninja.boundingBox, enemy.boundingBox)) {
-            isJumping=false;
             // zu GameOver Scene
-            [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
-            
+            if(!isRolling){
+                [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
+            }
+            else{
+                [enemyToDeleteRolling addObject:enemy];
+            }
         }
     }
+    for (CCSprite *enemy in enemyToDeleteRolling) {
+        [enemyLayer removeEnemy:enemy];
+        [self removeChild:enemy cleanup:YES];
+    }
+    [enemyToDeleteRolling release];
 }
 
 //pruefen ob monster agbeschossen wurden
@@ -167,19 +177,32 @@ CCLabelTTF *sushi;
 }
 
 -(void) ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    
+    for (UITouch *touch in touches){
+        CGPoint location = [touch locationInView:[touch view]];
+        location = [[CCDirector sharedDirector] convertToGL:location];
+        _endPoint=location;
+    }
+    if (_endPoint.y<_startPoint.y and abs(_endPoint.x-_startPoint.x)<5) {
+        isRolling=true;
+    }
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+
     //endpunkt speichern
     for (UITouch *touch in touches){
         CGPoint location = [touch locationInView:[touch view]];
         location = [[CCDirector sharedDirector] convertToGL:location];
         _endPoint = location;
     }
+
+    if(isRolling){
+        isRolling=false;
+    }
+    
     // Choose one of the touches to work with
-    UITouch *touch = [touches anyObject];
-    if(isPaused){
+    else if(isPaused){
         
     }
     //ueberpruefen wie weit start und endpunkt in x richtung von einander entfernt sind --> swipe
