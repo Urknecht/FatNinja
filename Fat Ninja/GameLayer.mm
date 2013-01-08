@@ -102,7 +102,7 @@ CCLabelTTF *punkte;
 -(void) updateNinjaIsHit:(ccTime)delta{
     for (CCSprite *enemy in enemyLayer._enemyArray) {
         
-        if (CGRectIntersectsRect(ninjaLayer.ninja.boundingBox, enemy.boundingBox)) {
+        if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
             isJumping=false;
             // zu GameOver Scene
             [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
@@ -179,7 +179,7 @@ CCLabelTTF *punkte;
         // Set up initial location of projectile
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         CCSprite *projectile = [CCSprite spriteWithFile:@"projectile.png"];
-        projectile.position = ninjaLayer.ninja.position;
+        projectile.position = [ninjaLayer getCurrentNinjaSprite].position;
         
         // Determine offset of location to projectile
         CGPoint offset = ccpSub(location, projectile.position);
