@@ -27,7 +27,7 @@ GameLayer * gl;
         [self addChild: pauseImage];
 
         
-        gl = (GameLayer *)[self.parent getChildByTag:1];
+        gl = (GameLayer *)[self.parent getChildByTag:gameLayerTag];
 
         // Menu und Resume Button
         [CCMenuItemFont setFontSize:30];
