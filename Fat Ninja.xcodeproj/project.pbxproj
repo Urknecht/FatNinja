@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		316BEF41169CD5C300EA2081 /* shuriken.png in Resources */ = {isa = PBXBuildFile; fileRef = 316BEF40169CD5C300EA2081 /* shuriken.png */; };
 		3173851A169C6E5500B86E48 /* ninjaNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738505169C6E5500B86E48 /* ninjaNew.png */; };
 		3173852F169C6F5B00B86E48 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738525169C6F5B00B86E48 /* background.png */; };
 		31738530169C6F5B00B86E48 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738526169C6F5B00B86E48 /* background1.png */; };
@@ -15,7 +16,6 @@
 		31738533169C6F5B00B86E48 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738529169C6F5B00B86E48 /* enemy.png */; };
 		31738534169C6F5B00B86E48 /* gameOverBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173852A169C6F5B00B86E48 /* gameOverBackground.png */; };
 		31738535169C6F5B00B86E48 /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173852B169C6F5B00B86E48 /* pauseButton.png */; };
-		31738536169C6F5B00B86E48 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173852C169C6F5B00B86E48 /* player.png */; };
 		31738537169C6F5B00B86E48 /* projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173852D169C6F5B00B86E48 /* projectile.png */; };
 		31738538169C6F5B00B86E48 /* sushi.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173852E169C6F5B00B86E48 /* sushi.png */; };
 		31738552169C726900B86E48 /* NinjaJumping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3173853E169C726900B86E48 /* NinjaJumping.plist */; };
@@ -245,6 +245,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		316BEF40169CD5C300EA2081 /* shuriken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuriken.png; sourceTree = "<group>"; };
 		31738505169C6E5500B86E48 /* ninjaNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ninjaNew.png; path = Resources/ninjaNew.png; sourceTree = "<group>"; };
 		31738525169C6F5B00B86E48 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
 		31738526169C6F5B00B86E48 /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background1.png; path = Resources/background1.png; sourceTree = "<group>"; };
@@ -253,7 +254,6 @@
 		31738529169C6F5B00B86E48 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = Resources/enemy.png; sourceTree = "<group>"; };
 		3173852A169C6F5B00B86E48 /* gameOverBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameOverBackground.png; path = Resources/gameOverBackground.png; sourceTree = "<group>"; };
 		3173852B169C6F5B00B86E48 /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButton.png; path = Resources/pauseButton.png; sourceTree = "<group>"; };
-		3173852C169C6F5B00B86E48 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Resources/player.png; sourceTree = "<group>"; };
 		3173852D169C6F5B00B86E48 /* projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = projectile.png; path = Resources/projectile.png; sourceTree = "<group>"; };
 		3173852E169C6F5B00B86E48 /* sushi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sushi.png; path = Resources/sushi.png; sourceTree = "<group>"; };
 		3173853E169C726900B86E48 /* NinjaJumping.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NinjaJumping.plist; path = Resources/NinjaJumping.plist; sourceTree = "<group>"; };
@@ -706,6 +706,46 @@
 		3173853D169C722700B86E48 /* Ninja */ = {
 			isa = PBXGroup;
 			children = (
+				31738597169CA6AE00B86E48 /* NinjaDie.png */,
+				31738598169CA6AE00B86E48 /* NinjaDie1.png */,
+				31738599169CA6AE00B86E48 /* NinjaDie2.png */,
+				3173859A169CA6AE00B86E48 /* NinjaDie3.png */,
+				3173859B169CA6AF00B86E48 /* NinjaDie4.png */,
+				3173859C169CA6AF00B86E48 /* NinjaDie5.png */,
+				3173859D169CA6AF00B86E48 /* NinjaDie6.png */,
+				3173859E169CA6AF00B86E48 /* NinjaDie7.png */,
+				3173859F169CA6AF00B86E48 /* NinjaDie8.png */,
+				31738595169CA6A000B86E48 /* NinjaDie.plist */,
+				31738581169C7FC100B86E48 /* NinjaRoll.plist */,
+				31738582169C7FC100B86E48 /* NinjaRoll.png */,
+				31738583169C7FC100B86E48 /* NinjaRoll1.png */,
+				31738584169C7FC100B86E48 /* NinjaRoll2.png */,
+				31738585169C7FC100B86E48 /* NinjaRoll3.png */,
+				31738586169C7FC100B86E48 /* NinjaRoll4.png */,
+				31738587169C7FC100B86E48 /* NinjaRoll5.png */,
+				31738588169C7FC100B86E48 /* NinjaRoll6.png */,
+				31738589169C7FC100B86E48 /* NinjaRoll7.png */,
+				3173858A169C7FC100B86E48 /* NinjaRoll8.png */,
+				3173853E169C726900B86E48 /* NinjaJumping.plist */,
+				3173853F169C726900B86E48 /* NinjaJumping.png */,
+				31738540169C726900B86E48 /* NinjaJumping1.png */,
+				31738541169C726900B86E48 /* NinjaJumping2.png */,
+				31738542169C726900B86E48 /* NinjaJumping3.png */,
+				31738543169C726900B86E48 /* NinjaJumping4.png */,
+				31738544169C726900B86E48 /* NinjaJumping5.png */,
+				31738545169C726900B86E48 /* NinjaJumping6.png */,
+				31738546169C726900B86E48 /* NinjaJumping7.png */,
+				31738547169C726900B86E48 /* NinjaJumping8.png */,
+				31738548169C726900B86E48 /* NinjaRunning.plist */,
+				31738549169C726900B86E48 /* NinjaRunning.png */,
+				3173854A169C726900B86E48 /* NinjaRunning1.png */,
+				3173854B169C726900B86E48 /* NinjaRunning2.png */,
+				3173854C169C726900B86E48 /* NinjaRunning3.png */,
+				3173854D169C726900B86E48 /* NinjaRunning4.png */,
+				3173854E169C726900B86E48 /* NinjaRunning5.png */,
+				3173854F169C726900B86E48 /* NinjaRunning6.png */,
+				31738550169C726900B86E48 /* NinjaRunning7.png */,
+				31738551169C726900B86E48 /* NinjaRunning8.png */,
 			);
 			name = Ninja;
 			sourceTree = "<group>";
@@ -779,46 +819,7 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				31738597169CA6AE00B86E48 /* NinjaDie.png */,
-				31738598169CA6AE00B86E48 /* NinjaDie1.png */,
-				31738599169CA6AE00B86E48 /* NinjaDie2.png */,
-				3173859A169CA6AE00B86E48 /* NinjaDie3.png */,
-				3173859B169CA6AF00B86E48 /* NinjaDie4.png */,
-				3173859C169CA6AF00B86E48 /* NinjaDie5.png */,
-				3173859D169CA6AF00B86E48 /* NinjaDie6.png */,
-				3173859E169CA6AF00B86E48 /* NinjaDie7.png */,
-				3173859F169CA6AF00B86E48 /* NinjaDie8.png */,
-				31738595169CA6A000B86E48 /* NinjaDie.plist */,
-				31738581169C7FC100B86E48 /* NinjaRoll.plist */,
-				31738582169C7FC100B86E48 /* NinjaRoll.png */,
-				31738583169C7FC100B86E48 /* NinjaRoll1.png */,
-				31738584169C7FC100B86E48 /* NinjaRoll2.png */,
-				31738585169C7FC100B86E48 /* NinjaRoll3.png */,
-				31738586169C7FC100B86E48 /* NinjaRoll4.png */,
-				31738587169C7FC100B86E48 /* NinjaRoll5.png */,
-				31738588169C7FC100B86E48 /* NinjaRoll6.png */,
-				31738589169C7FC100B86E48 /* NinjaRoll7.png */,
-				3173858A169C7FC100B86E48 /* NinjaRoll8.png */,
-				3173853E169C726900B86E48 /* NinjaJumping.plist */,
-				3173853F169C726900B86E48 /* NinjaJumping.png */,
-				31738540169C726900B86E48 /* NinjaJumping1.png */,
-				31738541169C726900B86E48 /* NinjaJumping2.png */,
-				31738542169C726900B86E48 /* NinjaJumping3.png */,
-				31738543169C726900B86E48 /* NinjaJumping4.png */,
-				31738544169C726900B86E48 /* NinjaJumping5.png */,
-				31738545169C726900B86E48 /* NinjaJumping6.png */,
-				31738546169C726900B86E48 /* NinjaJumping7.png */,
-				31738547169C726900B86E48 /* NinjaJumping8.png */,
-				31738548169C726900B86E48 /* NinjaRunning.plist */,
-				31738549169C726900B86E48 /* NinjaRunning.png */,
-				3173854A169C726900B86E48 /* NinjaRunning1.png */,
-				3173854B169C726900B86E48 /* NinjaRunning2.png */,
-				3173854C169C726900B86E48 /* NinjaRunning3.png */,
-				3173854D169C726900B86E48 /* NinjaRunning4.png */,
-				3173854E169C726900B86E48 /* NinjaRunning5.png */,
-				3173854F169C726900B86E48 /* NinjaRunning6.png */,
-				31738550169C726900B86E48 /* NinjaRunning7.png */,
-				31738551169C726900B86E48 /* NinjaRunning8.png */,
+				316BEF40169CD5C300EA2081 /* shuriken.png */,
 				3173853D169C722700B86E48 /* Ninja */,
 				31738525169C6F5B00B86E48 /* background.png */,
 				31738526169C6F5B00B86E48 /* background1.png */,
@@ -827,7 +828,6 @@
 				31738529169C6F5B00B86E48 /* enemy.png */,
 				3173852A169C6F5B00B86E48 /* gameOverBackground.png */,
 				3173852B169C6F5B00B86E48 /* pauseButton.png */,
-				3173852C169C6F5B00B86E48 /* player.png */,
 				3173852D169C6F5B00B86E48 /* projectile.png */,
 				3173852E169C6F5B00B86E48 /* sushi.png */,
 				31738505169C6E5500B86E48 /* ninjaNew.png */,
@@ -1433,7 +1433,6 @@
 				31738533169C6F5B00B86E48 /* enemy.png in Resources */,
 				31738534169C6F5B00B86E48 /* gameOverBackground.png in Resources */,
 				31738535169C6F5B00B86E48 /* pauseButton.png in Resources */,
-				31738536169C6F5B00B86E48 /* player.png in Resources */,
 				31738537169C6F5B00B86E48 /* projectile.png in Resources */,
 				31738538169C6F5B00B86E48 /* sushi.png in Resources */,
 				31738552169C726900B86E48 /* NinjaJumping.plist in Resources */,
@@ -1476,6 +1475,7 @@
 				317385A6169CA6AF00B86E48 /* NinjaDie6.png in Resources */,
 				317385A7169CA6AF00B86E48 /* NinjaDie7.png in Resources */,
 				317385A8169CA6AF00B86E48 /* NinjaDie8.png in Resources */,
+				316BEF41169CD5C300EA2081 /* shuriken.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

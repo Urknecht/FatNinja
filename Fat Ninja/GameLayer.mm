@@ -127,8 +127,7 @@ CCLabelTTF *sushi;
         if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
             // zu GameOver Scene
             if(!isRolling){
-//                [self setIsPaused:true];
-//                [self pauseGame];
+                
                 [self stopGame];
                 [ninjaLayer die:self];
             }
@@ -150,7 +149,6 @@ CCLabelTTF *sushi;
 }
 
 -(void) endGame{
-    NSLog(@"ninja gamelayer die");
      [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
 }
 
@@ -239,7 +237,7 @@ CCLabelTTF *sushi;
         
         // Set up initial location of projectile
         CGSize winSize = [[CCDirector sharedDirector] winSize];
-        CCSprite *projectile = [CCSprite spriteWithFile:@"projectile.png"];
+        CCSprite *projectile = [CCSprite spriteWithFile:@"shuriken.png"];
         projectile.position = [ninjaLayer getCurrentNinjaSprite].position;
         
         // Determine offset of location to projectile
@@ -273,6 +271,8 @@ CCLabelTTF *sushi;
              [node removeFromParentAndCleanup:YES];
          }],
           nil]];
+        
+        [projectile runAction: [CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:0.08 angle:-360]]];
         projectile.tag = 2;
         [_projectiles addObject:projectile];
     }
