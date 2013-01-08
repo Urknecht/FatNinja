@@ -126,8 +126,8 @@ CCLabelTTF *sushi;
         
         if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
             // zu GameOver Scene
-            if(!isRolling){
-                [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
+            if(!isRolling){                
+                [ninjaLayer die:self];
             }
             else{
                 [enemyToDeleteRolling addObject:enemy];
@@ -139,6 +139,11 @@ CCLabelTTF *sushi;
         [self removeChild:enemy cleanup:YES];
     }
     [enemyToDeleteRolling release];
+}
+
+-(void) endGame{
+    NSLog(@"ninja gamelayer die");
+     [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
 }
 
 //pruefen ob monster agbeschossen wurden

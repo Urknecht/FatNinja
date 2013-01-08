@@ -31,5 +31,6 @@
 @property (readwrite) int distance;
 
 -(void) pauseGame;
+-(void) endGame;
 
 @end
