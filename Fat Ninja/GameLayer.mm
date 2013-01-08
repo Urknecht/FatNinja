@@ -182,7 +182,7 @@ CCLabelTTF *sushi;
         location = [[CCDirector sharedDirector] convertToGL:location];
         _endPoint=location;
     }
-    if (_endPoint.y<_startPoint.y and abs(_endPoint.x-_startPoint.x)<5) {
+    if (_startPoint.y-_endPoint.y>10 and abs(_endPoint.x-_startPoint.x)<3) {
         isRolling=true;
     }
 }
