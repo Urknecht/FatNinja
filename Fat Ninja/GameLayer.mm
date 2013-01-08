@@ -116,7 +116,6 @@ CCLabelTTF *sushi;
     for (CCSprite *enemy in enemyLayer._enemyArray) {
         
         if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
-            isJumping=false;
             // zu GameOver Scene
             if(!isRolling){
                 [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
