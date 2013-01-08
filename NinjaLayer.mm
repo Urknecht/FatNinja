@@ -46,8 +46,9 @@
         
         //set its position to be dead center, i.e. screen width and height divided by 2
         CGSize winSize = [CCDirector sharedDirector].winSize;
+        _ninja.scale = (winSize.height / 600) ;
         _ninja.position = ccp(_ninja.contentSize.width / 2, winSize.height / 3);
-
+      
         
         //create a looping action using the animation created above. This just continuosly
         //loops through each frame in the CCAnimation object
