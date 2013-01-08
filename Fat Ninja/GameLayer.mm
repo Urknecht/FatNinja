@@ -14,6 +14,7 @@
 #import "GameScene.h"
 #import "BackgroundLayer.h"
 #import "math.h"
+#import "Constants.h"
 
 
 
@@ -37,6 +38,7 @@ CCLabelTTF *punkte;
 CCLabelTTF *sushi;
 
 
+
 - (id) init
 {
     if ((self = [super init])) {
@@ -49,6 +51,10 @@ CCLabelTTF *sushi;
         isRolling=false;
         isPaused=false;
         
+        // backgorund layer
+        backgroundLayer =[BackgroundLayer node];
+        [self addChild:backgroundLayer z:0 tag:backgroundLayerTag];
+        
         //ninja layer
         ninjaLayer=[NinjaLayer node];
         [self addChild:ninjaLayer z:1];
@@ -56,7 +62,9 @@ CCLabelTTF *sushi;
         //enemy layer
         enemyLayer=[EnemyLayer node];
         [self addChild:enemyLayer z:2];
-        [self schedule:@selector(updateNinjaIsHit:)]; // immer wieder pruefen ob ninja getroffen wurde
+        [self schedule:@selector(updateNinjaIsHit:)]; //immer wieder pruefen ob ninja getroffen wurde
+        
+ 
         
         _projectiles = [[NSMutableArray alloc] init];
         
@@ -97,6 +105,7 @@ CCLabelTTF *sushi;
         if(self.geschwindigkeit>0.21){ // wird bis zu minimum geschwindigkeit
             self.geschwindigkeit-=0.2; // die geschiwndigkeit angepasst
             [ninjaLayer reloadAnimsWithSpeed:self.geschwindigkeit];
+            [backgroundLayer reloadBackgroundWithSpeed:self.geschwindigkeit];
             [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
             //            BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:0];
             //            double set= bl.geschwindigkeitBackground-2.0;

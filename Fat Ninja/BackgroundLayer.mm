@@ -10,6 +10,8 @@
 
 @implementation BackgroundLayer
 @synthesize geschwindigkeitBackground;
+CCSprite *backgroundImage;
+CCSprite *backgroundImage2;
 
 -(id)init {
     self = [super init];
@@ -17,8 +19,8 @@
         
         geschwindigkeitBackground=14.0;
         // load background images
-        CCSprite *backgroundImage= [CCSprite spriteWithFile:@"background1.png"];
-        CCSprite *backgroundImage2= [CCSprite spriteWithFile:@"background2.png"];
+        backgroundImage= [CCSprite spriteWithFile:@"background1.png"];
+        backgroundImage2= [CCSprite spriteWithFile:@"background2.png"];
 
         // set position
         CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -39,11 +41,17 @@
                                                                       -backgroundImage.contentSize.width*2, winSize.height/2)];
             CCMoveTo * actionMoveDone2 = [CCMoveTo actionWithDuration:0 position:CGPointMake(winSize.width+0.5*winSize.width, winSize.height/2)];
             CCSequence *sequence2=[CCSequence actionOne:actionMove2 two:actionMoveDone2];
-            CCRepeatForever *repeat2=[CCRepeatForever actionWithAction:sequence2];
-            [backgroundImage runAction:repeat2];
+         //   CCRepeatForever *repeat2=[CCRepeatForever actionWithAction:sequence2];            
+            id speedAction2 = [CCSpeed actionWithAction: [CCRepeatForever actionWithAction:sequence2] speed:1.0f];
+            [speedAction2 setTag:'zwei'];
+            [backgroundImage runAction:speedAction2];
         }];
         CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
-        [backgroundImage runAction:sequence];
+        id speedAction = [CCSpeed actionWithAction: sequence speed:1.0f];
+        [speedAction setTag:'eins'];                
+        [backgroundImage runAction:speedAction];
+        
+        
         
         //move image 2
         CCMoveTo * actionMove2 = [CCMoveTo actionWithDuration:14.0
@@ -51,11 +59,24 @@
                                                                  -backgroundImage2.contentSize.width*2, winSize.height/2)];
         CCMoveTo * actionMoveDone2 = [CCMoveTo actionWithDuration:0 position:CGPointMake(winSize.width+0.5*winSize.width, winSize.height/2)];
         CCSequence *sequence2=[CCSequence actionOne:actionMove2 two:actionMoveDone2];
-        CCRepeatForever *repeat2=[CCRepeatForever actionWithAction:sequence2];
-        [backgroundImage2 runAction:repeat2];
+        id speedAction3 = [CCSpeed actionWithAction: [CCRepeatForever actionWithAction:sequence2] speed:1.0f];
+        [speedAction3 setTag:'drei'];
+        [backgroundImage2 runAction:speedAction3];
     
     }
-    return self;
+    return self;    
+}
+
+-(void) reloadBackgroundWithSpeed:(double)geschwindigkeit{
+    NSLog(@"changeSpeed");
+    id speedAction = [backgroundImage getActionByTag:'eins'];
+    [speedAction setSpeed:(1.0f/geschwindigkeit)];
+    
+    id speedAction2 = [backgroundImage getActionByTag:'zwei'];
+    [speedAction2 setSpeed: (1.0f/geschwindigkeit)];
+    
+    id speedAction3 = [backgroundImage2 getActionByTag:'drei'];
+    [speedAction3 setSpeed: (1.0f/geschwindigkeit)];
     
 }
 

@@ -11,6 +11,7 @@
 @class EnemyLayer;
 @class NinjaLayer;
 @class Ninja;
+@class BackgroundLayer;
 
 @interface GameLayer : CCLayerColor {
    
@@ -18,6 +19,8 @@
     NinjaLayer *ninjaLayer;
     //enemy layer
     EnemyLayer *enemyLayer;
+    
+    BackgroundLayer *backgroundLayer;
     
     
     bool isPaused;
