@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		31738454169C464500B86E48 /* NinjaLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 31738453169C464500B86E48 /* NinjaLayer.mm */; };
-		3173848D169C502800B86E48 /* AnimBear.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31738483169C502800B86E48 /* AnimBear.plist */; };
-		3173848E169C502800B86E48 /* AnimBear.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738484169C502800B86E48 /* AnimBear.png */; };
-		3173848F169C502800B86E48 /* bear1.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738485169C502800B86E48 /* bear1.png */; };
-		31738490169C502800B86E48 /* bear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738486169C502800B86E48 /* bear2.png */; };
-		31738491169C502800B86E48 /* bear3.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738487169C502800B86E48 /* bear3.png */; };
-		31738492169C502800B86E48 /* bear4.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738488169C502800B86E48 /* bear4.png */; };
-		31738493169C502800B86E48 /* bear5.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738489169C502800B86E48 /* bear5.png */; };
-		31738494169C502800B86E48 /* bear6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173848A169C502800B86E48 /* bear6.png */; };
-		31738495169C502800B86E48 /* bear7.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173848B169C502800B86E48 /* bear7.png */; };
-		31738496169C502800B86E48 /* bear8.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173848C169C502800B86E48 /* bear8.png */; };
+		317384A8169C56C200B86E48 /* NinjaRunning.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3173849E169C56C200B86E48 /* NinjaRunning.plist */; };
+		317384A9169C56C200B86E48 /* NinjaRunning.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173849F169C56C200B86E48 /* NinjaRunning.png */; };
+		317384AA169C56C200B86E48 /* NinjaRunning1.png in Resources */ = {isa = PBXBuildFile; fileRef = 317384A0169C56C200B86E48 /* NinjaRunning1.png */; };
+		317384AB169C56C200B86E48 /* NinjaRunning2.png in Resources */ = {isa = PBXBuildFile; fileRef = 317384A1169C56C200B86E48 /* NinjaRunning2.png */; };
+		317384AC169C56C200B86E48 /* NinjaRunning3.png in Resources */ = {isa = PBXBuildFile; fileRef = 317384A2169C56C200B86E48 /* NinjaRunning3.png */; };
+		317384AD169C56C200B86E48 /* NinjaRunning4.png in Resources */ = {isa = PBXBuildFile; fileRef = 317384A3169C56C200B86E48 /* NinjaRunning4.png */; };
+		317384AE169C56C200B86E48 /* NinjaRunning5.png in Resources */ = {isa = PBXBuildFile; fileRef = 317384A4169C56C200B86E48 /* NinjaRunning5.png */; };
+		317384AF169C56C200B86E48 /* NinjaRunning6.png in Resources */ = {isa = PBXBuildFile; fileRef = 317384A5169C56C200B86E48 /* NinjaRunning6.png */; };
+		317384B0169C56C200B86E48 /* NinjaRunning7.png in Resources */ = {isa = PBXBuildFile; fileRef = 317384A6169C56C200B86E48 /* NinjaRunning7.png */; };
+		317384B1169C56C200B86E48 /* NinjaRunning8.png in Resources */ = {isa = PBXBuildFile; fileRef = 317384A7169C56C200B86E48 /* NinjaRunning8.png */; };
 		71C3C56216760B6600623738 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56116760B6600623738 /* QuartzCore.framework */; };
 		71C3C56416760B6600623738 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56316760B6600623738 /* OpenGLES.framework */; };
 		71C3C56616760B6600623738 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56516760B6600623738 /* OpenAL.framework */; };
@@ -218,16 +218,16 @@
 /* Begin PBXFileReference section */
 		31738452169C464500B86E48 /* NinjaLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NinjaLayer.h; path = ../NinjaLayer.h; sourceTree = "<group>"; };
 		31738453169C464500B86E48 /* NinjaLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NinjaLayer.mm; path = ../NinjaLayer.mm; sourceTree = "<group>"; };
-		31738483169C502800B86E48 /* AnimBear.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AnimBear.plist; sourceTree = "<group>"; };
-		31738484169C502800B86E48 /* AnimBear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AnimBear.png; sourceTree = "<group>"; };
-		31738485169C502800B86E48 /* bear1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear1.png; sourceTree = "<group>"; };
-		31738486169C502800B86E48 /* bear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear2.png; sourceTree = "<group>"; };
-		31738487169C502800B86E48 /* bear3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear3.png; sourceTree = "<group>"; };
-		31738488169C502800B86E48 /* bear4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear4.png; sourceTree = "<group>"; };
-		31738489169C502800B86E48 /* bear5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear5.png; sourceTree = "<group>"; };
-		3173848A169C502800B86E48 /* bear6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear6.png; sourceTree = "<group>"; };
-		3173848B169C502800B86E48 /* bear7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear7.png; sourceTree = "<group>"; };
-		3173848C169C502800B86E48 /* bear8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear8.png; sourceTree = "<group>"; };
+		3173849E169C56C200B86E48 /* NinjaRunning.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NinjaRunning.plist; sourceTree = "<group>"; };
+		3173849F169C56C200B86E48 /* NinjaRunning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRunning.png; sourceTree = "<group>"; };
+		317384A0169C56C200B86E48 /* NinjaRunning1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRunning1.png; sourceTree = "<group>"; };
+		317384A1169C56C200B86E48 /* NinjaRunning2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRunning2.png; sourceTree = "<group>"; };
+		317384A2169C56C200B86E48 /* NinjaRunning3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRunning3.png; sourceTree = "<group>"; };
+		317384A3169C56C200B86E48 /* NinjaRunning4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRunning4.png; sourceTree = "<group>"; };
+		317384A4169C56C200B86E48 /* NinjaRunning5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRunning5.png; sourceTree = "<group>"; };
+		317384A5169C56C200B86E48 /* NinjaRunning6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRunning6.png; sourceTree = "<group>"; };
+		317384A6169C56C200B86E48 /* NinjaRunning7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRunning7.png; sourceTree = "<group>"; };
+		317384A7169C56C200B86E48 /* NinjaRunning8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaRunning8.png; sourceTree = "<group>"; };
 		71C3C55D16760B6600623738 /* Fat Ninja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fat Ninja.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C3C56116760B6600623738 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		71C3C56316760B6600623738 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -646,21 +646,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		31738455169C4D7C00B86E48 /* Test */ = {
+		3173849B169C56A600B86E48 /* Ninja */ = {
 			isa = PBXGroup;
 			children = (
-				31738483169C502800B86E48 /* AnimBear.plist */,
-				31738484169C502800B86E48 /* AnimBear.png */,
-				31738485169C502800B86E48 /* bear1.png */,
-				31738486169C502800B86E48 /* bear2.png */,
-				31738487169C502800B86E48 /* bear3.png */,
-				31738488169C502800B86E48 /* bear4.png */,
-				31738489169C502800B86E48 /* bear5.png */,
-				3173848A169C502800B86E48 /* bear6.png */,
-				3173848B169C502800B86E48 /* bear7.png */,
-				3173848C169C502800B86E48 /* bear8.png */,
+				3173849D169C56AC00B86E48 /* NinjaRunning */,
 			);
-			name = Test;
+			name = Ninja;
+			sourceTree = "<group>";
+		};
+		3173849D169C56AC00B86E48 /* NinjaRunning */ = {
+			isa = PBXGroup;
+			children = (
+				3173849E169C56C200B86E48 /* NinjaRunning.plist */,
+				3173849F169C56C200B86E48 /* NinjaRunning.png */,
+				317384A0169C56C200B86E48 /* NinjaRunning1.png */,
+				317384A1169C56C200B86E48 /* NinjaRunning2.png */,
+				317384A2169C56C200B86E48 /* NinjaRunning3.png */,
+				317384A3169C56C200B86E48 /* NinjaRunning4.png */,
+				317384A4169C56C200B86E48 /* NinjaRunning5.png */,
+				317384A5169C56C200B86E48 /* NinjaRunning6.png */,
+				317384A6169C56C200B86E48 /* NinjaRunning7.png */,
+				317384A7169C56C200B86E48 /* NinjaRunning8.png */,
+			);
+			name = NinjaRunning;
 			sourceTree = "<group>";
 		};
 		71C3C55216760B6600623738 = {
@@ -736,7 +744,6 @@
 			children = (
 				E79D972D169C55B3001D6F70 /* sushi.png */,
 				71DF4236169C5103005BC414 /* Default.png */,
-				31738455169C4D7C00B86E48 /* Test */,
 				E7B517131695EBBC002B0D97 /* ninjaNew.png */,
 				E7AA875A16945DA900C71551 /* pauseButton.png */,
 				E7AA87581694560800C71551 /* gameOverBackground.png */,
@@ -1349,16 +1356,6 @@
 				E7AA87591694560800C71551 /* gameOverBackground.png in Resources */,
 				E7AA875B16945DA900C71551 /* pauseButton.png in Resources */,
 				E7B517141695EBBC002B0D97 /* ninjaNew.png in Resources */,
-				3173848D169C502800B86E48 /* AnimBear.plist in Resources */,
-				3173848E169C502800B86E48 /* AnimBear.png in Resources */,
-				3173848F169C502800B86E48 /* bear1.png in Resources */,
-				31738490169C502800B86E48 /* bear2.png in Resources */,
-				31738491169C502800B86E48 /* bear3.png in Resources */,
-				31738492169C502800B86E48 /* bear4.png in Resources */,
-				31738493169C502800B86E48 /* bear5.png in Resources */,
-				31738494169C502800B86E48 /* bear6.png in Resources */,
-				31738495169C502800B86E48 /* bear7.png in Resources */,
-				31738496169C502800B86E48 /* bear8.png in Resources */,
 				71DF4237169C5103005BC414 /* Default.png in Resources */,
 				E79D972E169C55B3001D6F70 /* sushi.png in Resources */,
 			);
