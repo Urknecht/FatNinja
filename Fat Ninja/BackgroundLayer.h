@@ -15,4 +15,5 @@ double geschwindigkeitBackground;
 }
 @property(readwrite) double geschwindigkeitBackground;
 -(void) reloadBackgroundWithSpeed:(double)geschwindigkeit;
+-(void) stopBackgroundAnimation;
 @end

@@ -23,6 +23,7 @@
     BackgroundLayer *backgroundLayer;
     
     
+    
     bool isPaused;
     int distance;
 }

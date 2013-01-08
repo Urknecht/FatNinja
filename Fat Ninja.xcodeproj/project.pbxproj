@@ -237,7 +237,6 @@
 		71C3C79816760B6B00623738 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C3C79716760B6B00623738 /* GLES-Render.mm */; };
 		71C3C79A16760B6B00623738 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C79916760B6B00623738 /* blocks.png */; };
 		71C3C7A216760C6000623738 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C3C7A116760C6000623738 /* GameLayer.mm */; };
-		71C3C7A91676113100623738 /* Ninja.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C3C7A81676113100623738 /* Ninja.mm */; };
 		E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */; };
 		E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */; };
 		E7A5EC751678C49A006AA447 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7A5EC741678C49A006AA447 /* GameScene.mm */; };
@@ -671,8 +670,6 @@
 		71C3C79916760B6B00623738 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		71C3C7A016760C6000623738 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
 		71C3C7A116760C6000623738 /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameLayer.mm; sourceTree = "<group>"; };
-		71C3C7A71676113100623738 /* Ninja.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ninja.h; sourceTree = "<group>"; };
-		71C3C7A81676113100623738 /* Ninja.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ninja.mm; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
 		E79D6DEE167E1D45001E8724 /* EnemyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyLayer.h; sourceTree = "<group>"; };
@@ -764,8 +761,6 @@
 				71C3C7A116760C6000623738 /* GameLayer.mm */,
 				31738566169C746700B86E48 /* NinjaLayer.h */,
 				31738567169C746700B86E48 /* NinjaLayer.mm */,
-				71C3C7A71676113100623738 /* Ninja.h */,
-				71C3C7A81676113100623738 /* Ninja.mm */,
 				E7A5EC731678C499006AA447 /* GameScene.h */,
 				E7A5EC741678C49A006AA447 /* GameScene.mm */,
 				E79D6DE8167E1053001E8724 /* BackgroundLayer.h */,
@@ -1647,7 +1642,6 @@
 				71C3C79516760B6B00623738 /* IntroLayer.mm in Sources */,
 				71C3C79816760B6B00623738 /* GLES-Render.mm in Sources */,
 				71C3C7A216760C6000623738 /* GameLayer.mm in Sources */,
-				71C3C7A91676113100623738 /* Ninja.mm in Sources */,
 				E7A5EC751678C49A006AA447 /* GameScene.mm in Sources */,
 				E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */,
 				E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */,

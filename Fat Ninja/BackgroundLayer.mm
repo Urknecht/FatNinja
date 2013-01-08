@@ -80,6 +80,18 @@ CCSprite *backgroundImage2;
     
 }
 
+-(void) stopBackgroundAnimation{
+    id speedAction = [backgroundImage getActionByTag:'eins'];
+    [speedAction setSpeed:0];
+    
+    id speedAction2 = [backgroundImage getActionByTag:'zwei'];
+    [speedAction2 setSpeed: 0];
+    
+    id speedAction3 = [backgroundImage2 getActionByTag:'drei'];
+    [speedAction3 setSpeed: 0];
+
+}
+
 -(void)dealloc{
     [super dealloc];
     

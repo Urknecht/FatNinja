@@ -12,5 +12,6 @@
 
 #define backgroundLayerTag 0
 #define gameLayerTag 1
+#define ninjaDyingLayerTag 2
 
 #endif
