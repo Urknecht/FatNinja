@@ -7,8 +7,8 @@
 //
 
 #import "GameLayer.h"
-#import "Ninja.h"
 #import "EnemyLayer.h"
+#import "NinjaLayer.h"
 #import "HelloWorldLayer.h"
 #import "GameOverScene.h"
 #import "GameScene.h"
@@ -39,23 +39,26 @@ CCLabelTTF *punkte;
 - (id) init
 {
     if ((self = [super init])) {
-        //ninja initialisieren
-        ninja = [[Ninja alloc] initWithGameLayer:self];
         
-        //position ninja
-        CGSize winSize = [CCDirector sharedDirector].winSize;
-        ninja.position = ccp(ninja.contentSize.width/2, winSize.height/3);
-        [self addChild:ninja];
+        
+        //        //ninja initialisieren
+        //        ninja = [[Ninja alloc] initWithGameLayer:self];
+        //
+        
+        
         isPaused=false;
-        isJumping=false;
+        
+        //ninja layer
+        ninjaLayer=[NinjaLayer node];
+        [self addChild:ninjaLayer z:1];
         
         //enemy layer
         enemyLayer=[EnemyLayer node];
         [self addChild:enemyLayer z:2];
         [self schedule:@selector(updateNinjaIsHit:)]; // immer wieder pruefen ob ninja getroffen wurde
-
+        
         _projectiles = [[NSMutableArray alloc] init];
-
+        
         [self schedule:@selector(update:)]; // ueberpruefen ob monster abgeworfen wurden
         //geschwindigkeit in der die distanz erhoeht wird
         geschwindigkeit= 1.0;
@@ -63,6 +66,7 @@ CCLabelTTF *punkte;
         distance=0;
         
         //punkte anzeige
+        CGSize winSize = [CCDirector sharedDirector].winSize;
         punkte = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:25];
         [self addChild:punkte z:0];
         punkte.position = ccp(winSize.width-20, winSize.height-20);
@@ -70,10 +74,8 @@ CCLabelTTF *punkte;
     }
     
     [self setTouchEnabled:YES];
-
     
     return self;
-    
     
 }
 
@@ -85,12 +87,12 @@ CCLabelTTF *punkte;
         if(geschwindigkeit>0.21){ // wird bis zu minimum geschwindigkeit
             geschwindigkeit-=0.2; // die geschiwndigkeit angepasst
             [self schedule:@selector(updateDistance:)interval:geschwindigkeit];
-//            BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:0];
-//            double set= bl.geschwindigkeitBackground-2.0;
-//            [bl setGeschwindigkeitBackground: set];
+            //            BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:0];
+            //            double set= bl.geschwindigkeitBackground-2.0;
+            //            [bl setGeschwindigkeitBackground: set];
         }
-    [enemyLayer setNextStage:false];
-            
+        [enemyLayer setNextStage:false];
+        
     }
     
     
@@ -99,13 +101,13 @@ CCLabelTTF *punkte;
 //ueberprueft ob ninja getroffen wurde
 -(void) updateNinjaIsHit:(ccTime)delta{
     for (CCSprite *enemy in enemyLayer._enemyArray) {
-
-    if (CGRectIntersectsRect(ninja.boundingBox, enemy.boundingBox)) {
-        isJumping=false;
-        // zu GameOver Scene 
-        [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
-
-    }
+        
+        if (CGRectIntersectsRect(ninjaLayer.ninja.boundingBox, enemy.boundingBox)) {
+            isJumping=false;
+            // zu GameOver Scene
+            [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
+            
+        }
     }
 }
 
@@ -171,61 +173,50 @@ CCLabelTTF *punkte;
     }
     //ueberpruefen wie weit start und endpunkt in x richtung von einander entfernt sind --> swipe
     else if (_endPoint.x-_startPoint.x>10) {
-
-    CGPoint location = [self convertTouchToNodeSpace:touch];
-    
-    // Set up initial location of projectile
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
-    CCSprite *projectile = [CCSprite spriteWithFile:@"projectile.png"];
-    projectile.position = ninja.position;
-    
-    // Determine offset of location to projectile
-    CGPoint offset = ccpSub(location, projectile.position);
-    
-    // Bail out if you are shooting down or backwards
-    if (offset.x <= 0) return;
-    
-    // Ok to add now - we've double checked position
-    [self addChild:projectile];
-    
-    int realX = winSize.width + (projectile.contentSize.width/2);
-    float ratio = (float) offset.y / (float) offset.x;
-    int realY = (realX * ratio) + projectile.position.y;
-    CGPoint realDest = ccp(realX, realY);
-    
-    // Determine the length of how far you're shooting
-    int offRealX = realX - projectile.position.x;
-    int offRealY = realY - projectile.position.y;
-    float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
-    float velocity = 480/1; // 480pixels/1sec
-    float realMoveDuration = length/velocity;
-    
-    // Move projectile to actual endpoint
-    [projectile runAction:
-     [CCSequence actions:
-      [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
-      [CCCallBlockN actionWithBlock:^(CCNode *node) {
-         // CCCallBlockN in ccTouchesEnded
-         [_projectiles removeObject:node];
-         [node removeFromParentAndCleanup:YES];
-     }],
-      nil]];
+        
+        CGPoint location = [self convertTouchToNodeSpace:touch];
+        
+        // Set up initial location of projectile
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
+        CCSprite *projectile = [CCSprite spriteWithFile:@"projectile.png"];
+        projectile.position = ninjaLayer.ninja.position;
+        
+        // Determine offset of location to projectile
+        CGPoint offset = ccpSub(location, projectile.position);
+        
+        // Bail out if you are shooting down or backwards
+        if (offset.x <= 0) return;
+        
+        // Ok to add now - we've double checked position
+        [self addChild:projectile];
+        
+        int realX = winSize.width + (projectile.contentSize.width/2);
+        float ratio = (float) offset.y / (float) offset.x;
+        int realY = (realX * ratio) + projectile.position.y;
+        CGPoint realDest = ccp(realX, realY);
+        
+        // Determine the length of how far you're shooting
+        int offRealX = realX - projectile.position.x;
+        int offRealY = realY - projectile.position.y;
+        float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
+        float velocity = 480/1; // 480pixels/1sec
+        float realMoveDuration = length/velocity;
+        
+        // Move projectile to actual endpoint
+        [projectile runAction:
+         [CCSequence actions:
+          [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
+          [CCCallBlockN actionWithBlock:^(CCNode *node) {
+             // CCCallBlockN in ccTouchesEnded
+             [_projectiles removeObject:node];
+             [node removeFromParentAndCleanup:YES];
+         }],
+          nil]];
         projectile.tag = 2;
         [_projectiles addObject:projectile];
     }else {
-        if(!isJumping){
-            isJumping=true;
-            [ninja runAction:
-             [CCSequence actions:
-              [CCJumpBy actionWithDuration:1.0f
-                                  position:ccp(0, 0)
-                                    height:65.0f
-                                  jumps:1],
-              [CCCallBlockN actionWithBlock:^(CCNode *node) {
-                 isJumping=false;             }],
-              nil]];
-
-        }else{}
+        
+        [ninjaLayer jump];
         
     }
     
@@ -242,7 +233,7 @@ CCLabelTTF *punkte;
     [super dealloc];
     [_projectiles release];
     _projectiles = nil;
-        
+    
     
 }
 

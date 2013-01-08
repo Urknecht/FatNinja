@@ -27,9 +27,7 @@
         // 4 - Store the game layer
         gameLayer = gl;
         //load player.png
-        self=[CCSprite spriteWithFile:@"player.png"];
-        
-    }
+        self=[CCSprite spriteWithFile:@"player.png"];    }
     
     return self;
 }

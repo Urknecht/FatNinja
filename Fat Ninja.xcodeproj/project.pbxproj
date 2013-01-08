@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31738454169C464500B86E48 /* NinjaLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 31738453169C464500B86E48 /* NinjaLayer.mm */; };
+		3173845A169C4DB000B86E48 /* AnimBear.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31738456169C4DB000B86E48 /* AnimBear.plist */; };
+		3173845B169C4DB000B86E48 /* AnimBear.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738457169C4DB000B86E48 /* AnimBear.png */; };
+		31738466169C4DCD00B86E48 /* bear1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173845E169C4DCD00B86E48 /* bear1.png */; };
+		31738467169C4DCD00B86E48 /* bear2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173845F169C4DCD00B86E48 /* bear2.png */; };
+		31738468169C4DCD00B86E48 /* bear3.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738460169C4DCD00B86E48 /* bear3.png */; };
+		31738469169C4DCD00B86E48 /* bear4.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738461169C4DCD00B86E48 /* bear4.png */; };
+		3173846A169C4DCD00B86E48 /* bear5.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738462169C4DCD00B86E48 /* bear5.png */; };
+		3173846B169C4DCD00B86E48 /* bear6.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738463169C4DCD00B86E48 /* bear6.png */; };
+		3173846C169C4DCD00B86E48 /* bear7.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738464169C4DCD00B86E48 /* bear7.png */; };
+		3173846D169C4DCD00B86E48 /* bear8.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738465169C4DCD00B86E48 /* bear8.png */; };
 		71C3C56216760B6600623738 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56116760B6600623738 /* QuartzCore.framework */; };
 		71C3C56416760B6600623738 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56316760B6600623738 /* OpenGLES.framework */; };
 		71C3C56616760B6600623738 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56516760B6600623738 /* OpenAL.framework */; };
@@ -203,6 +214,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31738452169C464500B86E48 /* NinjaLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NinjaLayer.h; path = ../NinjaLayer.h; sourceTree = "<group>"; };
+		31738453169C464500B86E48 /* NinjaLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NinjaLayer.mm; path = ../NinjaLayer.mm; sourceTree = "<group>"; };
+		31738456169C4DB000B86E48 /* AnimBear.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AnimBear.plist; path = ../../../../../Downloads/Bear/AnimBear.plist; sourceTree = "<group>"; };
+		31738457169C4DB000B86E48 /* AnimBear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AnimBear.png; path = ../../../../../Downloads/Bear/AnimBear.png; sourceTree = "<group>"; };
+		3173845E169C4DCD00B86E48 /* bear1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bear1.png; path = ../../../../../Downloads/Bear/bear1.png; sourceTree = "<group>"; };
+		3173845F169C4DCD00B86E48 /* bear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bear2.png; path = ../../../../../Downloads/Bear/bear2.png; sourceTree = "<group>"; };
+		31738460169C4DCD00B86E48 /* bear3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bear3.png; path = ../../../../../Downloads/Bear/bear3.png; sourceTree = "<group>"; };
+		31738461169C4DCD00B86E48 /* bear4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bear4.png; path = ../../../../../Downloads/Bear/bear4.png; sourceTree = "<group>"; };
+		31738462169C4DCD00B86E48 /* bear5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bear5.png; path = ../../../../../Downloads/Bear/bear5.png; sourceTree = "<group>"; };
+		31738463169C4DCD00B86E48 /* bear6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bear6.png; path = ../../../../../Downloads/Bear/bear6.png; sourceTree = "<group>"; };
+		31738464169C4DCD00B86E48 /* bear7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bear7.png; path = ../../../../../Downloads/Bear/bear7.png; sourceTree = "<group>"; };
+		31738465169C4DCD00B86E48 /* bear8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bear8.png; path = ../../../../../Downloads/Bear/bear8.png; sourceTree = "<group>"; };
 		71C3C55D16760B6600623738 /* Fat Ninja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fat Ninja.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C3C56116760B6600623738 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		71C3C56316760B6600623738 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -619,6 +642,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31738455169C4D7C00B86E48 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				3173845E169C4DCD00B86E48 /* bear1.png */,
+				3173845F169C4DCD00B86E48 /* bear2.png */,
+				31738460169C4DCD00B86E48 /* bear3.png */,
+				31738461169C4DCD00B86E48 /* bear4.png */,
+				31738462169C4DCD00B86E48 /* bear5.png */,
+				31738463169C4DCD00B86E48 /* bear6.png */,
+				31738464169C4DCD00B86E48 /* bear7.png */,
+				31738465169C4DCD00B86E48 /* bear8.png */,
+				31738456169C4DB000B86E48 /* AnimBear.plist */,
+				31738457169C4DB000B86E48 /* AnimBear.png */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
 		71C3C55216760B6600623738 = {
 			isa = PBXGroup;
 			children = (
@@ -668,6 +708,8 @@
 				71C3C78916760B6B00623738 /* Supporting Files */,
 				71C3C7A016760C6000623738 /* GameLayer.h */,
 				71C3C7A116760C6000623738 /* GameLayer.mm */,
+				31738452169C464500B86E48 /* NinjaLayer.h */,
+				31738453169C464500B86E48 /* NinjaLayer.mm */,
 				71C3C7A71676113100623738 /* Ninja.h */,
 				71C3C7A81676113100623738 /* Ninja.mm */,
 				E7A5EC731678C499006AA447 /* GameScene.h */,
@@ -688,6 +730,7 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				31738455169C4D7C00B86E48 /* Test */,
 				E7B517131695EBBC002B0D97 /* ninjaNew.png */,
 				E7AA875A16945DA900C71551 /* pauseButton.png */,
 				E7AA87581694560800C71551 /* gameOverBackground.png */,
@@ -1300,6 +1343,16 @@
 				E7AA87591694560800C71551 /* gameOverBackground.png in Resources */,
 				E7AA875B16945DA900C71551 /* pauseButton.png in Resources */,
 				E7B517141695EBBC002B0D97 /* ninjaNew.png in Resources */,
+				3173845A169C4DB000B86E48 /* AnimBear.plist in Resources */,
+				3173845B169C4DB000B86E48 /* AnimBear.png in Resources */,
+				31738466169C4DCD00B86E48 /* bear1.png in Resources */,
+				31738467169C4DCD00B86E48 /* bear2.png in Resources */,
+				31738468169C4DCD00B86E48 /* bear3.png in Resources */,
+				31738469169C4DCD00B86E48 /* bear4.png in Resources */,
+				3173846A169C4DCD00B86E48 /* bear5.png in Resources */,
+				3173846B169C4DCD00B86E48 /* bear6.png in Resources */,
+				3173846C169C4DCD00B86E48 /* bear7.png in Resources */,
+				3173846D169C4DCD00B86E48 /* bear8.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1472,6 +1525,7 @@
 				E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */,
 				E7AA87561694326800C71551 /* GameOverScene.mm in Sources */,
 				E7AA875E16945DE000C71551 /* PauseLayer.mm in Sources */,
+				31738454169C464500B86E48 /* NinjaLayer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

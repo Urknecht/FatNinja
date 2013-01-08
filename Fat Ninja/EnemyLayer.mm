@@ -78,6 +78,7 @@ double geschwindigkeitSpawn;
     enemy.tag = 1;
     [_enemyArray addObject:enemy];
 }
+
 -(void) removeEnemy: (CCSprite*) enemy{
     [_enemyArray removeObject:enemy];
     [self removeChild:enemy cleanup:YES];

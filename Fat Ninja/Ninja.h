@@ -12,9 +12,13 @@
 @interface Ninja : CCSprite
 {
     GameLayer *gameLayer;
+    CCSprite *_ninja;
+    CCAction *_walkAction;
 }
 
 -(id) initWithGameLayer:(GameLayer*)gl;
+@property (nonatomic, retain) CCSprite *ninja;
+@property (nonatomic, retain) CCAction *walkAction;
 
 
 @end

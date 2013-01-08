@@ -9,15 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 @class EnemyLayer;
+@class NinjaLayer;
 @class Ninja;
 
 @interface GameLayer : CCLayerColor {
-   //Ninja
-    Ninja *ninja;
+   
+    //ninja layer
+    NinjaLayer *ninjaLayer;
     //enemy layer
     EnemyLayer *enemyLayer;
-    //gibt an ob ninja gerade springt
-    bool isJumping;
+    
     
     bool isPaused;
     int distance;
