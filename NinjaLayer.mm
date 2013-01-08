@@ -18,13 +18,13 @@
         self.isJumping= false;
                 
         //add the frames and coordinates to the cach
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"AnimBear.plist")];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"NinjaRunning.plist")];
         
         //load the sprite sheet into a CCSpriteBatchNode object. If you’re adding a new sprite
         //to your scene, and the image exists in this sprite sheet you should add the sprite
         //as a child of the same CCSpriteBatchNode object otherwise you could get an error.
         
-        CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"AnimBear.png"];
+        CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"NinjaRunning.png"];
         //add the CCSpriteBatchNode to your scene
         [self addChild:spriteSheet];
         
@@ -34,7 +34,7 @@
         for(int i = 1; i <= 8; ++i) {            
             [walkAnimFrames addObject:             
              [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:              
-              [NSString stringWithFormat:@"bear%d.png", i]]];            
+              [NSString stringWithFormat:@"NinjaRunning%d.png", i]]];            
         }
         
         //Create the animation from the frame flyAnimFrames array
@@ -42,11 +42,11 @@
         
         
         //create a sprite and set it to be the first image in the sprite sheet
-        self.ninja = [CCSprite spriteWithSpriteFrameName:@"bear1.png"];
+        self.ninja = [CCSprite spriteWithSpriteFrameName:@"NinjaRunning1.png"];
         
         //set its position to be dead center, i.e. screen width and height divided by 2
         CGSize winSize = [CCDirector sharedDirector].winSize;
-        _ninja.scale = (winSize.height / 600) ;
+        _ninja.scale = (winSize.height / 400) ;
         _ninja.position = ccp(_ninja.contentSize.width / 2, winSize.height / 3);
       
         
@@ -56,8 +56,7 @@
         self.walkAction = [CCRepeatForever actionWithAction:
                            [CCAnimate actionWithAnimation:walkAnim]];
         
-        //start the action
-        
+        //start the action        
         [_ninja runAction:_walkAction];
         
         //add the sprite to the CCSpriteBatchNode object
