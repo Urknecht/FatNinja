@@ -34,6 +34,8 @@ double geschwindigkeit;
 int distance;
 //Punkte Label
 CCLabelTTF *punkte;
+//Punkte Label
+CCLabelTTF *sushi;
 
 
 - (id) init
@@ -71,6 +73,15 @@ CCLabelTTF *punkte;
         [self addChild:punkte z:0];
         punkte.position = ccp(winSize.width-20, winSize.height-20);
         [self schedule:@selector(updateDistance:)interval:geschwindigkeit];
+        
+        //Sushi anzeige
+        CCSprite *sushiImage= [CCSprite spriteWithFile:@"sushi.png"];
+        [self addChild:sushiImage];
+        sushiImage.position= ccp(winSize.width-80, winSize.height-50);
+        
+        sushi = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:25];
+        [self addChild:sushi];
+        sushi.position = ccp(winSize.width-20, winSize.height-50);
     }
     
     [self setTouchEnabled:YES];
