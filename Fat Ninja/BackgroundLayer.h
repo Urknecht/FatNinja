@@ -10,7 +10,9 @@
 #import "cocos2d.h"
 
 @interface BackgroundLayer : CCLayer{
-
+    CCSprite *_backgroundImage1;
+    CCSprite *_backgroundImage2;
+    
 }
 -(void) reloadBackgroundWithSpeed:(double)geschwindigkeit;
 -(void) stopBackgroundAnimation;
