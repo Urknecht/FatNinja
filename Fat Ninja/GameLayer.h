@@ -33,5 +33,6 @@
 
 -(void) pauseGame;
 -(void) endGame;
+-(void)throwProjectile;
 
 @end

@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		316BEF41169CD5C300EA2081 /* shuriken.png in Resources */ = {isa = PBXBuildFile; fileRef = 316BEF40169CD5C300EA2081 /* shuriken.png */; };
+		316BEF48169CDB7B00EA2081 /* NinjaThrowShuricen.plist in Resources */ = {isa = PBXBuildFile; fileRef = 316BEF42169CDB7B00EA2081 /* NinjaThrowShuricen.plist */; };
+		316BEF49169CDB7B00EA2081 /* NinjaThrowShuricen.png in Resources */ = {isa = PBXBuildFile; fileRef = 316BEF43169CDB7B00EA2081 /* NinjaThrowShuricen.png */; };
+		316BEF4A169CDB7B00EA2081 /* NinjaThrowShuricen1.png in Resources */ = {isa = PBXBuildFile; fileRef = 316BEF44169CDB7B00EA2081 /* NinjaThrowShuricen1.png */; };
+		316BEF4B169CDB7B00EA2081 /* NinjaThrowShuricen2.png in Resources */ = {isa = PBXBuildFile; fileRef = 316BEF45169CDB7B00EA2081 /* NinjaThrowShuricen2.png */; };
+		316BEF4C169CDB7B00EA2081 /* NinjaThrowShuricen3.png in Resources */ = {isa = PBXBuildFile; fileRef = 316BEF46169CDB7B00EA2081 /* NinjaThrowShuricen3.png */; };
+		316BEF4D169CDB7B00EA2081 /* NinjaThrowShuricen4.png in Resources */ = {isa = PBXBuildFile; fileRef = 316BEF47169CDB7B00EA2081 /* NinjaThrowShuricen4.png */; };
 		3173851A169C6E5500B86E48 /* ninjaNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738505169C6E5500B86E48 /* ninjaNew.png */; };
 		3173852F169C6F5B00B86E48 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738525169C6F5B00B86E48 /* background.png */; };
 		31738530169C6F5B00B86E48 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738526169C6F5B00B86E48 /* background1.png */; };
@@ -246,6 +252,12 @@
 
 /* Begin PBXFileReference section */
 		316BEF40169CD5C300EA2081 /* shuriken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuriken.png; sourceTree = "<group>"; };
+		316BEF42169CDB7B00EA2081 /* NinjaThrowShuricen.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NinjaThrowShuricen.plist; sourceTree = "<group>"; };
+		316BEF43169CDB7B00EA2081 /* NinjaThrowShuricen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaThrowShuricen.png; sourceTree = "<group>"; };
+		316BEF44169CDB7B00EA2081 /* NinjaThrowShuricen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaThrowShuricen1.png; sourceTree = "<group>"; };
+		316BEF45169CDB7B00EA2081 /* NinjaThrowShuricen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaThrowShuricen2.png; sourceTree = "<group>"; };
+		316BEF46169CDB7B00EA2081 /* NinjaThrowShuricen3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaThrowShuricen3.png; sourceTree = "<group>"; };
+		316BEF47169CDB7B00EA2081 /* NinjaThrowShuricen4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NinjaThrowShuricen4.png; sourceTree = "<group>"; };
 		31738505169C6E5500B86E48 /* ninjaNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ninjaNew.png; path = Resources/ninjaNew.png; sourceTree = "<group>"; };
 		31738525169C6F5B00B86E48 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
 		31738526169C6F5B00B86E48 /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background1.png; path = Resources/background1.png; sourceTree = "<group>"; };
@@ -819,6 +831,12 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				316BEF42169CDB7B00EA2081 /* NinjaThrowShuricen.plist */,
+				316BEF43169CDB7B00EA2081 /* NinjaThrowShuricen.png */,
+				316BEF44169CDB7B00EA2081 /* NinjaThrowShuricen1.png */,
+				316BEF45169CDB7B00EA2081 /* NinjaThrowShuricen2.png */,
+				316BEF46169CDB7B00EA2081 /* NinjaThrowShuricen3.png */,
+				316BEF47169CDB7B00EA2081 /* NinjaThrowShuricen4.png */,
 				316BEF40169CD5C300EA2081 /* shuriken.png */,
 				3173853D169C722700B86E48 /* Ninja */,
 				31738525169C6F5B00B86E48 /* background.png */,
@@ -1476,6 +1494,12 @@
 				317385A7169CA6AF00B86E48 /* NinjaDie7.png in Resources */,
 				317385A8169CA6AF00B86E48 /* NinjaDie8.png in Resources */,
 				316BEF41169CD5C300EA2081 /* shuriken.png in Resources */,
+				316BEF48169CDB7B00EA2081 /* NinjaThrowShuricen.plist in Resources */,
+				316BEF49169CDB7B00EA2081 /* NinjaThrowShuricen.png in Resources */,
+				316BEF4A169CDB7B00EA2081 /* NinjaThrowShuricen1.png in Resources */,
+				316BEF4B169CDB7B00EA2081 /* NinjaThrowShuricen2.png in Resources */,
+				316BEF4C169CDB7B00EA2081 /* NinjaThrowShuricen3.png in Resources */,
+				316BEF4D169CDB7B00EA2081 /* NinjaThrowShuricen4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
