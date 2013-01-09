@@ -168,6 +168,7 @@ UITouch *lastTouch;
 -(void) stopGame{
     //Leider ging es nicht über Pause zu machen, deswegen eigene funktion:
     [backgroundLayer stopBackgroundAnimation];
+    [enemyLayer stopAnimation];
 }
 
 -(void) endGame{

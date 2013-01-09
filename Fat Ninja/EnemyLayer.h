@@ -27,5 +27,6 @@
 -(void) removeEnemy: (CCSprite*) enemy;
 -(void) removeSushi: (CCSprite*) sushi;
 -(void) addSushi;
+-(void) stopAnimation;
 
 @end

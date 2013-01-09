@@ -127,6 +127,16 @@ double geschwindigkeitSpawn;
     
 }
 
+-(void) stopAnimation{
+    for (CCSprite *sushi in self._sushiArray) {
+        [sushi stopAllActions];
+    }
+    for (CCSprite *enemy in self._enemyArray) {
+        [enemy stopAllActions];
+    }
+}
+
+
 -(void)dealloc{
     [super dealloc];
     [_enemyArray release];
