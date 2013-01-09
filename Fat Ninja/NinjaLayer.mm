@@ -19,8 +19,7 @@
         self.isJumping= false;
         self.isDying = false;
         self.isRolling = false;
-        [self loadAnims];
-        
+        [self loadAnims];        
     }
     return self;
 }
@@ -34,9 +33,7 @@
         [_spriteSheetRunning setVisible:(false)];
         [_ninjaJumping runAction:self.jumpAction];
         [_ninjaRunning stopAction: self.walkSpeedAction];
-        
-        
-        
+                
         [_ninjaJumping runAction:
          [CCSequence actions:
           [CCJumpBy actionWithDuration:0.8f
@@ -87,14 +84,13 @@
 }
 
 -(void) startRoll{
-    if(!self.isRolling&&!self.isJumping&&!!self.isDying){
+    if(!self.isRolling&&!self.isJumping&&!self.isDying){
         
         self.isRolling=true;
         [_spriteSheetRoll setVisible:(true)];
         [_spriteSheetRunning setVisible:(false)];
         [_ninjaRoll runAction:self.rollAction];
-        [_ninjaRunning stopAction: self.walkSpeedAction];
-        
+        [_ninjaRunning stopAction: self.walkSpeedAction];        
     }
 }
 
@@ -106,8 +102,7 @@
     [_ninjaRunning runAction: self.walkSpeedAction];
 }
 
--(void) die:(GameLayer *)gameLayer{
-    
+-(void) die:(GameLayer *)gameLayer{    
     
     if(!self.isDying&&!self.isJumping){
         self.isDying = true;
@@ -131,14 +126,33 @@
         [CCCallBlockN actionWithBlock:^(CCNode *node) {
            [gameLayer endGame];
            // self.isDying = false;
-        }], nil]];
-    
+        }], nil]];    
     }
-    
 }
 
 -(void) throwProjectile:(GameLayer *)gameLayer{
+   // if(!self.isRolling&&!self.isJumping&&!!self.isDying&&!self.isThrowing){
+        
+//        self.isThrowing=true;
+//        [_spriteSheetThrow setVisible:(true)];
+//        [_spriteSheetRunning setVisible:(false)];
+//        [_ninjaThrow runAction:self.throwAction];
+//        [_ninjaRunning stopAction: self.walkSpeedAction];
+//        
+//        [_ninjaThrow runAction:
+//         [CCSequence actions: self.throwAction ,
+//          [CCCallBlockN actionWithBlock:^(CCNode *node) {
+//             self.isThrowing=false;
+//             [_spriteSheetJumping setVisible:(false)];
+//             [_spriteSheetRunning setVisible:(true)];
+//             [_ninjaJumping stopAction:self.jumpAction];
+//             [_ninjaRunning runAction: self.walkSpeedAction];
+//        
+//         }],
+//          nil]];
+    
     [gameLayer throwProjectile];
+ //   }
 }
 
 
@@ -259,7 +273,32 @@
     
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetDie addChild:_ninjaDie];
-    [_spriteSheetDie setVisible:(false)];    
+    [_spriteSheetDie setVisible:(false)];
+    
+    //THROW##########################################################
+    
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"NinjaThrowShuricen.plist")];
+    self.spriteSheetThrow = [CCSpriteBatchNode batchNodeWithFile:@"NinjaThrowShuricen.png"];
+    [self addChild:_spriteSheetThrow];
+    
+    //load each frame included in the sprite sheet into an array for use with the CCAnimation object below
+    NSMutableArray *throwAnimFrames = [NSMutableArray array];
+    for(int i = 1; i <= 4; ++i) {
+        [throwAnimFrames addObject:
+         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+          [NSString stringWithFormat:@"NinjaThrowShuricen%d.png", i]]];
+    }
+    
+    CCAnimation *throwAnim = [CCAnimation animationWithSpriteFrames:throwAnimFrames delay:0.08f];
+    _ninjaThrow = [CCSprite spriteWithSpriteFrameName:@"NinjaThrowShuricen1.png"];
+    
+    self.throwAction =  [CCAnimate actionWithAnimation:throwAnim];
+    _ninjaThrow.scale = (winSize.height / 400) ;
+    _ninjaThrow.position = ccp(_ninjaThrow.contentSize.width / 2, winSize.height / 3);
+    
+    //add the sprite to the CCSpriteBatchNode object
+    [_spriteSheetThrow addChild:_ninjaThrow];
+    [_spriteSheetThrow setVisible:(false)];
     
 }
 
@@ -278,6 +317,9 @@
     }
     else if(self.isDying){
         return _ninjaDie;
+    }
+    else if(self.isThrowing){
+       return _ninjaThrow;
     }
     else{
         return _ninjaRunning;
