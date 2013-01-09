@@ -165,8 +165,7 @@ UITouch *lastTouch;
             if (CGRectIntersectsRect(projectile.boundingBox, enemy.boundingBox)) {
                 [enemyToDelete addObject:enemy];
             }
-        }
-        
+        }        
         for (CCSprite *enemy in enemyToDelete) {
             [enemyLayer removeEnemy:enemy];
             [self removeChild:enemy cleanup:YES];

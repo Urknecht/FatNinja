@@ -718,6 +718,12 @@
 		3173853D169C722700B86E48 /* Ninja */ = {
 			isa = PBXGroup;
 			children = (
+				316BEF42169CDB7B00EA2081 /* NinjaThrowShuricen.plist */,
+				316BEF43169CDB7B00EA2081 /* NinjaThrowShuricen.png */,
+				316BEF44169CDB7B00EA2081 /* NinjaThrowShuricen1.png */,
+				316BEF45169CDB7B00EA2081 /* NinjaThrowShuricen2.png */,
+				316BEF46169CDB7B00EA2081 /* NinjaThrowShuricen3.png */,
+				316BEF47169CDB7B00EA2081 /* NinjaThrowShuricen4.png */,
 				31738597169CA6AE00B86E48 /* NinjaDie.png */,
 				31738598169CA6AE00B86E48 /* NinjaDie1.png */,
 				31738599169CA6AE00B86E48 /* NinjaDie2.png */,
@@ -831,12 +837,6 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				316BEF42169CDB7B00EA2081 /* NinjaThrowShuricen.plist */,
-				316BEF43169CDB7B00EA2081 /* NinjaThrowShuricen.png */,
-				316BEF44169CDB7B00EA2081 /* NinjaThrowShuricen1.png */,
-				316BEF45169CDB7B00EA2081 /* NinjaThrowShuricen2.png */,
-				316BEF46169CDB7B00EA2081 /* NinjaThrowShuricen3.png */,
-				316BEF47169CDB7B00EA2081 /* NinjaThrowShuricen4.png */,
 				316BEF40169CD5C300EA2081 /* shuriken.png */,
 				3173853D169C722700B86E48 /* Ninja */,
 				31738525169C6F5B00B86E48 /* background.png */,
