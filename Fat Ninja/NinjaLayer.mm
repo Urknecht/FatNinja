@@ -19,7 +19,7 @@
         self.isJumping= false;
         self.isDying = false;
         self.isRolling = false;
-        [self loadAnims];        
+        [self loadAnims];
     }
     return self;
 }
@@ -33,7 +33,7 @@
         [_spriteSheetRunning setVisible:(false)];
         [_ninjaJumping runAction:self.jumpAction];
         [_ninjaRunning stopAction: self.walkSpeedAction];
-                
+        
         [_ninjaJumping runAction:
          [CCSequence actions:
           [CCJumpBy actionWithDuration:0.8f
@@ -90,7 +90,7 @@
         [_spriteSheetRoll setVisible:(true)];
         [_spriteSheetRunning setVisible:(false)];
         [_ninjaRoll runAction:self.rollAction];
-        [_ninjaRunning stopAction: self.walkSpeedAction];        
+        [_ninjaRunning stopAction: self.walkSpeedAction];
     }
 }
 
@@ -102,7 +102,7 @@
     [_ninjaRunning runAction: self.walkSpeedAction];
 }
 
--(void) die:(GameLayer *)gameLayer{    
+-(void) die:(GameLayer *)gameLayer{
     
     if(!self.isDying&&!self.isJumping){
         self.isDying = true;
@@ -113,46 +113,44 @@
         NSLog(@"ninja1");
         
         [self removeChild:(_spriteSheetRoll)];
-                [self removeChild:(_spriteSheetRunning)];
-                [self removeChild:(_spriteSheetJumping)];
+        [self removeChild:(_spriteSheetRunning)];
+        [self removeChild:(_spriteSheetJumping)];
         NSLog(@"ninja2");
-    [_spriteSheetDie setVisible:(true)];
-    [_ninjaDie runAction:self.dieAction];  
-
-    
-     [_ninjaDie runAction:
-        [CCSequence actions:
-        [CCFadeTo actionWithDuration:3 opacity:0],
-        [CCCallBlockN actionWithBlock:^(CCNode *node) {
-           [gameLayer endGame];
-           // self.isDying = false;
-        }], nil]];    
+        [_spriteSheetDie setVisible:(true)];
+        [_ninjaDie runAction:self.dieAction];
+        
+        
+        [_ninjaDie runAction:
+         [CCSequence actions:
+          [CCFadeTo actionWithDuration:3 opacity:0],
+          [CCCallBlockN actionWithBlock:^(CCNode *node) {
+             [gameLayer endGame];
+             self.isDying = false;
+         }], nil]];
     }
 }
 
 -(void) throwProjectile:(GameLayer *)gameLayer{
-   // if(!self.isRolling&&!self.isJumping&&!!self.isDying&&!self.isThrowing){
-        
-//        self.isThrowing=true;
-//        [_spriteSheetThrow setVisible:(true)];
-//        [_spriteSheetRunning setVisible:(false)];
-//        [_ninjaThrow runAction:self.throwAction];
-//        [_ninjaRunning stopAction: self.walkSpeedAction];
-//        
-//        [_ninjaThrow runAction:
-//         [CCSequence actions: self.throwAction ,
-//          [CCCallBlockN actionWithBlock:^(CCNode *node) {
-//             self.isThrowing=false;
-//             [_spriteSheetJumping setVisible:(false)];
-//             [_spriteSheetRunning setVisible:(true)];
-//             [_ninjaJumping stopAction:self.jumpAction];
-//             [_ninjaRunning runAction: self.walkSpeedAction];
-//        
-//         }],
-//          nil]];
+     if(!self.isRolling&&!self.isJumping&&!self.isDying&&!self.isThrowing){
     
+            self.isThrowing=true;
+            [_spriteSheetThrow setVisible:(true)];
+            [_spriteSheetRunning setVisible:(false)];
+            [_ninjaRunning stopAction: self.walkSpeedAction];
+    
+            [_ninjaThrow runAction:
+             [CCSequence actions: [CCAnimate actionWithAnimation:self.throwAnim],
+              [CCCallBlockN actionWithBlock:^(CCNode *node) {
+                 self.isThrowing=false;
+                 [_spriteSheetThrow setVisible:(false)];
+                 [_spriteSheetRunning setVisible:(true)];
+                 [_ninjaRunning runAction: self.walkSpeedAction];
+    
+             }],
+              nil]];
+         
     [gameLayer throwProjectile];
- //   }
+     }
 }
 
 
@@ -275,8 +273,7 @@
     [_spriteSheetDie addChild:_ninjaDie];
     [_spriteSheetDie setVisible:(false)];
     
-    //THROW##########################################################
-    
+    //THROW##########################################################    
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"NinjaThrowShuricen.plist")];
     self.spriteSheetThrow = [CCSpriteBatchNode batchNodeWithFile:@"NinjaThrowShuricen.png"];
     [self addChild:_spriteSheetThrow];
@@ -289,10 +286,11 @@
           [NSString stringWithFormat:@"NinjaThrowShuricen%d.png", i]]];
     }
     
-    CCAnimation *throwAnim = [CCAnimation animationWithSpriteFrames:throwAnimFrames delay:0.08f];
+    self.throwAnim = [CCAnimation animationWithSpriteFrames:throwAnimFrames delay:0.08f];
     _ninjaThrow = [CCSprite spriteWithSpriteFrameName:@"NinjaThrowShuricen1.png"];
     
-    self.throwAction =  [CCAnimate actionWithAnimation:throwAnim];
+    //self.throwAction =  [CCAnimate actionWithAnimation:throwAnim];
+    
     _ninjaThrow.scale = (winSize.height / 400) ;
     _ninjaThrow.position = ccp(_ninjaThrow.contentSize.width / 2, winSize.height / 3);
     
@@ -305,7 +303,7 @@
 
 -(void) reloadAnimsWithSpeed:(double)geschwindigkeit{
     id speedAction = [_ninjaRunning getActionByTag:'walk'];
-    [speedAction setSpeed: (1.0f/geschwindigkeit)];    
+    [speedAction setSpeed: (1.0f/geschwindigkeit)];
 }
 
 -(CCSprite*)getCurrentNinjaSprite{
@@ -319,7 +317,7 @@
         return _ninjaDie;
     }
     else if(self.isThrowing){
-       return _ninjaThrow;
+        return _ninjaThrow;
     }
     else{
         return _ninjaRunning;
