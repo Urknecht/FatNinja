@@ -13,6 +13,8 @@
 
 @implementation NinjaLayer
 
+
+
 -(id)init {
     self = [super init];
     if (self != nil) {
@@ -20,6 +22,19 @@
         self.isDying = false;
         self.isRolling = false;
         [self loadAnims];
+        
+        self.ninjaJumpMove = [CCJumpBy actionWithDuration:0.8f
+                                                 position:ccp(0, 0)
+                                                   height:65.0f
+                                                    jumps:1];
+        
+        self.ninjaDoubleJumpMove= [CCSequence actions: [CCJumpBy actionWithDuration:0.5f
+                                                                           position:ccp(0, 0)
+                                                                             height:40.0f
+                                                                              jumps:1],[CCJumpBy actionWithDuration:2.0f
+                                                                                                           position:ccp(0, 0)
+                                                                                                             height:165.0f
+                                                                                                              jumps:1],nil];
     }
     return self;
 }
@@ -34,21 +49,24 @@
         [_ninjaJumping runAction:self.jumpAction];
         [_ninjaRunning stopAction: self.walkSpeedAction];
         
+        
         [_ninjaJumping runAction:
          [CCSequence actions:
-          [CCJumpBy actionWithDuration:0.8f
-                              position:ccp(0, 0)
-                                height:65.0f
-                                 jumps:1],
+          self.ninjaJumpMove,
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
              
              self.isJumping=false;
              [_spriteSheetJumping setVisible:(false)];
-             [_spriteSheetRunning setVisible:(true)];
              [_ninjaJumping stopAction:self.jumpAction];
-             [_ninjaRunning runAction: self.walkSpeedAction];
+             if(!_wasJumpingAndThrowing){//Falls ein Shuricen gleichzeitig geworfen wurde
+                 [_spriteSheetRunning setVisible:(true)];
+                 [_ninjaRunning runAction: self.walkSpeedAction];
+             }
          }],
           nil]];
+        
+        //ThrowLayer soll immer auf der gleichen Position sein, falls man schießen und hüfen gleichzeitig will
+        [_spriteSheetThrow runAction:[[self.ninjaJumpMove copy] autorelease]]; // for all subsequent uses
     }
 }
 
@@ -56,6 +74,7 @@
     if(!self.isJumping&&!self.isDying){
         
         self.isJumping=true;
+        
         [_spriteSheetJumping setVisible:(true)];
         [_spriteSheetRunning setVisible:(false)];
         [_ninjaJumping runAction:self.jumpAction];
@@ -63,23 +82,24 @@
         
         [_ninjaJumping runAction:
          [CCSequence actions:
-          [CCJumpBy actionWithDuration:0.5f
-                              position:ccp(0, 0)
-                                height:40.0f
-                                 jumps:1],
-          [CCJumpBy actionWithDuration:2.0f
-                              position:ccp(0, 0)
-                                height:165.0f
-                                 jumps:1],
+          self.ninjaDoubleJumpMove,
+          
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
              self.isJumping=false;
              [_spriteSheetJumping setVisible:(false)];
-             [_spriteSheetRunning setVisible:(true)];
              [_ninjaJumping stopAction:self.jumpAction];
-             [_ninjaRunning runAction: self.walkSpeedAction];
+             
+             if(!_wasJumpingAndThrowing){//Falls ein Shuricen gleichzeitig geworfen wurde                 
+                 [_ninjaRunning runAction: self.walkSpeedAction];
+                 [_spriteSheetRunning setVisible:(true)];
+             }
              
          }],
           nil]];
+        
+        //ThrowLayer soll immer auf der gleichen Position sein, falls man schießen und hüfen gleichzeitig will
+        [_spriteSheetThrow runAction:[[self.ninjaDoubleJumpMove copy] autorelease]]; // for all subsequent uses
+        
     }
 }
 
@@ -96,39 +116,42 @@
 
 -(void) endRoll{
     if(self.isRolling){
-    self.isRolling=false;
-    [_spriteSheetRoll setVisible:(false)];
-    [_spriteSheetRunning setVisible:(true)];
-    [_ninjaRoll stopAction:self.rollAction];
-    [_ninjaRunning runAction: self.walkSpeedAction];
+        self.isRolling=false;
+        [_spriteSheetRoll setVisible:(false)];
+        [_spriteSheetRunning setVisible:(true)];
+        [_ninjaRoll stopAction:self.rollAction];
+        [_ninjaRunning runAction: self.walkSpeedAction];
     }
 }
 
 -(void) throwProjectile:(GameLayer *)gameLayer{
     if(!self.isRolling&&!self.isDying&&!self.isThrowing){
+        _wasJumpingAndThrowing = false;
         
         self.isThrowing=true;
-        
-        if(self.isJumping){
-            [_spriteSheetJumping setVisible:(false)];
-            _ninjaThrow.position = _ninjaJumping.position;
-        }
         [_spriteSheetThrow setVisible:(true)];
-        [_spriteSheetRunning setVisible:(false)];
-        [_ninjaRunning stopAction: self.walkSpeedAction];
+        if(self.isJumping){
+            _wasJumpingAndThrowing = true;
+            [_spriteSheetJumping setVisible:(false)];
+        }
+        else{
+            [_spriteSheetRunning setVisible:(false)];
+            [_ninjaRunning stopAction: self.walkSpeedAction];
+        }
         
         [_ninjaThrow runAction:
          [CCSequence actions: [CCAnimate actionWithAnimation:self.throwAnim],
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
+             
              self.isThrowing=false;
-                   [_spriteSheetThrow setVisible:(false)];
+             [_spriteSheetThrow setVisible:(false)];
              if(self.isJumping){
                  [_spriteSheetJumping setVisible:(true)];
-                 _ninjaThrow.position = _ninjaJumping.position;
+                 _wasJumpingAndThrowing = false;
              }
-             else{       
-             [_spriteSheetRunning setVisible:(true)];
-             [_ninjaRunning runAction: self.walkSpeedAction];
+             else{
+                 [_spriteSheetRunning setVisible:(true)];
+                 [_ninjaRunning runAction: self.walkSpeedAction];
              }
              
          }],
@@ -147,7 +170,7 @@
             [_ninjaRoll stopAction:self.rollAction];
         }
         else{
-        [_ninjaRunning stopAction: self.walkSpeedAction];
+            [_ninjaRunning stopAction: self.walkSpeedAction];
         }
         NSLog(@"ninja1");
         
@@ -157,7 +180,7 @@
         [self removeChild:(_spriteSheetThrow)];
         NSLog(@"ninja2");
         [_spriteSheetDie setVisible:(true)];
-        [_ninjaDie runAction:self.dieAction];        
+        [_ninjaDie runAction:self.dieAction];
         
         [_ninjaDie runAction:
          [CCSequence actions:
@@ -292,7 +315,7 @@
     [_spriteSheetDie addChild:_ninjaDie];
     [_spriteSheetDie setVisible:(false)];
     
-    //THROW##########################################################    
+    //THROW##########################################################
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"NinjaThrowShuricen.plist")];
     self.spriteSheetThrow = [CCSpriteBatchNode batchNodeWithFile:@"NinjaThrowShuricen.png"];
     [self addChild:_spriteSheetThrow];
@@ -305,7 +328,7 @@
           [NSString stringWithFormat:@"NinjaThrowShuricen%d.png", i]]];
     }
     
-    self.throwAnim = [CCAnimation animationWithSpriteFrames:throwAnimFrames delay:0.08f];
+    self.throwAnim = [CCAnimation animationWithSpriteFrames:throwAnimFrames delay:0.04f];
     _ninjaThrow = [CCSprite spriteWithSpriteFrameName:@"NinjaThrowShuricen1.png"];
     
     //self.throwAction =  [CCAnimate actionWithAnimation:throwAnim];
@@ -321,9 +344,11 @@
 
 
 -(void) reloadAnimsWithSpeed:(double)geschwindigkeit{
+    if(!self.isDying){
     id speedAction = [_ninjaRunning getActionByTag:'walk'];
     [speedAction setSpeed: (1.0f/geschwindigkeit)];
-}
+    }}
+    
 
 -(CCSprite*)getCurrentNinjaSprite{
     if(self.isJumping){

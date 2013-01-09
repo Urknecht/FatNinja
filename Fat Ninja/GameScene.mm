@@ -18,9 +18,10 @@
     self = [super init];
     if (self != nil) {
 
-            // Gameplay Layer
+        //Gameplay Layer
         gameplayLayer = [GameLayer node];
         [self addChild:gameplayLayer z:3 tag:gameLayerTag];
+        
         //pause layer
         pauseLayer =[PauseLayer node];
         [self addChild: pauseLayer z:5];

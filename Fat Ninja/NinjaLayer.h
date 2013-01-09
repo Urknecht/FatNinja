@@ -22,6 +22,9 @@
     CCSpriteBatchNode *_spriteSheetRoll;
     CCSpriteBatchNode *_spriteSheetDie;
     CCSpriteBatchNode *_spriteSheetThrow;
+    
+    //prüft ob der Ninja hüpft während ein Shuricon geworfen wurde
+    bool _wasJumpingAndThrowing;
 }
 
 
@@ -35,6 +38,12 @@
 @property (nonatomic, retain)CCSprite *ninjaRoll;
 @property (nonatomic, retain)CCSprite *ninjaDie;
 @property (nonatomic, retain)CCSprite *ninjaThrow;
+
+//Jump Bewegungsanimation (hoch-runter)
+@property (nonatomic, retain)CCJumpBy *ninjaJumpMove;
+//DoubleJump Bewegungsanimationen (hoch-runter)
+@property (nonatomic, retain)CCSequence *ninjaDoubleJumpMove;
+
 
 @property (nonatomic,retain) id walkSpeedAction;
 @property (nonatomic, retain)CCAction *jumpAction;
