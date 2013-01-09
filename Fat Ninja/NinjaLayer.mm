@@ -328,7 +328,7 @@
           [NSString stringWithFormat:@"NinjaThrowShuricen%d.png", i]]];
     }
     
-    self.throwAnim = [CCAnimation animationWithSpriteFrames:throwAnimFrames delay:0.08f];
+    self.throwAnim = [CCAnimation animationWithSpriteFrames:throwAnimFrames delay:0.04f];
     _ninjaThrow = [CCSprite spriteWithSpriteFrameName:@"NinjaThrowShuricen1.png"];
     
     //self.throwAction =  [CCAnimate actionWithAnimation:throwAnim];
@@ -344,9 +344,11 @@
 
 
 -(void) reloadAnimsWithSpeed:(double)geschwindigkeit{
+    if(!self.isDying){
     id speedAction = [_ninjaRunning getActionByTag:'walk'];
     [speedAction setSpeed: (1.0f/geschwindigkeit)];
-}
+    }}
+    
 
 -(CCSprite*)getCurrentNinjaSprite{
     if(self.isJumping){
