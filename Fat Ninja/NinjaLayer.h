@@ -40,7 +40,7 @@
 @property (nonatomic, retain)CCAction *jumpAction;
 @property (nonatomic, retain)CCAction *rollAction;
 @property (nonatomic, retain)CCAction *dieAction;
-@property (nonatomic, retain)CCAction *throwAction;
+@property (nonatomic, retain)CCAnimation *throwAnim;
 
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetRunning;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetJumping;
