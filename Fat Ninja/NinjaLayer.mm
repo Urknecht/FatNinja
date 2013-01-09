@@ -95,63 +95,82 @@
 }
 
 -(void) endRoll{
+    if(self.isRolling){
     self.isRolling=false;
     [_spriteSheetRoll setVisible:(false)];
     [_spriteSheetRunning setVisible:(true)];
     [_ninjaRoll stopAction:self.rollAction];
     [_ninjaRunning runAction: self.walkSpeedAction];
+    }
+}
+
+-(void) throwProjectile:(GameLayer *)gameLayer{
+    if(!self.isRolling&&!self.isDying&&!self.isThrowing){
+        
+        self.isThrowing=true;
+        
+        if(self.isJumping){
+            [_spriteSheetJumping setVisible:(false)];
+            _ninjaThrow.position = _ninjaJumping.position;
+        }
+        [_spriteSheetThrow setVisible:(true)];
+        [_spriteSheetRunning setVisible:(false)];
+        [_ninjaRunning stopAction: self.walkSpeedAction];
+        
+        [_ninjaThrow runAction:
+         [CCSequence actions: [CCAnimate actionWithAnimation:self.throwAnim],
+          [CCCallBlockN actionWithBlock:^(CCNode *node) {
+             self.isThrowing=false;
+                   [_spriteSheetThrow setVisible:(false)];
+             if(self.isJumping){
+                 [_spriteSheetJumping setVisible:(true)];
+                 _ninjaThrow.position = _ninjaJumping.position;
+             }
+             else{       
+             [_spriteSheetRunning setVisible:(true)];
+             [_ninjaRunning runAction: self.walkSpeedAction];
+             }
+             
+         }],
+          nil]];
+        
+        [gameLayer throwProjectile];
+    }
 }
 
 -(void) die:(GameLayer *)gameLayer{
     
-    if(!self.isDying&&!self.isJumping){
+    if(!self.isDying&&!self.isJumping&&!self.isThrowing){
         self.isDying = true;
         
-        [_ninjaRoll stopAction:self.rollAction];
+        if(self.isRolling){
+            [_ninjaRoll stopAction:self.rollAction];
+        }
+        else{
         [_ninjaRunning stopAction: self.walkSpeedAction];
-        [_ninjaJumping stopAction: self.jumpAction];
+        }
         NSLog(@"ninja1");
         
         [self removeChild:(_spriteSheetRoll)];
         [self removeChild:(_spriteSheetRunning)];
         [self removeChild:(_spriteSheetJumping)];
+        [self removeChild:(_spriteSheetThrow)];
         NSLog(@"ninja2");
         [_spriteSheetDie setVisible:(true)];
-        [_ninjaDie runAction:self.dieAction];
-        
+        [_ninjaDie runAction:self.dieAction];        
         
         [_ninjaDie runAction:
          [CCSequence actions:
           [CCFadeTo actionWithDuration:3 opacity:0],
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
+             
              [gameLayer endGame];
-             self.isDying = false;
+             //self.isDying = false;
          }], nil]];
     }
 }
 
--(void) throwProjectile:(GameLayer *)gameLayer{
-     if(!self.isRolling&&!self.isJumping&&!self.isDying&&!self.isThrowing){
-    
-            self.isThrowing=true;
-            [_spriteSheetThrow setVisible:(true)];
-            [_spriteSheetRunning setVisible:(false)];
-            [_ninjaRunning stopAction: self.walkSpeedAction];
-    
-            [_ninjaThrow runAction:
-             [CCSequence actions: [CCAnimate actionWithAnimation:self.throwAnim],
-              [CCCallBlockN actionWithBlock:^(CCNode *node) {
-                 self.isThrowing=false;
-                 [_spriteSheetThrow setVisible:(false)];
-                 [_spriteSheetRunning setVisible:(true)];
-                 [_ninjaRunning runAction: self.walkSpeedAction];
-    
-             }],
-              nil]];
-         
-    [gameLayer throwProjectile];
-     }
-}
+
 
 
 -(void)loadAnims{
