@@ -29,13 +29,13 @@ CGPoint _endPoint;
 bool isRolling;
 //array welches die wurfsterne enthaelt
 NSMutableArray * _projectiles;
-
+int sushiCounter;
 // Distanz
 int distance;
 //Punkte Label
 CCLabelTTF *punkte;
 //Punkte Label
-CCLabelTTF *sushi;
+CCLabelTTF *sushiLabel;
 
 UITouch *lastTouch;
 
@@ -70,7 +70,7 @@ UITouch *lastTouch;
         
         _projectiles = [[NSMutableArray alloc] init];
         
-        [self schedule:@selector(update:)]; // ueberpruefen ob monster abgeworfen wurden
+        [self schedule:@selector(updateMonsterIsHit:)]; // ueberpruefen ob monster abgeworfen wurden
         //geschwindigkeit in der die distanz erhoeht wird
         self.geschwindigkeit= 1.0;
         //Distanz
@@ -84,13 +84,16 @@ UITouch *lastTouch;
         [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
         
         //Sushi anzeige
+        sushiCounter=0;
         CCSprite *sushiImage= [CCSprite spriteWithFile:@"sushi.png"];
         [self addChild:sushiImage];
         sushiImage.position= ccp(winSize.width-80, winSize.height-50);
         
-        sushi = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:25];
-        [self addChild:sushi];
-        sushi.position = ccp(winSize.width-20, winSize.height-50);
+        sushiLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:25];
+        [self addChild:sushiLabel];
+        sushiLabel.position = ccp(winSize.width-20, winSize.height-50);
+        [self schedule:@selector(updateSushiEaten:)];
+
     }
     
     [self setTouchEnabled:YES];
@@ -116,6 +119,25 @@ UITouch *lastTouch;
     }
     
     
+}
+
+-(void) updateSushiEaten:(ccTime) dt{
+    NSMutableArray *sushiToDelete = [[NSMutableArray alloc] init];
+    for (CCSprite *sushi in enemyLayer._sushiArray) {
+        
+        if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, sushi.boundingBox)) {
+            sushiCounter++;
+            [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
+            [sushiToDelete addObject:sushi];
+
+        }
+    }
+    for (CCSprite *sushi in sushiToDelete) {
+        [enemyLayer removeSushi:sushi];
+        [self removeChild:sushi cleanup:YES];
+    }
+    [sushiToDelete release];
+
 }
 
 //ueberprueft ob ninja getroffen wurde
@@ -149,11 +171,11 @@ UITouch *lastTouch;
 }
 
 -(void) endGame{
-     [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance]];
+    [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance andSushi: sushiCounter]];
 }
 
 //pruefen ob monster agbeschossen wurden
-- (void)update:(ccTime)dt {
+- (void)updateMonsterIsHit:(ccTime)dt {
     NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
     for (CCSprite *projectile in _projectiles) {
         
