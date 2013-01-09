@@ -109,9 +109,7 @@ UITouch *lastTouch;
             [ninjaLayer reloadAnimsWithSpeed:self.geschwindigkeit];
             [backgroundLayer reloadBackgroundWithSpeed:self.geschwindigkeit];
             [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
-            //            BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:0];
-            //            double set= bl.geschwindigkeitBackground-2.0;
-            //            [bl setGeschwindigkeitBackground: set];
+
         }
         [enemyLayer setNextStage:false];
         

@@ -10,10 +10,8 @@
 #import "cocos2d.h"
 
 @interface BackgroundLayer : CCLayer{
-double geschwindigkeitBackground;
 
 }
-@property(readwrite) double geschwindigkeitBackground;
 -(void) reloadBackgroundWithSpeed:(double)geschwindigkeit;
 -(void) stopBackgroundAnimation;
 @end
