@@ -75,19 +75,19 @@
         
         self.isJumping=true;
         
-        [_spriteSheetJumping setVisible:(true)];
+        [_spriteSheetDoubleJump setVisible:(true)];
         [_spriteSheetRunning setVisible:(false)];
-        [_ninjaJumping runAction:self.jumpAction];
+        [_ninjaDoubleJump runAction:self.jumpAction];
         [_ninjaRunning stopAction: self.walkSpeedAction];
         
-        [_ninjaJumping runAction:
+        [_ninjaDoubleJump runAction:
          [CCSequence actions:
           self.ninjaDoubleJumpMove,
           
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
              self.isJumping=false;
              [_spriteSheetJumping setVisible:(false)];
-             [_ninjaJumping stopAction:self.jumpAction];
+             [_ninjaDoubleJump stopAction:self.jumpAction];
              
              if(!_wasJumpingAndThrowing){//Falls ein Shuricen gleichzeitig geworfen wurde                 
                  [_ninjaRunning runAction: self.walkSpeedAction];
@@ -262,6 +262,31 @@
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetJumping addChild:_ninjaJumping];
     [_spriteSheetJumping setVisible:(false)];
+    
+    //DOUBLEJUMPING###########################################################
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"NinjaDoubleJump.plist")];
+    _spriteSheetDoubleJump = [CCSpriteBatchNode batchNodeWithFile:@"NinjaDoubleJump.png"];
+    [self addChild:_spriteSheetDoubleJump];
+    
+    //load each frame included in the sprite sheet into an array for use with the CCAnimation object below
+    NSMutableArray *doubleJumpAnimFrames = [NSMutableArray array];
+    for(int i = 1; i <= 8; ++i) {
+        [doubleJumpAnimFrames addObject:
+         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+          [NSString stringWithFormat:@"NinjaDoubleJump%d.png", i]]];
+    }
+    
+    CCAnimation *doubleJumpAnim = [CCAnimation animationWithSpriteFrames:jumpAnimFrames delay:0.05f];
+    _ninjaDoubleJump = [CCSprite spriteWithSpriteFrameName:@"NinjaDoubleJump1.png"];
+    
+    self.doubleJumpAction = [CCRepeatForever actionWithAction:
+                       [CCAnimate actionWithAnimation:doubleJumpAnim]];
+    _ninjaDoubleJump.scale = (winSize.height / 400) ;
+    _ninjaDoubleJump.position = ccp(_ninjaJumping.contentSize.width / 2, winSize.height / 3);
+    
+    //add the sprite to the CCSpriteBatchNode object
+    [_spriteSheetDoubleJump addChild:_ninjaDoubleJump];
+    [_spriteSheetDoubleJump setVisible:(false)];
     
     
     

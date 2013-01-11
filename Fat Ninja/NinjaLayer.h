@@ -13,12 +13,14 @@
 @interface NinjaLayer : CCLayer {
     
     CCAction *_jumpAction;
+    CCAction *_doubleJumpAction;
     CCAction *_rollAction;
     CCAction *_dieAction;
     CCAction *_throwAction;
     CCAction *_walkSpeedAction;
     CCSpriteBatchNode *_spriteSheetRunning;
     CCSpriteBatchNode *_spriteSheetJumping;
+    CCSpriteBatchNode *_spriteSheetDoubleJump;
     CCSpriteBatchNode *_spriteSheetRoll;
     CCSpriteBatchNode *_spriteSheetDie;
     CCSpriteBatchNode *_spriteSheetThrow;
@@ -35,6 +37,7 @@
 
 @property (nonatomic, retain)CCSprite *ninjaRunning;
 @property (nonatomic, retain)CCSprite *ninjaJumping;
+@property (nonatomic, retain)CCSprite *ninjaDoubleJump;
 @property (nonatomic, retain)CCSprite *ninjaRoll;
 @property (nonatomic, retain)CCSprite *ninjaDie;
 @property (nonatomic, retain)CCSprite *ninjaThrow;
@@ -47,12 +50,14 @@
 
 @property (nonatomic,retain) id walkSpeedAction;
 @property (nonatomic, retain)CCAction *jumpAction;
+@property (nonatomic, retain)CCAction *doubleJumpAction;
 @property (nonatomic, retain)CCAction *rollAction;
 @property (nonatomic, retain)CCAction *dieAction;
 @property (nonatomic, retain)CCAnimation *throwAnim;
 
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetRunning;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetJumping;
+@property (nonatomic, retain)CCSpriteBatchNode *spriteSheetDoubleJump;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetRoll;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetDie;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetThrow;
