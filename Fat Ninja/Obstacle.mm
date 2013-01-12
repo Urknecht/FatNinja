@@ -13,11 +13,14 @@
 
 @synthesize isRollable;
 @synthesize isEatable;
+@synthesize isShootable;
+
 
 -(id) init{
     if ((self = [super init])) {
         isEatable =false;
         isRollable=false;
+        isShootable=false;
         
     }
     return self;

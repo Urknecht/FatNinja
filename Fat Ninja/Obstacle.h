@@ -11,11 +11,12 @@
 @interface Obstacle : CCSprite{
     bool isRollable;
     bool isEatable;
+    bool isShootable;
 
 }
 @property(readonly) bool isEatable;
 @property(readonly) bool isRollable;
-
+@property(readonly) bool isShootable;
 
 
 @end

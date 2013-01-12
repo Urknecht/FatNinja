@@ -15,7 +15,7 @@
     if ((self = [super init])) {
         self= [Skeleton spriteWithFile:@"enemy.png"];
         isRollable=true;
-        
+        isShootable=true;
     }
     return self;
 }

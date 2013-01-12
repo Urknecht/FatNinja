@@ -122,24 +122,6 @@ UITouch *lastTouch;
     
 }
 
-//-(void) updateSushiEaten:(ccTime) dt{
-//    NSMutableArray *sushiToDelete = [[NSMutableArray alloc] init];
-//    for (CCSprite *sushi in enemyLayer.enemyArray) {
-//        
-//        if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, sushi.boundingBox)) {
-//            sushiCounter++;
-//            [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
-//            [sushiToDelete addObject:sushi];
-//
-//        }
-//    }
-//    for (CCSprite *sushi in sushiToDelete) {
-//        [enemyLayer removeObstacle:sushi];
-//        [self removeChild:sushi cleanup:YES];
-//    }
-//    [sushiToDelete release];
-//
-//}
 
 //ueberprueft ob ninja getroffen wurde
 -(void) updateNinjaIsHit:(ccTime)delta{
@@ -188,7 +170,9 @@ UITouch *lastTouch;
         for (Obstacle *enemy in enemyLayer.enemyArray) {
             
             if (CGRectIntersectsRect(projectile.boundingBox, enemy.boundingBox)) {
-                [enemyToDelete addObject:enemy];
+                if(enemy.isShootable){
+                    [enemyToDelete addObject:enemy];
+                }
             }
         }        
         for (Obstacle *enemy in enemyToDelete) {
