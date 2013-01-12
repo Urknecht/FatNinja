@@ -267,6 +267,9 @@
 		E7A5EC751678C49A006AA447 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7A5EC741678C49A006AA447 /* GameScene.mm */; };
 		E7AA87561694326800C71551 /* GameOverScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA87551694326800C71551 /* GameOverScene.mm */; };
 		E7AA875E16945DE000C71551 /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA875D16945DE000C71551 /* PauseLayer.mm */; };
+		E7ACD57D16A1B6C900CA6797 /* Obstacle.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD57C16A1B6C900CA6797 /* Obstacle.mm */; };
+		E7ACD58116A1BCD500CA6797 /* Skeleton.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD58016A1BCD500CA6797 /* Skeleton.mm */; };
+		E7ACD58416A1C12900CA6797 /* Sushi.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD58316A1C12900CA6797 /* Sushi.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -730,6 +733,12 @@
 		E7AA87551694326800C71551 /* GameOverScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameOverScene.mm; sourceTree = "<group>"; };
 		E7AA875C16945DDF00C71551 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
 		E7AA875D16945DE000C71551 /* PauseLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseLayer.mm; sourceTree = "<group>"; };
+		E7ACD57B16A1B6C900CA6797 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
+		E7ACD57C16A1B6C900CA6797 /* Obstacle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Obstacle.mm; sourceTree = "<group>"; };
+		E7ACD57F16A1BCD500CA6797 /* Skeleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skeleton.h; sourceTree = "<group>"; };
+		E7ACD58016A1BCD500CA6797 /* Skeleton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Skeleton.mm; sourceTree = "<group>"; };
+		E7ACD58216A1C12900CA6797 /* Sushi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sushi.h; sourceTree = "<group>"; };
+		E7ACD58316A1C12900CA6797 /* Sushi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Sushi.mm; sourceTree = "<group>"; };
 		E7B517111695DD81002B0D97 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -887,6 +896,12 @@
 				E7AA875C16945DDF00C71551 /* PauseLayer.h */,
 				E7AA875D16945DE000C71551 /* PauseLayer.mm */,
 				E7B517111695DD81002B0D97 /* Constants.h */,
+				E7ACD57B16A1B6C900CA6797 /* Obstacle.h */,
+				E7ACD57C16A1B6C900CA6797 /* Obstacle.mm */,
+				E7ACD57F16A1BCD500CA6797 /* Skeleton.h */,
+				E7ACD58016A1BCD500CA6797 /* Skeleton.mm */,
+				E7ACD58216A1C12900CA6797 /* Sushi.h */,
+				E7ACD58316A1C12900CA6797 /* Sushi.mm */,
 			);
 			path = "Fat Ninja";
 			sourceTree = "<group>";
@@ -1748,6 +1763,9 @@
 				E7AA87561694326800C71551 /* GameOverScene.mm in Sources */,
 				E7AA875E16945DE000C71551 /* PauseLayer.mm in Sources */,
 				31738568169C746700B86E48 /* NinjaLayer.mm in Sources */,
+				E7ACD57D16A1B6C900CA6797 /* Obstacle.mm in Sources */,
+				E7ACD58116A1BCD500CA6797 /* Skeleton.mm in Sources */,
+				E7ACD58416A1C12900CA6797 /* Sushi.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
 #import "BackgroundLayer.h"
 #import "math.h"
 #import "Constants.h"
+#import "Obstacle.h"
 
 
 
@@ -92,7 +93,7 @@ UITouch *lastTouch;
         sushiLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:25];
         [self addChild:sushiLabel];
         sushiLabel.position = ccp(winSize.width-20, winSize.height-50);
-        [self schedule:@selector(updateSushiEaten:)];
+        //[self schedule:@selector(updateSushiEaten:)];
 
     }
     
@@ -121,48 +122,51 @@ UITouch *lastTouch;
     
 }
 
--(void) updateSushiEaten:(ccTime) dt{
-    NSMutableArray *sushiToDelete = [[NSMutableArray alloc] init];
-    for (CCSprite *sushi in enemyLayer._sushiArray) {
-        
-        if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, sushi.boundingBox)) {
-            sushiCounter++;
-            [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
-            [sushiToDelete addObject:sushi];
-
-        }
-    }
-    for (CCSprite *sushi in sushiToDelete) {
-        [enemyLayer removeSushi:sushi];
-        [self removeChild:sushi cleanup:YES];
-    }
-    [sushiToDelete release];
-
-}
+//-(void) updateSushiEaten:(ccTime) dt{
+//    NSMutableArray *sushiToDelete = [[NSMutableArray alloc] init];
+//    for (CCSprite *sushi in enemyLayer.enemyArray) {
+//        
+//        if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, sushi.boundingBox)) {
+//            sushiCounter++;
+//            [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
+//            [sushiToDelete addObject:sushi];
+//
+//        }
+//    }
+//    for (CCSprite *sushi in sushiToDelete) {
+//        [enemyLayer removeObstacle:sushi];
+//        [self removeChild:sushi cleanup:YES];
+//    }
+//    [sushiToDelete release];
+//
+//}
 
 //ueberprueft ob ninja getroffen wurde
 -(void) updateNinjaIsHit:(ccTime)delta{
-    NSMutableArray *enemyToDeleteRolling = [[NSMutableArray alloc] init];
+    NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
 
-    for (CCSprite *enemy in enemyLayer._enemyArray) {
+    for (Obstacle *enemy in enemyLayer.enemyArray) {
         
         if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
-            // zu GameOver Scene
-            if(!isRolling){
-                
+            if(enemy.isEatable){
+                sushiCounter++;
+                [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
+                [enemyToDelete addObject:enemy];
+            }
+            else if(enemy.isRollable and isRolling){
+                [enemyToDelete addObject:enemy];
+            }
+            else{
                 [self stopGame];
                 [ninjaLayer die:self];
             }
-            else{
-                [enemyToDeleteRolling addObject:enemy];
-            }
         }
     }
-    for (CCSprite *enemy in enemyToDeleteRolling) {
-        [enemyLayer removeEnemy:enemy];
+    for (Obstacle *enemy in enemyToDelete) {
+        [enemyLayer removeObstacle:enemy];
         [self removeChild:enemy cleanup:YES];
     }
-    [enemyToDeleteRolling release];
+    [enemyToDelete release];
 }
 
 -(void) stopGame{
@@ -181,14 +185,14 @@ UITouch *lastTouch;
     for (CCSprite *projectile in _projectiles) {
         
         NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
-        for (CCSprite *enemy in enemyLayer._enemyArray) {
+        for (Obstacle *enemy in enemyLayer.enemyArray) {
             
             if (CGRectIntersectsRect(projectile.boundingBox, enemy.boundingBox)) {
                 [enemyToDelete addObject:enemy];
             }
         }        
-        for (CCSprite *enemy in enemyToDelete) {
-            [enemyLayer removeEnemy:enemy];
+        for (Obstacle *enemy in enemyToDelete) {
+            [enemyLayer removeObstacle:enemy];
             [self removeChild:enemy cleanup:YES];
         }
         
