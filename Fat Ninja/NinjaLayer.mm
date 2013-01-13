@@ -23,9 +23,9 @@
         self.isRolling = false;
         [self loadAnims];
         
-        self.ninjaJumpMove = [CCJumpBy actionWithDuration:0.8f
+        self.ninjaJumpMove = [CCJumpBy actionWithDuration:1.0f
                                                  position:ccp(0, 0)
-                                                   height:65.0f
+                                                   height:70.0f
                                                     jumps:1];
         
         self.ninjaDoubleJumpMove= [CCSequence actions: [CCJumpBy actionWithDuration:0.5f
