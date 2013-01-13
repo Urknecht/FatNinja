@@ -10,6 +10,7 @@
 #import "Skeleton.h"
 #import "Sushi.h"
 #import "Wall.h"
+#import "PowerUp.h"
 
 
 @implementation EnemyLayer
@@ -48,7 +49,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     Obstacle *enemy;
     //random tag ermitteln-toDo
 //    tag=0;
-    if(tag>2){
+    if(tag>3){
         tag=0;
     }
     switch (tag) {
@@ -63,6 +64,10 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         case 2:
             tag++;
             enemy=[[Wall alloc] init];
+            break;
+        case 3:
+            tag++;
+            enemy=[[PowerUp alloc] init];
             break;
             
         default:

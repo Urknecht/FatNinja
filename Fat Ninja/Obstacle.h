@@ -12,11 +12,13 @@
     bool isRollable;
     bool isEatable;
     bool isShootable;
+    bool isPowerUp;
 
 }
 @property(readonly) bool isEatable;
 @property(readonly) bool isRollable;
 @property(readonly) bool isShootable;
+@property(readonly) bool isPowerUp;
 
 
 @end

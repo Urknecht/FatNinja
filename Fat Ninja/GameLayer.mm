@@ -138,6 +138,10 @@ UITouch *lastTouch;
             else if(enemy.isRollable and isRolling){
                 [enemyToDelete addObject:enemy];
             }
+            else if(enemy.isPowerUp){
+                //hier kommt das mit dem PowerUp rein
+                [enemyToDelete addObject:enemy];
+            }
             else{
                 [self stopGame];
                 [ninjaLayer die:self];
@@ -161,7 +165,7 @@ UITouch *lastTouch;
     [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance andSushi: sushiCounter]];
 }
 
-//pruefen ob monster agbeschossen wurden
+//pruefen ob monster abgeschossen wurden
 - (void)updateMonsterIsHit:(ccTime)dt {
     NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
     for (CCSprite *projectile in _projectiles) {
@@ -254,7 +258,7 @@ UITouch *lastTouch;
         [self performSelector:@selector(singleTapMethod) withObject:nil afterDelay:0.4];
         
     }else if (tapCount == 2){
-        //Im Fall von DoubleTap bricht er die Animation vo, normalen Jump ab und startet die für den DoubleJump
+        //Im Fall von DoubleTap bricht er die Animation von normalen Jump ab und startet die für den DoubleJump
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(singleTapMethod) object:nil];
         [self performSelector:@selector(doubleTapMethod) withObject:nil afterDelay:0];
         

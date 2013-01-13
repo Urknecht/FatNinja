@@ -1,24 +1,22 @@
 //
-//  Sushi.m
+//  PowerUp.m
 //  Fat Ninja
 //
-//  Created by Linda Mai Bui on 1/12/13.
+//  Created by Florian Weiß on 1/13/13.
 //  Copyright (c) 2013 Florian Weiß. All rights reserved.
 //
 
-#import "Sushi.h"
+#import "PowerUp.h"
 
-@implementation Sushi
+@implementation PowerUp
 
 -(id) init{
     if ((self = [super init])) {
-        self= [Sushi spriteWithFile:@"sushi.png"];
+        self= [PowerUp spriteWithFile:@"shuriken.png"];
         isEatable=true;
-        //Sollte das Shootable sein?
         isShootable=false;
     }
     return self;
 }
-
 
 @end

@@ -23,7 +23,7 @@ int _score;
         _endDistance=distance;
         _sushiCounter=sushiCounter;
         //Score dann aufaddieren
-       _score=distance+sushiCounter;
+       _score=distance+sushiCounter*30;
         
         CCSprite *backgroundImage= [CCSprite spriteWithFile:@"gameOverBackground.png"];
         CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -71,21 +71,21 @@ int _score;
     
         //Distanz
         CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:@"Distance:" fontName:@"Marker Felt" fontSize:25];
-        [distanceLabel setString:[NSString stringWithFormat:@"Distance:     %i",_endDistance]];
+        [distanceLabel setString:[NSString stringWithFormat:@"Distance:      %i",_endDistance]];
 
         [self addChild:distanceLabel z:2];
         distanceLabel.position = ccp( size.width/2, size.height-90);
         
         //Sushi
         CCLabelTTF *sushiLabel = [CCLabelTTF labelWithString:@"Distance:" fontName:@"Marker Felt" fontSize:25];
-        [sushiLabel setString:[NSString stringWithFormat:@"Sushi:     %i",_sushiCounter]];
+        [sushiLabel setString:[NSString stringWithFormat:@"Sushi:   %i * 30",_sushiCounter]];
         
         [self addChild:sushiLabel z:2];
         sushiLabel.position = ccp( size.width/2, size.height-120);
         
         //Score
         CCLabelTTF *scoreLabel = [CCLabelTTF labelWithString:@"Score:" fontName:@"Marker Felt" fontSize:25];
-        [scoreLabel setString:[NSString stringWithFormat:@"Score:     %i",_score]];
+        [scoreLabel setString:[NSString stringWithFormat:@"Score:         %i",_score]];
         
         [self addChild:scoreLabel z:2];
         scoreLabel.position = ccp( size.width/2, size.height-150);
