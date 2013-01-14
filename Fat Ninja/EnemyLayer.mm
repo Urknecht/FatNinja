@@ -32,7 +32,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         nextStage=false;
 
         geschwindigkeitEnemy=5.0;
-        _geschwindigkeitSpawn=3.0;
+        _geschwindigkeitSpawn=3.5;
         
         enemyArray = [[NSMutableArray alloc] init];
        // _sushiArray = [[NSMutableArray alloc] init];

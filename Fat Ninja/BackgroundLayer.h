@@ -9,9 +9,11 @@
 #import "CCLayer.h"
 #import "cocos2d.h"
 
-@interface BackgroundLayer : CCLayer{
+@interface BackgroundLayer : CCLayerColor{
     CCSprite *_backgroundImage1;
     CCSprite *_backgroundImage2;
+    CCSprite *_backgroundElements;
+
     
 }
 -(void) reloadBackgroundWithSpeed:(double)geschwindigkeit;

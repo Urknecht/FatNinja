@@ -116,7 +116,7 @@ enum {
 	;
 	
 	// Achievement Menu Item using blocks
-	CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
+	CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Settings" block:^(id sender) {
 		
 		
 		GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
@@ -130,7 +130,7 @@ enum {
 	}];
 	
 	// Leaderboard Menu Item using blocks
-	CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
+	CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Highscore" block:^(id sender) {
 		
 		
 		GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
@@ -143,7 +143,7 @@ enum {
 		[leaderboardViewController release];
 	}];
 	
-	CCMenu *menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, reset, nil];
+	CCMenu *menu = [CCMenu menuWithItems:reset, itemLeaderboard,itemAchievement, nil];
 	
 	[menu alignItemsVertically];
 	

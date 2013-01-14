@@ -45,10 +45,10 @@ GameLayer * gl;
 
         menu = [CCMenu menuWithItems:backToMain,resume, nil];
         
-        [menu alignItemsHorizontallyWithPadding:10.0];
+        [menu alignItemsHorizontallyWithPadding:20.0];
         
         CGSize size = [[CCDirector sharedDirector] winSize];
-        [menu setPosition:ccp( size.width/2, size.height/3)];
+        [menu setPosition:ccp( size.width/2, size.height/2)];
         
         [menu setVisible:NO];
 

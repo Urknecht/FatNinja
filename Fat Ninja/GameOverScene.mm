@@ -56,7 +56,7 @@ int _score;
 	
 	CCMenu *menu = [CCMenu menuWithItems:backToMainMenu, replay, nil];
 	
-	[menu alignItemsHorizontally];
+	[menu alignItemsHorizontallyWithPadding:20];
 	
 	CGSize size = [[CCDirector sharedDirector] winSize];
 	[menu setPosition:ccp( size.width/2, size.height/3)];

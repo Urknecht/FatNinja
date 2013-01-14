@@ -12,7 +12,7 @@
 
 -(id) init{
     if ((self = [super init])) {
-        self= [PowerUp spriteWithFile:@"shuriken.png"];
+        self= [PowerUp spriteWithFile:@"powerup.png"];
         isEatable=true;
         isShootable=false;
     }
