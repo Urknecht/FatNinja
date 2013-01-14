@@ -22,6 +22,8 @@
 
 
 int enemyCounter;
+//nur für die Präsentation, später rausnehmen
+int praesentationCounter;
 double _geschwindigkeitSpawn;
 int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 
@@ -30,6 +32,8 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     if (self != nil) {
         tag=0;
         nextStage=false;
+        
+        praesentationCounter = 0;
 
         geschwindigkeitEnemy=5.0;
         _geschwindigkeitSpawn=3.5;
@@ -47,12 +51,22 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 -(void) spawnEnemy:(ccTime)dt{
     CGSize winSize = [CCDirector sharedDirector].winSize;
     Obstacle *enemy;
-    //random tag ermitteln-toDo
+    
+    //Sucht eine Random Zahl zwischen 0 und einschließlich 2
+    int randomTag = arc4random()%3;
+    //NSLog(@"Hier sind die RandomTags: %i",randomTag);
+    
+    if (praesentationCounter < 3) {
+        randomTag = praesentationCounter;
+        praesentationCounter++;
+    }
+    
+
 //    tag=0;
     if(tag>3){
         tag=0;
     }
-    switch (tag) {
+    switch (randomTag) {
         case 0:
             tag++;
             enemy=[[Skeleton alloc] init];

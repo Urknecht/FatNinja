@@ -14,8 +14,7 @@
     if ((self = [super init])) {
         self= [Sushi spriteWithFile:@"sushi.png"];
         isEatable=true;
-        //Sollte das Shootable sein?
-        isShootable=false;
+        isShootable=true;
     }
     return self;
 }
