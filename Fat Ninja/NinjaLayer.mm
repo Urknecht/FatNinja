@@ -19,6 +19,7 @@
     self = [super init];
     if (self != nil) {
         self.isJumping= false;
+        self.isDoubleJumping= false;
         self.isDying = false;
         self.isRolling = false;
         [self loadAnims];
@@ -28,19 +29,19 @@
                                                    height:70.0f
                                                     jumps:1];
         
-        self.ninjaDoubleJumpMove= [CCSequence actions: [CCJumpBy actionWithDuration:0.5f
+        self.ninjaDoubleJumpMove= [CCSequence actions: [CCJumpBy actionWithDuration:0.3f
                                                                            position:ccp(0, 0)
-                                                                             height:40.0f
-                                                                              jumps:1],[CCJumpBy actionWithDuration:2.0f
+                                                                             height:50.0f
+                                                                              jumps:1],[CCJumpBy actionWithDuration:0.7f
                                                                                                            position:ccp(0, 0)
-                                                                                                             height:165.0f
+                                                                                                             height:100.0f
                                                                                                               jumps:1],nil];
     }
     return self;
 }
 
 -(void) jump{
-    if(!self.isJumping&&!self.isDying){
+    if(!self.isJumping&&!self.isDying&&!self.isDoubleJumping){
         
         self.isJumping=true;
         
@@ -71,13 +72,13 @@
 }
 
 -(void) doubleJump{
-    if(!self.isJumping&&!self.isDying){
+    if(!self.isDoubleJumping&&!self.isDying&&!self.isJumping){
         
-        self.isJumping=true;
+        self.isDoubleJumping=true;
         
         [_spriteSheetDoubleJump setVisible:(true)];
         [_spriteSheetRunning setVisible:(false)];
-        [_ninjaDoubleJump runAction:self.jumpAction];
+        [_ninjaDoubleJump runAction:self.doubleJumpAction];
         [_ninjaRunning stopAction: self.walkSpeedAction];
         
         [_ninjaDoubleJump runAction:
@@ -85,9 +86,9 @@
           self.ninjaDoubleJumpMove,
           
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
-             self.isJumping=false;
-             [_spriteSheetJumping setVisible:(false)];
-             [_ninjaDoubleJump stopAction:self.jumpAction];
+             self.isDoubleJumping=false;
+             [_spriteSheetDoubleJump setVisible:(false)];
+             [_ninjaDoubleJump stopAction:self.doubleJumpAction];
              
              if(!_wasJumpingAndThrowing){//Falls ein Shuricen gleichzeitig geworfen wurde                 
                  [_ninjaRunning runAction: self.walkSpeedAction];
@@ -97,14 +98,13 @@
          }],
           nil]];
         
-        //ThrowLayer soll immer auf der gleichen Position sein, falls man schießen und hüfen gleichzeitig will
-        [_spriteSheetThrow runAction:[[self.ninjaDoubleJumpMove copy] autorelease]]; // for all subsequent uses
+        //im moment kein throw bei double jump moeglich
         
     }
 }
 
 -(void) startRoll{
-    if(!self.isRolling&&!self.isJumping&&!self.isDying){
+    if(!self.isRolling&&!self.isJumping&&!self.isDying&&!self.isDoubleJumping){
         
         self.isRolling=true;
         [_spriteSheetRoll setVisible:(true)];
@@ -125,7 +125,7 @@
 }
 
 -(void) throwProjectile:(GameLayer *)gameLayer{
-    if(!self.isRolling&&!self.isDying&&!self.isThrowing){
+    if(!self.isRolling&&!self.isDying&&!self.isThrowing&&!self.isDoubleJumping){
         _wasJumpingAndThrowing = false;
         
         self.isThrowing=true;
@@ -162,10 +162,10 @@
 }
 
 -(void) die:(GameLayer *)gameLayer{
-    
-    if(!self.isDying&&!self.isJumping&&!self.isThrowing){
+
+    if(!self.isDying&&!self.isJumping&&!self.isThrowing&&!self.isDoubleJumping){
         self.isDying = true;
-        
+
         if(self.isRolling){
             [_ninjaRoll stopAction:self.rollAction];
         }
@@ -177,6 +177,7 @@
         [self removeChild:(_spriteSheetRoll)];
         [self removeChild:(_spriteSheetRunning)];
         [self removeChild:(_spriteSheetJumping)];
+        [self removeChild:(_spriteSheetDoubleJump)];
         [self removeChild:(_spriteSheetThrow)];
         NSLog(@"ninja2");
         [_spriteSheetDie setVisible:(true)];
@@ -270,13 +271,13 @@
     
     //load each frame included in the sprite sheet into an array for use with the CCAnimation object below
     NSMutableArray *doubleJumpAnimFrames = [NSMutableArray array];
-    for(int i = 1; i <= 8; ++i) {
+    for(int i = 1; i <= 11; ++i) {
         [doubleJumpAnimFrames addObject:
          [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
           [NSString stringWithFormat:@"NinjaDoubleJump%d.png", i]]];
     }
     
-    CCAnimation *doubleJumpAnim = [CCAnimation animationWithSpriteFrames:jumpAnimFrames delay:0.05f];
+    CCAnimation *doubleJumpAnim = [CCAnimation animationWithSpriteFrames:doubleJumpAnimFrames delay:0.05f];
     _ninjaDoubleJump = [CCSprite spriteWithSpriteFrameName:@"NinjaDoubleJump1.png"];
     
     self.doubleJumpAction = [CCRepeatForever actionWithAction:
@@ -378,6 +379,8 @@
 -(CCSprite*)getCurrentNinjaSprite{
     if(self.isJumping){
         return _ninjaJumping;
+    }else if(self.isDoubleJumping){
+        return _ninjaDoubleJump;
     }
     else if(self.isRolling){
         return _ninjaRoll;

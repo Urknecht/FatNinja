@@ -31,6 +31,7 @@
 
 
 @property (readwrite)bool isJumping;
+@property (readwrite)bool isDoubleJumping;
 @property (readwrite)bool isRolling;
 @property (readwrite)bool isDying;
 @property (readwrite)bool isThrowing;
@@ -45,7 +46,7 @@
 //Jump Bewegungsanimation (hoch-runter)
 @property (nonatomic, retain)CCJumpBy *ninjaJumpMove;
 //DoubleJump Bewegungsanimationen (hoch-runter)
-@property (nonatomic, retain)CCSequence *ninjaDoubleJumpMove;
+@property (nonatomic, retain)CCJumpBy *ninjaDoubleJumpMove;
 
 
 @property (nonatomic,retain) id walkSpeedAction;

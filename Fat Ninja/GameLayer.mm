@@ -143,8 +143,9 @@ UITouch *lastTouch;
                 [enemyToDelete addObject:enemy];
             }
             else{
-                [self stopGame];
                 [ninjaLayer die:self];
+                [self stopGame];
+
             }
         }
     }
@@ -216,7 +217,7 @@ UITouch *lastTouch;
         location = [[CCDirector sharedDirector] convertToGL:location];
         _endPoint=location;
     }
-    if (_startPoint.y-_endPoint.y>10 and abs(_endPoint.x-_startPoint.x)<5) {
+    if (_startPoint.y-_endPoint.y>10 and abs(_endPoint.x-_startPoint.x)<5 and !ninjaLayer.isJumping) {
         isRolling=true;
         [ninjaLayer startRoll];
         

@@ -923,11 +923,11 @@
 			children = (
 				E7ACD58816A1D78400CA6797 /* wall.png */,
 				31A97290169DD7E80029DB0E /* shuriken.png */,
-				3173853D169C722700B86E48 /* Ninja */,
 				31738525169C6F5B00B86E48 /* background.png */,
 				31738526169C6F5B00B86E48 /* background1.png */,
 				31738527169C6F5B00B86E48 /* background2.png */,
 				31738528169C6F5B00B86E48 /* Default.png */,
+				3173853D169C722700B86E48 /* Ninja */,
 				31738529169C6F5B00B86E48 /* enemy.png */,
 				3173852A169C6F5B00B86E48 /* gameOverBackground.png */,
 				3173852B169C6F5B00B86E48 /* pauseButton.png */,
