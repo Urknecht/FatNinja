@@ -15,6 +15,7 @@
         self= [Sushi spriteWithFile:@"sushi.png"];
         isEatable=true;
         isShootable=true;
+        //lol
     }
     return self;
 }
