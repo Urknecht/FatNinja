@@ -34,7 +34,7 @@
                                                                              height:50.0f
                                                                               jumps:1],[CCJumpBy actionWithDuration:0.7f
                                                                                                            position:ccp(0, 0)
-                                                                                                             height:100.0f
+                                                                                                             height:120.0f
                                                                                                               jumps:1],nil];
     }
     return self;

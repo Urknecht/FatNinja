@@ -52,16 +52,18 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     CGSize winSize = [CCDirector sharedDirector].winSize;
     Obstacle *enemy;
     
+    
     //Sucht eine Random Zahl zwischen 0 und einschließlich 2
     int randomTag = arc4random()%3;
     //NSLog(@"Hier sind die RandomTags: %i",randomTag);
     
+    int randomPowerUp = arc4random()%10;
+        
     if (praesentationCounter < 3) {
         randomTag = praesentationCounter;
         praesentationCounter++;
     }
     
-
 //    tag=0;
     if(tag>3){
         tag=0;
@@ -79,17 +81,37 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
             tag++;
             enemy=[[Wall alloc] init];
             break;
-        case 3:
-            tag++;
-            enemy=[[PowerUp alloc] init];
-            break;
-            
+                    
         default:
             break;
     }
+    
+    if (randomPowerUp == 0) {
+        Obstacle *powerUp = [[PowerUp alloc] init];
+        //spawnPowerUp = true;
+        [enemyArray addObject:powerUp];
+        int randomHeight = (arc4random() % 51)*3;
+        [powerUp setPosition: CGPointMake(winSize.width, winSize.height/3+randomHeight)];
+        [self addChild:powerUp];
+
+        CCMoveTo * actionMovePowerUp = [CCMoveTo actionWithDuration: geschwindigkeitEnemy*0.5
+                                                    position:ccp(self.position.x
+                                                                 -winSize.width, winSize.height/3+randomHeight)];
+        CCCallBlockN* actionMoveDonePowerUp = [CCCallBlockN actionWithBlock:^(CCNode *node){
+            [node removeFromParentAndCleanup:YES];
+            [enemyArray removeObject:node];
+            //spawnPowerUp = false;
+        }];
+        CCSequence *sequencePowerUp=[CCSequence actionOne:actionMovePowerUp two:actionMoveDonePowerUp];
+        [powerUp runAction:sequencePowerUp];
+
+    }
+    
+    
+    
     [enemyArray addObject:enemy];
     [enemy setPosition: CGPointMake(winSize.width, winSize.height/3)];
-    [self addChild:enemy z:0 tag:0];
+    [self addChild:enemy];
     CCMoveTo * actionMove = [CCMoveTo actionWithDuration: geschwindigkeitEnemy
                                                 position:ccp(self.position.x
                                                              -winSize.width, winSize.height/3)];
@@ -99,7 +121,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     }];
     CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
     [enemy runAction:sequence];
-    enemy.tag = 1;
+    
     enemyCounter++;
 
     if(enemyCounter==5){ // nach 5 gegnern
@@ -120,6 +142,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     [enemyArray removeObject:obstacle];
     [self removeChild:obstacle cleanup:YES];
 }
+
 
 -(void) stopAnimation{
 

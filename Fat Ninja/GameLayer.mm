@@ -139,7 +139,7 @@ UITouch *lastTouch;
                 [enemyToDelete addObject:enemy];
             }
             else if(enemy.isPowerUp){
-                //hier kommt das mit dem PowerUp rein
+                //hier kommt das mit dem PowerUp rein                
                 [enemyToDelete addObject:enemy];
             }
             else{
@@ -149,11 +149,14 @@ UITouch *lastTouch;
             }
         }
     }
+
     for (Obstacle *enemy in enemyToDelete) {
         [enemyLayer removeObstacle:enemy];
-        [self removeChild:enemy cleanup:YES];
+        //geht auch ohne das, kA was das macht
+        //[self removeChild:enemy cleanup:YES];
     }
     [enemyToDelete release];
+    
 }
 
 -(void) stopGame{
@@ -256,7 +259,7 @@ UITouch *lastTouch;
     //Hier werden die Fälle für Single und DoubleTap abgeprüft
     else if (tapCount == 1){
         //Wenn Single Tap ist führt er die Methode für normalen Jump aus
-        [self performSelector:@selector(singleTapMethod) withObject:nil afterDelay:0.4];
+        [self performSelector:@selector(singleTapMethod) withObject:nil afterDelay:0.2];
         
     }else if (tapCount == 2){
         //Im Fall von DoubleTap bricht er die Animation von normalen Jump ab und startet die für den DoubleJump

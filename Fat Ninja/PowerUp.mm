@@ -13,7 +13,7 @@
 -(id) init{
     if ((self = [super init])) {
         self= [PowerUp spriteWithFile:@"powerup.png"];
-        isEatable=true;
+        isPowerUp=true;
         isShootable=false;
     }
     return self;
