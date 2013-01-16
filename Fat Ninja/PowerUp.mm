@@ -12,6 +12,7 @@
 
 -(id) init{
     if ((self = [super init])) {
+        type = arc4random()%3;
         self= [PowerUp spriteWithFile:@"powerup.png"];
         isPowerUp=true;
         isShootable=false;

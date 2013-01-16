@@ -15,6 +15,7 @@
 @synthesize isEatable;
 @synthesize isShootable;
 @synthesize isPowerUp;
+@synthesize type;
 
 
 -(id) init{
@@ -23,6 +24,7 @@
         isRollable=false;
         isShootable=false;
         isPowerUp=false;
+        type = -1;
         
     }
     return self;

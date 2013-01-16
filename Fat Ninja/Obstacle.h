@@ -13,12 +13,14 @@
     bool isEatable;
     bool isShootable;
     bool isPowerUp;
+    int type;
 
 }
 @property(readonly) bool isEatable;
 @property(readonly) bool isRollable;
 @property(readonly) bool isShootable;
 @property(readonly) bool isPowerUp;
+@property(readonly) int type;
 
 
 @end

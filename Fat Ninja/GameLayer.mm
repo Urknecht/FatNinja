@@ -143,7 +143,7 @@ UITouch *lastTouch;
             else if(enemy.isPowerUp){
                 //hier kommt das mit dem PowerUp rein                
                 [enemyToDelete addObject:enemy];
-                [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:arc4random()%3]];
+                [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:enemy.type]];
             }
             else{
                 [ninjaLayer die:self];

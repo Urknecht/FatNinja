@@ -91,7 +91,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         Obstacle *powerUp = [[PowerUp alloc] init];
         //spawnPowerUp = true;
         [enemyArray addObject:powerUp];
-        int randomHeight = (arc4random() % 51)*3;
+        int randomHeight = (arc4random() % 51)*2.5;
         [powerUp setPosition: CGPointMake(winSize.width, winSize.height/3+randomHeight)];
         [self addChild:powerUp];
 
