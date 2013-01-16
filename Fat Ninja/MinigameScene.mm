@@ -12,6 +12,7 @@
 @implementation MinigameScene
 
 int _gametype;
+int timer;
 
 - (id) initWith:(int)gametype{
     self = [super init];
@@ -27,6 +28,7 @@ int _gametype;
         [CCMenuItemFont setFontSize:30];
         
         _gametype = gametype;
+        timer = 0;
         
         switch (_gametype) {
             case 0:
@@ -61,15 +63,31 @@ int _gametype;
         [self addChild:labelDescription z:2];
         labelDescription.position = ccp( size.width/2, size.height-65);
         
-        //Distanz
+        NSLog(@"Minigame");
         
         
+        [self schedule:@selector(timer:)interval:1.0];
         
         
     }
     return self;
 }
 
+- (void)timer:(ccTime)dt {
+    timer++;
+    NSLog(@"TimerAufruf");
+    if (timer == 3) {
+        [[CCDirector sharedDirector] popScene];
+    }
+    
+}
+
+
+
+-(void)dealloc{
+    [super dealloc];
+    
+}
 
 @end
 
