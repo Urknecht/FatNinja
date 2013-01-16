@@ -179,6 +179,10 @@ UITouch *lastTouch;
                 if(enemy.isShootable){
                     [enemyToDelete addObject:enemy];
                 }
+                else{
+                    [projectilesToDelete addObject:projectile];
+
+                }
             }
         }        
         for (Obstacle *enemy in enemyToDelete) {
