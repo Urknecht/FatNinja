@@ -12,7 +12,8 @@
 @implementation MinigameScene
 
 int _gametype;
-int timer;
+int timeCount;
+CCLabelTTF *timeLabel;
 
 - (id) initWith:(int)gametype{
     self = [super init];
@@ -28,7 +29,7 @@ int timer;
         [CCMenuItemFont setFontSize:30];
         
         _gametype = gametype;
-        timer = 0;
+        timeCount = 10;
         
         switch (_gametype) {
             case 0:
@@ -42,7 +43,7 @@ int timer;
                 break;
                 
             case 2:
-                game = @"Bla-Jutsu";
+                game = @"Ding-Jutsu";
                 description = @"Hier kommt die Description rein";
                 break;
                 
@@ -63,25 +64,38 @@ int timer;
         [self addChild:labelDescription z:2];
         labelDescription.position = ccp( size.width/2, size.height-65);
         
-        NSLog(@"Minigame");
+        //Zeit anzeige
+        timeLabel = [CCLabelTTF labelWithString:@"0:10" fontName:@"Marker Felt" fontSize:45];
+        [self addChild:timeLabel z:0];
+        timeLabel.position = ccp(50, winSize.height-25);
+        
+
         
         
-        [self schedule:@selector(timer:)interval:1.0];
+        //NSLog(@"Minigame");
         
+        //zählt timer runter
+       [self schedule:@selector(timer:)interval:1.0];
         
-    }
+        }
     return self;
 }
 
 - (void)timer:(ccTime)dt {
-    timer++;
-    NSLog(@"TimerAufruf");
-    if (timer == 3) {
+    timeCount--;
+    if (timeCount < 10) {
+        [timeLabel setString:[NSString stringWithFormat:@"0:0%i",timeCount]];
+    }
+    else{
+        [timeLabel setString:[NSString stringWithFormat:@"0:%i",timeCount]];
+    }
+    
+   // NSLog(@"TimerAufruf");
+    if (timeCount < 0) {
         [[CCDirector sharedDirector] popScene];
     }
     
 }
-
 
 
 -(void)dealloc{

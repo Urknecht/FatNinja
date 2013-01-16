@@ -7,6 +7,7 @@
 //
 
 #import "CCScene.h"
+#import "cocos2d.h"
 
 @interface MinigameScene : CCScene{
     
