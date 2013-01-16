@@ -51,11 +51,18 @@ enum {
 -(id) init
 {
 	if( (self=[super initWithColor: ccc4(80,100,80,255)])) {
-		CCSprite *backgroundNinja= [CCSprite spriteWithFile:@"ninjaNew.png"];
+		CCSprite *backgroundNinja= [CCSprite spriteWithFile:@"mainmenu.png"];
         
         // set position
         CGSize winSize = [CCDirector sharedDirector].winSize;
-        [backgroundNinja setPosition: CGPointMake(winSize.width/4, winSize.height/3)];
+//        if([backgroundNinja boundingBox].size.width > winSize.width ) && [backgroundNinja boundingBox].size.height > winSize.height
+//            ){
+//                float ratio = winSize.width / backgroundNinja boundingBox].size.width;
+//                backgroundNinja.scale = 0.5;
+//            }
+
+        backgroundNinja.scale = 0.5;
+        [backgroundNinja setPosition: CGPointMake(winSize.width/2, winSize.height/2)];
         [self addChild:backgroundNinja z:1];
 
 		// enable events

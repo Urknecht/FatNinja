@@ -88,6 +88,7 @@ UITouch *lastTouch;
         //Sushi anzeige
         sushiCounter=0;
         CCSprite *sushiImage= [CCSprite spriteWithFile:@"sushi.png"];
+        sushiImage.scale =0.5;
         [self addChild:sushiImage];
         sushiImage.position= ccp(winSize.width-80, winSize.height-50);
         
@@ -182,6 +183,10 @@ UITouch *lastTouch;
             if (CGRectIntersectsRect(projectile.boundingBox, enemy.boundingBox)) {
                 if(enemy.isShootable){
                     [enemyToDelete addObject:enemy];
+                }
+                else{
+                    [projectilesToDelete addObject:projectile];
+
                 }
             }
         }        

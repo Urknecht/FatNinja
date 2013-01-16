@@ -245,6 +245,7 @@
 		71C3C79816760B6B00623738 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C3C79716760B6B00623738 /* GLES-Render.mm */; };
 		71C3C79A16760B6B00623738 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C79916760B6B00623738 /* blocks.png */; };
 		71C3C7A216760C6000623738 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C3C7A116760C6000623738 /* GameLayer.mm */; };
+		CC175EBB16A59B1400A1E9E9 /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = CC175EBA16A59B1400A1E9E9 /* mainmenu.png */; };
 		CCD7354E16A028AB009EE560 /* NinjaDoubleJump.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */; };
 		CCD7354F16A028AB009EE560 /* NinjaDoubleJump.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */; };
 		CCD7355016A028AB009EE560 /* NinjaDoubleJump1.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */; };
@@ -271,6 +272,7 @@
 		E79E366316A464A30095147C /* backgroundElements2.png in Resources */ = {isa = PBXBuildFile; fileRef = E79E365F16A464A30095147C /* backgroundElements2.png */; };
 		E79E366416A464A30095147C /* backgroundElements1.png in Resources */ = {isa = PBXBuildFile; fileRef = E79E366016A464A30095147C /* backgroundElements1.png */; };
 		E7A5EC751678C49A006AA447 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7A5EC741678C49A006AA447 /* GameScene.mm */; };
+		E7A6C95916A6C21700555F52 /* pauseMenuBg.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A6C95816A6C21600555F52 /* pauseMenuBg.png */; };
 		E7AA87561694326800C71551 /* GameOverScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA87551694326800C71551 /* GameOverScene.mm */; };
 		E7AA875E16945DE000C71551 /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA875D16945DE000C71551 /* PauseLayer.mm */; };
 		E7ACD57D16A1B6C900CA6797 /* Obstacle.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD57C16A1B6C900CA6797 /* Obstacle.mm */; };
@@ -716,6 +718,7 @@
 		71C3C79916760B6B00623738 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		71C3C7A016760C6000623738 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
 		71C3C7A116760C6000623738 /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameLayer.mm; sourceTree = "<group>"; };
+		CC175EBA16A59B1400A1E9E9 /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
 		CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NinjaDoubleJump.plist; path = Resources/NinjaDoubleJump.plist; sourceTree = "<group>"; };
 		CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump.png; path = Resources/NinjaDoubleJump.png; sourceTree = "<group>"; };
 		CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump1.png; path = Resources/NinjaDoubleJump1.png; sourceTree = "<group>"; };
@@ -745,6 +748,7 @@
 		E79E366016A464A30095147C /* backgroundElements1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundElements1.png; sourceTree = "<group>"; };
 		E7A5EC731678C499006AA447 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		E7A5EC741678C49A006AA447 /* GameScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScene.mm; sourceTree = "<group>"; };
+		E7A6C95816A6C21600555F52 /* pauseMenuBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseMenuBg.png; sourceTree = "<group>"; };
 		E7AA87541694326800C71551 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		E7AA87551694326800C71551 /* GameOverScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameOverScene.mm; sourceTree = "<group>"; };
 		E7AA875C16945DDF00C71551 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
@@ -934,7 +938,9 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CC175EBA16A59B1400A1E9E9 /* mainmenu.png */,
 				E79E365D16A464A30095147C /* powerup.png */,
+				E7A6C95816A6C21600555F52 /* pauseMenuBg.png */,
 				E79E365E16A464A30095147C /* backgroundEmpty.png */,
 				E79E365F16A464A30095147C /* backgroundElements2.png */,
 				E79E366016A464A30095147C /* backgroundElements1.png */,
@@ -1626,6 +1632,8 @@
 				E79E366216A464A30095147C /* backgroundEmpty.png in Resources */,
 				E79E366316A464A30095147C /* backgroundElements2.png in Resources */,
 				E79E366416A464A30095147C /* backgroundElements1.png in Resources */,
+				CC175EBB16A59B1400A1E9E9 /* mainmenu.png in Resources */,
+				E7A6C95916A6C21700555F52 /* pauseMenuBg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

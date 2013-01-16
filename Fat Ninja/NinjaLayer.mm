@@ -236,7 +236,7 @@
     //set its position to be dead center, i.e. screen width and height divided by 2
     CGSize winSize = [CCDirector sharedDirector].winSize;
     _ninjaRunning.scale = (winSize.height / 400) ;
-    _ninjaRunning.position = ccp(_ninjaRunning.contentSize.width / 2, winSize.height / 3);
+    _ninjaRunning.position = ccp(_ninjaRunning.contentSize.width, winSize.height / 3);
     [_spriteSheetRunning addChild:_ninjaRunning];
     
     //JUMPING###########################################################
@@ -258,7 +258,7 @@
     self.jumpAction = [CCRepeatForever actionWithAction:
                        [CCAnimate actionWithAnimation:jumpAnim]];
     _ninjaJumping.scale = (winSize.height / 400) ;
-    _ninjaJumping.position = ccp(_ninjaJumping.contentSize.width / 2, winSize.height / 3);
+    _ninjaJumping.position = ccp(_ninjaJumping.contentSize.width, winSize.height / 3);
     
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetJumping addChild:_ninjaJumping];
@@ -283,7 +283,7 @@
     self.doubleJumpAction = [CCRepeatForever actionWithAction:
                        [CCAnimate actionWithAnimation:doubleJumpAnim]];
     _ninjaDoubleJump.scale = (winSize.height / 400) ;
-    _ninjaDoubleJump.position = ccp(_ninjaJumping.contentSize.width / 2, winSize.height / 3);
+    _ninjaDoubleJump.position = ccp(_ninjaJumping.contentSize.width, winSize.height / 3);
     
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetDoubleJump addChild:_ninjaDoubleJump];
@@ -310,7 +310,7 @@
     self.rollAction = [CCRepeatForever actionWithAction:
                        [CCAnimate actionWithAnimation:rollAnim]];
     _ninjaRoll.scale = (winSize.height / 350) ;
-    _ninjaRoll.position = ccp(_ninjaRoll.contentSize.width / 2, winSize.height / 3);
+    _ninjaRoll.position = ccp(_ninjaRoll.contentSize.width, winSize.height / 3);
     
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetRoll addChild:_ninjaRoll];
@@ -335,7 +335,7 @@
     
     self.dieAction =  [CCAnimate actionWithAnimation:dieAnim];
     _ninjaDie.scale = (winSize.height / 400) ;
-    _ninjaDie.position = ccp(_ninjaDie.contentSize.width / 2, winSize.height / 3);
+    _ninjaDie.position = ccp(_ninjaDie.contentSize.width, winSize.height / 3);
     
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetDie addChild:_ninjaDie];
@@ -360,7 +360,7 @@
     //self.throwAction =  [CCAnimate actionWithAnimation:throwAnim];
     
     _ninjaThrow.scale = (winSize.height / 400) ;
-    _ninjaThrow.position = ccp(_ninjaThrow.contentSize.width / 2, winSize.height / 3);
+    _ninjaThrow.position = ccp(_ninjaThrow.contentSize.width, winSize.height / 3);
     
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetThrow addChild:_ninjaThrow];

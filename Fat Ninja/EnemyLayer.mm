@@ -32,7 +32,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     if (self != nil) {
         tag=0;
         nextStage=false;
-        
+        enemyCounter=0;
         praesentationCounter = 0;
 
         geschwindigkeitEnemy=5.0;
@@ -76,6 +76,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         case 1:
             tag++;
             enemy=[[Sushi alloc] init];
+            enemy.scale =0.7;
             break;
         case 2:
             tag++;
