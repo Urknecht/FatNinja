@@ -66,7 +66,7 @@
 		31A972AA169DD7E80029DB0E /* NinjaThrowShuricen4.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A9728F169DD7E80029DB0E /* NinjaThrowShuricen4.png */; };
 		31A972AB169DD7E80029DB0E /* shuriken.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A97290169DD7E80029DB0E /* shuriken.png */; };
 		7199592816A2C84900EB3705 /* PowerUp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7199592716A2C84900EB3705 /* PowerUp.mm */; };
-		71A43C7716A6C96300B79C04 /* MinigameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A43C7616A6C96200B79C04 /* MinigameScene.m */; };
+		71A43C7716A6C96300B79C04 /* MinigameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71A43C7616A6C96200B79C04 /* MinigameScene.mm */; };
 		71C3C56216760B6600623738 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56116760B6600623738 /* QuartzCore.framework */; };
 		71C3C56416760B6600623738 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56316760B6600623738 /* OpenGLES.framework */; };
 		71C3C56616760B6600623738 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56516760B6600623738 /* OpenAL.framework */; };
@@ -345,7 +345,7 @@
 		7199592616A2C84900EB3705 /* PowerUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUp.h; sourceTree = "<group>"; };
 		7199592716A2C84900EB3705 /* PowerUp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PowerUp.mm; sourceTree = "<group>"; };
 		71A43C7516A6C96200B79C04 /* MinigameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinigameScene.h; sourceTree = "<group>"; };
-		71A43C7616A6C96200B79C04 /* MinigameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinigameScene.m; sourceTree = "<group>"; };
+		71A43C7616A6C96200B79C04 /* MinigameScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MinigameScene.mm; sourceTree = "<group>"; };
 		71C3C55D16760B6600623738 /* Fat Ninja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fat Ninja.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C3C56116760B6600623738 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		71C3C56316760B6600623738 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -916,7 +916,7 @@
 				E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */,
 				E7AA87541694326800C71551 /* GameOverScene.h */,
 				71A43C7516A6C96200B79C04 /* MinigameScene.h */,
-				71A43C7616A6C96200B79C04 /* MinigameScene.m */,
+				71A43C7616A6C96200B79C04 /* MinigameScene.mm */,
 				E7AA87551694326800C71551 /* GameOverScene.mm */,
 				E7AA875C16945DDF00C71551 /* PauseLayer.h */,
 				E7AA875D16945DE000C71551 /* PauseLayer.mm */,
@@ -1811,7 +1811,7 @@
 				E7ACD58416A1C12900CA6797 /* Sushi.mm in Sources */,
 				E7ACD58716A1D57800CA6797 /* Wall.mm in Sources */,
 				7199592816A2C84900EB3705 /* PowerUp.mm in Sources */,
-				71A43C7716A6C96300B79C04 /* MinigameScene.m in Sources */,
+				71A43C7716A6C96300B79C04 /* MinigameScene.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
