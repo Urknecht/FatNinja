@@ -57,7 +57,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     int randomTag = arc4random()%3;
     //NSLog(@"Hier sind die RandomTags: %i",randomTag);
     
-    int randomPowerUp = arc4random()%10;
+    int randomPowerUp = arc4random()%1;
         
     if (praesentationCounter < 3) {
         randomTag = praesentationCounter;

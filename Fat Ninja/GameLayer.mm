@@ -16,6 +16,7 @@
 #import "math.h"
 #import "Constants.h"
 #import "Obstacle.h"
+#import "MinigameScene.h"
 
 
 
@@ -141,6 +142,7 @@ UITouch *lastTouch;
             else if(enemy.isPowerUp){
                 //hier kommt das mit dem PowerUp rein                
                 [enemyToDelete addObject:enemy];
+                [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:arc4random()%3]];
             }
             else{
                 [ninjaLayer die:self];
