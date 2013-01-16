@@ -14,6 +14,7 @@
 @implementation PauseLayer
 CCMenu * menu;
 GameLayer * gl;
+CCSprite *pauseBackground;
 
 - (id) init{
     if ((self = [super init]))
@@ -21,10 +22,17 @@ GameLayer * gl;
         
         //Pause Button
         CCSprite *pauseImage= [CCSprite spriteWithFile:@"pauseButton.png"];
+        pauseBackground= [CCSprite spriteWithFile:@"pauseMenuBg.png"];
+
         CGSize winSize = [CCDirector sharedDirector].winSize;
         [pauseImage setPosition: CGPointMake(20, winSize.height-20)];
+        [pauseBackground setPosition: CGPointMake(winSize.width/2, winSize.height/2)];
+
         [self setTouchEnabled:YES];
-        [self addChild: pauseImage];
+        [self addChild: pauseImage z:0];
+        [self addChild: pauseBackground z:1];
+        [pauseBackground setVisible:NO];
+
 
         
         gl = (GameLayer *)[self.parent getChildByTag:gameLayerTag];
@@ -34,12 +42,14 @@ GameLayer * gl;
         CCMenuItemLabel *resume = [CCMenuItemFont itemWithString:@"Resume" block:^(id sender){
             [[CCDirector sharedDirector] resume];
             [menu setVisible:NO];
+            [pauseBackground setVisible:NO];
             [gl setIsPaused:false];
              }];
         CCMenuItemLabel *backToMain = [CCMenuItemFont itemWithString:@"Main Menu" block:^(id sender){
             [[CCDirector sharedDirector] resume];
             [[CCDirector sharedDirector] replaceScene: [HelloWorldLayer node]];
             [menu setVisible:NO];
+            [pauseBackground setVisible:NO];
             [gl setIsPaused:false];
         }];
 
@@ -52,7 +62,7 @@ GameLayer * gl;
         
         [menu setVisible:NO];
 
-        [self addChild: menu z:1];
+        [self addChild: menu z:2];
         
     }
     return self;
@@ -71,6 +81,7 @@ GameLayer * gl;
         if(location.y>winSize.height-30 and location.x<30)
         {
             [menu setVisible:YES];
+            [pauseBackground setVisible:YES];
             [gl setIsPaused:true];
             [gl pauseGame];
         
