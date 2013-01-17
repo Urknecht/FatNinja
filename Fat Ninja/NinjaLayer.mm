@@ -15,9 +15,10 @@
 
 
 
--(id)init {
+-(id)initWithWorld: (b2World*) physicworld {
     self = [super init];
     if (self != nil) {
+        world=physicworld;
         self.isJumping= false;
         self.isDoubleJumping= false;
         self.isDying = false;
@@ -38,7 +39,10 @@
                                                                                                               jumps:1],nil];
     }
     return self;
+
 }
+
+
 
 -(void) jump{
     if(!self.isJumping&&!self.isDying&&!self.isDoubleJumping){
@@ -194,10 +198,29 @@
     }
 }
 
+- (b2Body*)createBodyAtLocation:(CGPoint)location withSize:(CGSize)size {
+    GameLayer *gl = (GameLayer *)[self.parent getChildByTag:gameLayerTag];
 
+    b2BodyDef bodyDef;      //body erstellen
+    bodyDef.type = b2_dynamicBody; //dynamic: box2d kuemmert sich um bewegungen
+    bodyDef.position = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    b2Body *body = world->CreateBody(&bodyDef);
+    
+    b2PolygonShape shape;           //shape erstellen, erstmal als box
+    shape.SetAsBox(size.width/2/PTM_RATIO, size.height/2/PTM_RATIO);
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &shape;
+    fixtureDef.density = 1.0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
+    //mass=density*volume
+    body->CreateFixture(&fixtureDef);
+    return body;
+    
+}
 
 
 -(void)loadAnims{
+
+
     
     //RUNNING###########################################################
     //add the frames and coordinates to the cach
@@ -220,7 +243,7 @@
     CCAnimation *walkAnim = [CCAnimation animationWithSpriteFrames:walkAnimFrames delay:0.1f];
     
     //create a sprite and set it to be the first image in the sprite sheet
-    _ninjaRunning = [CCSprite spriteWithSpriteFrameName:@"NinjaRunning1.png"];
+    _ninjaRunning = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaRunning1.png"];
     
     //create a looping action using the animation created above. This just continuosly
     //loops through each frame in the CCAnimation object
@@ -236,7 +259,12 @@
     //set its position to be dead center, i.e. screen width and height divided by 2
     CGSize winSize = [CCDirector sharedDirector].winSize;
     _ninjaRunning.scale = (winSize.height / 400) ;
-    _ninjaRunning.position = ccp(_ninjaRunning.contentSize.width, winSize.height / 3);
+    //_ninjaRunning.position = ccp(_ninjaRunning.contentSize.width, winSize.height / 3);
+    CGPoint location = ccp(_ninjaRunning.contentSize.width, winSize.height);
+	b2Body *body=[self createBodyAtLocation:location withSize:_ninjaRunning.contentSize];
+    [_ninjaRunning setPTMRatio:PTM_RATIO];
+	[_ninjaRunning setBody:body];
+	[_ninjaRunning setPosition: location];
     [_spriteSheetRunning addChild:_ninjaRunning];
     
     //JUMPING###########################################################
@@ -253,12 +281,15 @@
     }
     
     CCAnimation *jumpAnim = [CCAnimation animationWithSpriteFrames:jumpAnimFrames delay:0.05f];
-    _ninjaJumping = [CCSprite spriteWithSpriteFrameName:@"NinjaJumping1.png"];
+    _ninjaJumping = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaJumping1.png"];
     
     self.jumpAction = [CCRepeatForever actionWithAction:
                        [CCAnimate actionWithAnimation:jumpAnim]];
     _ninjaJumping.scale = (winSize.height / 400) ;
-    _ninjaJumping.position = ccp(_ninjaJumping.contentSize.width, winSize.height / 3);
+    [_ninjaJumping setPTMRatio:PTM_RATIO];
+	[_ninjaJumping setBody:body];
+	[_ninjaJumping setPosition: location];
+    //_ninjaJumping.position = ccp(_ninjaJumping.contentSize.width, winSize.height / 3);
     
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetJumping addChild:_ninjaJumping];
@@ -278,12 +309,15 @@
     }
     
     CCAnimation *doubleJumpAnim = [CCAnimation animationWithSpriteFrames:doubleJumpAnimFrames delay:0.05f];
-    _ninjaDoubleJump = [CCSprite spriteWithSpriteFrameName:@"NinjaDoubleJump1.png"];
+    _ninjaDoubleJump = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaDoubleJump1.png"];
     
     self.doubleJumpAction = [CCRepeatForever actionWithAction:
                        [CCAnimate actionWithAnimation:doubleJumpAnim]];
     _ninjaDoubleJump.scale = (winSize.height / 400) ;
-    _ninjaDoubleJump.position = ccp(_ninjaJumping.contentSize.width, winSize.height / 3);
+    //_ninjaDoubleJump.position = ccp(_ninjaJumping.contentSize.width, winSize.height / 3);
+    [_ninjaDoubleJump setPTMRatio:PTM_RATIO];
+	[_ninjaDoubleJump setBody:body];
+	[_ninjaDoubleJump setPosition: location];
     
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetDoubleJump addChild:_ninjaDoubleJump];
@@ -305,13 +339,15 @@
     }
     
     CCAnimation *rollAnim = [CCAnimation animationWithSpriteFrames:rollAnimFrames delay:0.02f];
-    _ninjaRoll = [CCSprite spriteWithSpriteFrameName:@"NinjaRoll1.png"];
+    _ninjaRoll = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaRoll1.png"];
     
     self.rollAction = [CCRepeatForever actionWithAction:
                        [CCAnimate actionWithAnimation:rollAnim]];
     _ninjaRoll.scale = (winSize.height / 350) ;
-    _ninjaRoll.position = ccp(_ninjaRoll.contentSize.width, winSize.height / 3);
-    
+    //_ninjaRoll.position = ccp(_ninjaRoll.contentSize.width, winSize.height / 3);
+    [_ninjaRoll setPTMRatio:PTM_RATIO];
+	[_ninjaRoll setBody:body];
+	[_ninjaRoll setPosition: location];
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetRoll addChild:_ninjaRoll];
     [_spriteSheetRoll setVisible:(false)];
@@ -331,12 +367,14 @@
     }
     
     CCAnimation *dieAnim = [CCAnimation animationWithSpriteFrames:dieAnimFrames delay:0.08f];
-    _ninjaDie = [CCSprite spriteWithSpriteFrameName:@"NinjaDie1.png"];
+    _ninjaDie = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaDie1.png"];
     
     self.dieAction =  [CCAnimate actionWithAnimation:dieAnim];
     _ninjaDie.scale = (winSize.height / 400) ;
-    _ninjaDie.position = ccp(_ninjaDie.contentSize.width, winSize.height / 3);
-    
+    //_ninjaDie.position = ccp(_ninjaDie.contentSize.width, winSize.height / 3);
+    [_ninjaDie setPTMRatio:PTM_RATIO];
+	[_ninjaDie setBody:body];
+	[_ninjaDie setPosition: location];
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetDie addChild:_ninjaDie];
     [_spriteSheetDie setVisible:(false)];
@@ -355,13 +393,15 @@
     }
     
     self.throwAnim = [CCAnimation animationWithSpriteFrames:throwAnimFrames delay:0.04f];
-    _ninjaThrow = [CCSprite spriteWithSpriteFrameName:@"NinjaThrowShuricen1.png"];
+    _ninjaThrow = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaThrowShuricen1.png"];
     
     //self.throwAction =  [CCAnimate actionWithAnimation:throwAnim];
     
     _ninjaThrow.scale = (winSize.height / 400) ;
-    _ninjaThrow.position = ccp(_ninjaThrow.contentSize.width, winSize.height / 3);
-    
+    //_ninjaThrow.position = ccp(_ninjaThrow.contentSize.width, winSize.height / 3);
+    [_ninjaThrow setPTMRatio:PTM_RATIO];
+	[_ninjaThrow setBody:body];
+	[_ninjaThrow setPosition: location];
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetThrow addChild:_ninjaThrow];
     [_spriteSheetThrow setVisible:(false)];

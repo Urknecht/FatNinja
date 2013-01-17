@@ -8,7 +8,9 @@
 
 #import "CCLayer.h"
 #import "cocos2d.h"
+#import "Box2D.h"
 @class GameLayer;
+@class CCPhysicsSprite;
 
 @interface NinjaLayer : CCLayer {
     
@@ -27,6 +29,8 @@
     
     //prüft ob der Ninja hüpft während ein Shuricon geworfen wurde
     bool _wasJumpingAndThrowing;
+    
+    b2World * world;
 }
 
 
@@ -36,12 +40,12 @@
 @property (readwrite)bool isDying;
 @property (readwrite)bool isThrowing;
 
-@property (nonatomic, retain)CCSprite *ninjaRunning;
-@property (nonatomic, retain)CCSprite *ninjaJumping;
-@property (nonatomic, retain)CCSprite *ninjaDoubleJump;
-@property (nonatomic, retain)CCSprite *ninjaRoll;
-@property (nonatomic, retain)CCSprite *ninjaDie;
-@property (nonatomic, retain)CCSprite *ninjaThrow;
+@property (nonatomic, retain)CCPhysicsSprite *ninjaRunning;
+@property (nonatomic, retain)CCPhysicsSprite *ninjaJumping;
+@property (nonatomic, retain)CCPhysicsSprite *ninjaDoubleJump;
+@property (nonatomic, retain)CCPhysicsSprite *ninjaRoll;
+@property (nonatomic, retain)CCPhysicsSprite *ninjaDie;
+@property (nonatomic, retain)CCPhysicsSprite *ninjaThrow;
 
 //Jump Bewegungsanimation (hoch-runter)
 @property (nonatomic, retain)CCJumpBy *ninjaJumpMove;
@@ -63,6 +67,7 @@
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetDie;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetThrow;
 
+-(id) initWithWorld: (b2World*) world;
 -(void) jump;
 -(void) doubleJump;
 -(void) startRoll;

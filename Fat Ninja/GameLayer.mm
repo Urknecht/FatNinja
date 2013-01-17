@@ -5,7 +5,6 @@
 //  Created by Florian Weiß on 12/10/12.
 //  Copyright 2012 Florian Weiß. All rights reserved.
 //
-
 #import "GameLayer.h"
 #import "EnemyLayer.h"
 #import "NinjaLayer.h"
@@ -42,11 +41,12 @@ CCLabelTTF *sushiLabel;
 UITouch *lastTouch;
 
 
-
 - (id) init
 {
     if ((self = [super init])) {
-        
+        //box2d
+        [self initPhysics];
+        [self scheduleUpdate];
         
         //        //ninja initialisieren
         //        ninja = [[Ninja alloc] initWithGameLayer:self];
@@ -60,15 +60,16 @@ UITouch *lastTouch;
         [self addChild:backgroundLayer z:0 tag:backgroundLayerTag];
         
         //ninja layer
-        ninjaLayer=[NinjaLayer node];
+        ninjaLayer=[[NinjaLayer alloc] initWithWorld: world];
         [self addChild:ninjaLayer z:1];
+
         
         //enemy layer
         enemyLayer=[EnemyLayer node];
         [self addChild:enemyLayer z:2];
         [self schedule:@selector(updateNinjaIsHit:)]; //immer wieder pruefen ob ninja getroffen wurde
         
- 
+        
         
         _projectiles = [[NSMutableArray alloc] init];
         
@@ -96,7 +97,7 @@ UITouch *lastTouch;
         [self addChild:sushiLabel];
         sushiLabel.position = ccp(winSize.width-20, winSize.height-50);
         //[self schedule:@selector(updateSushiEaten:)];
-
+        
     }
     
     [self setTouchEnabled:YES];
@@ -104,7 +105,90 @@ UITouch *lastTouch;
     return self;
     
 }
+#pragma mark box2d methoden
 
+-(void) initPhysics //erstellt welt, was gezeichnet werden soll, boden
+{
+	
+	CGSize s = [[CCDirector sharedDirector] winSize];
+	
+	b2Vec2 gravity;
+	gravity.Set(0.0f, -10.0f); // vektor in -y richtung für schwerkraft
+	world = new b2World(gravity); //welt erstellen
+	
+	
+	// Do we want to let bodies sleep?
+	world->SetAllowSleeping(false);
+	
+	world->SetContinuousPhysics(true);
+	
+	debugDraw = new GLESDebugDraw( PTM_RATIO );
+	world->SetDebugDraw(debugDraw);
+	
+	uint32 flags = 0;
+	flags += b2Draw::e_shapeBit;
+	//		flags += b2Draw::e_jointBit;
+	//		flags += b2Draw::e_aabbBit;
+	//		flags += b2Draw::e_pairBit;
+	//		flags += b2Draw::e_centerOfMassBit;
+	debugDraw->SetFlags(flags);
+	
+	
+	// Define the ground body.
+	b2BodyDef groundBodyDef;
+	groundBodyDef.position.Set(0, 0); // bottom-left corner, auf hoehe winSize.height/3
+	
+	// Call the body factory which allocates memory for the ground body
+	// from a pool and creates the ground box shape (also from a pool).
+	// The body is also added to the world.
+	b2Body* groundBody = world->CreateBody(&groundBodyDef);
+	
+	// Define the ground box shape.
+	b2EdgeShape groundBox;
+	
+	// bottom
+	
+	groundBox.Set(b2Vec2(0,0), b2Vec2(s.width/PTM_RATIO,0));
+	groundBody->CreateFixture(&groundBox,0);
+	
+	// top
+	groundBox.Set(b2Vec2(0,s.height/3/PTM_RATIO), b2Vec2(s.width/PTM_RATIO,s.height/3/PTM_RATIO));
+	groundBody->CreateFixture(&groundBox,0);
+	
+	// left
+	groundBox.Set(b2Vec2(0,0), b2Vec2(0,s.height/3/PTM_RATIO));
+	groundBody->CreateFixture(&groundBox,0);
+	
+	// right
+	groundBox.Set(b2Vec2(s.width/PTM_RATIO,0), b2Vec2(s.width/PTM_RATIO,s.height/3/PTM_RATIO));
+	groundBody->CreateFixture(&groundBox,0);
+}
+
+-(void) draw
+{
+	//
+	// IMPORTANT:
+	// This is only for debug purposes
+	// It is recommend to disable it
+	//
+	[super draw];
+	
+	ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
+	
+	kmGLPushMatrix();
+	
+	world->DrawDebugData();
+	
+	kmGLPopMatrix();
+}
+
+-(void)update:(ccTime)dt {
+    int32 velocityIterations = 3;
+    int32 positionIterations = 2;
+    world->Step(dt, velocityIterations, positionIterations);
+}
+
+#pragma mark game methoden
 
 - (void)updateDistance:(ccTime)dt {
     distance ++;
@@ -210,6 +294,7 @@ UITouch *lastTouch;
     
 }
 
+
 -(void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // Anfangs und endpunkte vom touch speichern
@@ -219,6 +304,7 @@ UITouch *lastTouch;
         _startPoint = location;
         _endPoint = location;
     }
+    
 }
 
 -(void) ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -334,9 +420,17 @@ UITouch *lastTouch;
     [[CCDirector sharedDirector] pause];
 }
 
+
 - (void) dealloc
 {
-    
+    if (world) {        //dealloc world
+        delete world;
+        world = NULL;
+    }
+    if (debugDraw) {
+        delete debugDraw;
+        debugDraw = nil;
+    }
     [super dealloc];
     [_projectiles release];
     _projectiles = nil;
