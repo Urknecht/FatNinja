@@ -215,7 +215,7 @@ UITouch *lastTouch;
 
     for (Obstacle *enemy in enemyLayer.enemyArray) {
         
-        if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].adjustedBoundingBox, enemy.adjustedBoundingBox)) {
+        if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
             if(enemy.isEatable){
                 sushiCounter++;
                 [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
