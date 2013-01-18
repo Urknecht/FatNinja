@@ -265,6 +265,7 @@
 		CCD7356516A028C8009EE560 /* NinjaRunningFast2.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7355F16A028C7009EE560 /* NinjaRunningFast2.png */; };
 		CCD7356616A028C8009EE560 /* NinjaRunningFast3.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7356016A028C7009EE560 /* NinjaRunningFast3.png */; };
 		CCD7356716A028C8009EE560 /* NinjaRunningFast4.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7356116A028C8009EE560 /* NinjaRunningFast4.png */; };
+		CCE148A416A9B2FC00383797 /* CHOWFUN.TTF in Resources */ = {isa = PBXBuildFile; fileRef = CCE148A316A9B2FC00383797 /* CHOWFUN.TTF */; };
 		E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */; };
 		E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */; };
 		E79E366116A464A30095147C /* powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = E79E365D16A464A30095147C /* powerup.png */; };
@@ -738,6 +739,7 @@
 		CCD7355F16A028C7009EE560 /* NinjaRunningFast2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunningFast2.png; path = Resources/NinjaRunningFast2.png; sourceTree = "<group>"; };
 		CCD7356016A028C7009EE560 /* NinjaRunningFast3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunningFast3.png; path = Resources/NinjaRunningFast3.png; sourceTree = "<group>"; };
 		CCD7356116A028C8009EE560 /* NinjaRunningFast4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunningFast4.png; path = Resources/NinjaRunningFast4.png; sourceTree = "<group>"; };
+		CCE148A316A9B2FC00383797 /* CHOWFUN.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CHOWFUN.TTF; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
 		E79D6DEE167E1D45001E8724 /* EnemyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyLayer.h; sourceTree = "<group>"; };
@@ -938,6 +940,7 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CCE148A316A9B2FC00383797 /* CHOWFUN.TTF */,
 				CC175EBA16A59B1400A1E9E9 /* mainmenu.png */,
 				E79E365D16A464A30095147C /* powerup.png */,
 				E7A6C95816A6C21600555F52 /* pauseMenuBg.png */,
@@ -1559,6 +1562,7 @@
 				31738533169C6F5B00B86E48 /* enemy.png in Resources */,
 				31738534169C6F5B00B86E48 /* gameOverBackground.png in Resources */,
 				31738535169C6F5B00B86E48 /* pauseButton.png in Resources */,
+				CCE148A416A9B2FC00383797 /* CHOWFUN.TTF in Resources */,
 				31738537169C6F5B00B86E48 /* projectile.png in Resources */,
 				31738538169C6F5B00B86E48 /* sushi.png in Resources */,
 				31738552169C726900B86E48 /* NinjaJumping.plist in Resources */,

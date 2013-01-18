@@ -33,6 +33,15 @@
     b2World * world;
 }
 
+typedef enum {
+    kStateJumping,
+    kStateDie,
+    kStateFalling,
+    kStateRolling,
+    kStateThrowing,
+    kStateAfterJumping
+} CharacterStates; // 1
+
 
 @property (readwrite)bool isJumping;
 @property (readwrite)bool isDoubleJumping;
