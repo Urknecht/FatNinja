@@ -14,4 +14,21 @@
 #define gameLayerTag 1
 #define ninjaDyingLayerTag 2
 
+typedef enum {
+    StateJumping,
+    StateDie,
+    StateFalling,
+    StateRolling,
+    StateThrowing,
+    StateAfterJumping
+} CharacterStates; // 1
+
+typedef enum {
+    Enemy,
+    Character,
+    Powerup,
+    Obstacle,
+    None
+} GameObjectType;
+
 #endif
