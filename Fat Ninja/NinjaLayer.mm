@@ -262,6 +262,7 @@
     //_ninjaRunning.position = ccp(_ninjaRunning.contentSize.width, winSize.height / 3);
     CGPoint location = ccp(_ninjaRunning.contentSize.width, winSize.height);
 	b2Body *body=[self createBodyAtLocation:location withSize:_ninjaRunning.contentSize];
+    
     [_ninjaRunning setPTMRatio:PTM_RATIO];
 	[_ninjaRunning setBody:body];
 	[_ninjaRunning setPosition: location];
