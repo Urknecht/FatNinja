@@ -266,8 +266,8 @@
 		CCD7356616A028C8009EE560 /* NinjaRunningFast3.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7356016A028C7009EE560 /* NinjaRunningFast3.png */; };
 		CCD7356716A028C8009EE560 /* NinjaRunningFast4.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7356116A028C8009EE560 /* NinjaRunningFast4.png */; };
 		CCE148A416A9B2FC00383797 /* CHOWFUN.TTF in Resources */ = {isa = PBXBuildFile; fileRef = CCE148A316A9B2FC00383797 /* CHOWFUN.TTF */; };
-		CCE148A716AB326000383797 /* Ninja.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A616AB325F00383797 /* Ninja.m */; };
-		CCE148AA16AB3C5000383797 /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A916AB3C5000383797 /* GameObject.m */; };
+		CCE148A716AB326000383797 /* Ninja.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A616AB325F00383797 /* Ninja.mm */; };
+		CCE148AA16AB3C5000383797 /* GameObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A916AB3C5000383797 /* GameObject.mm */; };
 		E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */; };
 		E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */; };
 		E79E366116A464A30095147C /* powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = E79E365D16A464A30095147C /* powerup.png */; };
@@ -743,9 +743,9 @@
 		CCD7356116A028C8009EE560 /* NinjaRunningFast4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunningFast4.png; path = Resources/NinjaRunningFast4.png; sourceTree = "<group>"; };
 		CCE148A316A9B2FC00383797 /* CHOWFUN.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CHOWFUN.TTF; sourceTree = "<group>"; };
 		CCE148A516AB325E00383797 /* Ninja.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ninja.h; sourceTree = "<group>"; };
-		CCE148A616AB325F00383797 /* Ninja.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ninja.m; sourceTree = "<group>"; };
+		CCE148A616AB325F00383797 /* Ninja.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ninja.mm; sourceTree = "<group>"; };
 		CCE148A816AB3C4F00383797 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = "Fat Ninja/GameObject.h"; sourceTree = "<group>"; };
-		CCE148A916AB3C5000383797 /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameObject.m; path = "Fat Ninja/GameObject.m"; sourceTree = "<group>"; };
+		CCE148A916AB3C5000383797 /* GameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameObject.mm; path = "Fat Ninja/GameObject.mm"; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
 		E79D6DEE167E1D45001E8724 /* EnemyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyLayer.h; sourceTree = "<group>"; };
@@ -869,7 +869,7 @@
 			isa = PBXGroup;
 			children = (
 				CCE148A816AB3C4F00383797 /* GameObject.h */,
-				CCE148A916AB3C5000383797 /* GameObject.m */,
+				CCE148A916AB3C5000383797 /* GameObject.mm */,
 				71C3C57316760B6600623738 /* Fat Ninja */,
 				71C3C56016760B6600623738 /* Frameworks */,
 				71C3C55E16760B6600623738 /* Products */,
@@ -919,7 +919,7 @@
 				31738566169C746700B86E48 /* NinjaLayer.h */,
 				31738567169C746700B86E48 /* NinjaLayer.mm */,
 				CCE148A516AB325E00383797 /* Ninja.h */,
-				CCE148A616AB325F00383797 /* Ninja.m */,
+				CCE148A616AB325F00383797 /* Ninja.mm */,
 				E7A5EC731678C499006AA447 /* GameScene.h */,
 				E7A5EC741678C49A006AA447 /* GameScene.mm */,
 				E79D6DE8167E1053001E8724 /* BackgroundLayer.h */,
@@ -1826,8 +1826,8 @@
 				E7ACD58716A1D57800CA6797 /* Wall.mm in Sources */,
 				7199592816A2C84900EB3705 /* PowerUp.mm in Sources */,
 				71A43C7716A6C96300B79C04 /* MinigameScene.mm in Sources */,
-				CCE148A716AB326000383797 /* Ninja.m in Sources */,
-				CCE148AA16AB3C5000383797 /* GameObject.m in Sources */,
+				CCE148A716AB326000383797 /* Ninja.mm in Sources */,
+				CCE148AA16AB3C5000383797 /* GameObject.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
