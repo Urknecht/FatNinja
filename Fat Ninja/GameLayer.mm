@@ -6,8 +6,7 @@
 //  Copyright 2012 Florian Weiß. All rights reserved.
 //
 #import "GameLayer.h"
-#import "EnemyLayer.h"
-#import "NinjaLayer.h"
+#import "Ninja.h"
 #import "HelloWorldLayer.h"
 #import "GameOverScene.h"
 #import "GameScene.h"
@@ -16,12 +15,19 @@
 #import "Constants.h"
 #import "ObstacleObject.h"
 #import "MinigameScene.h"
+#import "Skeleton.h"
+#import "Sushi.h"
+#import "Wall.h"
+#import "PowerUp.h"
 
 
 
 @implementation GameLayer
 @synthesize isPaused;
 @synthesize distance;
+@synthesize enemyArray;
+@synthesize nextStage;
+@synthesize geschwindigkeitEnemy;
 
 //startpunkt für swipe ueberpruefung
 CGPoint _startPoint;
@@ -40,6 +46,12 @@ CCLabelTTF *sushiLabel;
 
 UITouch *lastTouch;
 
+int enemyCounter;
+//nur für die Präsentation, später rausnehmen
+int praesentationCounter;
+double _geschwindigkeitSpawn;
+int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
+
 
 - (id) init
 {
@@ -47,10 +59,19 @@ UITouch *lastTouch;
         //box2d
         [self initPhysics];
         [self scheduleUpdate];
+
+        tag=0;
+        nextStage=false;
+        enemyCounter=0;
+        praesentationCounter = 0;
         
-        //        //ninja initialisieren
-        //        ninja = [[Ninja alloc] initWithGameLayer:self];
-        //
+        geschwindigkeitEnemy=5.0;
+        _geschwindigkeitSpawn=3.5;
+        
+        enemyArray = [[NSMutableArray alloc] init];
+        // _sushiArray = [[NSMutableArray alloc] init];
+        
+        [self schedule:@selector(spawnEnemy:)interval:_geschwindigkeitSpawn];
         
         isRolling=false;
         isPaused=false;
@@ -60,13 +81,10 @@ UITouch *lastTouch;
         [self addChild:backgroundLayer z:0 tag:backgroundLayerTag];
         
         //ninja layer
-        ninjaLayer=[[NinjaLayer alloc] initWithWorld: world];
-        [self addChild:ninjaLayer z:1];
+        ninja=[[Ninja alloc] initWithWorld: world];
+        [self addChild:ninja z:1];
 
         
-        //enemy layer
-        enemyLayer=[EnemyLayer node];
-        [self addChild:enemyLayer z:2];
         [self schedule:@selector(updateNinjaIsHit:)]; //immer wieder pruefen ob ninja getroffen wurde
         
         
@@ -193,15 +211,15 @@ UITouch *lastTouch;
 - (void)updateDistance:(ccTime)dt {
     distance ++;
     [punkte setString:[NSString stringWithFormat:@"%i",distance]]; // anzeige anpassen
-    if(enemyLayer.nextStage){ //nach bestimmter anzahl
+    if(nextStage){ //nach bestimmter anzahl
         if(self.geschwindigkeit>0.21){ // wird bis zu minimum geschwindigkeit
             self.geschwindigkeit-=0.2; // die geschiwndigkeit angepasst
-            [ninjaLayer reloadAnimsWithSpeed:self.geschwindigkeit];
+            [ninja reloadAnimsWithSpeed:self.geschwindigkeit];
             [backgroundLayer reloadBackgroundWithSpeed:self.geschwindigkeit];
             [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
 
         }
-        [enemyLayer setNextStage:false];
+        nextStage=false;
         
     }
     
@@ -213,9 +231,9 @@ UITouch *lastTouch;
 -(void) updateNinjaIsHit:(ccTime)delta{
     NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
 
-    for (ObstacleObject *enemy in enemyLayer.enemyArray) {
+    for (ObstacleObject *enemy in enemyArray) {
         
-        if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
+        if (CGRectIntersectsRect([ninja getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
             if(enemy.isEatable){
                 sushiCounter++;
                 [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
@@ -230,7 +248,7 @@ UITouch *lastTouch;
                 [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:enemy.type]];
             }
             else{
-                [ninjaLayer die:self];
+                [ninja die:self];
                 [self stopGame];
 
             }
@@ -238,7 +256,7 @@ UITouch *lastTouch;
     }
 
     for (ObstacleObject *enemy in enemyToDelete) {
-        [enemyLayer removeObstacle:enemy];
+        [self removeObstacle:enemy];
         //geht auch ohne das, kA was das macht
         //[self removeChild:enemy cleanup:YES];
     }
@@ -249,7 +267,7 @@ UITouch *lastTouch;
 -(void) stopGame{
     //Leider ging es nicht über Pause zu machen, deswegen eigene funktion:
     [backgroundLayer stopBackgroundAnimation];
-    [enemyLayer stopAnimation];
+    [self stopAnimation];
 }
 
 -(void) endGame{
@@ -262,7 +280,7 @@ UITouch *lastTouch;
     for (CCSprite *projectile in _projectiles) {
         
         NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
-        for (ObstacleObject *enemy in enemyLayer.enemyArray) {
+        for (ObstacleObject *enemy in enemyArray) {
             
             if (CGRectIntersectsRect(projectile.boundingBox, enemy.boundingBox)) {
                 if(enemy.isShootable){
@@ -275,7 +293,7 @@ UITouch *lastTouch;
             }
         }        
         for (ObstacleObject *enemy in enemyToDelete) {
-            [enemyLayer removeObstacle:enemy];
+            [self removeObstacle:enemy];
             [self removeChild:enemy cleanup:YES];
         }
         
@@ -313,9 +331,9 @@ UITouch *lastTouch;
         location = [[CCDirector sharedDirector] convertToGL:location];
         _endPoint=location;
     }
-    if (_startPoint.y-_endPoint.y>10 and abs(_endPoint.x-_startPoint.x)<5 and !ninjaLayer.isJumping) {
+    if (_startPoint.y-_endPoint.y>10 and abs(_endPoint.x-_startPoint.x)<5 and !ninja.characterState==StateJumping) {
         isRolling=true;
-        [ninjaLayer startRoll];
+        [ninja startRoll];
         
         
     }
@@ -335,7 +353,7 @@ UITouch *lastTouch;
 
     if(isRolling){
         isRolling=false;
-        [ninjaLayer endRoll];
+        [ninja endRoll];
     }
     
     // Choose one of the touches to work with
@@ -345,7 +363,7 @@ UITouch *lastTouch;
     //ueberpruefen wie weit start und endpunkt in x richtung von einander entfernt sind --> swipe
     else if (_endPoint.x-_startPoint.x>10) {
         
-        [ninjaLayer throwProjectile:self];
+        [ninja throwProjectile:self];
         
         
     }
@@ -368,7 +386,7 @@ UITouch *lastTouch;
     // Set up initial location of projectile
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCSprite *projectile = [CCSprite spriteWithFile:@"shuriken.png"];
-    projectile.position = [ninjaLayer getCurrentNinjaSprite].position;
+    projectile.position = [ninja getCurrentNinjaSprite].position;
     
     // Determine offset of location to projectile
     CGPoint offset = ccpSub(location, projectile.position);
@@ -408,11 +426,11 @@ UITouch *lastTouch;
 }
 
 -(void)singleTapMethod{
-    [ninjaLayer jump];
+    [ninja jump];
 }
 
 -(void)doubleTapMethod{
-    [ninjaLayer doubleJump];
+    [ninja doubleJump];
 }
 
 -(void)pauseGame
@@ -420,9 +438,115 @@ UITouch *lastTouch;
     [[CCDirector sharedDirector] pause];
 }
 
+-(void) spawnEnemy:(ccTime)dt{
+    CGSize winSize = [CCDirector sharedDirector].winSize;
+    ObstacleObject *enemy;
+    
+    
+    //Sucht eine Random Zahl zwischen 0 und einschließlich 2
+    int randomTag = arc4random()%3;
+    //NSLog(@"Hier sind die RandomTags: %i",randomTag);
+    
+    int randomPowerUp = arc4random()%1;
+    
+    if (praesentationCounter < 3) {
+        randomTag = praesentationCounter;
+        praesentationCounter++;
+    }
+    
+    //    tag=0;
+    if(tag>3){
+        tag=0;
+    }
+    switch (randomTag) {
+        case 0:
+            tag++;
+            enemy=[[Skeleton alloc] init];
+            break;
+        case 1:
+            tag++;
+            enemy=[[Sushi alloc] init];
+            enemy.scale =0.7;
+            break;
+        case 2:
+            tag++;
+            enemy=[[Wall alloc] init];
+            break;
+            
+        default:
+            break;
+    }
+    
+    if (randomPowerUp == 0) {
+        ObstacleObject *powerUp = [[PowerUp alloc] init];
+        //spawnPowerUp = true;
+        [enemyArray addObject:powerUp];
+        int randomHeight = (arc4random() % 51)*2.5;
+        [powerUp setPosition: CGPointMake(winSize.width, winSize.height/3+randomHeight)];
+        [self addChild:powerUp];
+        
+        CCMoveTo * actionMovePowerUp = [CCMoveTo actionWithDuration: geschwindigkeitEnemy*0.5
+                                                           position:ccp(self.position.x
+                                                                        -winSize.width, winSize.height/3+randomHeight)];
+        CCCallBlockN* actionMoveDonePowerUp = [CCCallBlockN actionWithBlock:^(CCNode *node){
+            [node removeFromParentAndCleanup:YES];
+            [enemyArray removeObject:node];
+            //spawnPowerUp = false;
+        }];
+        CCSequence *sequencePowerUp=[CCSequence actionOne:actionMovePowerUp two:actionMoveDonePowerUp];
+        [powerUp runAction:sequencePowerUp];
+        
+    }
+    
+    
+    
+    [enemyArray addObject:enemy];
+    [enemy setPosition: CGPointMake(winSize.width, winSize.height/3)];
+    [self addChild:enemy];
+    CCMoveTo * actionMove = [CCMoveTo actionWithDuration: geschwindigkeitEnemy
+                                                position:ccp(self.position.x
+                                                             -winSize.width, winSize.height/3)];
+    CCCallBlockN* actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node){
+        [node removeFromParentAndCleanup:YES];
+        [enemyArray removeObject:node];
+    }];
+    CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
+    [enemy runAction:sequence];
+    
+    enemyCounter++;
+    
+    if(enemyCounter==5){ // nach 5 gegnern
+        nextStage=true;
+        if(geschwindigkeitEnemy>1.0){ // wird die geschwindigkeit der animation bis zu einem miminum erhoeht
+            geschwindigkeitEnemy-=1.0;
+        }
+        if(_geschwindigkeitSpawn>0.5){ // und der abstand zwischen den gegnern veringert
+            _geschwindigkeitSpawn-=0.5;
+            [self schedule:@selector(spawnEnemy:)interval:_geschwindigkeitSpawn];
+        }
+        enemyCounter=0;
+    }
+}
+
+
+-(void) removeObstacle: (CCSprite*) obstacle{
+    [enemyArray removeObject:obstacle];
+    [self removeChild:obstacle cleanup:YES];
+}
+
+
+-(void) stopAnimation{
+    
+    for (CCSprite *enemy in self.enemyArray) {
+        [enemy stopAllActions];
+    }
+}
+
 
 - (void) dealloc
 {
+    [super dealloc];
+
     if (world) {        //dealloc world
         delete world;
         world = NULL;
@@ -431,7 +555,8 @@ UITouch *lastTouch;
         delete debugDraw;
         debugDraw = nil;
     }
-    [super dealloc];
+    [enemyArray release];
+    enemyArray=nil;
     [_projectiles release];
     _projectiles = nil;
     

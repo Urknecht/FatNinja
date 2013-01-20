@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 Florian Weiß. All rights reserved.
 //
 
-#import "EnemyLayer.h"
+#import "Enemy.h"
 #import "Skeleton.h"
 #import "Sushi.h"
 #import "Wall.h"
 #import "PowerUp.h"
 
 
-@implementation EnemyLayer
+@implementation Enemy
 @synthesize enemyArray;
 //@synthesize _sushiArray;
 

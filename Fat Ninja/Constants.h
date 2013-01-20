@@ -20,7 +20,9 @@ typedef enum {
     StateFalling,
     StateRolling,
     StateThrowing,
-    StateAfterJumping
+    StateAfterJumping,
+    StateStart,
+    StateDoubleJumping
 } CharacterStates; // 1
 
 typedef enum {

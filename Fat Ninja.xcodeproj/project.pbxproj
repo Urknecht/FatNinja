@@ -37,7 +37,6 @@
 		31738563169C726900B86E48 /* NinjaRunning6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173854F169C726900B86E48 /* NinjaRunning6.png */; };
 		31738564169C726900B86E48 /* NinjaRunning7.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738550169C726900B86E48 /* NinjaRunning7.png */; };
 		31738565169C726900B86E48 /* NinjaRunning8.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738551169C726900B86E48 /* NinjaRunning8.png */; };
-		31738568169C746700B86E48 /* NinjaLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 31738567169C746700B86E48 /* NinjaLayer.mm */; };
 		31A97291169DD7E80029DB0E /* NinjaDie.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A97276169DD7E70029DB0E /* NinjaDie.plist */; };
 		31A97292169DD7E80029DB0E /* NinjaDie.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A97277169DD7E70029DB0E /* NinjaDie.png */; };
 		31A97293169DD7E80029DB0E /* NinjaDie1.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A97278169DD7E70029DB0E /* NinjaDie1.png */; };
@@ -269,7 +268,6 @@
 		CCE148A716AB326000383797 /* Ninja.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A616AB325F00383797 /* Ninja.mm */; };
 		CCE148AA16AB3C5000383797 /* GameObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A916AB3C5000383797 /* GameObject.mm */; };
 		E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */; };
-		E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */; };
 		E79E366116A464A30095147C /* powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = E79E365D16A464A30095147C /* powerup.png */; };
 		E79E366216A464A30095147C /* backgroundEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = E79E365E16A464A30095147C /* backgroundEmpty.png */; };
 		E79E366316A464A30095147C /* backgroundElements2.png in Resources */ = {isa = PBXBuildFile; fileRef = E79E365F16A464A30095147C /* backgroundElements2.png */; };
@@ -316,8 +314,6 @@
 		3173854F169C726900B86E48 /* NinjaRunning6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunning6.png; path = Resources/NinjaRunning6.png; sourceTree = "<group>"; };
 		31738550169C726900B86E48 /* NinjaRunning7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunning7.png; path = Resources/NinjaRunning7.png; sourceTree = "<group>"; };
 		31738551169C726900B86E48 /* NinjaRunning8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunning8.png; path = Resources/NinjaRunning8.png; sourceTree = "<group>"; };
-		31738566169C746700B86E48 /* NinjaLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NinjaLayer.h; sourceTree = "<group>"; };
-		31738567169C746700B86E48 /* NinjaLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NinjaLayer.mm; sourceTree = "<group>"; };
 		31A97276169DD7E70029DB0E /* NinjaDie.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NinjaDie.plist; path = Resources/NinjaDie.plist; sourceTree = "<group>"; };
 		31A97277169DD7E70029DB0E /* NinjaDie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDie.png; path = Resources/NinjaDie.png; sourceTree = "<group>"; };
 		31A97278169DD7E70029DB0E /* NinjaDie1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDie1.png; path = Resources/NinjaDie1.png; sourceTree = "<group>"; };
@@ -748,8 +744,6 @@
 		CCE148A916AB3C5000383797 /* GameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameObject.mm; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
-		E79D6DEE167E1D45001E8724 /* EnemyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyLayer.h; sourceTree = "<group>"; };
-		E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EnemyLayer.mm; sourceTree = "<group>"; };
 		E79E365D16A464A30095147C /* powerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup.png; sourceTree = "<group>"; };
 		E79E365E16A464A30095147C /* backgroundEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundEmpty.png; sourceTree = "<group>"; };
 		E79E365F16A464A30095147C /* backgroundElements2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundElements2.png; sourceTree = "<group>"; };
@@ -1502,8 +1496,6 @@
 		E7AC8B6616AC217900621F05 /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
-				E79D6DEE167E1D45001E8724 /* EnemyLayer.h */,
-				E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */,
 				E7ACD57B16A1B6C900CA6797 /* ObstacleObject.h */,
 				E7ACD57C16A1B6C900CA6797 /* ObstacleObject.mm */,
 				E7ACD57F16A1BCD500CA6797 /* Skeleton.h */,
@@ -1514,8 +1506,6 @@
 				E7ACD58616A1D57800CA6797 /* Wall.mm */,
 				7199592616A2C84900EB3705 /* PowerUp.h */,
 				7199592716A2C84900EB3705 /* PowerUp.mm */,
-				31738566169C746700B86E48 /* NinjaLayer.h */,
-				31738567169C746700B86E48 /* NinjaLayer.mm */,
 				CCE148A516AB325E00383797 /* Ninja.h */,
 				CCE148A616AB325F00383797 /* Ninja.mm */,
 				CCE148A816AB3C4F00383797 /* GameObject.h */,
@@ -1848,10 +1838,8 @@
 				71C3C7A216760C6000623738 /* GameLayer.mm in Sources */,
 				E7A5EC751678C49A006AA447 /* GameScene.mm in Sources */,
 				E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */,
-				E79D6DF0167E1D45001E8724 /* EnemyLayer.mm in Sources */,
 				E7AA87561694326800C71551 /* GameOverScene.mm in Sources */,
 				E7AA875E16945DE000C71551 /* PauseLayer.mm in Sources */,
-				31738568169C746700B86E48 /* NinjaLayer.mm in Sources */,
 				E7ACD57D16A1B6C900CA6797 /* ObstacleObject.mm in Sources */,
 				E7ACD58116A1BCD500CA6797 /* Skeleton.mm in Sources */,
 				E7ACD58416A1C12900CA6797 /* Sushi.mm in Sources */,

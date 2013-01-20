@@ -7,8 +7,9 @@
 //
 
 #import "CCSprite.h"
+#import "GameObject.h"
 
-@interface ObstacleObject : CCSprite{
+@interface ObstacleObject : GameObject{
     bool isRollable;
     bool isEatable;
     bool isShootable;

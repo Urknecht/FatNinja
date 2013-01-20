@@ -12,7 +12,7 @@
 @synthesize reactsToScreenBoundaries;
 @synthesize screenSize;
 @synthesize isActive;
-@synthesize gameObjectType;
+@synthesize gameObjectType,characterState;
 
 -(id) init {
     if((self=[super init])){
@@ -20,6 +20,7 @@
         screenSize = [CCDirector sharedDirector].winSize;
         isActive = TRUE;
         gameObjectType = None;
+        characterState=StateStart;
     }
     return self;
 }
