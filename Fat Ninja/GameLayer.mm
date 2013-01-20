@@ -14,7 +14,7 @@
 #import "BackgroundLayer.h"
 #import "math.h"
 #import "Constants.h"
-#import "Obstacle.h"
+#import "ObstacleObject.h"
 #import "MinigameScene.h"
 
 
@@ -213,7 +213,7 @@ UITouch *lastTouch;
 -(void) updateNinjaIsHit:(ccTime)delta{
     NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
 
-    for (Obstacle *enemy in enemyLayer.enemyArray) {
+    for (ObstacleObject *enemy in enemyLayer.enemyArray) {
         
         if (CGRectIntersectsRect([ninjaLayer getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
             if(enemy.isEatable){
@@ -237,7 +237,7 @@ UITouch *lastTouch;
         }
     }
 
-    for (Obstacle *enemy in enemyToDelete) {
+    for (ObstacleObject *enemy in enemyToDelete) {
         [enemyLayer removeObstacle:enemy];
         //geht auch ohne das, kA was das macht
         //[self removeChild:enemy cleanup:YES];
@@ -262,7 +262,7 @@ UITouch *lastTouch;
     for (CCSprite *projectile in _projectiles) {
         
         NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
-        for (Obstacle *enemy in enemyLayer.enemyArray) {
+        for (ObstacleObject *enemy in enemyLayer.enemyArray) {
             
             if (CGRectIntersectsRect(projectile.boundingBox, enemy.boundingBox)) {
                 if(enemy.isShootable){
@@ -274,7 +274,7 @@ UITouch *lastTouch;
                 }
             }
         }        
-        for (Obstacle *enemy in enemyToDelete) {
+        for (ObstacleObject *enemy in enemyToDelete) {
             [enemyLayer removeObstacle:enemy];
             [self removeChild:enemy cleanup:YES];
         }

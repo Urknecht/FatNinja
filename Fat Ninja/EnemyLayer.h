@@ -8,7 +8,7 @@
 
 #import "CCLayer.h"
 #import "cocos2d.h"
-#import "Obstacle.h"
+#import "ObstacleObject.h"
 
 @interface EnemyLayer : CCLayer
 {

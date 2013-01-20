@@ -50,7 +50,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     }
 -(void) spawnEnemy:(ccTime)dt{
     CGSize winSize = [CCDirector sharedDirector].winSize;
-    Obstacle *enemy;
+    ObstacleObject *enemy;
     
     
     //Sucht eine Random Zahl zwischen 0 und einschließlich 2
@@ -88,7 +88,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     }
     
     if (randomPowerUp == 0) {
-        Obstacle *powerUp = [[PowerUp alloc] init];
+        ObstacleObject *powerUp = [[PowerUp alloc] init];
         //spawnPowerUp = true;
         [enemyArray addObject:powerUp];
         int randomHeight = (arc4random() % 51)*2.5;

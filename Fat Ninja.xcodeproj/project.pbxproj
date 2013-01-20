@@ -278,7 +278,7 @@
 		E7A6C95916A6C21700555F52 /* pauseMenuBg.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A6C95816A6C21600555F52 /* pauseMenuBg.png */; };
 		E7AA87561694326800C71551 /* GameOverScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA87551694326800C71551 /* GameOverScene.mm */; };
 		E7AA875E16945DE000C71551 /* PauseLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA875D16945DE000C71551 /* PauseLayer.mm */; };
-		E7ACD57D16A1B6C900CA6797 /* Obstacle.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD57C16A1B6C900CA6797 /* Obstacle.mm */; };
+		E7ACD57D16A1B6C900CA6797 /* ObstacleObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD57C16A1B6C900CA6797 /* ObstacleObject.mm */; };
 		E7ACD58116A1BCD500CA6797 /* Skeleton.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD58016A1BCD500CA6797 /* Skeleton.mm */; };
 		E7ACD58416A1C12900CA6797 /* Sushi.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD58316A1C12900CA6797 /* Sushi.mm */; };
 		E7ACD58716A1D57800CA6797 /* Wall.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD58616A1D57800CA6797 /* Wall.mm */; };
@@ -744,8 +744,8 @@
 		CCE148A316A9B2FC00383797 /* CHOWFUN.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = CHOWFUN.TTF; sourceTree = "<group>"; };
 		CCE148A516AB325E00383797 /* Ninja.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ninja.h; sourceTree = "<group>"; };
 		CCE148A616AB325F00383797 /* Ninja.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ninja.mm; sourceTree = "<group>"; };
-		CCE148A816AB3C4F00383797 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = "Fat Ninja/GameObject.h"; sourceTree = "<group>"; };
-		CCE148A916AB3C5000383797 /* GameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameObject.mm; path = "Fat Ninja/GameObject.mm"; sourceTree = "<group>"; };
+		CCE148A816AB3C4F00383797 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		CCE148A916AB3C5000383797 /* GameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameObject.mm; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
 		E79D6DEE167E1D45001E8724 /* EnemyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyLayer.h; sourceTree = "<group>"; };
@@ -761,8 +761,8 @@
 		E7AA87551694326800C71551 /* GameOverScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameOverScene.mm; sourceTree = "<group>"; };
 		E7AA875C16945DDF00C71551 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
 		E7AA875D16945DE000C71551 /* PauseLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseLayer.mm; sourceTree = "<group>"; };
-		E7ACD57B16A1B6C900CA6797 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
-		E7ACD57C16A1B6C900CA6797 /* Obstacle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Obstacle.mm; sourceTree = "<group>"; };
+		E7ACD57B16A1B6C900CA6797 /* ObstacleObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleObject.h; sourceTree = "<group>"; };
+		E7ACD57C16A1B6C900CA6797 /* ObstacleObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ObstacleObject.mm; sourceTree = "<group>"; };
 		E7ACD57F16A1BCD500CA6797 /* Skeleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skeleton.h; sourceTree = "<group>"; };
 		E7ACD58016A1BCD500CA6797 /* Skeleton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Skeleton.mm; sourceTree = "<group>"; };
 		E7ACD58216A1C12900CA6797 /* Sushi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sushi.h; sourceTree = "<group>"; };
@@ -868,8 +868,6 @@
 		71C3C55216760B6600623738 = {
 			isa = PBXGroup;
 			children = (
-				CCE148A816AB3C4F00383797 /* GameObject.h */,
-				CCE148A916AB3C5000383797 /* GameObject.mm */,
 				71C3C57316760B6600623738 /* Fat Ninja */,
 				71C3C56016760B6600623738 /* Frameworks */,
 				71C3C55E16760B6600623738 /* Products */,
@@ -903,10 +901,12 @@
 		71C3C57316760B6600623738 /* Fat Ninja */ = {
 			isa = PBXGroup;
 			children = (
+				E7AC8B6716AC218200621F05 /* Constants */,
+				E7AC8B6616AC217900621F05 /* GameObjects */,
+				E7AC8B6516AC217300621F05 /* Layer */,
+				E7AC8B6416AC216D00621F05 /* Scene */,
 				71C3C78D16760B6B00623738 /* AppDelegate.h */,
 				71C3C78E16760B6B00623738 /* AppDelegate.mm */,
-				71C3C79016760B6B00623738 /* HelloWorldLayer.h */,
-				71C3C79116760B6B00623738 /* HelloWorldLayer.mm */,
 				71C3C79316760B6B00623738 /* IntroLayer.h */,
 				71C3C79416760B6B00623738 /* IntroLayer.mm */,
 				71C3C79616760B6B00623738 /* GLES-Render.h */,
@@ -914,35 +914,6 @@
 				71C3C57416760B6600623738 /* Resources */,
 				71C3C58C16760B6700623738 /* libs */,
 				71C3C78916760B6B00623738 /* Supporting Files */,
-				71C3C7A016760C6000623738 /* GameLayer.h */,
-				71C3C7A116760C6000623738 /* GameLayer.mm */,
-				31738566169C746700B86E48 /* NinjaLayer.h */,
-				31738567169C746700B86E48 /* NinjaLayer.mm */,
-				CCE148A516AB325E00383797 /* Ninja.h */,
-				CCE148A616AB325F00383797 /* Ninja.mm */,
-				E7A5EC731678C499006AA447 /* GameScene.h */,
-				E7A5EC741678C49A006AA447 /* GameScene.mm */,
-				E79D6DE8167E1053001E8724 /* BackgroundLayer.h */,
-				E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */,
-				E79D6DEE167E1D45001E8724 /* EnemyLayer.h */,
-				E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */,
-				71A43C7516A6C96200B79C04 /* MinigameScene.h */,
-				71A43C7616A6C96200B79C04 /* MinigameScene.mm */,
-				E7AA87541694326800C71551 /* GameOverScene.h */,
-				E7AA87551694326800C71551 /* GameOverScene.mm */,
-				E7AA875C16945DDF00C71551 /* PauseLayer.h */,
-				E7AA875D16945DE000C71551 /* PauseLayer.mm */,
-				E7B517111695DD81002B0D97 /* Constants.h */,
-				E7ACD57B16A1B6C900CA6797 /* Obstacle.h */,
-				E7ACD57C16A1B6C900CA6797 /* Obstacle.mm */,
-				E7ACD57F16A1BCD500CA6797 /* Skeleton.h */,
-				E7ACD58016A1BCD500CA6797 /* Skeleton.mm */,
-				E7ACD58216A1C12900CA6797 /* Sushi.h */,
-				E7ACD58316A1C12900CA6797 /* Sushi.mm */,
-				E7ACD58516A1D57800CA6797 /* Wall.h */,
-				E7ACD58616A1D57800CA6797 /* Wall.mm */,
-				7199592616A2C84900EB3705 /* PowerUp.h */,
-				7199592716A2C84900EB3705 /* PowerUp.mm */,
 			);
 			path = "Fat Ninja";
 			sourceTree = "<group>";
@@ -1500,6 +1471,67 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E7AC8B6416AC216D00621F05 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				E7A5EC731678C499006AA447 /* GameScene.h */,
+				E7A5EC741678C49A006AA447 /* GameScene.mm */,
+				71A43C7516A6C96200B79C04 /* MinigameScene.h */,
+				71A43C7616A6C96200B79C04 /* MinigameScene.mm */,
+				E7AA87541694326800C71551 /* GameOverScene.h */,
+				E7AA87551694326800C71551 /* GameOverScene.mm */,
+				71C3C79016760B6B00623738 /* HelloWorldLayer.h */,
+				71C3C79116760B6B00623738 /* HelloWorldLayer.mm */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
+		E7AC8B6516AC217300621F05 /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+				E79D6DE8167E1053001E8724 /* BackgroundLayer.h */,
+				E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */,
+				E7AA875C16945DDF00C71551 /* PauseLayer.h */,
+				E7AA875D16945DE000C71551 /* PauseLayer.mm */,
+				71C3C7A016760C6000623738 /* GameLayer.h */,
+				71C3C7A116760C6000623738 /* GameLayer.mm */,
+			);
+			name = Layer;
+			sourceTree = "<group>";
+		};
+		E7AC8B6616AC217900621F05 /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				E79D6DEE167E1D45001E8724 /* EnemyLayer.h */,
+				E79D6DEF167E1D45001E8724 /* EnemyLayer.mm */,
+				E7ACD57B16A1B6C900CA6797 /* ObstacleObject.h */,
+				E7ACD57C16A1B6C900CA6797 /* ObstacleObject.mm */,
+				E7ACD57F16A1BCD500CA6797 /* Skeleton.h */,
+				E7ACD58016A1BCD500CA6797 /* Skeleton.mm */,
+				E7ACD58216A1C12900CA6797 /* Sushi.h */,
+				E7ACD58316A1C12900CA6797 /* Sushi.mm */,
+				E7ACD58516A1D57800CA6797 /* Wall.h */,
+				E7ACD58616A1D57800CA6797 /* Wall.mm */,
+				7199592616A2C84900EB3705 /* PowerUp.h */,
+				7199592716A2C84900EB3705 /* PowerUp.mm */,
+				31738566169C746700B86E48 /* NinjaLayer.h */,
+				31738567169C746700B86E48 /* NinjaLayer.mm */,
+				CCE148A516AB325E00383797 /* Ninja.h */,
+				CCE148A616AB325F00383797 /* Ninja.mm */,
+				CCE148A816AB3C4F00383797 /* GameObject.h */,
+				CCE148A916AB3C5000383797 /* GameObject.mm */,
+			);
+			name = GameObjects;
+			sourceTree = "<group>";
+		};
+		E7AC8B6716AC218200621F05 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				E7B517111695DD81002B0D97 /* Constants.h */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1820,7 +1852,7 @@
 				E7AA87561694326800C71551 /* GameOverScene.mm in Sources */,
 				E7AA875E16945DE000C71551 /* PauseLayer.mm in Sources */,
 				31738568169C746700B86E48 /* NinjaLayer.mm in Sources */,
-				E7ACD57D16A1B6C900CA6797 /* Obstacle.mm in Sources */,
+				E7ACD57D16A1B6C900CA6797 /* ObstacleObject.mm in Sources */,
 				E7ACD58116A1BCD500CA6797 /* Skeleton.mm in Sources */,
 				E7ACD58416A1C12900CA6797 /* Sushi.mm in Sources */,
 				E7ACD58716A1D57800CA6797 /* Wall.mm in Sources */,

@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Florian Weiß. All rights reserved.
 //
 
-#import "Obstacle.h"
+#import "ObstacleObject.h"
 
-@interface Skeleton : Obstacle
+@interface Skeleton : ObstacleObject
 
 @end
