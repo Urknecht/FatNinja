@@ -8,9 +8,10 @@
 
 #import "CCSprite.h"
 #import "cocos2d.h"
+#import "CCPhysicsSprite.h"
 
 
-@interface GameObject : CCSprite {
+@interface GameObject : CCPhysicsSprite {
     BOOL isActive;
     BOOL reactsToScreenBoundaries;
     CGSize screenSize;

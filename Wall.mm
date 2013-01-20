@@ -20,13 +20,20 @@
 }
 
 -(void) changeState:(CharacterStates)newState{
-    switch (characterState) {
+    [self stopAllActions];
+    id action = nil;
+    [self setCharacterState:newState];
+    
+    switch (newState) {
         case StateDie:
-            //sterbe animation
+            //sterbe animation  am ende muss gegner gelöscht werden
             break;
             
         default:
             break;
+    }
+    if (action != nil) {
+        [self runAction:action];
     }
 }
 @end
