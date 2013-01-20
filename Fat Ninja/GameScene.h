@@ -20,6 +20,7 @@
     // Gameplay Layer
     GameLayer *gameplayLayer;
     PauseLayer *pauseLayer;
+    BackgroundLayer *backgroundLayer;
 }
 
 

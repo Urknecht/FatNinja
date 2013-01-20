@@ -76,11 +76,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         isRolling=false;
         isPaused=false;
         
-        // backgorund layer
-        backgroundLayer =[BackgroundLayer node];
-        [self addChild:backgroundLayer z:0 tag:backgroundLayerTag];
-        
-        //ninja layer
+        //ninja 
         ninja=[[Ninja alloc] initWithWorld: world];
         [self addChild:ninja z:1];
 
@@ -215,7 +211,10 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         if(self.geschwindigkeit>0.21){ // wird bis zu minimum geschwindigkeit
             self.geschwindigkeit-=0.2; // die geschiwndigkeit angepasst
             [ninja reloadAnimsWithSpeed:self.geschwindigkeit];
-            [backgroundLayer reloadBackgroundWithSpeed:self.geschwindigkeit];
+           
+            BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:backgroundLayerTag];
+
+            [bl reloadBackgroundWithSpeed:self.geschwindigkeit];
             [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
 
         }
@@ -266,7 +265,9 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 
 -(void) stopGame{
     //Leider ging es nicht über Pause zu machen, deswegen eigene funktion:
-    [backgroundLayer stopBackgroundAnimation];
+    BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:backgroundLayerTag];
+
+    [bl stopBackgroundAnimation];
     [self stopAnimation];
 }
 

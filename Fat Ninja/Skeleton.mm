@@ -20,5 +20,15 @@
     return self;
 }
 
+-(void) changeState:(CharacterStates)newState{
+    switch (characterState) {
+        case StateDie:
+            //sterbe animation
+            break;
+            
+        default:
+            break;
+    }
+}
 
 @end

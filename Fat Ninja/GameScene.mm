@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "GameLayer.h"
 #import "PauseLayer.h"
+#import "BackgroundLayer.h"
 
 #import "Constants.h"
 
@@ -25,6 +26,10 @@
         //pause layer
         pauseLayer =[PauseLayer node];
         [self addChild: pauseLayer z:5];
+        
+        // backgorund layer
+        backgroundLayer =[BackgroundLayer node];
+        [self addChild:backgroundLayer z:0 tag:backgroundLayerTag];
     }
 
     return self;
