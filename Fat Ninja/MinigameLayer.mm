@@ -14,6 +14,7 @@
 
 @synthesize game;
 @synthesize description;
+@synthesize timeCount;
 
 - (id) init
 {

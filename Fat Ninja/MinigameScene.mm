@@ -24,9 +24,6 @@ MinigameLayer *minigamelayer;
     self = [super init];
     if (self != nil) {
         
-        minigamelayer =[MinigameLayer node];
-        [self addChild: minigamelayer z:2];
-        
         CCSprite *backgroundImage= [CCSprite spriteWithFile:@"gameOverBackground.png"];
         CGSize winSize = [CCDirector sharedDirector].winSize;
         [backgroundImage setPosition: CGPointMake(winSize.width/2, winSize.height/2)];
@@ -58,24 +55,25 @@ MinigameLayer *minigamelayer;
             default:
                 break;
         }
+        [self addChild: minigamelayer z:2];
         game = minigamelayer.game;
-        timeCount = 10;
+        timeCount = minigamelayer.timeCount;
         description = minigamelayer.description;
         
         CGSize size = [[CCDirector sharedDirector] winSize];
         
         
-        CCLabelTTF *label = [CCLabelTTF labelWithString:game fontName:@"Marker Felt" fontSize:40 ];
+        CCLabelTTF *label = [CCLabelTTF labelWithString:game fontName:@"Marker Felt" fontSize:30 ];
         label.color = ccc3(255,0,0);
         [self addChild:label z:2];
         label.position = ccp( size.width/2, size.height-30);
         
-        CCLabelTTF *labelDescription = [CCLabelTTF labelWithString:description fontName:@"Marker Felt" fontSize:20];
+        CCLabelTTF *labelDescription = [CCLabelTTF labelWithString:description fontName:@"Marker Felt" fontSize:15];
         [self addChild:labelDescription z:2];
         labelDescription.position = ccp( size.width/2, size.height-65);
         
         //Zeit anzeige
-        timeLabel = [CCLabelTTF labelWithString:@"0:10" fontName:@"Marker Felt" fontSize:45];
+        timeLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"0:%d",timeCount] fontName:@"Marker Felt" fontSize:45];
         [self addChild:timeLabel z:0];
         timeLabel.position = ccp(50, winSize.height-25);
         

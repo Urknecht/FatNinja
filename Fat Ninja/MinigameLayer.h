@@ -12,11 +12,13 @@
     
     NSString *game;
     NSString *description;
+    int timeCount;
     
 }
 
 @property(nonatomic, strong) NSString *game;
 @property(nonatomic, strong) NSString *description;
+@property (readwrite) int timeCount;
 
 
 
