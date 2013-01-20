@@ -150,7 +150,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 	
 	// Define the ground body.
 	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0, 0); // bottom-left corner, auf hoehe winSize.height/3
+	groundBodyDef.position.Set(0, s.height/3/PTM_RATIO); // bottom-left corner, auf hoehe winSize.height/3
 	
 	// Call the body factory which allocates memory for the ground body
 	// from a pool and creates the ground box shape (also from a pool).
@@ -166,16 +166,35 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 	groundBody->CreateFixture(&groundBox,0);
 	
 	// top
-	groundBox.Set(b2Vec2(0,s.height/3/PTM_RATIO), b2Vec2(s.width/PTM_RATIO,s.height/3/PTM_RATIO));
+	groundBox.Set(b2Vec2(0,s.height/PTM_RATIO), b2Vec2(s.width/PTM_RATIO,s.height/PTM_RATIO));
 	groundBody->CreateFixture(&groundBox,0);
 	
 	// left
-	groundBox.Set(b2Vec2(0,0), b2Vec2(0,s.height/3/PTM_RATIO));
+	groundBox.Set(b2Vec2(0,0), b2Vec2(0,s.height/PTM_RATIO));
 	groundBody->CreateFixture(&groundBox,0);
 	
 	// right
-	groundBox.Set(b2Vec2(s.width/PTM_RATIO,0), b2Vec2(s.width/PTM_RATIO,s.height/3/PTM_RATIO));
+	groundBox.Set(b2Vec2(s.width/PTM_RATIO,0), b2Vec2(s.width/PTM_RATIO,s.height/PTM_RATIO));
 	groundBody->CreateFixture(&groundBox,0);
+}
+
+- (b2Body*)createBodyAtLocation:(CGPoint)location withSize:(CGSize)size {
+    
+    b2BodyDef bodyDef;      //body erstellen
+    bodyDef.type = b2_dynamicBody; //dynamic: box2d kuemmert sich um bewegungen
+    bodyDef.position = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    b2Body *body = world->CreateBody(&bodyDef);
+    
+    b2PolygonShape shape;           //shape erstellen
+    shape.SetAsBox(size.width/2/PTM_RATIO, size.height/2/PTM_RATIO);
+    
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &shape;
+    fixtureDef.density = 1.0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
+    //mass=density*volume
+    body->CreateFixture(&fixtureDef);
+    return body;
+    
 }
 
 -(void) draw
@@ -502,7 +521,12 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     
     
     [enemyArray addObject:enemy];
-    [enemy setPosition: CGPointMake(winSize.width, winSize.height/3)];
+    CGPoint location= ccp(winSize.width, winSize.height/3);
+    b2Body *body=[self createBodyAtLocation:location withSize:enemy.contentSize];
+
+//    [enemy setPTMRatio:PTM_RATIO];
+//	[enemy setBody:body];
+	[enemy setPosition: location];
     [self addChild:enemy];
     CCMoveTo * actionMove = [CCMoveTo actionWithDuration: geschwindigkeitEnemy
                                                 position:ccp(self.position.x

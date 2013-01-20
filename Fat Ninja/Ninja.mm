@@ -196,18 +196,18 @@
     }
 }
 
-- (b2Body*)createBodyAtLocation:(CGPoint)location withSize:(CGSize)size {
+- (b2Body*)createNinjaAtLocation:(CGPoint)location withSize:(CGSize)size {
     
     b2BodyDef bodyDef;      //body erstellen
     bodyDef.type = b2_dynamicBody; //dynamic: box2d kuemmert sich um bewegungen
     bodyDef.position = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
     b2Body *body = world->CreateBody(&bodyDef);
     
-    b2PolygonShape shape;           //shape erstellen, erstmal als box
-    shape.SetAsBox(size.width/2/PTM_RATIO, size.height/2/PTM_RATIO);
+    b2CircleShape circle;
+    circle.m_radius = 25.0/PTM_RATIO;
     b2FixtureDef fixtureDef;
-    fixtureDef.shape = &shape;
-    fixtureDef.density = 1.0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
+    fixtureDef.shape = &circle;
+    fixtureDef.density = 2.0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
     //mass=density*volume
     body->CreateFixture(&fixtureDef);
     return body;
@@ -258,7 +258,7 @@
     _ninjaRunning.scale = (winSize.height / 400) ;
     //_ninjaRunning.position = ccp(_ninjaRunning.contentSize.width, winSize.height / 3);
     CGPoint location = ccp(_ninjaRunning.contentSize.width, winSize.height);
-	b2Body *body=[self createBodyAtLocation:location withSize:_ninjaRunning.contentSize];
+	b2Body *body=[self createNinjaAtLocation:location withSize:_ninjaRunning.contentSize];
     
     [_ninjaRunning setPTMRatio:PTM_RATIO];
 	[_ninjaRunning setBody:body];
