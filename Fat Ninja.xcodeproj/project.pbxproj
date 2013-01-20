@@ -65,6 +65,8 @@
 		31A972AA169DD7E80029DB0E /* NinjaThrowShuricen4.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A9728F169DD7E80029DB0E /* NinjaThrowShuricen4.png */; };
 		31A972AB169DD7E80029DB0E /* shuriken.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A97290169DD7E80029DB0E /* shuriken.png */; };
 		7199592816A2C84900EB3705 /* PowerUp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7199592716A2C84900EB3705 /* PowerUp.mm */; };
+		71A17FB916AC405A00EEADF8 /* MinigameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71A17FB816AC405A00EEADF8 /* MinigameLayer.mm */; };
+		71A17FBD16AC40AC00EEADF8 /* MinigameFoodDrop.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71A17FBC16AC40AC00EEADF8 /* MinigameFoodDrop.mm */; };
 		71A43C7716A6C96300B79C04 /* MinigameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71A43C7616A6C96200B79C04 /* MinigameScene.mm */; };
 		71C3C56216760B6600623738 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56116760B6600623738 /* QuartzCore.framework */; };
 		71C3C56416760B6600623738 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C3C56316760B6600623738 /* OpenGLES.framework */; };
@@ -343,6 +345,10 @@
 		31A97290169DD7E80029DB0E /* shuriken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shuriken.png; path = Resources/shuriken.png; sourceTree = "<group>"; };
 		7199592616A2C84900EB3705 /* PowerUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerUp.h; sourceTree = "<group>"; };
 		7199592716A2C84900EB3705 /* PowerUp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PowerUp.mm; sourceTree = "<group>"; };
+		71A17FB716AC405A00EEADF8 /* MinigameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinigameLayer.h; sourceTree = "<group>"; };
+		71A17FB816AC405A00EEADF8 /* MinigameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MinigameLayer.mm; sourceTree = "<group>"; };
+		71A17FBB16AC40AC00EEADF8 /* MinigameFoodDrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinigameFoodDrop.h; sourceTree = "<group>"; };
+		71A17FBC16AC40AC00EEADF8 /* MinigameFoodDrop.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MinigameFoodDrop.mm; sourceTree = "<group>"; };
 		71A43C7516A6C96200B79C04 /* MinigameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinigameScene.h; sourceTree = "<group>"; };
 		71A43C7616A6C96200B79C04 /* MinigameScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MinigameScene.mm; sourceTree = "<group>"; };
 		71C3C55D16760B6600623738 /* Fat Ninja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fat Ninja.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1489,6 +1495,10 @@
 				E7AA875D16945DE000C71551 /* PauseLayer.mm */,
 				71C3C7A016760C6000623738 /* GameLayer.h */,
 				71C3C7A116760C6000623738 /* GameLayer.mm */,
+				71A17FB716AC405A00EEADF8 /* MinigameLayer.h */,
+				71A17FB816AC405A00EEADF8 /* MinigameLayer.mm */,
+				71A17FBB16AC40AC00EEADF8 /* MinigameFoodDrop.h */,
+				71A17FBC16AC40AC00EEADF8 /* MinigameFoodDrop.mm */,
 			);
 			name = Layer;
 			sourceTree = "<group>";
@@ -1848,6 +1858,8 @@
 				71A43C7716A6C96300B79C04 /* MinigameScene.mm in Sources */,
 				CCE148A716AB326000383797 /* Ninja.mm in Sources */,
 				CCE148AA16AB3C5000383797 /* GameObject.mm in Sources */,
+				71A17FB916AC405A00EEADF8 /* MinigameLayer.mm in Sources */,
+				71A17FBD16AC40AC00EEADF8 /* MinigameFoodDrop.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,16 +8,24 @@
 
 #import "MinigameScene.h"
 #import "cocos2d.h"
+#import "MinigameLayer.h"
+#import "MinigameFoodDrop.h"
 
 @implementation MinigameScene
 
 int _gametype;
+NSString *game;
+NSString *description;
 int timeCount;
 CCLabelTTF *timeLabel;
+MinigameLayer *minigamelayer;
 
 - (id) initWith:(int)gametype{
     self = [super init];
     if (self != nil) {
+        
+        minigamelayer =[MinigameLayer node];
+        [self addChild: minigamelayer z:2];
         
         CCSprite *backgroundImage= [CCSprite spriteWithFile:@"gameOverBackground.png"];
         CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -29,20 +37,20 @@ CCLabelTTF *timeLabel;
         [CCMenuItemFont setFontSize:30];
         
         _gametype = gametype;
-        timeCount = 10;
         
         switch (_gametype) {
             case 0:
-                game = @"OmNom-Jutsu";
-                description = @"Hier kommt die Description rein";
+                minigamelayer = [[MinigameFoodDrop alloc] init];
                 break;
                 
             case 1:
+                minigamelayer = [[MinigameFoodDrop alloc] init];
                 game = @"Blub-Jutsu";
                 description = @"Hier kommt die Description rein";
                 break;
                 
             case 2:
+                minigamelayer = [[MinigameFoodDrop alloc] init];
                 game = @"Ding-Jutsu";
                 description = @"Hier kommt die Description rein";
                 break;
@@ -50,7 +58,9 @@ CCLabelTTF *timeLabel;
             default:
                 break;
         }
-        
+        game = minigamelayer.game;
+        timeCount = 10;
+        description = minigamelayer.description;
         
         CGSize size = [[CCDirector sharedDirector] winSize];
         
@@ -69,15 +79,15 @@ CCLabelTTF *timeLabel;
         [self addChild:timeLabel z:0];
         timeLabel.position = ccp(50, winSize.height-25);
         
-
+        
         
         
         //NSLog(@"Minigame");
         
         //zählt timer runter
-       [self schedule:@selector(timer:)interval:1.0];
+        [self schedule:@selector(timer:)interval:1.0];
         
-        }
+    }
     return self;
 }
 
@@ -90,7 +100,7 @@ CCLabelTTF *timeLabel;
         [timeLabel setString:[NSString stringWithFormat:@"0:%i",timeCount]];
     }
     
-   // NSLog(@"TimerAufruf");
+    // NSLog(@"TimerAufruf");
     if (timeCount < 0) {
         [[CCDirector sharedDirector] popScene];
     }
@@ -104,4 +114,3 @@ CCLabelTTF *timeLabel;
 }
 
 @end
-
