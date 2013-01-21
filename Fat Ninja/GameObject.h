@@ -11,7 +11,7 @@
 #import "CCPhysicsSprite.h"
 
 
-@interface GameObject : CCPhysicsSprite {
+@interface GameObject : CCSprite {
     BOOL isActive;
     BOOL reactsToScreenBoundaries;
     CGSize screenSize;

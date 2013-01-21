@@ -150,7 +150,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 	
 	// Define the ground body.
 	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0, s.height/3/PTM_RATIO); // bottom-left corner, auf hoehe winSize.height/3
+	groundBodyDef.position.Set(0, (s.height/3-10)/PTM_RATIO); // bottom-left corner, auf hoehe winSize.height/3
 	
 	// Call the body factory which allocates memory for the ground body
 	// from a pool and creates the ground box shape (also from a pool).
@@ -162,11 +162,11 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 	
 	// bottom
 	
-	groundBox.Set(b2Vec2(0,0), b2Vec2(s.width/PTM_RATIO,0));
+	groundBox.Set(b2Vec2(0,0), b2Vec2(2*s.width/PTM_RATIO,0));
 	groundBody->CreateFixture(&groundBox,0);
 	
 	// top
-	groundBox.Set(b2Vec2(0,s.height/PTM_RATIO), b2Vec2(s.width/PTM_RATIO,s.height/PTM_RATIO));
+	groundBox.Set(b2Vec2(0,s.height/PTM_RATIO), b2Vec2(2*s.width/PTM_RATIO,s.height/PTM_RATIO));
 	groundBody->CreateFixture(&groundBox,0);
 	
 	// left
@@ -174,7 +174,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 	groundBody->CreateFixture(&groundBox,0);
 	
 	// right
-	groundBox.Set(b2Vec2(s.width/PTM_RATIO,0), b2Vec2(s.width/PTM_RATIO,s.height/PTM_RATIO));
+	groundBox.Set(b2Vec2(2*s.width/PTM_RATIO,0), b2Vec2(2*s.width/PTM_RATIO,s.height/PTM_RATIO));
 	groundBody->CreateFixture(&groundBox,0);
 }
 
