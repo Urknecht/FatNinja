@@ -15,11 +15,11 @@
 @synthesize isEatable;
 @synthesize isShootable;
 @synthesize isPowerUp;
-@synthesize type,enemyState;
+@synthesize type,enemyState,enemyType,wiSize,geschiwndigkeit;
 
 
 
--(id) init{
+-(id) initWith:(float)geschw andWinSize:(CGSize)wSize{
     if ((self = [super init])) {
         isEatable =false;
         isRollable=false;
@@ -29,6 +29,15 @@
         enemyState=StateStart;
     }
     return self;
+}
+
+-(void)changeState:(CharacterStates)newState{
+    
+}
+
+
+-(void)loadAnim{
+    
 }
 
 -(void)dealloc{

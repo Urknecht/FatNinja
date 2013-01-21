@@ -27,7 +27,7 @@
 @synthesize distance;
 @synthesize enemyArray;
 @synthesize nextStage;
-@synthesize geschwindigkeitEnemy;
+@synthesize geschwindigkeitEnemy,_enemyBatchNode;
 
 //startpunkt für swipe ueberpruefung
 CGPoint _startPoint;
@@ -59,7 +59,8 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         //box2d
         [self initPhysics];
         [self scheduleUpdate];
-
+        _enemyBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"enemy.png"];
+        [self addChild:_enemyBatchNode];
         tag=0;
         nextStage=false;
         enemyCounter=0;
@@ -190,7 +191,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &shape;
-    fixtureDef.density = 1.0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
+   // fixtureDef.density = 0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
     //mass=density*volume
     body->CreateFixture(&fixtureDef);
     return body;
@@ -481,7 +482,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     switch (randomTag) {
         case 0:
             tag++;
-            enemy=[[Skeleton alloc] init];
+            enemy=[[Skeleton alloc] initWith: geschwindigkeitEnemy andWinSize:winSize];
             break;
         case 1:
             tag++;
@@ -531,16 +532,17 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     [enemy setPTMRatio:PTM_RATIO];
 	[enemy setBody:body];
 	[enemy setPosition: location];
-    [self addChild:enemy];
-    CCMoveTo * actionMove = [CCMoveTo actionWithDuration: geschwindigkeitEnemy
-                                                position:ccp(self.position.x
-                                                             -winSize.width, winSize.height/3)];
-    CCCallBlockN* actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node){
-        [node removeFromParentAndCleanup:YES];
-        [enemyArray removeObject:node];
-    }];
-    CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
-    [enemy runAction:sequence];
+    [_enemyBatchNode addChild:enemy];
+    [enemy loadAnim];
+//    CCMoveTo * actionMove = [CCMoveTo actionWithDuration: geschwindigkeitEnemy
+//                                                position:ccp(self.position.x
+//                                                             -winSize.width, winSize.height/3)];
+//    CCCallBlockN* actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node){
+//        [node removeFromParentAndCleanup:YES];
+//        [enemyArray removeObject:node];
+//    }];
+//    CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
+//    [enemy runAction:sequence];
     
     enemyCounter++;
     
@@ -561,7 +563,11 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 -(void) removeObstacle: (CCPhysicsSprite*) obstacle{
     world->DestroyBody(obstacle.body);
     [enemyArray removeObject:obstacle];
-    [self removeChild:obstacle cleanup:YES];
+    if(obstacle.class!=PowerUp.class){
+        [_enemyBatchNode removeChild:obstacle cleanup:YES];
+    }else{
+        [self removeChild:obstacle cleanup:YES];
+    }
 }
 
 

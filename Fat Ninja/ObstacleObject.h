@@ -7,6 +7,7 @@
 //
 
 #import "CCPhysicsSprite.h"
+#import "GameLayer.h"
 
 
 @interface ObstacleObject : CCPhysicsSprite{
@@ -17,7 +18,8 @@
     int type;
     CharacterStates enemyState;
     GameObjectType enemyType;
-
+    float geschwindigkeit;
+    CGSize wiSize;
 
 
 }
@@ -26,11 +28,15 @@
 @property(readonly) bool isShootable;
 @property(readonly) bool isPowerUp;
 @property(readonly) int type;
+@property(readonly) float geschiwndigkeit;
+@property(readonly) CGSize wiSize;
 @property (readwrite) CharacterStates enemyState;
 @property(readonly)  GameObjectType enemyType;
 
+-(id) initWith: (float) geschw andWinSize: (CGSize) wSize;
 
 -(void)changeState:(CharacterStates)newState;
+-(void) loadAnim;
 
 
 @end

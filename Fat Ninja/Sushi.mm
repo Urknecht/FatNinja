@@ -10,11 +10,14 @@
 
 @implementation Sushi
 
--(id) init{
+
+-(id) initWith:(float)geschw andWinSize:(CGSize)wSize{
     if ((self = [super init])) {
         self= [Sushi spriteWithFile:@"sushi.png"];
         isEatable=true;
         isShootable=true;
+        geschwindigkeit=geschw;
+        wiSize=wSize;
         //lol
     }
     return self;
@@ -23,7 +26,7 @@
 -(void) changeState:(CharacterStates)newState{
     [self stopAllActions];
     id action = nil;
-    [self setCharacterState:newState];
+    [self setEnemyState:newState];
     
     switch (newState) {
         case StateDie:
@@ -36,6 +39,21 @@
     if (action != nil) {
         [self runAction:action];
     }
+}
+
+-(void)loadAnim{
+    GameLayer *gl = (GameLayer *)[self.parent getChildByTag:gameLayerTag];
+    
+    CCMoveTo * actionMove = [CCMoveTo actionWithDuration: geschwindigkeit
+                                                position:ccp(self.position.x
+                                                             -wiSize.width, wiSize.height/3)];
+    CCCallBlockN* actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node){
+        [node removeFromParentAndCleanup:YES];
+        [gl.enemyArray removeObject:node];
+    }];
+    CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
+    [self runAction:sequence];
+    
 }
 
 @end

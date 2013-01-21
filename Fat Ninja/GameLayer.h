@@ -35,8 +35,13 @@
     bool nextStage;
     double geschwindigkeitEnemy;
     
+    CCSpriteBatchNode *_enemyBatchNode;
+
+    
 }
 @property(nonatomic, strong) NSMutableArray *enemyArray;
+@property(nonatomic,strong)  CCSpriteBatchNode *_enemyBatchNode;
+
 @property(readwrite) bool nextStage;
 @property(readonly) double geschwindigkeitEnemy;
 
