@@ -37,8 +37,9 @@
 		31738563169C726900B86E48 /* NinjaRunning6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173854F169C726900B86E48 /* NinjaRunning6.png */; };
 		31738564169C726900B86E48 /* NinjaRunning7.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738550169C726900B86E48 /* NinjaRunning7.png */; };
 		31738565169C726900B86E48 /* NinjaRunning8.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738551169C726900B86E48 /* NinjaRunning8.png */; };
+		318ED5E016AD7D8E0061E407 /* obstacles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 318ED5DE16AD7D8E0061E407 /* obstacles.plist */; };
+		318ED5E116AD7D8E0061E407 /* obstacles.png in Resources */ = {isa = PBXBuildFile; fileRef = 318ED5DF16AD7D8E0061E407 /* obstacles.png */; };
 		31A2E74116AD7B20002023C0 /* CCParallaxNode-Extras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 31A2E73A16AD7B20002023C0 /* CCParallaxNode-Extras.mm */; };
-		31A2E74216AD7B20002023C0 /* Enemy.mm in Sources */ = {isa = PBXBuildFile; fileRef = 31A2E73C16AD7B20002023C0 /* Enemy.mm */; };
 		31A2E74316AD7B20002023C0 /* NinjaLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 31A2E73E16AD7B20002023C0 /* NinjaLayer.mm */; };
 		31A2E74416AD7B20002023C0 /* Wall.mm in Sources */ = {isa = PBXBuildFile; fileRef = 31A2E74016AD7B20002023C0 /* Wall.mm */; };
 		31A2E74C16AD7B56002023C0 /* backgroundElements1.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A2E74516AD7B56002023C0 /* backgroundElements1.png */; };
@@ -280,8 +281,6 @@
 		CCE148A716AB326000383797 /* Ninja.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A616AB325F00383797 /* Ninja.mm */; };
 		CCE148AA16AB3C5000383797 /* GameObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A916AB3C5000383797 /* GameObject.mm */; };
 		CCE1490216AD6DCE00383797 /* TutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE1490116AD6DCE00383797 /* TutorialScene.m */; };
-		CCE1490616AD7AB300383797 /* obstacles.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCE1490416AD7AB300383797 /* obstacles.plist */; };
-		CCE1490716AD7AB300383797 /* obstacles.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE1490516AD7AB300383797 /* obstacles.png */; };
 		E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */; };
 		E7A5EC751678C49A006AA447 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7A5EC741678C49A006AA447 /* GameScene.mm */; };
 		E7AA87561694326800C71551 /* GameOverScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA87551694326800C71551 /* GameOverScene.mm */; };
@@ -322,10 +321,10 @@
 		3173854F169C726900B86E48 /* NinjaRunning6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunning6.png; path = Resources/NinjaRunning6.png; sourceTree = "<group>"; };
 		31738550169C726900B86E48 /* NinjaRunning7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunning7.png; path = Resources/NinjaRunning7.png; sourceTree = "<group>"; };
 		31738551169C726900B86E48 /* NinjaRunning8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunning8.png; path = Resources/NinjaRunning8.png; sourceTree = "<group>"; };
+		318ED5DE16AD7D8E0061E407 /* obstacles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = obstacles.plist; path = Resources/obstacles.plist; sourceTree = "<group>"; };
+		318ED5DF16AD7D8E0061E407 /* obstacles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = obstacles.png; path = Resources/obstacles.png; sourceTree = "<group>"; };
 		31A2E73916AD7B20002023C0 /* CCParallaxNode-Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCParallaxNode-Extras.h"; sourceTree = "<group>"; };
 		31A2E73A16AD7B20002023C0 /* CCParallaxNode-Extras.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CCParallaxNode-Extras.mm"; sourceTree = "<group>"; };
-		31A2E73B16AD7B20002023C0 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
-		31A2E73C16AD7B20002023C0 /* Enemy.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Enemy.mm; sourceTree = "<group>"; };
 		31A2E73D16AD7B20002023C0 /* NinjaLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NinjaLayer.h; sourceTree = "<group>"; };
 		31A2E73E16AD7B20002023C0 /* NinjaLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NinjaLayer.mm; sourceTree = "<group>"; };
 		31A2E73F16AD7B20002023C0 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
@@ -770,8 +769,6 @@
 		CCE148A916AB3C5000383797 /* GameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameObject.mm; sourceTree = "<group>"; };
 		CCE1490016AD6DCE00383797 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialScene.h; sourceTree = "<group>"; };
 		CCE1490116AD6DCE00383797 /* TutorialScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialScene.m; sourceTree = "<group>"; };
-		CCE1490416AD7AB300383797 /* obstacles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = obstacles.plist; sourceTree = "<group>"; };
-		CCE1490516AD7AB300383797 /* obstacles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = obstacles.png; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
 		E7A5EC731678C499006AA447 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
@@ -939,6 +936,8 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				318ED5DE16AD7D8E0061E407 /* obstacles.plist */,
+				318ED5DF16AD7D8E0061E407 /* obstacles.png */,
 				31A2E74516AD7B56002023C0 /* backgroundElements1.png */,
 				31A2E74616AD7B56002023C0 /* backgroundElements2.png */,
 				31A2E74716AD7B56002023C0 /* backgroundEmpty.png */,
@@ -1530,8 +1529,6 @@
 			children = (
 				31A2E73F16AD7B20002023C0 /* Wall.h */,
 				31A2E74016AD7B20002023C0 /* Wall.mm */,
-				31A2E73B16AD7B20002023C0 /* Enemy.h */,
-				31A2E73C16AD7B20002023C0 /* Enemy.mm */,
 				E7ACD57B16A1B6C900CA6797 /* ObstacleObject.h */,
 				E7ACD57C16A1B6C900CA6797 /* ObstacleObject.mm */,
 				E7ACD57F16A1BCD500CA6797 /* Skeleton.h */,
@@ -1704,6 +1701,8 @@
 				31A2E75016AD7B56002023C0 /* pauseMenuBg.png in Resources */,
 				31A2E75116AD7B56002023C0 /* powerup.png in Resources */,
 				31A2E75216AD7B56002023C0 /* wall.png in Resources */,
+				318ED5E016AD7D8E0061E407 /* obstacles.plist in Resources */,
+				318ED5E116AD7D8E0061E407 /* obstacles.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1885,7 +1884,6 @@
 				71A17FCE16AC7B9900EEADF8 /* MinigameLayer.mm in Sources */,
 				CCE1490216AD6DCE00383797 /* TutorialScene.m in Sources */,
 				31A2E74116AD7B20002023C0 /* CCParallaxNode-Extras.mm in Sources */,
-				31A2E74216AD7B20002023C0 /* Enemy.mm in Sources */,
 				31A2E74316AD7B20002023C0 /* NinjaLayer.mm in Sources */,
 				31A2E74416AD7B20002023C0 /* Wall.mm in Sources */,
 			);
