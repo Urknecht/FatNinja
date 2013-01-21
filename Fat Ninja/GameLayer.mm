@@ -33,7 +33,8 @@
 CGPoint _startPoint;
 //endpunkt für swipe ueberpruefung
 CGPoint _endPoint;
-bool isRolling;
+
+
 //array welches die wurfsterne enthaelt
 NSMutableArray * _projectiles;
 int sushiCounter;
@@ -82,12 +83,9 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         
         //ninja 
         ninja=[[Ninja alloc] initWithWorld: world];
-        [self addChild:ninja z:1];
-
-        
+        [self addChild:ninja z:1];        
         [self schedule:@selector(updateNinjaIsHit:)]; //immer wieder pruefen ob ninja getroffen wurde
-        
-        
+                
         
         _projectiles = [[NSMutableArray alloc] init];
         
