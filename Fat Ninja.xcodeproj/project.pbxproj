@@ -280,6 +280,8 @@
 		CCE148A716AB326000383797 /* Ninja.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A616AB325F00383797 /* Ninja.mm */; };
 		CCE148AA16AB3C5000383797 /* GameObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A916AB3C5000383797 /* GameObject.mm */; };
 		CCE1490216AD6DCE00383797 /* TutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE1490116AD6DCE00383797 /* TutorialScene.m */; };
+		CCE1490616AD7AB300383797 /* obstacles.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCE1490416AD7AB300383797 /* obstacles.plist */; };
+		CCE1490716AD7AB300383797 /* obstacles.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE1490516AD7AB300383797 /* obstacles.png */; };
 		E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */; };
 		E7A5EC751678C49A006AA447 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7A5EC741678C49A006AA447 /* GameScene.mm */; };
 		E7AA87561694326800C71551 /* GameOverScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA87551694326800C71551 /* GameOverScene.mm */; };
@@ -768,6 +770,8 @@
 		CCE148A916AB3C5000383797 /* GameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameObject.mm; sourceTree = "<group>"; };
 		CCE1490016AD6DCE00383797 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialScene.h; sourceTree = "<group>"; };
 		CCE1490116AD6DCE00383797 /* TutorialScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialScene.m; sourceTree = "<group>"; };
+		CCE1490416AD7AB300383797 /* obstacles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = obstacles.plist; sourceTree = "<group>"; };
+		CCE1490516AD7AB300383797 /* obstacles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = obstacles.png; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
 		E7A5EC731678C499006AA447 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
