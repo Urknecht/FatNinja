@@ -502,7 +502,11 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         //spawnPowerUp = true;
         [enemyArray addObject:powerUp];
         int randomHeight = (arc4random() % 51)*2.5;
-        [powerUp setPosition: CGPointMake(winSize.width, winSize.height/3+randomHeight)];
+        CGPoint location =CGPointMake(winSize.width, winSize.height/3+randomHeight);
+        b2Body *body=[self createBodyAtLocation:location withSize:enemy.contentSize];
+        [powerUp setPTMRatio:PTM_RATIO];
+        [powerUp setBody:body];
+        [powerUp setPosition: location];
         [self addChild:powerUp];
         
         CCMoveTo * actionMovePowerUp = [CCMoveTo actionWithDuration: geschwindigkeitEnemy*0.5
@@ -524,8 +528,8 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     CGPoint location= ccp(winSize.width, winSize.height/3);
     b2Body *body=[self createBodyAtLocation:location withSize:enemy.contentSize];
 
-//    [enemy setPTMRatio:PTM_RATIO];
-//	[enemy setBody:body];
+    [enemy setPTMRatio:PTM_RATIO];
+	[enemy setBody:body];
 	[enemy setPosition: location];
     [self addChild:enemy];
     CCMoveTo * actionMove = [CCMoveTo actionWithDuration: geschwindigkeitEnemy
@@ -554,7 +558,8 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 }
 
 
--(void) removeObstacle: (CCSprite*) obstacle{
+-(void) removeObstacle: (CCPhysicsSprite*) obstacle{
+    world->DestroyBody(obstacle.body);
     [enemyArray removeObject:obstacle];
     [self removeChild:obstacle cleanup:YES];
 }

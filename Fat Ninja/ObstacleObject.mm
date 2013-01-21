@@ -15,7 +15,8 @@
 @synthesize isEatable;
 @synthesize isShootable;
 @synthesize isPowerUp;
-@synthesize type;
+@synthesize type,enemyState;
+
 
 
 -(id) init{
@@ -25,11 +26,10 @@
         isShootable=false;
         isPowerUp=false;
         type = -1;
-        
+        enemyState=StateStart;
     }
     return self;
 }
-
 
 -(void)dealloc{
     [super dealloc];

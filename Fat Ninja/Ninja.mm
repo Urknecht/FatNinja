@@ -13,16 +13,15 @@
 
 
 @implementation Ninja
+
+
 -(id)initWithWorld: (b2World*) physicworld {
     self = [super init];
     if (self != nil) {
         world=physicworld;
-//        self.isJumping= false;
-//        self.isDoubleJumping= false;
-//        self.isDying = false;
-//        self.isRolling = false;
+
         [self loadAnims];
-        
+        gameObjectType=Character;
         self.ninjaJumpMove = [CCJumpBy actionWithDuration:1.0f
                                                  position:ccp(0, 0)
                                                    height:70.0f
