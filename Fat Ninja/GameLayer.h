@@ -24,6 +24,8 @@
     GameObject *ninja;
         
     bool isPaused;
+    bool isRolling;
+    
     int distance;
     
     //box2d
