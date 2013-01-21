@@ -13,7 +13,7 @@
 
 -(id) initWith:(float)geschw andWinSize:(CGSize)wSize{
     if ((self = [super init])) {
-        self= [Sushi spriteWithFile:@"sushi.png"];
+        self= [Sushi spriteWithFile:@"icon-sushi.png"];
         isEatable=true;
         isShootable=true;
         geschwindigkeit=geschw;

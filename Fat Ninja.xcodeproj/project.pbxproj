@@ -16,7 +16,7 @@
 		31738534169C6F5B00B86E48 /* gameOverBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173852A169C6F5B00B86E48 /* gameOverBackground.png */; };
 		31738535169C6F5B00B86E48 /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173852B169C6F5B00B86E48 /* pauseButton.png */; };
 		31738537169C6F5B00B86E48 /* projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173852D169C6F5B00B86E48 /* projectile.png */; };
-		31738538169C6F5B00B86E48 /* sushi.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173852E169C6F5B00B86E48 /* sushi.png */; };
+		31738538169C6F5B00B86E48 /* icon-sushi.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173852E169C6F5B00B86E48 /* icon-sushi.png */; };
 		31738552169C726900B86E48 /* NinjaJumping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3173853E169C726900B86E48 /* NinjaJumping.plist */; };
 		31738553169C726900B86E48 /* NinjaJumping.png in Resources */ = {isa = PBXBuildFile; fileRef = 3173853F169C726900B86E48 /* NinjaJumping.png */; };
 		31738554169C726900B86E48 /* NinjaJumping1.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738540169C726900B86E48 /* NinjaJumping1.png */; };
@@ -285,7 +285,7 @@
 		E7ACD58116A1BCD500CA6797 /* Skeleton.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD58016A1BCD500CA6797 /* Skeleton.mm */; };
 		E7ACD58416A1C12900CA6797 /* Sushi.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD58316A1C12900CA6797 /* Sushi.mm */; };
 		E7ACD58716A1D57800CA6797 /* Wall.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7ACD58616A1D57800CA6797 /* Wall.mm */; };
-		E7ACD58916A1D78400CA6797 /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = E7ACD58816A1D78400CA6797 /* wall.png */; };
+		E7ACD58916A1D78400CA6797 /* brokenwall.png in Resources */ = {isa = PBXBuildFile; fileRef = E7ACD58816A1D78400CA6797 /* brokenwall.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -298,7 +298,7 @@
 		3173852A169C6F5B00B86E48 /* gameOverBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameOverBackground.png; path = Resources/gameOverBackground.png; sourceTree = "<group>"; };
 		3173852B169C6F5B00B86E48 /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pauseButton.png; path = Resources/pauseButton.png; sourceTree = "<group>"; };
 		3173852D169C6F5B00B86E48 /* projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = projectile.png; path = Resources/projectile.png; sourceTree = "<group>"; };
-		3173852E169C6F5B00B86E48 /* sushi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sushi.png; path = Resources/sushi.png; sourceTree = "<group>"; };
+		3173852E169C6F5B00B86E48 /* icon-sushi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-sushi.png"; path = "Resources/icon-sushi.png"; sourceTree = "<group>"; };
 		3173853E169C726900B86E48 /* NinjaJumping.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NinjaJumping.plist; path = Resources/NinjaJumping.plist; sourceTree = "<group>"; };
 		3173853F169C726900B86E48 /* NinjaJumping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaJumping.png; path = Resources/NinjaJumping.png; sourceTree = "<group>"; };
 		31738540169C726900B86E48 /* NinjaJumping1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaJumping1.png; path = Resources/NinjaJumping1.png; sourceTree = "<group>"; };
@@ -776,7 +776,7 @@
 		E7ACD58316A1C12900CA6797 /* Sushi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Sushi.mm; sourceTree = "<group>"; };
 		E7ACD58516A1D57800CA6797 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wall.h; path = ../Wall.h; sourceTree = "<group>"; };
 		E7ACD58616A1D57800CA6797 /* Wall.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Wall.mm; path = ../Wall.mm; sourceTree = "<group>"; };
-		E7ACD58816A1D78400CA6797 /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wall.png; sourceTree = "<group>"; };
+		E7ACD58816A1D78400CA6797 /* brokenwall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brokenwall.png; sourceTree = "<group>"; };
 		E7B517111695DD81002B0D97 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -930,6 +930,9 @@
 			children = (
 				CCE1490416AD7AB300383797 /* obstacles.plist */,
 				CCE1490516AD7AB300383797 /* obstacles.png */,
+				E7ACD58816A1D78400CA6797 /* brokenwall.png */,
+				3173852E169C6F5B00B86E48 /* icon-sushi.png */,
+				31738529169C6F5B00B86E48 /* enemy.png */,
 				CCE148A316A9B2FC00383797 /* CHOWFUN.TTF */,
 				CC175EBA16A59B1400A1E9E9 /* mainmenu.png */,
 				E79E365D16A464A30095147C /* powerup.png */,
@@ -937,18 +940,15 @@
 				E79E365E16A464A30095147C /* backgroundEmpty.png */,
 				E79E365F16A464A30095147C /* backgroundElements2.png */,
 				E79E366016A464A30095147C /* backgroundElements1.png */,
-				E7ACD58816A1D78400CA6797 /* wall.png */,
 				31A97290169DD7E80029DB0E /* shuriken.png */,
 				31738525169C6F5B00B86E48 /* background.png */,
 				31738526169C6F5B00B86E48 /* background1.png */,
 				31738527169C6F5B00B86E48 /* background2.png */,
 				31738528169C6F5B00B86E48 /* Default.png */,
 				3173853D169C722700B86E48 /* Ninja */,
-				31738529169C6F5B00B86E48 /* enemy.png */,
 				3173852A169C6F5B00B86E48 /* gameOverBackground.png */,
 				3173852B169C6F5B00B86E48 /* pauseButton.png */,
 				3173852D169C6F5B00B86E48 /* projectile.png */,
-				3173852E169C6F5B00B86E48 /* sushi.png */,
 				31738505169C6E5500B86E48 /* ninjaNew.png */,
 				71C3C57516760B6600623738 /* Default_alt.png */,
 				71C3C57716760B6700623738 /* Default@2x.png */,
@@ -1617,7 +1617,7 @@
 				31738535169C6F5B00B86E48 /* pauseButton.png in Resources */,
 				CCE148A416A9B2FC00383797 /* CHOWFUN.TTF in Resources */,
 				31738537169C6F5B00B86E48 /* projectile.png in Resources */,
-				31738538169C6F5B00B86E48 /* sushi.png in Resources */,
+				31738538169C6F5B00B86E48 /* icon-sushi.png in Resources */,
 				31738552169C726900B86E48 /* NinjaJumping.plist in Resources */,
 				31738553169C726900B86E48 /* NinjaJumping.png in Resources */,
 				31738554169C726900B86E48 /* NinjaJumping1.png in Resources */,
@@ -1684,7 +1684,7 @@
 				CCD7356516A028C8009EE560 /* NinjaRunningFast2.png in Resources */,
 				CCD7356616A028C8009EE560 /* NinjaRunningFast3.png in Resources */,
 				CCD7356716A028C8009EE560 /* NinjaRunningFast4.png in Resources */,
-				E7ACD58916A1D78400CA6797 /* wall.png in Resources */,
+				E7ACD58916A1D78400CA6797 /* brokenwall.png in Resources */,
 				E79E366116A464A30095147C /* powerup.png in Resources */,
 				E79E366216A464A30095147C /* backgroundEmpty.png in Resources */,
 				E79E366316A464A30095147C /* backgroundElements2.png in Resources */,

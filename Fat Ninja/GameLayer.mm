@@ -27,7 +27,7 @@
 @synthesize distance;
 @synthesize enemyArray;
 @synthesize nextStage;
-@synthesize geschwindigkeitEnemy,_enemyBatchNode;
+@synthesize geschwindigkeitEnemy,_enemyBatchNode,_wallBatchNode,_sushiBatchNode;
 
 //startpunkt für swipe ueberpruefung
 CGPoint _startPoint;
@@ -61,6 +61,10 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         [self scheduleUpdate];
         _enemyBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"enemy.png"];
         [self addChild:_enemyBatchNode];
+        _sushiBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"icon-sushi.png"];
+        [self addChild:_sushiBatchNode];
+        _wallBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"brokenwall.png"];
+        [self addChild:_wallBatchNode];
         tag=0;
         nextStage=false;
         enemyCounter=0;
@@ -70,7 +74,6 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         _geschwindigkeitSpawn=3.5;
         
         enemyArray = [[NSMutableArray alloc] init];
-        // _sushiArray = [[NSMutableArray alloc] init];
         
         [self schedule:@selector(spawnEnemy:)interval:_geschwindigkeitSpawn];
         
@@ -111,7 +114,6 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         sushiLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:25];
         [self addChild:sushiLabel];
         sushiLabel.position = ccp(winSize.width-20, winSize.height-50);
-        //[self schedule:@selector(updateSushiEaten:)];
         
     }
     
@@ -276,8 +278,6 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 
     for (ObstacleObject *enemy in enemyToDelete) {
         [self removeObstacle:enemy];
-        //geht auch ohne das, kA was das macht
-        //[self removeChild:enemy cleanup:YES];
     }
     [enemyToDelete release];
     
@@ -469,7 +469,6 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     //NSLog(@"Hier sind die RandomTags: %i",randomTag);
     
     int randomPowerUp = arc4random()%1;
-    
     if (praesentationCounter < 3) {
         randomTag = praesentationCounter;
         praesentationCounter++;
@@ -483,15 +482,19 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         case 0:
             tag++;
             enemy=[[Skeleton alloc] initWith: geschwindigkeitEnemy andWinSize:winSize];
+            [_enemyBatchNode addChild:enemy];
             break;
         case 1:
             tag++;
-            enemy=[[Sushi alloc] init];
+            enemy=[[Sushi alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
             enemy.scale =0.7;
+            [_sushiBatchNode addChild:enemy];
+
             break;
         case 2:
             tag++;
-            enemy=[[Wall alloc] init];
+            enemy=[[Wall alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
+            [_wallBatchNode addChild:enemy];
             break;
             
         default:
@@ -504,7 +507,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         [enemyArray addObject:powerUp];
         int randomHeight = (arc4random() % 51)*2.5;
         CGPoint location =CGPointMake(winSize.width, winSize.height/3+randomHeight);
-        b2Body *body=[self createBodyAtLocation:location withSize:enemy.contentSize];
+        b2Body *body=[self createBodyAtLocation:location withSize:powerUp.contentSize];
         [powerUp setPTMRatio:PTM_RATIO];
         [powerUp setBody:body];
         [powerUp setPosition: location];
@@ -532,17 +535,8 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     [enemy setPTMRatio:PTM_RATIO];
 	[enemy setBody:body];
 	[enemy setPosition: location];
-    [_enemyBatchNode addChild:enemy];
     [enemy loadAnim];
-//    CCMoveTo * actionMove = [CCMoveTo actionWithDuration: geschwindigkeitEnemy
-//                                                position:ccp(self.position.x
-//                                                             -winSize.width, winSize.height/3)];
-//    CCCallBlockN* actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node){
-//        [node removeFromParentAndCleanup:YES];
-//        [enemyArray removeObject:node];
-//    }];
-//    CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
-//    [enemy runAction:sequence];
+
     
     enemyCounter++;
     
@@ -563,8 +557,12 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 -(void) removeObstacle: (CCPhysicsSprite*) obstacle{
     world->DestroyBody(obstacle.body);
     [enemyArray removeObject:obstacle];
-    if(obstacle.class!=PowerUp.class){
+    if(obstacle.class==Skeleton.class){
         [_enemyBatchNode removeChild:obstacle cleanup:YES];
+    }else if(obstacle.class==Sushi.class){
+        [_sushiBatchNode removeChild:obstacle cleanup:YES];
+    }else if(obstacle.class==Wall.class){
+        [_wallBatchNode removeChild:obstacle cleanup:YES];
     }else{
         [self removeChild:obstacle cleanup:YES];
     }

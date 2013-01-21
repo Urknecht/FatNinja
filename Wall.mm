@@ -12,7 +12,7 @@
 
 -(id) initWith:(float)geschw andWinSize:(CGSize)wSize{
     if ((self = [super init])) {
-        self= [Wall spriteWithFile:@"wall.png"];
+        self= [Wall spriteWithFile:@"brokenwall.png"];
         isRollable=true;
         isShootable=false;
         geschwindigkeit=geschw;

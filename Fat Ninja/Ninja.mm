@@ -206,7 +206,7 @@
     circle.m_radius = 25.0/PTM_RATIO;
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &circle;
-    fixtureDef.density = 2.0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
+    fixtureDef.density = 3.0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
     //mass=density*volume
     body->CreateFixture(&fixtureDef);
     return body;

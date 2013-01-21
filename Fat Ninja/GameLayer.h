@@ -36,11 +36,16 @@
     double geschwindigkeitEnemy;
     
     CCSpriteBatchNode *_enemyBatchNode;
+    CCSpriteBatchNode *_sushiBatchNode;
+    CCSpriteBatchNode *_wallBatchNode;
+
 
     
 }
 @property(nonatomic, strong) NSMutableArray *enemyArray;
 @property(nonatomic,strong)  CCSpriteBatchNode *_enemyBatchNode;
+@property(nonatomic,strong)  CCSpriteBatchNode *_sushiBatchNode;
+@property(nonatomic,strong)  CCSpriteBatchNode *_wallBatchNode;
 
 @property(readwrite) bool nextStage;
 @property(readonly) double geschwindigkeitEnemy;
