@@ -269,6 +269,9 @@
 		CCE148A416A9B2FC00383797 /* CHOWFUN.TTF in Resources */ = {isa = PBXBuildFile; fileRef = CCE148A316A9B2FC00383797 /* CHOWFUN.TTF */; };
 		CCE148A716AB326000383797 /* Ninja.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A616AB325F00383797 /* Ninja.mm */; };
 		CCE148AA16AB3C5000383797 /* GameObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A916AB3C5000383797 /* GameObject.mm */; };
+		CCE1490216AD6DCE00383797 /* TutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE1490116AD6DCE00383797 /* TutorialScene.m */; };
+		CCE1490616AD7AB300383797 /* obstacles.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCE1490416AD7AB300383797 /* obstacles.plist */; };
+		CCE1490716AD7AB300383797 /* obstacles.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE1490516AD7AB300383797 /* obstacles.png */; };
 		E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */; };
 		E79E366116A464A30095147C /* powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = E79E365D16A464A30095147C /* powerup.png */; };
 		E79E366216A464A30095147C /* backgroundEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = E79E365E16A464A30095147C /* backgroundEmpty.png */; };
@@ -748,6 +751,10 @@
 		CCE148A616AB325F00383797 /* Ninja.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ninja.mm; sourceTree = "<group>"; };
 		CCE148A816AB3C4F00383797 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		CCE148A916AB3C5000383797 /* GameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameObject.mm; sourceTree = "<group>"; };
+		CCE1490016AD6DCE00383797 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialScene.h; sourceTree = "<group>"; };
+		CCE1490116AD6DCE00383797 /* TutorialScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialScene.m; sourceTree = "<group>"; };
+		CCE1490416AD7AB300383797 /* obstacles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = obstacles.plist; sourceTree = "<group>"; };
+		CCE1490516AD7AB300383797 /* obstacles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = obstacles.png; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
 		E79E365D16A464A30095147C /* powerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = powerup.png; sourceTree = "<group>"; };
@@ -921,6 +928,8 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CCE1490416AD7AB300383797 /* obstacles.plist */,
+				CCE1490516AD7AB300383797 /* obstacles.png */,
 				CCE148A316A9B2FC00383797 /* CHOWFUN.TTF */,
 				CC175EBA16A59B1400A1E9E9 /* mainmenu.png */,
 				E79E365D16A464A30095147C /* powerup.png */,
@@ -1474,6 +1483,8 @@
 		E7AC8B6416AC216D00621F05 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				CCE1490016AD6DCE00383797 /* TutorialScene.h */,
+				CCE1490116AD6DCE00383797 /* TutorialScene.m */,
 				E7A5EC731678C499006AA447 /* GameScene.h */,
 				E7A5EC741678C49A006AA447 /* GameScene.mm */,
 				71A43C7516A6C96200B79C04 /* MinigameScene.h */,
@@ -1680,6 +1691,8 @@
 				E79E366416A464A30095147C /* backgroundElements1.png in Resources */,
 				CC175EBB16A59B1400A1E9E9 /* mainmenu.png in Resources */,
 				E7A6C95916A6C21700555F52 /* pauseMenuBg.png in Resources */,
+				CCE1490616AD7AB300383797 /* obstacles.plist in Resources */,
+				CCE1490716AD7AB300383797 /* obstacles.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1860,6 +1873,7 @@
 				CCE148AA16AB3C5000383797 /* GameObject.mm in Sources */,
 				71A17FCD16AC7B9900EEADF8 /* MinigameFoodDrop.mm in Sources */,
 				71A17FCE16AC7B9900EEADF8 /* MinigameLayer.mm in Sources */,
+				CCE1490216AD6DCE00383797 /* TutorialScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
