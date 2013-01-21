@@ -34,11 +34,7 @@
     
     b2World * world;
 }
-//@property (readwrite)bool isJumping;
-//@property (readwrite)bool isDoubleJumping;
-//@property (readwrite)bool isRolling;
-//@property (readwrite)bool isDying;
-//@property (readwrite)bool isThrowing;
+
 
 @property (nonatomic, retain)CCPhysicsSprite *ninjaRunning;
 @property (nonatomic, retain)CCPhysicsSprite *ninjaJumping;
