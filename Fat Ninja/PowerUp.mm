@@ -15,7 +15,7 @@
         type = arc4random()%3;
         self= [PowerUp spriteWithFile:@"powerup.png"];
         isPowerUp=true;
-        isShootable=false;
+        isShootable=true;
     }
     return self;
 }

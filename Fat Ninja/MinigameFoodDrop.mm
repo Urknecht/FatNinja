@@ -27,7 +27,7 @@ NSString *dropBomb = @"0";
         
         game = @"Omnom-Jutsu";
         description = @"Alles essen!";
-        timeCount = 20;
+        timeCount = 2;
         
         //Die Teile für richtiges Essen
         for (int i = 0; i < 15; i++) {
