@@ -59,6 +59,7 @@
 
 -(void)removeObstacle: (CCSprite*) enemy;
 -(void) stopAnimation;
+-(void) stopGame;
 -(void) pauseGame;
 -(void) endGame;
 -(void)throwProjectile;

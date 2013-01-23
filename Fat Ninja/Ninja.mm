@@ -20,6 +20,11 @@
     if (self != nil) {
         world=physicworld;
 
+        _jumpWasDouble = false;
+        _wasJumpingAndThrowing = false;
+        _shouldDie=false;
+        
+        
         [self loadAnims];
         gameObjectType=Character;
         self.ninjaJumpMove = [CCJumpBy actionWithDuration:1.0f
@@ -39,61 +44,113 @@
     
 }
 
+-(void) changeState:(CharacterStates)newState{
+    // [self stopAllActions];
+    //    id action = nil;
+    
+    
+    switch (newState) {
+        case StateJumping:
+            [_spriteSheetJumping setVisible:(true)];
+            [_spriteSheetRunning setVisible:(false)];
+            [_ninjaJumping runAction:self.jumpAction];
+            [_ninjaRunning stopAction: self.walkSpeedAction];
+            break;
+        case StateStart:
+            [_spriteSheetRunning setVisible:(true)];
+            [_ninjaRunning runAction: self.walkSpeedAction];
+            break;
+            
+        case StateDoubleJumping:
+            [_spriteSheetDoubleJump setVisible:(true)];
+            [_spriteSheetRunning setVisible:(false)];
+            [_ninjaDoubleJump runAction:self.doubleJumpAction];
+            [_ninjaRunning stopAction: self.walkSpeedAction];
+            break;
+            
+        case StateRolling:
+            [_spriteSheetRoll setVisible:(true)];
+            [_spriteSheetRunning setVisible:(false)];
+            [_ninjaRoll runAction:self.rollAction];
+            [_ninjaRunning stopAction: self.walkSpeedAction];
+            break;
+            
+        case StateDie:
+            //sterbe animation, am ende muss gegner gelöscht werden
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self setCharacterState:newState];
+    
+    //    if (action != nil) {
+    //        [self runAction:action];
+    //    }
+}
 
 
 -(void) jump{
     if(characterState!=StateJumping&&characterState!=StateDie&&characterState!=StateDoubleJumping){
         
-       [self setCharacterState: StateJumping];
+        //Change State
+        [self changeState: StateJumping];
         
-        [_spriteSheetJumping setVisible:(true)];
-        [_spriteSheetRunning setVisible:(false)];
-        [_ninjaJumping runAction:self.jumpAction];
-        [_ninjaRunning stopAction: self.walkSpeedAction];
-        
-        
+        //Animation
         [_ninjaJumping runAction:
          [CCSequence actions:
           self.ninjaJumpMove,
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
              
-             [self setCharacterState: StateStart];
+             //Beende Jumpen
              [_spriteSheetJumping setVisible:(false)];
              [_ninjaJumping stopAction:self.jumpAction];
-             if(!_wasJumpingAndThrowing){//Falls ein Shuricen gleichzeitig geworfen wurde
-                 [_spriteSheetRunning setVisible:(true)];
-                 [_ninjaRunning runAction: self.walkSpeedAction];
+             
+             //Starte Neuen Status
+             if(!_wasJumpingAndThrowing){//Falls kein Shuricen gleichzeitig geworfen wurde
+                 [self changeState: StateStart];
              }
+             else{
+                 _wasJumpingAndThrowing = false;
+             }
+             if(_shouldDie){
+                 [self die:_gameLayer];
+             }
+             
          }],
           nil]];
         
-        //ThrowLayer soll immer auf der gleichen Position sein, falls man schießen und hüfen gleichzeitig will
-        [_spriteSheetThrow runAction:[[self.ninjaJumpMove copy] autorelease]]; // for all subsequent uses
     }
 }
 
 -(void) doubleJump{
     if(characterState!=StateDoubleJumping&&characterState!=StateDie&&characterState!=StateJumping){
         
-        [self setCharacterState: StateDoubleJumping];
+        //Change State
+        [self changeState: StateDoubleJumping];
         
-        [_spriteSheetDoubleJump setVisible:(true)];
-        [_spriteSheetRunning setVisible:(false)];
-        [_ninjaDoubleJump runAction:self.doubleJumpAction];
-        [_ninjaRunning stopAction: self.walkSpeedAction];
         
+        //Animation
         [_ninjaDoubleJump runAction:
          [CCSequence actions:
           self.ninjaDoubleJumpMove,
           
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
-             [self setCharacterState: StateStart];
+             
+             //Beende doubleJump
              [_spriteSheetDoubleJump setVisible:(false)];
              [_ninjaDoubleJump stopAction:self.doubleJumpAction];
              
              if(!_wasJumpingAndThrowing){//Falls ein Shuricen gleichzeitig geworfen wurde
-                 [_ninjaRunning runAction: self.walkSpeedAction];
-                 [_spriteSheetRunning setVisible:(true)];
+                 [self changeState: StateStart];
+                 
+             }
+             else{
+                 _wasJumpingAndThrowing = false;
+             }
+             if(_shouldDie){
+                 [self die:_gameLayer];
              }
              
          }],
@@ -106,53 +163,75 @@
 
 -(void) startRoll{
     if(characterState!=StateRolling&&characterState!=StateJumping&&characterState!=StateDie&&characterState!=StateDoubleJumping){
-        
-        [self setCharacterState: StateRolling];
-        [_spriteSheetRoll setVisible:(true)];
-        [_spriteSheetRunning setVisible:(false)];
-        [_ninjaRoll runAction:self.rollAction];
-        [_ninjaRunning stopAction: self.walkSpeedAction];
+        [self changeState: StateRolling];
     }
 }
 
 -(void) endRoll{
     if(characterState==StateRolling){
-        [self setCharacterState: StateStart];
+        //End Rolling
         [_spriteSheetRoll setVisible:(false)];
-        [_spriteSheetRunning setVisible:(true)];
         [_ninjaRoll stopAction:self.rollAction];
-        [_ninjaRunning runAction: self.walkSpeedAction];
+        
+        [self changeState: StateStart];
+        if(_shouldDie){
+            [self die:_gameLayer];
+        }
+        
     }
 }
 
 -(void) throwProjectile:(GameLayer *)gameLayer{
-    if(characterState!=StateRolling&&characterState!=StateThrowing&&characterState!=StateDie&&characterState!=StateDoubleJumping){
-        _wasJumpingAndThrowing = false;
+    if(characterState!=StateRolling&&characterState!=StateThrowing&&characterState!=StateDie){
         
-        [self setCharacterState: StateThrowing];
+        
         [_spriteSheetThrow setVisible:(true)];
+        
         if(characterState==StateJumping){
             _wasJumpingAndThrowing = true;
             [_spriteSheetJumping setVisible:(false)];
+        }
+        else if(characterState==StateDoubleJumping){
+            _wasJumpingAndThrowing = true;
+            _jumpWasDouble = true;
+            [_spriteSheetDoubleJump setVisible:(false)];
         }
         else{
             [_spriteSheetRunning setVisible:(false)];
             [_ninjaRunning stopAction: self.walkSpeedAction];
         }
         
+        [self setCharacterState: StateThrowing];
+        
+        
         [_ninjaThrow runAction:
          [CCSequence actions: [CCAnimate actionWithAnimation:self.throwAnim],
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
              
-             [self setCharacterState: StateStart];
+             //Beende Throw
              [_spriteSheetThrow setVisible:(false)];
-             if(characterState==StateJumping){
-                 [_spriteSheetJumping setVisible:(true)];
+             
+             
+             if(_wasJumpingAndThrowing){
                  _wasJumpingAndThrowing = false;
-             }
+                 if(_jumpWasDouble){
+                     [self setCharacterState: StateDoubleJumping];
+                     [_spriteSheetDoubleJump setVisible:(true)];
+                 }
+                 else{
+                     [self setCharacterState: StateJumping];
+                     [_spriteSheetJumping setVisible:(true)];
+                     
+                 }}
+             
              else{
+                 [self setCharacterState: StateStart];
                  [_spriteSheetRunning setVisible:(true)];
                  [_ninjaRunning runAction: self.walkSpeedAction];
+                 
+             }
+             if(_shouldDie){
+                 [self die:_gameLayer];
              }
              
          }],
@@ -166,6 +245,8 @@
     
     if(characterState!=StateJumping&&characterState!=StateThrowing&&characterState!=StateDie&&characterState!=StateDoubleJumping){
         [self setCharacterState: StateDie];
+        _shouldDie = false;
+        [gameLayer stopGame];
         
         if(characterState==StateRolling){
             [_ninjaRoll stopAction:self.rollAction];
@@ -173,14 +254,15 @@
         else{
             [_ninjaRunning stopAction: self.walkSpeedAction];
         }
-        NSLog(@"ninja1");
+        
         
         [self removeChild:(_spriteSheetRoll)];
         [self removeChild:(_spriteSheetRunning)];
         [self removeChild:(_spriteSheetJumping)];
         [self removeChild:(_spriteSheetDoubleJump)];
         [self removeChild:(_spriteSheetThrow)];
-        NSLog(@"ninja2");
+        
+        
         [_spriteSheetDie setVisible:(true)];
         [_ninjaDie runAction:self.dieAction];
         
@@ -193,7 +275,14 @@
              //self.isDying = false;
          }], nil]];
     }
+    
+    else{
+        [self setCharacterState: StateDie];
+        _shouldDie = true;
+        _gameLayer = gameLayer;
+    }
 }
+
 
 - (b2Body*)createNinjaAtLocation:(CGPoint)location withSize:(CGSize)size {
     

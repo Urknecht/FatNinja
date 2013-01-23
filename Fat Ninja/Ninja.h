@@ -32,6 +32,15 @@
     //prüft ob der Ninja hüpft während ein Shuricon geworfen wurde
     bool _wasJumpingAndThrowing;
     
+    //gibt an welche Art von hüpfen gerade durchgeführt wurde
+    bool _jumpWasDouble;
+    
+    //gibt an ob der Ninja nach der animation sterben soll
+    bool _shouldDie;
+    
+    //Der Gamelayer an den nach Die zurückgegeben wird
+    GameLayer *_gameLayer;
+    
     b2World * world;
 }
 
