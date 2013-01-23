@@ -6,18 +6,19 @@
 //  Copyright (c) 2013 Florian Weiß. All rights reserved.
 //
 
-#import "Sushi.h"
+#import "SushiOb.h"
 
-@implementation Sushi
+@implementation SushiOb
 
 
 -(id) initWith:(float)geschw andWinSize:(CGSize)wSize{
     if ((self = [super init])) {
-        self= [Sushi spriteWithFile:@"icon-sushi.png"];
+        self= [SushiOb spriteWithFile:@"icon-sushi.png"];
         isEatable=true;
         isShootable=true;
         geschwindigkeit=geschw;
         wiSize=wSize;
+        enemyType=Sushi;
         //lol
     }
     return self;

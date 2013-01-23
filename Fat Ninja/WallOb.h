@@ -8,6 +8,6 @@
 
 #import "ObstacleObject.h"
 
-@interface Wall : ObstacleObject
+@interface WallOb : ObstacleObject
 
 @end

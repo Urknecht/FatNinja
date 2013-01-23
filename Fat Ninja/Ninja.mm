@@ -291,13 +291,24 @@
     bodyDef.position = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
     b2Body *body = world->CreateBody(&bodyDef);
     
-    b2CircleShape circle;
-    circle.m_radius = 25.0/PTM_RATIO;
-    b2FixtureDef fixtureDef;
-    fixtureDef.shape = &circle;
-    fixtureDef.density = 3.0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
+    b2CircleShape circle1;
+    circle1.m_radius = 23.0/PTM_RATIO;
+    circle1.m_p.Set(0,-0.2);
+    b2FixtureDef fixtureDef1;
+    fixtureDef1.shape = &circle1;
+    fixtureDef1.density = 5.0;
+    //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
     //mass=density*volume
-    body->CreateFixture(&fixtureDef);
+    body->CreateFixture(&fixtureDef1);
+    
+    b2CircleShape circle2;
+    circle2.m_radius = 10.0/PTM_RATIO;
+    circle2.m_p.Set(0.1,0.7);
+    b2FixtureDef fixtureDef2;
+    fixtureDef2.shape = &circle2;
+    fixtureDef2.density = 0;
+    body->CreateFixture(&fixtureDef2);
+    
     return body;
     
 }

@@ -16,8 +16,8 @@
 #import "ObstacleObject.h"
 #import "MinigameScene.h"
 #import "Skeleton.h"
-#import "Sushi.h"
-#import "Wall.h"
+#import "SushiOb.h"
+#import "WallOb.h"
 #import "PowerUp.h"
 
 
@@ -297,7 +297,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 //pruefen ob monster abgeschossen wurden
 - (void)updateMonsterIsHit:(ccTime)dt {
     NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
-    for (CCSprite *projectile in _projectiles) {
+    for (CCPhysicsSprite *projectile in _projectiles) {
         
         NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
         for (ObstacleObject *enemy in enemyArray) {
@@ -323,7 +323,8 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         [enemyToDelete release];
     }
     
-    for (CCSprite *projectile in projectilesToDelete) {
+    for (CCPhysicsSprite *projectile in projectilesToDelete) {
+        world->DestroyBody(projectile.body);
         [_projectiles removeObject:projectile];
         [self removeChild:projectile cleanup:YES];
     }
@@ -405,8 +406,11 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     
     // Set up initial location of projectile
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    CCSprite *projectile = [CCSprite spriteWithFile:@"shuriken.png"];
-    projectile.position = [ninja getCurrentNinjaSprite].position;
+    CCPhysicsSprite *projectile = [CCPhysicsSprite spriteWithFile:@"shuriken.png"];
+    [projectile setPTMRatio:PTM_RATIO];
+	[projectile setBody:[self createBodyAtLocation:[ninja getCurrentNinjaSprite].position withSize:projectile.contentSize]];
+	[projectile setPosition: [ninja getCurrentNinjaSprite].position];
+    
     
     // Determine offset of location to projectile
     CGPoint offset = ccpSub(location, projectile.position);
@@ -485,14 +489,14 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
             break;
         case 1:
             tag++;
-            enemy=[[Sushi alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
+            enemy=[[SushiOb alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
             enemy.scale =0.7;
             [_sushiBatchNode addChild:enemy];
 
             break;
         case 2:
             tag++;
-            enemy=[[Wall alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
+            enemy=[[WallOb alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
             [_wallBatchNode addChild:enemy];
             break;
             
@@ -558,9 +562,9 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     [enemyArray removeObject:obstacle];
     if(obstacle.class==Skeleton.class){
         [_enemyBatchNode removeChild:obstacle cleanup:YES];
-    }else if(obstacle.class==Sushi.class){
+    }else if(obstacle.class==SushiOb.class){
         [_sushiBatchNode removeChild:obstacle cleanup:YES];
-    }else if(obstacle.class==Wall.class){
+    }else if(obstacle.class==WallOb.class){
         [_wallBatchNode removeChild:obstacle cleanup:YES];
     }else{
         [self removeChild:obstacle cleanup:YES];

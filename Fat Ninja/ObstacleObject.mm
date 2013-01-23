@@ -36,10 +36,6 @@
 }
 
 
--(void)loadAnim{
-    
-}
-
 -(void)dealloc{
     [super dealloc];
  }

@@ -6,17 +6,18 @@
 //  Copyright (c) 2013 Florian Weiß. All rights reserved.
 //
 
-#import "Wall.h"
+#import "WallOb.h"
 
-@implementation Wall
+@implementation WallOb
 
 -(id) initWith:(float)geschw andWinSize:(CGSize)wSize{
     if ((self = [super init])) {
-        self= [Wall spriteWithFile:@"brokenwall.png"];
+        self= [WallOb spriteWithFile:@"brokenwall.png"];
         isRollable=true;
         isShootable=false;
         geschwindigkeit=geschw;
         wiSize=wSize;
+        enemyType=Wall;
     }
     return self;
 }

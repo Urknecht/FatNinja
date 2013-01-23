@@ -19,6 +19,7 @@
         isShootable=true;
         geschwindigkeit=geschw;
         wiSize=wSize;
+        enemyType=Enemy;
     }
     return self;
 }

@@ -1,5 +1,5 @@
 //
-//  Wall.h
+//  Sushi.h
 //  Fat Ninja
 //
 //  Created by Linda Mai Bui on 1/12/13.
@@ -8,6 +8,6 @@
 
 #import "ObstacleObject.h"
 
-@interface Wall : ObstacleObject
+@interface SushiOb : ObstacleObject
 
 @end

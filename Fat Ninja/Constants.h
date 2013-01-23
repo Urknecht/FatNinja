@@ -27,6 +27,8 @@ typedef enum {
 
 typedef enum {
     Enemy,
+    Sushi,
+    Wall,
     Character,
     Powerup,
     Obstacle,
