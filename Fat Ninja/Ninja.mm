@@ -13,7 +13,7 @@
 
 
 @implementation Ninja
-
+b2Body *body;
 
 -(id)initWithWorld: (b2World*) physicworld {
     self = [super init];
@@ -289,6 +289,7 @@
     b2BodyDef bodyDef;      //body erstellen
     bodyDef.type = b2_dynamicBody; //dynamic: box2d kuemmert sich um bewegungen
     bodyDef.position = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    bodyDef.fixedRotation=true;
     b2Body *body = world->CreateBody(&bodyDef);
     
     b2CircleShape circle1;
@@ -311,6 +312,10 @@
     
     return body;
     
+}
+
+-(b2Body*) getCurrentBody{
+    return [self getCurrentNinjaSprite].body;
 }
 
 
@@ -357,7 +362,7 @@
     _ninjaRunning.scale = (winSize.height / 400) ;
     //_ninjaRunning.position = ccp(_ninjaRunning.contentSize.width, winSize.height / 3);
     CGPoint location = ccp(_ninjaRunning.contentSize.width, winSize.height);
-	b2Body *body=[self createNinjaAtLocation:location withSize:_ninjaRunning.contentSize];
+	body=[self createNinjaAtLocation:location withSize:_ninjaRunning.contentSize];
     
     [_ninjaRunning setPTMRatio:PTM_RATIO];
 	[_ninjaRunning setBody:body];
@@ -513,7 +518,7 @@
     }}
 
 
--(CCSprite*)getCurrentNinjaSprite{
+-(CCPhysicsSprite*)getCurrentNinjaSprite{
     if(characterState==StateJumping){
         return _ninjaJumping;
     }else if(characterState==StateDoubleJumping){

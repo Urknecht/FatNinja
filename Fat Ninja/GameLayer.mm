@@ -179,20 +179,47 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 	groundBody->CreateFixture(&groundBox,0);
 }
 
-- (b2Body*)createBodyAtLocation:(CGPoint)location withSize:(CGSize)size {
+- (b2Body*)createBodyFor: (GameObjectType) type AtLocation:(CGPoint)location withSize:(CGSize)size {
     
     b2BodyDef bodyDef;      //body erstellen
     bodyDef.type = b2_dynamicBody; //dynamic: box2d kuemmert sich um bewegungen
     bodyDef.position = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
     b2Body *body = world->CreateBody(&bodyDef);
-    
     b2PolygonShape shape;           //shape erstellen
-    shape.SetAsBox(size.width/2/PTM_RATIO, size.height/2/PTM_RATIO);
-    
     b2FixtureDef fixtureDef;
-    fixtureDef.shape = &shape;
-   // fixtureDef.density = 0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
-    //mass=density*volume
+
+    switch (type) {
+        case Enemy:{
+            b2CircleShape circle;
+            circle.m_radius = 13.0/PTM_RATIO;
+            circle.m_p.Set(0.0,0.1);
+            fixtureDef.shape = &circle;
+        }
+            break;
+        case Sushi:{
+             shape.SetAsBox(size.width/2/PTM_RATIO, size.height/2/PTM_RATIO);
+            fixtureDef.shape = &shape;
+            // fixtureDef.density = 0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
+            //mass=density*volume
+        }
+            break;
+        case Wall:
+        {
+            shape.SetAsBox(size.width/2/PTM_RATIO, size.height/2/PTM_RATIO);
+            fixtureDef.shape = &shape;
+        }
+            break;
+            
+        case None:
+        {
+            shape.SetAsBox(size.width/2/PTM_RATIO, size.height/2/PTM_RATIO);
+            fixtureDef.shape = &shape;
+        }
+            break;
+        default:
+            break;
+    }
+
     body->CreateFixture(&fixtureDef);
     return body;
     
@@ -251,27 +278,57 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
 
     for (ObstacleObject *enemy in enemyArray) {
-        
-        if (CGRectIntersectsRect([ninja getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
-            if(enemy.isEatable){
-                sushiCounter++;
-                [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
-                [enemyToDelete addObject:enemy];
+        b2ContactEdge* edge = [ninja getCurrentBody]->GetContactList();
+        while (edge)
+        {
+            b2Contact* contact = edge->contact;
+            b2Fixture* fixtureA = contact->GetFixtureA();
+            b2Fixture* fixtureB = contact->GetFixtureB();
+            b2Body *bodyA = fixtureA->GetBody();
+            b2Body *bodyB = fixtureB->GetBody();
+            if (bodyA == enemy.body || bodyB == enemy.body) {
+                if(enemy.isEatable){
+                    sushiCounter++;
+                    [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
+                    [enemyToDelete addObject:enemy];
+                }
+                else if(enemy.isRollable and isRolling){
+                    [enemyToDelete addObject:enemy];
+                }
+                else if(enemy.isPowerUp){
+                    //hier kommt das mit dem PowerUp rein
+                    [enemyToDelete addObject:enemy];
+                    [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:enemy.type]];
+                }
+                else{
+                    [ninja die:self];
+                    [self stopGame];
+                    
+                }
             }
-            else if(enemy.isRollable and isRolling){
-                [enemyToDelete addObject:enemy];
-            }
-            else if(enemy.isPowerUp){
-                //hier kommt das mit dem PowerUp rein                
-                [enemyToDelete addObject:enemy];
-                [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:enemy.type]];
-            }
-            else{
-                [ninja die:self];
-                [self stopGame];
-
-            }
+            edge = edge->next;
         }
+        
+//        if (CGRectIntersectsRect([ninja getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
+//            if(enemy.isEatable){
+//                sushiCounter++;
+//                [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
+//                [enemyToDelete addObject:enemy];
+//            }
+//            else if(enemy.isRollable and isRolling){
+//                [enemyToDelete addObject:enemy];
+//            }
+//            else if(enemy.isPowerUp){
+//                //hier kommt das mit dem PowerUp rein                
+//                [enemyToDelete addObject:enemy];
+//                [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:enemy.type]];
+//            }
+//            else{
+//                [ninja die:self];
+//                [self stopGame];
+//
+//            }
+//        }
     }
 
     for (ObstacleObject *enemy in enemyToDelete) {
@@ -408,7 +465,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCPhysicsSprite *projectile = [CCPhysicsSprite spriteWithFile:@"shuriken.png"];
     [projectile setPTMRatio:PTM_RATIO];
-	[projectile setBody:[self createBodyAtLocation:[ninja getCurrentNinjaSprite].position withSize:projectile.contentSize]];
+	[projectile setBody:[self createBodyFor: (GameObjectType) None AtLocation:[ninja getCurrentNinjaSprite].position withSize:projectile.contentSize]];
 	[projectile setPosition: [ninja getCurrentNinjaSprite].position];
     
     
@@ -510,7 +567,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         [enemyArray addObject:powerUp];
         int randomHeight = (arc4random() % 51)*2.5;
         CGPoint location =CGPointMake(winSize.width, winSize.height/3+randomHeight);
-        b2Body *body=[self createBodyAtLocation:location withSize:powerUp.contentSize];
+        b2Body *body=[self createBodyFor:(GameObjectType)None AtLocation:location withSize:powerUp.contentSize];
         [powerUp setPTMRatio:PTM_RATIO];
         [powerUp setBody:body];
         [powerUp setPosition: location];
@@ -533,7 +590,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     
     [enemyArray addObject:enemy];
     CGPoint location= ccp(winSize.width, winSize.height/3);
-    b2Body *body=[self createBodyAtLocation:location withSize:enemy.contentSize];
+    b2Body *body=[self createBodyFor: enemy.enemyType AtLocation:location withSize:enemy.contentSize];
 
     [enemy setPTMRatio:PTM_RATIO];
 	[enemy setBody:body];

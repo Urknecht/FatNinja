@@ -81,7 +81,8 @@
 -(void) die:(GameLayer *)gameLayer;
 -(void) throwProjectile:(GameLayer *)gameLayer;
 
--(CCSprite*)getCurrentNinjaSprite;
+-(b2Body*) getCurrentBody;
+-(CCPhysicsSprite*)getCurrentNinjaSprite;
 
 
 -(void)checkAndClampSpritePosition;
