@@ -27,7 +27,7 @@ b2Body *body;
         
         [self loadAnims];
         gameObjectType=Character;
-        self.ninjaJumpMove = [CCJumpBy actionWithDuration:1.0f
+        self.ninjaJumpMove = [CCJumpBy actionWithDuration:1.5f
                                                  position:ccp(0, 0)
                                                    height:70.0f
                                                     jumps:1];

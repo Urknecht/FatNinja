@@ -190,14 +190,36 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 
     switch (type) {
         case Enemy:{
-            b2CircleShape circle;
-            circle.m_radius = 13.0/PTM_RATIO;
-            circle.m_p.Set(0.0,0.1);
-            fixtureDef.shape = &circle;
+            //row 1, col 1
+            int num = 8;
+            b2Vec2 verts[] = {
+                b2Vec2(-5.0f / PTM_RATIO, 14.7f / PTM_RATIO),
+                b2Vec2(-10.3f / PTM_RATIO, 10.9f / PTM_RATIO),
+                b2Vec2(-9.7f / PTM_RATIO, -0.7f / PTM_RATIO),
+               b2Vec2(-3.6f / PTM_RATIO, -14.1f / PTM_RATIO),
+                b2Vec2(5.4f / PTM_RATIO, -14.6f / PTM_RATIO),
+                b2Vec2(11.3f / PTM_RATIO, 3.7f / PTM_RATIO),
+                b2Vec2(10.9f / PTM_RATIO, 10.5f / PTM_RATIO),
+                b2Vec2(-4.0f / PTM_RATIO, 14.2f / PTM_RATIO)};
+            shape.Set(verts, num);
+            fixtureDef.shape = &shape;
+
+
         }
             break;
         case Sushi:{
-             shape.SetAsBox(size.width/2/PTM_RATIO, size.height/2/PTM_RATIO);
+            int num = 8;
+            b2Vec2 verts[] = {
+            b2Vec2(-15.8f*0.7 / PTM_RATIO, 24.6f*0.7 / PTM_RATIO),
+            b2Vec2(-27.1f*0.7 / PTM_RATIO, 17.4f*0.7 / PTM_RATIO),
+            b2Vec2(-26.9f*0.7 / PTM_RATIO, -15.4f*0.7 / PTM_RATIO),
+            b2Vec2(0.9f*0.7 / PTM_RATIO, -23.6f*0.7 / PTM_RATIO),
+            b2Vec2(27.1f*0.7 / PTM_RATIO, -13.8f*0.7 / PTM_RATIO),
+            b2Vec2(28.4f*0.7 / PTM_RATIO, 14.3f*0.7 / PTM_RATIO),
+            b2Vec2(12.0f*0.7 / PTM_RATIO, 23.6f*0.7 / PTM_RATIO),
+            b2Vec2(-15.7f*0.7 / PTM_RATIO, 23.3f*0.7 / PTM_RATIO)};
+            shape.Set(verts, num);
+
             fixtureDef.shape = &shape;
             // fixtureDef.density = 0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
             //mass=density*volume
@@ -614,7 +636,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 }
 
 
--(void) removeObstacle: (CCPhysicsSprite*) obstacle{
+-(void) removeObstacle: (ObstacleObject*) obstacle{
     world->DestroyBody(obstacle.body);
     [enemyArray removeObject:obstacle];
     if(obstacle.class==Skeleton.class){
