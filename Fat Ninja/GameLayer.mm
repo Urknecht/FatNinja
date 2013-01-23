@@ -320,6 +320,10 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
                 else if(enemy.isPowerUp){
                     //hier kommt das mit dem PowerUp rein
                     [enemyToDelete addObject:enemy];
+                    if(isRolling){
+                        isRolling=false;
+                        [ninja endRoll];
+                    }
                     [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:enemy.type]];
                 }
                 else{
@@ -330,7 +334,20 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
             }
             edge = edge->next;
         }
+        if(enemy.isDone){
+            [enemyToDelete addObject:enemy];
+
+        }
+       
+        for(b2Body *b = world->GetBodyList(); b != NULL; b = b->GetNext()) {
+            if (b->GetUserData() != NULL) {
+                CCPhysicsSprite *sprite = (CCPhysicsSprite *) b->GetUserData();
+                sprite.position = ccp(b->GetPosition().x * PTM_RATIO,
+                                      b->GetPosition().y * PTM_RATIO);
+                sprite.rotation = CC_RADIANS_TO_DEGREES(b->GetAngle() * -1);
         
+            }
+        }
 //        if (CGRectIntersectsRect([ninja getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
 //            if(enemy.isEatable){
 //                sushiCounter++;
@@ -601,6 +618,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         CCCallBlockN* actionMoveDonePowerUp = [CCCallBlockN actionWithBlock:^(CCNode *node){
             [node removeFromParentAndCleanup:YES];
             [enemyArray removeObject:node];
+            [enemy setIsDone:true];
             //spawnPowerUp = false;
         }];
         CCSequence *sequencePowerUp=[CCSequence actionOne:actionMovePowerUp two:actionMoveDonePowerUp];

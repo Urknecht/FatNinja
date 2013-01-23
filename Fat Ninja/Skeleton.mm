@@ -49,9 +49,7 @@
                                                     position:ccp(self.position.x
                                                                  -wiSize.width, wiSize.height/3)];
         CCCallBlockN* actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node){
-            [node removeFromParentAndCleanup:YES];
-            [gl.enemyArray removeObject:node];
-        }];
+            isDone=true;        }];
         CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
         [self runAction:sequence];
 
