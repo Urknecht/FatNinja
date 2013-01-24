@@ -21,7 +21,6 @@
     float geschwindigkeit;
     CGSize wiSize;
     
-    bool isDone;
 
 
 }
@@ -34,7 +33,6 @@
 @property(readonly) CGSize wiSize;
 @property (readwrite) CharacterStates enemyState;
 @property(readonly)  GameObjectType enemyType;
-@property(readwrite)  bool isDone;
 
 
 -(id) initWith: (float) geschw andWinSize: (CGSize) wSize;

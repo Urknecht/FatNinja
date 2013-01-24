@@ -293,8 +293,8 @@ b2Body *body;
     b2Body *body = world->CreateBody(&bodyDef);
     
     b2CircleShape circle1;
-    circle1.m_radius = 23.0/PTM_RATIO;
-    circle1.m_p.Set(0,-0.2);
+    circle1.m_radius = 22.0/PTM_RATIO;
+    circle1.m_p.Set(0.05,-0.2);
     b2FixtureDef fixtureDef1;
     fixtureDef1.shape = &circle1;
     fixtureDef1.density = 5.0;
@@ -303,7 +303,7 @@ b2Body *body;
     body->CreateFixture(&fixtureDef1);
     
     b2CircleShape circle2;
-    circle2.m_radius = 10.0/PTM_RATIO;
+    circle2.m_radius = 9.0/PTM_RATIO;
     circle2.m_p.Set(0.1,0.7);
     b2FixtureDef fixtureDef2;
     fixtureDef2.shape = &circle2;

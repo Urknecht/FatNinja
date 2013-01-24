@@ -15,7 +15,7 @@
 @synthesize isEatable;
 @synthesize isShootable;
 @synthesize isPowerUp;
-@synthesize type,enemyState,enemyType,wiSize,geschiwndigkeit,isDone;
+@synthesize type,enemyState,enemyType,wiSize,geschiwndigkeit;
 
 
 
@@ -27,7 +27,6 @@
         isPowerUp=false;
         type = -1;
         enemyState=StateStart;
-        isDone=false;
 
     }
     return self;

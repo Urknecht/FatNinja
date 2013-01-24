@@ -232,6 +232,20 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         }
             break;
             
+        case Powerup:{
+            int num = 5;
+            b2Vec2 verts[] = {
+
+            b2Vec2 (-17.3f / PTM_RATIO, 21.4f / PTM_RATIO),
+            b2Vec2 (-17.2f / PTM_RATIO, -18.4f / PTM_RATIO),
+            b2Vec2 (17.2f / PTM_RATIO, -19.3f / PTM_RATIO),
+            b2Vec2 (16.6f / PTM_RATIO, 20.8f / PTM_RATIO),
+                b2Vec2 (-16.3f / PTM_RATIO, 20.7f / PTM_RATIO)};
+                shape.Set(verts, num);
+                
+                fixtureDef.shape = &shape;
+        }
+            break;
         case None:
         {
             shape.SetAsBox(size.width/2/PTM_RATIO, size.height/2/PTM_RATIO);
@@ -334,9 +348,8 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
             }
             edge = edge->next;
         }
-        if(enemy.isDone){
+        if(enemy.position.x==0){
             [enemyToDelete addObject:enemy];
-
         }
        
         for(b2Body *b = world->GetBodyList(); b != NULL; b = b->GetNext()) {
@@ -606,7 +619,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         [enemyArray addObject:powerUp];
         int randomHeight = (arc4random() % 51)*2.5;
         CGPoint location =CGPointMake(winSize.width, winSize.height/3+randomHeight);
-        b2Body *body=[self createBodyFor:(GameObjectType)None AtLocation:location withSize:powerUp.contentSize];
+        b2Body *body=[self createBodyFor:powerUp.enemyType AtLocation:location withSize:powerUp.contentSize];
         [powerUp setPTMRatio:PTM_RATIO];
         [powerUp setBody:body];
         [powerUp setPosition: location];
@@ -618,7 +631,6 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         CCCallBlockN* actionMoveDonePowerUp = [CCCallBlockN actionWithBlock:^(CCNode *node){
             [node removeFromParentAndCleanup:YES];
             [enemyArray removeObject:node];
-            [enemy setIsDone:true];
             //spawnPowerUp = false;
         }];
         CCSequence *sequencePowerUp=[CCSequence actionOne:actionMovePowerUp two:actionMoveDonePowerUp];

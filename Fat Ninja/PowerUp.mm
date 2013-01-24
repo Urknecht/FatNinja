@@ -16,6 +16,7 @@
         self= [PowerUp spriteWithFile:@"powerup.png"];
         isPowerUp=true;
         isShootable=true;
+        enemyType=Powerup;
     }
     return self;
 }

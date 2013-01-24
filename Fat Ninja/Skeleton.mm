@@ -43,13 +43,12 @@
 }
 
 -(void)loadAnim{
-    GameLayer *gl = (GameLayer *)[self.parent getChildByTag:gameLayerTag];
 
         CCMoveTo * actionMove = [CCMoveTo actionWithDuration: geschwindigkeit
                                                     position:ccp(self.position.x
-                                                                 -wiSize.width, wiSize.height/3)];
+                                                                 -(wiSize.width+self.contentSize.width), wiSize.height/3)];
         CCCallBlockN* actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node){
-            isDone=true;        }];
+                    }];
         CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
         [self runAction:sequence];
 
