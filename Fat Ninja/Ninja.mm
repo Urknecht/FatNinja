@@ -13,7 +13,7 @@
 
 
 @implementation Ninja
-b2Body *body;
+b2Body *bodyNinja;
 
 -(id)initWithWorld: (b2World*) physicworld {
     self = [super init];
@@ -362,10 +362,10 @@ b2Body *body;
     _ninjaRunning.scale = (winSize.height / 400) ;
     //_ninjaRunning.position = ccp(_ninjaRunning.contentSize.width, winSize.height / 3);
     CGPoint location = ccp(_ninjaRunning.contentSize.width, winSize.height);
-	body=[self createNinjaAtLocation:location withSize:_ninjaRunning.contentSize];
+	bodyNinja=[self createNinjaAtLocation:location withSize:_ninjaRunning.contentSize];
     
     [_ninjaRunning setPTMRatio:PTM_RATIO];
-	[_ninjaRunning setBody:body];
+	[_ninjaRunning setBody:bodyNinja];
 	[_ninjaRunning setPosition: location];
     [_spriteSheetRunning addChild:_ninjaRunning];
     
@@ -389,7 +389,7 @@ b2Body *body;
                        [CCAnimate actionWithAnimation:jumpAnim]];
     _ninjaJumping.scale = (winSize.height / 400) ;
     [_ninjaJumping setPTMRatio:PTM_RATIO];
-	[_ninjaJumping setBody:body];
+	[_ninjaJumping setBody:bodyNinja];
 	[_ninjaJumping setPosition: location];
     //_ninjaJumping.position = ccp(_ninjaJumping.contentSize.width, winSize.height / 3);
     
@@ -418,7 +418,7 @@ b2Body *body;
     _ninjaDoubleJump.scale = (winSize.height / 400) ;
     //_ninjaDoubleJump.position = ccp(_ninjaJumping.contentSize.width, winSize.height / 3);
     [_ninjaDoubleJump setPTMRatio:PTM_RATIO];
-	[_ninjaDoubleJump setBody:body];
+	[_ninjaDoubleJump setBody:bodyNinja];
 	[_ninjaDoubleJump setPosition: location];
     
     //add the sprite to the CCSpriteBatchNode object
@@ -448,7 +448,7 @@ b2Body *body;
     _ninjaRoll.scale = (winSize.height / 350) ;
     //_ninjaRoll.position = ccp(_ninjaRoll.contentSize.width, winSize.height / 3);
     [_ninjaRoll setPTMRatio:PTM_RATIO];
-	[_ninjaRoll setBody:body];
+	[_ninjaRoll setBody:bodyNinja];
 	[_ninjaRoll setPosition: location];
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetRoll addChild:_ninjaRoll];
@@ -475,7 +475,7 @@ b2Body *body;
     _ninjaDie.scale = (winSize.height / 400) ;
     //_ninjaDie.position = ccp(_ninjaDie.contentSize.width, winSize.height / 3);
     [_ninjaDie setPTMRatio:PTM_RATIO];
-	[_ninjaDie setBody:body];
+	[_ninjaDie setBody:bodyNinja];
 	[_ninjaDie setPosition: location];
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetDie addChild:_ninjaDie];
@@ -502,7 +502,7 @@ b2Body *body;
     _ninjaThrow.scale = (winSize.height / 400) ;
     //_ninjaThrow.position = ccp(_ninjaThrow.contentSize.width, winSize.height / 3);
     [_ninjaThrow setPTMRatio:PTM_RATIO];
-	[_ninjaThrow setBody:body];
+	[_ninjaThrow setBody:bodyNinja];
 	[_ninjaThrow setPosition: location];
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetThrow addChild:_ninjaThrow];

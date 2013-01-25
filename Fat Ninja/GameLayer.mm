@@ -19,6 +19,7 @@
 #import "SushiOb.h"
 #import "WallOb.h"
 #import "PowerUp.h"
+#import "Stone.h"
 
 
 
@@ -27,7 +28,7 @@
 @synthesize distance;
 @synthesize enemyArray;
 @synthesize nextStage;
-@synthesize geschwindigkeitEnemy,_enemyBatchNode,_wallBatchNode,_sushiBatchNode;
+@synthesize geschwindigkeitEnemy,_enemyBatchNode,_wallBatchNode,_sushiBatchNode,_stoneBatchNode;
 
 //startpunkt für swipe ueberpruefung
 CGPoint _startPoint;
@@ -66,6 +67,8 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         [self addChild:_sushiBatchNode];
         _wallBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"brokenwall.png"];
         [self addChild:_wallBatchNode];
+        _stoneBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"stone.png"];
+        [self addChild:_stoneBatchNode];
         tag=0;
         nextStage=false;
         enemyCounter=0;
@@ -231,7 +234,21 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
             fixtureDef.shape = &shape;
         }
             break;
+        case StoneType:{
+            int num = 7;
+            b2Vec2 verts[] = {
+                b2Vec2(-9.1f / PTM_RATIO, 19.5f / PTM_RATIO),
+                b2Vec2(-19.5f / PTM_RATIO, 1.5f / PTM_RATIO),
+                b2Vec2(-19.3f / PTM_RATIO, -15.3f / PTM_RATIO),
+                b2Vec2(14.7f / PTM_RATIO, -19.5f / PTM_RATIO),
+                b2Vec2(19.7f / PTM_RATIO, -3.0f / PTM_RATIO),
+                b2Vec2(-0.0f / PTM_RATIO, 18.3f / PTM_RATIO),
+                b2Vec2(-8.9f / PTM_RATIO, 18.0f / PTM_RATIO)};
+            shape.Set(verts, num);
             
+            fixtureDef.shape = &shape;
+        }
+            break;
         case Powerup:{
             int num = 5;
             b2Vec2 verts[] = {
@@ -323,6 +340,8 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
             b2Body *bodyA = fixtureA->GetBody();
             b2Body *bodyB = fixtureB->GetBody();
             if (bodyA == enemy.body || bodyB == enemy.body) {
+                if(contact->IsTouching()){
+
                 if(enemy.isEatable){
                     sushiCounter++;
                     [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
@@ -345,8 +364,10 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
                     [self stopGame];
                     
                 }
+                }
             }
             edge = edge->next;
+        
         }
         if(enemy.position.x==0){
             [enemyToDelete addObject:enemy];
@@ -577,7 +598,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     
     
     //Sucht eine Random Zahl zwischen 0 und einschließlich 2
-    int randomTag = arc4random()%3;
+    int randomTag = arc4random()%4;
     //NSLog(@"Hier sind die RandomTags: %i",randomTag);
     
     int randomPowerUp = arc4random()%1;
@@ -607,6 +628,11 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
             tag++;
             enemy=[[WallOb alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
             [_wallBatchNode addChild:enemy];
+            break;
+        case 3:
+            tag++;
+            enemy=[[Stone alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
+            [_stoneBatchNode addChild:enemy];
             break;
             
         default:
@@ -655,10 +681,18 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
     if(enemyCounter==5){ // nach 5 gegnern
         nextStage=true;
         if(geschwindigkeitEnemy>1.0){ // wird die geschwindigkeit der animation bis zu einem miminum erhoeht
+            if (geschwindigkeitEnemy>2.0) {
             geschwindigkeitEnemy-=1.0;
+            }else{
+                geschwindigkeitEnemy-=0.1;
+            }
         }
         if(_geschwindigkeitSpawn>0.5){ // und der abstand zwischen den gegnern veringert
-            _geschwindigkeitSpawn-=0.5;
+            if (_geschwindigkeitSpawn>2.0) {
+                _geschwindigkeitSpawn-=0.5;
+            }else{
+            _geschwindigkeitSpawn-=0.1;
+            }
             [self schedule:@selector(spawnEnemy:)interval:_geschwindigkeitSpawn];
         }
         enemyCounter=0;
@@ -675,6 +709,8 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         [_sushiBatchNode removeChild:obstacle cleanup:YES];
     }else if(obstacle.class==WallOb.class){
         [_wallBatchNode removeChild:obstacle cleanup:YES];
+    }else if(obstacle.class==Stone.class){
+        [_stoneBatchNode removeChild:obstacle cleanup:YES];
     }else{
         [self removeChild:obstacle cleanup:YES];
     }

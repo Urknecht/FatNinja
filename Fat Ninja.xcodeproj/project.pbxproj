@@ -270,6 +270,8 @@
 		CCE148A716AB326000383797 /* Ninja.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A616AB325F00383797 /* Ninja.mm */; };
 		CCE148AA16AB3C5000383797 /* GameObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCE148A916AB3C5000383797 /* GameObject.mm */; };
 		CCE1490216AD6DCE00383797 /* TutorialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE1490116AD6DCE00383797 /* TutorialScene.m */; };
+		E79CBED916B2FC8300094710 /* Stone.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79CBED816B2FC8300094710 /* Stone.mm */; };
+		E79CBEDC16B2FE3700094710 /* stone.png in Resources */ = {isa = PBXBuildFile; fileRef = E79CBEDB16B2FE3700094710 /* stone.png */; };
 		E79D6DEA167E1053001E8724 /* BackgroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */; };
 		E7A5EC751678C49A006AA447 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7A5EC741678C49A006AA447 /* GameScene.mm */; };
 		E7AA87561694326800C71551 /* GameOverScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E7AA87551694326800C71551 /* GameOverScene.mm */; };
@@ -746,6 +748,9 @@
 		CCE148A916AB3C5000383797 /* GameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameObject.mm; sourceTree = "<group>"; };
 		CCE1490016AD6DCE00383797 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialScene.h; sourceTree = "<group>"; };
 		CCE1490116AD6DCE00383797 /* TutorialScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialScene.m; sourceTree = "<group>"; };
+		E79CBED716B2FC8300094710 /* Stone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stone.h; sourceTree = "<group>"; };
+		E79CBED816B2FC8300094710 /* Stone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Stone.mm; sourceTree = "<group>"; };
+		E79CBEDB16B2FE3700094710 /* stone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stone.png; sourceTree = "<group>"; };
 		E79D6DE8167E1053001E8724 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		E79D6DE9167E1053001E8724 /* BackgroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BackgroundLayer.mm; sourceTree = "<group>"; };
 		E7A5EC731678C499006AA447 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
@@ -915,6 +920,7 @@
 				E7ACD58816A1D78400CA6797 /* brokenwall.png */,
 				3173852E169C6F5B00B86E48 /* icon-sushi.png */,
 				31738529169C6F5B00B86E48 /* enemy.png */,
+				E79CBEDB16B2FE3700094710 /* stone.png */,
 				CCE148A316A9B2FC00383797 /* CHOWFUN.TTF */,
 				31A97290169DD7E80029DB0E /* shuriken.png */,
 				31738525169C6F5B00B86E48 /* background.png */,
@@ -1501,6 +1507,8 @@
 				E7ACD58016A1BCD500CA6797 /* Skeleton.mm */,
 				E7ACD58216A1C12900CA6797 /* SushiOb.h */,
 				E7ACD58316A1C12900CA6797 /* SushiOb.mm */,
+				E79CBED716B2FC8300094710 /* Stone.h */,
+				E79CBED816B2FC8300094710 /* Stone.mm */,
 				7199592616A2C84900EB3705 /* PowerUp.h */,
 				7199592716A2C84900EB3705 /* PowerUp.mm */,
 				CCE148A516AB325E00383797 /* Ninja.h */,
@@ -1661,6 +1669,7 @@
 				CCD7356616A028C8009EE560 /* NinjaRunningFast3.png in Resources */,
 				CCD7356716A028C8009EE560 /* NinjaRunningFast4.png in Resources */,
 				E7ACD58916A1D78400CA6797 /* brokenwall.png in Resources */,
+				E79CBEDC16B2FE3700094710 /* stone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1842,6 +1851,7 @@
 				71A17FCE16AC7B9900EEADF8 /* MinigameLayer.mm in Sources */,
 				CCE1490216AD6DCE00383797 /* TutorialScene.m in Sources */,
 				31A2E74416AD7B20002023C0 /* WallOb.mm in Sources */,
+				E79CBED916B2FC8300094710 /* Stone.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

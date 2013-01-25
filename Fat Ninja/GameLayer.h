@@ -40,6 +40,8 @@
     CCSpriteBatchNode *_enemyBatchNode;
     CCSpriteBatchNode *_sushiBatchNode;
     CCSpriteBatchNode *_wallBatchNode;
+    CCSpriteBatchNode *_stoneBatchNode;
+
 
 
     
@@ -48,6 +50,8 @@
 @property(nonatomic,strong)  CCSpriteBatchNode *_enemyBatchNode;
 @property(nonatomic,strong)  CCSpriteBatchNode *_sushiBatchNode;
 @property(nonatomic,strong)  CCSpriteBatchNode *_wallBatchNode;
+@property(nonatomic,strong)  CCSpriteBatchNode *_stoneBatchNode;
+
 
 @property(readwrite) bool nextStage;
 @property(readonly) double geschwindigkeitEnemy;

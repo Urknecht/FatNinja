@@ -8,7 +8,6 @@
 
 #import "CCSprite.h"
 #import "cocos2d.h"
-#import "CCPhysicsSprite.h"
 
 
 @interface GameObject : CCSprite {

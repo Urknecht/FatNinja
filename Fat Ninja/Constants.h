@@ -32,6 +32,7 @@ typedef enum {
     Character,
     Powerup,
     Obstacle,
+    StoneType,
     None
 } GameObjectType;
 
