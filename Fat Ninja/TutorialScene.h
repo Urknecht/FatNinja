@@ -19,6 +19,7 @@
 @property(nonatomic,retain) CCMenuItem *next;
 
 
+
 -(id)init;
 
 @end
