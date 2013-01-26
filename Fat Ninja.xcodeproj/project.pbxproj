@@ -247,6 +247,7 @@
 		71C3C79816760B6B00623738 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C3C79716760B6B00623738 /* GLES-Render.mm */; };
 		71C3C79A16760B6B00623738 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C79916760B6B00623738 /* blocks.png */; };
 		71C3C7A216760C6000623738 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C3C7A116760C6000623738 /* GameLayer.mm */; };
+		71C5075116B4146A00DCEF92 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C5075016B4146A00DCEF92 /* MyContactListener.mm */; };
 		CCD7354E16A028AB009EE560 /* NinjaDoubleJump.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */; };
 		CCD7354F16A028AB009EE560 /* NinjaDoubleJump.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */; };
 		CCD7355016A028AB009EE560 /* NinjaDoubleJump1.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */; };
@@ -722,6 +723,8 @@
 		71C3C79916760B6B00623738 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		71C3C7A016760C6000623738 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
 		71C3C7A116760C6000623738 /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameLayer.mm; sourceTree = "<group>"; };
+		71C5074E16B4145E00DCEF92 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
+		71C5075016B4146A00DCEF92 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
 		CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NinjaDoubleJump.plist; path = Resources/NinjaDoubleJump.plist; sourceTree = "<group>"; };
 		CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump.png; path = Resources/NinjaDoubleJump.png; sourceTree = "<group>"; };
 		CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump1.png; path = Resources/NinjaDoubleJump1.png; sourceTree = "<group>"; };
@@ -897,6 +900,8 @@
 		71C3C57316760B6600623738 /* Fat Ninja */ = {
 			isa = PBXGroup;
 			children = (
+				71C5075016B4146A00DCEF92 /* MyContactListener.mm */,
+				71C5074E16B4145E00DCEF92 /* MyContactListener.h */,
 				E7AC8B6716AC218200621F05 /* Constants */,
 				E7AC8B6616AC217900621F05 /* GameObjects */,
 				E7AC8B6516AC217300621F05 /* Layer */,
@@ -1852,6 +1857,7 @@
 				CCE1490216AD6DCE00383797 /* TutorialScene.m in Sources */,
 				31A2E74416AD7B20002023C0 /* WallOb.mm in Sources */,
 				E79CBED916B2FC8300094710 /* Stone.mm in Sources */,
+				71C5075116B4146A00DCEF92 /* MyContactListener.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

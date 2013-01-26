@@ -20,6 +20,7 @@ int timeCount;
 CCLabelTTF *timeLabel;
 MinigameLayer *minigamelayer;
 
+
 - (id) initWith:(int)gametype{
     self = [super init];
     if (self != nil) {
@@ -55,7 +56,7 @@ MinigameLayer *minigamelayer;
             default:
                 break;
         }
-        [self addChild: minigamelayer z:2];
+        [self addChild: minigamelayer z:1];
         game = minigamelayer.game;
         timeCount = minigamelayer.timeCount;
         description = minigamelayer.description;
@@ -65,44 +66,87 @@ MinigameLayer *minigamelayer;
         
         CCLabelTTF *label = [CCLabelTTF labelWithString:game fontName:@"Marker Felt" fontSize:30 ];
         label.color = ccc3(255,0,0);
-        [self addChild:label z:2];
+        [self addChild:label z:3];
         label.position = ccp( size.width/2, size.height-30);
         
-        CCLabelTTF *labelDescription = [CCLabelTTF labelWithString:description fontName:@"Marker Felt" fontSize:15];
-        [self addChild:labelDescription z:2];
-        labelDescription.position = ccp( size.width/2, size.height-65);
+        CCLabelTTF *labelDescription = [CCLabelTTF labelWithString:description fontName:@"Marker Felt" fontSize:20];
+        labelDescription.tag = 11;
+        [self addChild:labelDescription z:0];
+        labelDescription.position = ccp( size.width/2, size.height-95);
         
         //Zeit anzeige
         timeLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"0:%d",timeCount] fontName:@"Marker Felt" fontSize:45];
-        [self addChild:timeLabel z:0];
+        timeLabel.tag = 9;
+        [self addChild:timeLabel z:3];
         timeLabel.position = ccp(50, winSize.height-25);
         
+        [CCMenuItemFont setFontSize:50];
+        CCMenuItemLabel *startMinigame = [CCMenuItemFont itemWithString:@"Tap Here To Start" target:self selector:@selector(startMinigame:)];
+        CCMenu *menu = [CCMenu menuWithItems:startMinigame, nil];
+        [menu setPosition:ccp( size.width/2, size.height/3)];
+        [menu setVisible:YES];
+        menu.tag = 10;
+        
+        [self addChild: menu z:2];
         
         
+        [[CCDirector sharedDirector] pause];
         
-        //NSLog(@"Minigame");
         
-        //zählt timer runter
+        //ruft timer ab
         [self schedule:@selector(timer:)interval:1.0];
+        
         
     }
     return self;
 }
 
 - (void)timer:(ccTime)dt {
-    timeCount--;
-    if (timeCount < 10) {
-        [timeLabel setString:[NSString stringWithFormat:@"0:0%i",timeCount]];
+    timeCount = minigamelayer.timeCount;
+    if (timeCount < 10 && timeCount > 0) {
+        [timeLabel setString:[NSString stringWithFormat:@"0:0%i", timeCount]];
     }
-    else{
+    if (timeCount >=10){
         [timeLabel setString:[NSString stringWithFormat:@"0:%i",timeCount]];
     }
     
     // NSLog(@"TimerAufruf");
-    if (timeCount < 0) {
+    if (timeCount == 0) {
+        [minigamelayer calculateEvaluation];
+        CGSize size = [[CCDirector sharedDirector] winSize];
+        [CCMenuItemFont setFontSize:40];
+        CCMenuItemLabel *showScore = [CCMenuItemFont itemWithString:[NSString stringWithFormat:@"Congratulations for:\r%f",minigamelayer.evaluation] target:self selector:@selector(resumeMaingame:)];
+        showScore.color = ccc3(0,255,0);
+        CCMenu *menu = [CCMenu menuWithItems:showScore, nil];
+        [menu setPosition:ccp( size.width/2, size.height/3)];
+        [menu setVisible:YES];
+        menu.tag = 12;
+        
+        [self addChild: menu z:5];
+        //mach die Zeitanzeige raus
+        [self removeChildByTag:9];
+        
+    }
+    
+    if (timeCount == -3) {
         [[CCDirector sharedDirector] popScene];
     }
     
+}
+
+- (void) startMinigame: (id) sender
+{
+    [[CCDirector sharedDirector] resume];
+    //lösche die Beschreibung und das Feld zum Starten
+    [self removeChildByTag:10];
+    [self removeChildByTag:11];
+    
+}
+
+- (void) resumeMaingame: (id) sender
+{
+    
+    [[CCDirector sharedDirector] popScene];
 }
 
 
