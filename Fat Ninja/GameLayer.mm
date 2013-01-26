@@ -314,7 +314,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
            
             BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:backgroundLayerTag];
 
-            [bl reloadBackgroundWithSpeed:self.geschwindigkeit];
+            [bl reloadBackgroundWithSpeed:self.geschwindigkeit+0.12];
             [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
 
         }
@@ -638,7 +638,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         default:
             break;
     }
-    
+
     if (randomPowerUp == 0) {
         ObstacleObject *powerUp = [[PowerUp alloc] init];
         //spawnPowerUp = true;

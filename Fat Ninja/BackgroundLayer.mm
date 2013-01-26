@@ -142,7 +142,7 @@ CGSize winSize;
    
     id speedAction4 = [_backgroundElements getActionByTag:'vier'];
     [speedAction4 setSpeed: (1.0f/geschwindigkeit)];
-    
+
 }
 
 -(void) stopBackgroundAnimation{
