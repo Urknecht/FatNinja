@@ -492,6 +492,7 @@ int amountOfBombs;
         delete _world;
         _world = NULL;
     }
+    _groundBody = NULL;
     if (debugDraw) {
         delete debugDraw;
         debugDraw = nil;

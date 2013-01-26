@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "MinigameLayer.h"
 #import "MinigameFoodDrop.h"
+#import "MinigameBreakout.h"
 
 @implementation MinigameScene
 
@@ -42,16 +43,9 @@ MinigameLayer *minigamelayer;
                 break;
                 
             case 1:
-                minigamelayer = [[MinigameFoodDrop alloc] init];
-                game = @"Blub-Jutsu";
-                description = @"Hier kommt die Description rein";
+                minigamelayer = [[MinigameBreakout alloc] init];                
                 break;
                 
-            case 2:
-                minigamelayer = [[MinigameFoodDrop alloc] init];
-                game = @"Ding-Jutsu";
-                description = @"Hier kommt die Description rein";
-                break;
                 
             default:
                 break;

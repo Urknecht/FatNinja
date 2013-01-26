@@ -9,7 +9,6 @@
 #import "MinigameLayer.h"
 #import "GLES-Render.h"
 #import "Constants.h"
-#import "GameObject.h"
 #import "MyContactListener.h"
 
 

@@ -248,6 +248,9 @@
 		71C3C79A16760B6B00623738 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 71C3C79916760B6B00623738 /* blocks.png */; };
 		71C3C7A216760C6000623738 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C3C7A116760C6000623738 /* GameLayer.mm */; };
 		71C5075116B4146A00DCEF92 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C5075016B4146A00DCEF92 /* MyContactListener.mm */; };
+		71C5075816B4154A00DCEF92 /* MinigameBreakout.mm in Sources */ = {isa = PBXBuildFile; fileRef = 71C5075716B4154A00DCEF92 /* MinigameBreakout.mm */; };
+		71C5075E16B439E600DCEF92 /* Paddle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71C5075D16B439E500DCEF92 /* Paddle.jpg */; };
+		71C5076016B44D7300DCEF92 /* Block.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71C5075F16B44D7200DCEF92 /* Block.jpg */; };
 		CCD7354E16A028AB009EE560 /* NinjaDoubleJump.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */; };
 		CCD7354F16A028AB009EE560 /* NinjaDoubleJump.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */; };
 		CCD7355016A028AB009EE560 /* NinjaDoubleJump1.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */; };
@@ -725,6 +728,10 @@
 		71C3C7A116760C6000623738 /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameLayer.mm; sourceTree = "<group>"; };
 		71C5074E16B4145E00DCEF92 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
 		71C5075016B4146A00DCEF92 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
+		71C5075616B4154A00DCEF92 /* MinigameBreakout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinigameBreakout.h; sourceTree = "<group>"; };
+		71C5075716B4154A00DCEF92 /* MinigameBreakout.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MinigameBreakout.mm; sourceTree = "<group>"; };
+		71C5075D16B439E500DCEF92 /* Paddle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Paddle.jpg; sourceTree = "<group>"; };
+		71C5075F16B44D7200DCEF92 /* Block.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Block.jpg; sourceTree = "<group>"; };
 		CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NinjaDoubleJump.plist; path = Resources/NinjaDoubleJump.plist; sourceTree = "<group>"; };
 		CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump.png; path = Resources/NinjaDoubleJump.png; sourceTree = "<group>"; };
 		CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump1.png; path = Resources/NinjaDoubleJump1.png; sourceTree = "<group>"; };
@@ -922,6 +929,8 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				71C5075F16B44D7200DCEF92 /* Block.jpg */,
+				71C5075D16B439E500DCEF92 /* Paddle.jpg */,
 				E7ACD58816A1D78400CA6797 /* brokenwall.png */,
 				3173852E169C6F5B00B86E48 /* icon-sushi.png */,
 				31738529169C6F5B00B86E48 /* enemy.png */,
@@ -1489,6 +1498,8 @@
 			children = (
 				71A17FC916AC7B9900EEADF8 /* MinigameFoodDrop.h */,
 				71A17FCA16AC7B9900EEADF8 /* MinigameFoodDrop.mm */,
+				71C5075616B4154A00DCEF92 /* MinigameBreakout.h */,
+				71C5075716B4154A00DCEF92 /* MinigameBreakout.mm */,
 				71A17FCB16AC7B9900EEADF8 /* MinigameLayer.h */,
 				71A17FCC16AC7B9900EEADF8 /* MinigameLayer.mm */,
 				E79D6DE8167E1053001E8724 /* BackgroundLayer.h */,
@@ -1675,6 +1686,8 @@
 				CCD7356716A028C8009EE560 /* NinjaRunningFast4.png in Resources */,
 				E7ACD58916A1D78400CA6797 /* brokenwall.png in Resources */,
 				E79CBEDC16B2FE3700094710 /* stone.png in Resources */,
+				71C5075E16B439E600DCEF92 /* Paddle.jpg in Resources */,
+				71C5076016B44D7300DCEF92 /* Block.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1858,6 +1871,7 @@
 				31A2E74416AD7B20002023C0 /* WallOb.mm in Sources */,
 				E79CBED916B2FC8300094710 /* Stone.mm in Sources */,
 				71C5075116B4146A00DCEF92 /* MyContactListener.mm in Sources */,
+				71C5075816B4154A00DCEF92 /* MinigameBreakout.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
