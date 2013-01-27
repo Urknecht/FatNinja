@@ -54,6 +54,7 @@ int praesentationCounter;
 double _geschwindigkeitSpawn;
 int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 
+double endSpeed;
 
 - (id) init
 {
@@ -115,6 +116,8 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         sushiLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:25];
         [self addChild:sushiLabel];
         sushiLabel.position = ccp(winSize.width-20, winSize.height-50);
+        endSpeed=0.66;
+
         
     }
     
@@ -312,9 +315,6 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
             self.geschwindigkeit-=0.2; // die geschiwndigkeit angepasst
             [ninja reloadAnimsWithSpeed:self.geschwindigkeit];
            
-            BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:backgroundLayerTag];
-
-            [bl reloadBackgroundWithSpeed:self.geschwindigkeit+0.12];
             [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
 
         }
@@ -382,26 +382,7 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
         
             }
         }
-//        if (CGRectIntersectsRect([ninja getCurrentNinjaSprite].boundingBox, enemy.boundingBox)) {
-//            if(enemy.isEatable){
-//                sushiCounter++;
-//                [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
-//                [enemyToDelete addObject:enemy];
-//            }
-//            else if(enemy.isRollable and isRolling){
-//                [enemyToDelete addObject:enemy];
-//            }
-//            else if(enemy.isPowerUp){
-//                //hier kommt das mit dem PowerUp rein                
-//                [enemyToDelete addObject:enemy];
-//                [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:enemy.type]];
-//            }
-//            else{
-//                [ninja die:self];
-//                [self stopGame];
-//
-//            }
-//        }
+
     }
 
     for (ObstacleObject *enemy in enemyToDelete) {
@@ -677,14 +658,22 @@ int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 
     
     enemyCounter++;
-    
+
     if(enemyCounter==5){ // nach 5 gegnern
         nextStage=true;
+        BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:backgroundLayerTag];
+        double geschwindigkeitAlt=geschwindigkeitEnemy;
+
         if(geschwindigkeitEnemy>1.0){ // wird die geschwindigkeit der animation bis zu einem miminum erhoeht
             if (geschwindigkeitEnemy>2.0) {
-            geschwindigkeitEnemy-=1.0;
+                geschwindigkeitEnemy-=1.0;
+                
+                [bl reloadBackgroundWithSpeed:geschwindigkeitEnemy/geschwindigkeitAlt];
+
             }else{
                 geschwindigkeitEnemy-=0.1;
+                endSpeed=endSpeed-0.05;
+                [bl reloadBackgroundWithSpeed:endSpeed];
             }
         }
         if(_geschwindigkeitSpawn>0.5){ // und der abstand zwischen den gegnern veringert
