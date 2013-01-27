@@ -41,6 +41,7 @@
     CCSpriteBatchNode *_sushiBatchNode;
     CCSpriteBatchNode *_wallBatchNode;
     CCSpriteBatchNode *_stoneBatchNode;
+    CCSpriteBatchNode *_powerUpBatchNode;
 
 
 
@@ -51,6 +52,7 @@
 @property(nonatomic,strong)  CCSpriteBatchNode *_sushiBatchNode;
 @property(nonatomic,strong)  CCSpriteBatchNode *_wallBatchNode;
 @property(nonatomic,strong)  CCSpriteBatchNode *_stoneBatchNode;
+@property(nonatomic,strong)  CCSpriteBatchNode *_powerUpBatchNode;
 
 
 @property(readwrite) bool nextStage;
