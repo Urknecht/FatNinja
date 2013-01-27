@@ -8,14 +8,12 @@
 
 #import "CCScene.h"
 #import "cocos2d.h"
+#import "BBCheckBox.h"
 
 
 @interface TutorialScene : CCScene{
-    CCMenuItem *next;
-
+    BBCheckBox *myCheckBox;
 }
-@property(nonatomic,retain) CCSprite *cursor;
-@property(nonatomic,retain) CCMenuItem *next;
 
 
 

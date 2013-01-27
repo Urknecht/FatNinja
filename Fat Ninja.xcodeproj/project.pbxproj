@@ -254,6 +254,9 @@
 		CC2D824916B4BA6300F331F7 /* tutBg.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D824616B4BA6300F331F7 /* tutBg.png */; };
 		CC2D824A16B4BA6300F331F7 /* tutorialSpriteSheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC2D824716B4BA6300F331F7 /* tutorialSpriteSheet.plist */; };
 		CC2D824B16B4BA6300F331F7 /* tutorialSpriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D824816B4BA6300F331F7 /* tutorialSpriteSheet.png */; };
+		CC2D825716B56DEC00F331F7 /* BBCheckBox.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC2D825616B56DEC00F331F7 /* BBCheckBox.mm */; };
+		CC2D825A16B5761C00F331F7 /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D825816B5761C00F331F7 /* checkbox_checked.png */; };
+		CC2D825B16B5761C00F331F7 /* checkbox_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D825916B5761C00F331F7 /* checkbox_unchecked.png */; };
 		CCD7354E16A028AB009EE560 /* NinjaDoubleJump.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */; };
 		CCD7354F16A028AB009EE560 /* NinjaDoubleJump.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */; };
 		CCD7355016A028AB009EE560 /* NinjaDoubleJump1.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */; };
@@ -738,6 +741,10 @@
 		CC2D824616B4BA6300F331F7 /* tutBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutBg.png; path = Resources/tutBg.png; sourceTree = "<group>"; };
 		CC2D824716B4BA6300F331F7 /* tutorialSpriteSheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = tutorialSpriteSheet.plist; path = Resources/tutorialSpriteSheet.plist; sourceTree = "<group>"; };
 		CC2D824816B4BA6300F331F7 /* tutorialSpriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tutorialSpriteSheet.png; path = Resources/tutorialSpriteSheet.png; sourceTree = "<group>"; };
+		CC2D825516B56DEC00F331F7 /* BBCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCheckBox.h; sourceTree = "<group>"; };
+		CC2D825616B56DEC00F331F7 /* BBCheckBox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BBCheckBox.mm; sourceTree = "<group>"; };
+		CC2D825816B5761C00F331F7 /* checkbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_checked.png; path = Resources/checkbox_checked.png; sourceTree = "<group>"; };
+		CC2D825916B5761C00F331F7 /* checkbox_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_unchecked.png; path = Resources/checkbox_unchecked.png; sourceTree = "<group>"; };
 		CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NinjaDoubleJump.plist; path = Resources/NinjaDoubleJump.plist; sourceTree = "<group>"; };
 		CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump.png; path = Resources/NinjaDoubleJump.png; sourceTree = "<group>"; };
 		CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump1.png; path = Resources/NinjaDoubleJump1.png; sourceTree = "<group>"; };
@@ -913,6 +920,8 @@
 		71C3C57316760B6600623738 /* Fat Ninja */ = {
 			isa = PBXGroup;
 			children = (
+				CC2D825516B56DEC00F331F7 /* BBCheckBox.h */,
+				CC2D825616B56DEC00F331F7 /* BBCheckBox.mm */,
 				71C5075016B4146A00DCEF92 /* MyContactListener.mm */,
 				71C5074E16B4145E00DCEF92 /* MyContactListener.h */,
 				E7AC8B6716AC218200621F05 /* Constants */,
@@ -935,6 +944,8 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CC2D825816B5761C00F331F7 /* checkbox_checked.png */,
+				CC2D825916B5761C00F331F7 /* checkbox_unchecked.png */,
 				CC2D824616B4BA6300F331F7 /* tutBg.png */,
 				CC2D824716B4BA6300F331F7 /* tutorialSpriteSheet.plist */,
 				CC2D824816B4BA6300F331F7 /* tutorialSpriteSheet.png */,
@@ -1700,6 +1711,8 @@
 				CC2D824916B4BA6300F331F7 /* tutBg.png in Resources */,
 				CC2D824A16B4BA6300F331F7 /* tutorialSpriteSheet.plist in Resources */,
 				CC2D824B16B4BA6300F331F7 /* tutorialSpriteSheet.png in Resources */,
+				CC2D825A16B5761C00F331F7 /* checkbox_checked.png in Resources */,
+				CC2D825B16B5761C00F331F7 /* checkbox_unchecked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1884,6 +1897,7 @@
 				E79CBED916B2FC8300094710 /* Stone.mm in Sources */,
 				71C5075116B4146A00DCEF92 /* MyContactListener.mm in Sources */,
 				71C5075816B4154A00DCEF92 /* MinigameBreakout.mm in Sources */,
+				CC2D825716B56DEC00F331F7 /* BBCheckBox.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

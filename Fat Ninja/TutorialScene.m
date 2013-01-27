@@ -13,7 +13,6 @@
 
 
 @implementation TutorialScene
-@synthesize next;
 
 bool startgame;
 CCAnimation *tut1Anim;
@@ -28,10 +27,12 @@ NSString *descriptionJump;
 NSString *descriptionDJump;
 NSString *descriptionThrow;
 NSString *descriptionRoll;
+NSString *showTutString;
 CCLabelTTF *jumpDescriptionText;
 CCLabelTTF *dJumpDescriptionText;
 CCLabelTTF *throwDescriptionText;
 CCLabelTTF *rollDescriptionText;
+CCMenuItem *next;
 
 
 
@@ -43,6 +44,8 @@ CCLabelTTF *rollDescriptionText;
 - (id) init{
     self = [super init];
     if (self != nil) {
+# pragma mark bG
+        
         startgame=false;
         CCSprite *backgroundImage= [CCSprite spriteWithFile:@"tutBg.png"];
         CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -58,7 +61,7 @@ CCLabelTTF *rollDescriptionText;
         descriptionDJump = @"Tap twice to bounce of the ground and jump higher";
         descriptionThrow = @"By swiping right you can throw shuriken to kill enemies.";
         descriptionRoll = @"Roll by swiping down and holding as long as you want to roll.";
-        
+        showTutString = @"Show Tutorial at start";
         
         jumpDescriptionText = [CCLabelTTF labelWithString: descriptionJump dimensions:CGSizeMake(100, 150)
                                     alignment:UITextAlignmentLeft  fontName: @"Marker Felt" fontSize:14 ];
@@ -91,16 +94,15 @@ CCLabelTTF *rollDescriptionText;
         
         
         
-//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//        [defaults setObject:showTutorial forKey:@"showTutorial"];
-//        [defaults synchronize];
-//        NSLog(@"Data saved");
+        
+# pragma mark checkbox
+        [self setupCheckBox];
         
         
-
+# pragma mark continue Button
         
         // Default font size will be 30 points.
-        [CCMenuItemFont setFontSize:30];
+        [CCMenuItemFont setFontSize:24];
                 
         CGSize size = [[CCDirector sharedDirector] winSize];
         
@@ -112,7 +114,7 @@ CCLabelTTF *rollDescriptionText;
         next = [CCMenuItemFont itemWithString:@"Continue" target:self selector:@selector(showNextTut)];
         ;
 
-        next.position = ccp(350, 60);
+        next.position = ccp(400, 20);
         
         CCMenu *tutMenu = [CCMenu menuWithItems:next, nil];
         tutMenu.position = CGPointZero;
@@ -149,6 +151,37 @@ CCLabelTTF *rollDescriptionText;
     }
 
 }
+
+-(void)checkBoxValue:(NSNumber *)value {
+    BOOL boxChecked = [value boolValue];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:boxChecked forKey:@"showTutorial"];
+    [defaults synchronize];
+    
+    bool test = [defaults boolForKey:@"showTutorial"];
+    if (test) {
+        NSLog(@"Show Tutorials");
+    } else {
+        NSLog(@"Hide Tutorials");
+    }
+    
+}
+
+-(void)setupCheckBox {
+    
+    myCheckBox = [BBCheckBox checkBoxWithDelegate:self callback:@selector(checkBoxValue:) uncheckedImage:@"checkbox_unchecked.png" checkedImage:@"checkbox_checked.png" isChecked:YES];
+    
+    myCheckBox.position=ccp(310,60);
+    myCheckBox.scale = 0.7;
+    [self addChild:myCheckBox];
+    
+    CCLabelTTF *showTutorialText = [CCLabelTTF labelWithString:showTutString fontName:@"Marker Felt" fontSize:14];
+    showTutorialText.position = ccp(390,60);
+    showTutorialText.color = ccc3(240, 220, 210);
+    [self addChild:showTutorialText];
+
+}
+
 
 -(void)loadAnims{
     
