@@ -12,7 +12,6 @@
 
 @interface TutorialScene : CCScene{
     CCMenuItem *next;
-    CCSprite *cursor;
 
 }
 @property(nonatomic,retain) CCSprite *cursor;

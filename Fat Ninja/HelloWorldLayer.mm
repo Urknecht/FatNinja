@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 
 #import "GameScene.h"
+#import "TutorialScene.h"
 
 
 enum {
@@ -304,8 +305,15 @@ enum {
 //wechselt auf die game scene um das spiel zu starten
 - (void) startGame: (id) sender
 {
+    bool showTuts = true;
+    if(showTuts){
+        [[CCDirector sharedDirector] replaceScene:[TutorialScene node]];
+    
+    }else{
+        [[CCDirector sharedDirector] replaceScene:[GameScene node]];
+    }
+    
 
-    [[CCDirector sharedDirector] replaceScene:[GameScene node]];
 }
 
 
