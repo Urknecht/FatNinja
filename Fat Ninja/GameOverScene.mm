@@ -98,16 +98,34 @@ NSMutableArray *localScores;
         [self addChild:scoreLabel z:2];
         scoreLabel.position = ccp( size.width/2, size.height-150);
 
-        
-        [localScores addObject:[NSNumber numberWithInt:_score]];
-        NSSortDescriptor *highestToLowest = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:NO];
-        [localScores sortUsingDescriptors:[NSArray arrayWithObject:highestToLowest]];
-        
-        NSLog(@"sortedArray=%@",localScores);
-        
-        [defaults setObject:localScores forKey:@"localScores"];
-        [defaults synchronize];
-        
+        // New Highscore Score
+        CCLabelTTF *newHighscoreLabel = [CCLabelTTF labelWithString:@"New Highscore!" fontName:@"Marker Felt" fontSize:25];
+        newHighscoreLabel.color = ccc3(66,53,32);
+        newHighscoreLabel.visible = false;
+        newHighscoreLabel.position = ccp( size.width/2, size.height-170);
+        newHighscoreLabel.position = ccp( size.width/2, size.height-150);
+        [newHighscoreLabel setRotation:45];
+        [self addChild:scoreLabel z:3];
+
+        if(_score > (int)[localScores objectAtIndex:0]){
+            [newHighscoreLabel setVisible:true];
+        }
+
+
+#pragma mark score submit
+        if(! _score < (int)[localScores objectAtIndex:[localScores count]-1]);{
+            [localScores addObject:[NSNumber numberWithInt:_score]];
+            NSSortDescriptor *highestToLowest = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:NO];
+            [localScores sortUsingDescriptors:[NSArray arrayWithObject:highestToLowest]];
+            if([localScores count] > 10){
+                NSLog(@"too many local scores! Keeping 1-10");
+                [localScores removeObjectsInRange:NSMakeRange(10, [localScores count]-10)];
+                NSLog(@"sortedArray=%@",localScores);
+                
+            }
+            [defaults setObject:localScores forKey:@"localScores"];
+            [defaults synchronize];
+        }
 
     }
     return self;
