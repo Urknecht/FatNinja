@@ -15,10 +15,18 @@
 int _endDistance;
 int _sushiCounter;
 int _score;
+NSMutableArray *localScores;
 
 -(id)initWith: (int) distance andSushi: (int) sushiCounter {
     self = [super init];
     if (self != nil) {
+        
+#pragma mark highscore get
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSArray *localScoresImmutable = [defaults arrayForKey:@"localScores"];
+        // NSUserDefaults geben IMMER Immutable Objects zurück, deswegen muss das array extra in ein Mutable koopiert werden.
+        localScores = [NSMutableArray arrayWithArray:localScoresImmutable];
+        
         //Distanz
         _endDistance=distance;
         _sushiCounter=sushiCounter;
@@ -63,7 +71,7 @@ int _score;
 	
 	
 	[self addChild: menu z:1];
-        
+
         
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Run Finished" fontName:@"Marker Felt" fontSize:30];
         [self addChild:label z:2];
@@ -91,6 +99,16 @@ int _score;
         scoreLabel.position = ccp( size.width/2, size.height-150);
 
         
+        [localScores addObject:[NSNumber numberWithInt:_score]];
+        NSSortDescriptor *highestToLowest = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:NO];
+        [localScores sortUsingDescriptors:[NSArray arrayWithObject:highestToLowest]];
+        
+        NSLog(@"sortedArray=%@",localScores);
+        
+        [defaults setObject:localScores forKey:@"localScores"];
+        [defaults synchronize];
+        
+
     }
     return self;
 }
