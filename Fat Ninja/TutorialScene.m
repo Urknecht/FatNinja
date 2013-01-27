@@ -15,7 +15,7 @@
 @implementation TutorialScene
 @synthesize next;
 
-bool startgame = false;
+bool startgame;
 CCAnimation *tut1Anim;
 CCAnimation *tut2Anim;
 CCAnimation *tut3Anim;
@@ -36,14 +36,14 @@ CCLabelTTF *rollDescriptionText;
 
 
 -(void)dealloc{
-    [next release];
     [super dealloc];
+    //[self.next release];
 }
 
 - (id) init{
     self = [super init];
     if (self != nil) {
-        
+        startgame=false;
         CCSprite *backgroundImage= [CCSprite spriteWithFile:@"tutBg.png"];
         CGSize winSize = [CCDirector sharedDirector].winSize;
         [backgroundImage setPosition: CGPointMake(winSize.width/2, winSize.height/2)];
