@@ -305,7 +305,10 @@ enum {
 //wechselt auf die game scene um das spiel zu starten
 - (void) startGame: (id) sender
 {
-    bool showTuts = true;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    bool showTuts = [defaults boolForKey:@"showTutorial"];
+
     if(showTuts){
         [[CCDirector sharedDirector] replaceScene:[TutorialScene node]];
     
