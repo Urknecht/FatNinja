@@ -23,7 +23,7 @@ Highscore *highScore;
     if (self != nil) {
         
 #pragma mark highscore get
-         highScore = [Highscore init];
+         highScore = [[Highscore alloc] init];
         
         //Distanz
         _endDistance=distance;
