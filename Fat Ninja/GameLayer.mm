@@ -28,7 +28,7 @@
 @synthesize distance;
 @synthesize enemyArray;
 @synthesize nextStage;
-@synthesize geschwindigkeitEnemy,_enemyBatchNode,_wallBatchNode,_sushiBatchNode,_stoneBatchNode;
+@synthesize geschwindigkeitEnemy,_enemyBatchNode,_wallBatchNode,_sushiBatchNode,_stoneBatchNode,_powerUpBatchNode;
 
 //startpunkt für swipe ueberpruefung
 CGPoint _startPoint;
@@ -70,6 +70,8 @@ double endSpeed;
         [self addChild:_wallBatchNode];
         _stoneBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"stone.png"];
         [self addChild:_stoneBatchNode];
+        _powerUpBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"powerup.png"];
+        [self addChild:_powerUpBatchNode];
         tag=0;
         nextStage=false;
         enemyCounter=0;
@@ -579,11 +581,11 @@ double endSpeed;
     
     
     //Sucht eine Random Zahl zwischen 0 und einschließlich 2
-    int randomTag = arc4random()%4;
+    int randomTag = arc4random()%5;
     //NSLog(@"Hier sind die RandomTags: %i",randomTag);
     
     int randomPowerUp = arc4random()%1;
-    if (praesentationCounter < 3) {
+    if (praesentationCounter < 5) {
         randomTag = praesentationCounter;
         praesentationCounter++;
     }
@@ -615,11 +617,14 @@ double endSpeed;
             enemy=[[Stone alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
             [_stoneBatchNode addChild:enemy];
             break;
-            
+        case 4:
+            enemy = [[PowerUp alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
+            [_powerUpBatchNode addChild:enemy];
+            break;
         default:
             break;
     }
-
+    /*
     if (randomPowerUp == 0) {
         ObstacleObject *powerUp = [[PowerUp alloc] init];
         //spawnPowerUp = true;
@@ -644,7 +649,7 @@ double endSpeed;
         [powerUp runAction:sequencePowerUp];
         
     }
-    
+    */
     
     
     [enemyArray addObject:enemy];
@@ -700,6 +705,8 @@ double endSpeed;
         [_wallBatchNode removeChild:obstacle cleanup:YES];
     }else if(obstacle.class==Stone.class){
         [_stoneBatchNode removeChild:obstacle cleanup:YES];
+    }else if (obstacle.class==PowerUp.class){
+        [_powerUpBatchNode removeChild:obstacle cleanup:YES];
     }else{
         [self removeChild:obstacle cleanup:YES];
     }
