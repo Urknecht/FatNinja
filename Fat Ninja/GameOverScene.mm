@@ -10,22 +10,20 @@
 #import "cocos2d.h"
 #import "HelloWorldLayer.h"
 #import "GameScene.h"
+#import "Highscore.h"
 
 @implementation GameOverScene
 int _endDistance;
 int _sushiCounter;
 int _score;
-NSMutableArray *localScores;
+Highscore *highScore;
 
 -(id)initWith: (int) distance andSushi: (int) sushiCounter {
     self = [super init];
     if (self != nil) {
         
 #pragma mark highscore get
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSArray *localScoresImmutable = [defaults arrayForKey:@"localScores"];
-        // NSUserDefaults geben IMMER Immutable Objects zurück, deswegen muss das array extra in ein Mutable koopiert werden.
-        localScores = [NSMutableArray arrayWithArray:localScoresImmutable];
+         highScore = [Highscore init];
         
         //Distanz
         _endDistance=distance;
@@ -33,6 +31,7 @@ NSMutableArray *localScores;
         //Score dann aufaddieren
        _score=distance+sushiCounter*30;
         
+#pragma mark layout
         CCSprite *backgroundImage= [CCSprite spriteWithFile:@"gameOverBackground.png"];
         CGSize winSize = [CCDirector sharedDirector].winSize;
         [backgroundImage setPosition: CGPointMake(winSize.width/2, winSize.height/2)];
@@ -115,26 +114,15 @@ NSMutableArray *localScores;
         [newHighscoreLabel setRotation:45];
         [self addChild:newHighscoreLabel];
 
-        if(_score > (int)[localScores objectAtIndex:0]){
+
+#pragma mark score submit
+        
+        if([highScore isLocalHighScore:_score]){
             NSLog(@"NEW HIGHSCORE!");
             [newHighscoreLabel setVisible:true];
         }
 
-
-#pragma mark score submit
-        if(! _score < (int)[localScores objectAtIndex:[localScores count]-1]);{
-            [localScores addObject:[NSNumber numberWithInt:_score]];
-            NSSortDescriptor *highestToLowest = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:NO];
-            [localScores sortUsingDescriptors:[NSArray arrayWithObject:highestToLowest]];
-            if([localScores count] > 10){
-                NSLog(@"too many local scores! Keeping 1-10");
-                [localScores removeObjectsInRange:NSMakeRange(10, [localScores count]-10)];
-                NSLog(@"sortedArray=%@",localScores);
-                
-            }
-            [defaults setObject:localScores forKey:@"localScores"];
-            [defaults synchronize];
-        }
+        [highScore insertLocalScore:_score];
 
     }
     return self;
