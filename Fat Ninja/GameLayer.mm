@@ -53,6 +53,8 @@ int enemyCounter;
 int praesentationCounter;
 double _geschwindigkeitSpawn;
 int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
+//Für Präsentation Minispiel
+int typePresentation;
 
 double endSpeed;
 
@@ -76,6 +78,7 @@ double endSpeed;
         nextStage=false;
         enemyCounter=0;
         praesentationCounter = 0;
+        typePresentation = 0;
         
         geschwindigkeitEnemy=5.0;
         _geschwindigkeitSpawn=3.5;
@@ -359,7 +362,12 @@ double endSpeed;
                         isRolling=false;
                         [ninja endRoll];
                     }
-                    [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:enemy.type]];
+                    int type = enemy.type;
+                    if (typePresentation < 2) {
+                        type = typePresentation;
+                        typePresentation++;
+                    }
+                    [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:type]];
                 }
                 else{
                     [ninja die:self];
@@ -585,7 +593,7 @@ double endSpeed;
     //NSLog(@"Hier sind die RandomTags: %i",randomTag);
     
     int randomPowerUp = arc4random()%1;
-    if (praesentationCounter < 5) {
+    if (praesentationCounter < 6) {
         randomTag = praesentationCounter;
         praesentationCounter++;
     }
@@ -618,6 +626,10 @@ double endSpeed;
             [_stoneBatchNode addChild:enemy];
             break;
         case 4:
+            enemy = [[PowerUp alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
+            [_powerUpBatchNode addChild:enemy];
+            break;
+        case 5:
             enemy = [[PowerUp alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
             [_powerUpBatchNode addChild:enemy];
             break;

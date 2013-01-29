@@ -28,7 +28,7 @@
 @property(readonly) bool isRollable;
 @property(readonly) bool isShootable;
 @property(readonly) bool isPowerUp;
-@property(readonly) int type;
+@property(readwrite) int type;
 @property(readonly) float geschiwndigkeit;
 @property(readonly) CGSize wiSize;
 @property (readwrite) CharacterStates enemyState;
