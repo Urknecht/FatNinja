@@ -138,7 +138,7 @@ int amountOfBombs;
 -(void) createNinja{
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     // Create sprite and add it to the layer
-    CCSprite *ninja = [CCSprite spriteWithFile:@"enemy.png"];
+    CCSprite *ninja = [CCSprite spriteWithFile:@"NinjaHead.png"];
     int positionX = winSize.width/2;
     int positionY = marginbot+(ninja.contentSize.height*ninja.scale);
     ninja.position = ccp(positionX, positionY);

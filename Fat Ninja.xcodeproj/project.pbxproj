@@ -258,6 +258,7 @@
 		CC2D825A16B5761C00F331F7 /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D825816B5761C00F331F7 /* checkbox_checked.png */; };
 		CC2D825B16B5761C00F331F7 /* checkbox_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D825916B5761C00F331F7 /* checkbox_unchecked.png */; };
 		CC2D825E16B5DD1E00F331F7 /* Highscore.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC2D825D16B5DD1E00F331F7 /* Highscore.mm */; };
+		CC2D826016B80D6800F331F7 /* NinjaHead.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D825F16B80D6800F331F7 /* NinjaHead.png */; };
 		CCD7354E16A028AB009EE560 /* NinjaDoubleJump.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */; };
 		CCD7354F16A028AB009EE560 /* NinjaDoubleJump.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */; };
 		CCD7355016A028AB009EE560 /* NinjaDoubleJump1.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */; };
@@ -748,6 +749,7 @@
 		CC2D825916B5761C00F331F7 /* checkbox_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_unchecked.png; path = Resources/checkbox_unchecked.png; sourceTree = "<group>"; };
 		CC2D825C16B5DD1D00F331F7 /* Highscore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Highscore.h; sourceTree = "<group>"; };
 		CC2D825D16B5DD1E00F331F7 /* Highscore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Highscore.mm; sourceTree = "<group>"; };
+		CC2D825F16B80D6800F331F7 /* NinjaHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaHead.png; path = Resources/NinjaHead.png; sourceTree = "<group>"; };
 		CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NinjaDoubleJump.plist; path = Resources/NinjaDoubleJump.plist; sourceTree = "<group>"; };
 		CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump.png; path = Resources/NinjaDoubleJump.png; sourceTree = "<group>"; };
 		CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump1.png; path = Resources/NinjaDoubleJump1.png; sourceTree = "<group>"; };
@@ -949,6 +951,7 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CC2D825F16B80D6800F331F7 /* NinjaHead.png */,
 				CC2D825816B5761C00F331F7 /* checkbox_checked.png */,
 				CC2D825916B5761C00F331F7 /* checkbox_unchecked.png */,
 				CC2D824616B4BA6300F331F7 /* tutBg.png */,
@@ -1718,6 +1721,7 @@
 				CC2D824B16B4BA6300F331F7 /* tutorialSpriteSheet.png in Resources */,
 				CC2D825A16B5761C00F331F7 /* checkbox_checked.png in Resources */,
 				CC2D825B16B5761C00F331F7 /* checkbox_unchecked.png in Resources */,
+				CC2D826016B80D6800F331F7 /* NinjaHead.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

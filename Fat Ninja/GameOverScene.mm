@@ -71,7 +71,7 @@ NSMutableArray *localScores;
 	[menu alignItemsHorizontallyWithPadding:20];
 	
 	CGSize size = [[CCDirector sharedDirector] winSize];
-	[menu setPosition:ccp( size.width/2, size.height/3)];
+	[menu setPosition:ccp( size.width/2, size.height/3-20)];
 	
 	
 	[self addChild: menu z:1];
@@ -79,7 +79,7 @@ NSMutableArray *localScores;
         
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Run Finished" fontName:@"Marker Felt" fontSize:30];
         [self addChild:label z:2];
-        label.position = ccp( size.width/2, size.height-50);
+        label.position = ccp( size.width/2, size.height-70);
         label.color = ccc3(66,53,32);
 
         //Distanz
@@ -87,7 +87,7 @@ NSMutableArray *localScores;
         [distanceLabel setString:[NSString stringWithFormat:@"Distance:      %i",_endDistance]];
 
         [self addChild:distanceLabel z:2];
-        distanceLabel.position = ccp( size.width/2, size.height-90);
+        distanceLabel.position = ccp( size.width/2, size.height-110);
         distanceLabel.color = ccc3(66,53,32);
 
         //Sushi
@@ -95,7 +95,7 @@ NSMutableArray *localScores;
         [sushiLabel setString:[NSString stringWithFormat:@"Sushi:   %i * 30",_sushiCounter]];
         
         [self addChild:sushiLabel z:2];
-        sushiLabel.position = ccp( size.width/2, size.height-120);
+        sushiLabel.position = ccp( size.width/2, size.height-140);
         sushiLabel.color = ccc3(66,53,32);
 
         //Score
@@ -103,19 +103,20 @@ NSMutableArray *localScores;
         [scoreLabel setString:[NSString stringWithFormat:@"Score:         %i",_score]];
         
         [self addChild:scoreLabel z:2];
-        scoreLabel.position = ccp( size.width/2, size.height-150);
+        scoreLabel.position = ccp( size.width/2, size.height-170);
         scoreLabel.color = ccc3(66,53,32);
 
         // New Highscore Score
         CCLabelTTF *newHighscoreLabel = [CCLabelTTF labelWithString:@"New Highscore!" fontName:@"Marker Felt" fontSize:25];
         newHighscoreLabel.color = ccc3(66,53,32);
         newHighscoreLabel.visible = false;
-        newHighscoreLabel.position = ccp( size.width/2, size.height-150);
+        newHighscoreLabel.position = ccp( size.width/2, size.height-170);
         
         [newHighscoreLabel setRotation:45];
         [self addChild:newHighscoreLabel];
 
         if(_score > (int)[localScores objectAtIndex:0]){
+            NSLog(@"NEW HIGHSCORE!");
             [newHighscoreLabel setVisible:true];
         }
 
