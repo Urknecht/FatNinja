@@ -13,7 +13,7 @@
 
 -(id) initWith:(float)geschw andWinSize:(CGSize)wSize{
     if ((self = [super init])) {
-        type = arc4random()%2;
+        
         self= [PowerUp spriteWithFile:@"powerup.png"];
         isEatable=false;
         isShootable=false;
@@ -24,6 +24,7 @@
         geschwindigkeit=geschw;
         wiSize=wSize;
         enemyType=Powerup;
+        type = arc4random()%2;
         //lol
     }
     return self;
