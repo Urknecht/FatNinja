@@ -48,14 +48,18 @@ NSMutableArray *localScores;
             [[CCDirector sharedDirector] replaceScene:[GameScene node]];
 
         }];
+        replay.color = ccc3(66,53,32);
+
 	
 	
 	// Main Menu Item
-	CCMenuItem *backToMainMenu = [CCMenuItemFont itemWithString:@"Main Menu" block:^(id sender) {
+	CCMenuItemLabel *backToMainMenu = [CCMenuItemFont itemWithString:@"Main Menu" block:^(id sender) {
 
         [[CCDirector sharedDirector] replaceScene:[HelloWorldLayer node]];
 
 	}];
+        backToMainMenu.color = ccc3(66,53,32);
+
 	
 	// Shop Menu Item
 //	CCMenuItem *shop = [CCMenuItemFont itemWithString:@"Shop" block:^(id sender) {
@@ -76,36 +80,40 @@ NSMutableArray *localScores;
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Run Finished" fontName:@"Marker Felt" fontSize:30];
         [self addChild:label z:2];
         label.position = ccp( size.width/2, size.height-50);
-    
+        label.color = ccc3(66,53,32);
+
         //Distanz
         CCLabelTTF *distanceLabel = [CCLabelTTF labelWithString:@"Distance:" fontName:@"Marker Felt" fontSize:25];
         [distanceLabel setString:[NSString stringWithFormat:@"Distance:      %i",_endDistance]];
 
         [self addChild:distanceLabel z:2];
         distanceLabel.position = ccp( size.width/2, size.height-90);
-        
+        distanceLabel.color = ccc3(66,53,32);
+
         //Sushi
         CCLabelTTF *sushiLabel = [CCLabelTTF labelWithString:@"Distance:" fontName:@"Marker Felt" fontSize:25];
         [sushiLabel setString:[NSString stringWithFormat:@"Sushi:   %i * 30",_sushiCounter]];
         
         [self addChild:sushiLabel z:2];
         sushiLabel.position = ccp( size.width/2, size.height-120);
-        
+        sushiLabel.color = ccc3(66,53,32);
+
         //Score
         CCLabelTTF *scoreLabel = [CCLabelTTF labelWithString:@"Score:" fontName:@"Marker Felt" fontSize:25];
         [scoreLabel setString:[NSString stringWithFormat:@"Score:         %i",_score]];
         
         [self addChild:scoreLabel z:2];
         scoreLabel.position = ccp( size.width/2, size.height-150);
+        scoreLabel.color = ccc3(66,53,32);
 
         // New Highscore Score
         CCLabelTTF *newHighscoreLabel = [CCLabelTTF labelWithString:@"New Highscore!" fontName:@"Marker Felt" fontSize:25];
         newHighscoreLabel.color = ccc3(66,53,32);
         newHighscoreLabel.visible = false;
-        newHighscoreLabel.position = ccp( size.width/2, size.height-170);
         newHighscoreLabel.position = ccp( size.width/2, size.height-150);
+        
         [newHighscoreLabel setRotation:45];
-        [self addChild:scoreLabel z:3];
+        [self addChild:newHighscoreLabel];
 
         if(_score > (int)[localScores objectAtIndex:0]){
             [newHighscoreLabel setVisible:true];

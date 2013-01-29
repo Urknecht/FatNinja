@@ -59,7 +59,8 @@ MinigameLayer *minigamelayer;
         
         
         CCLabelTTF *label = [CCLabelTTF labelWithString:game fontName:@"Marker Felt" fontSize:30 ];
-        label.color = ccc3(255,0,0);
+        label.color = ccc3(66,53,32);
+
         [self addChild:label z:3];
         label.position = ccp( size.width/2, size.height-30);
         
@@ -67,15 +68,20 @@ MinigameLayer *minigamelayer;
         labelDescription.tag = 11;
         [self addChild:labelDescription z:0];
         labelDescription.position = ccp( size.width/2, size.height-95);
+        labelDescription.color = ccc3(66,53,32);
+
         
         //Zeit anzeige
         timeLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"0:%d",timeCount] fontName:@"Marker Felt" fontSize:45];
         timeLabel.tag = 9;
+        timeLabel.color = ccc3(66,53,32);
+
         [self addChild:timeLabel z:3];
         timeLabel.position = ccp(50, winSize.height-25);
         
         [CCMenuItemFont setFontSize:50];
         CCMenuItemLabel *startMinigame = [CCMenuItemFont itemWithString:@"Tap Here To Start" target:self selector:@selector(startMinigame:)];
+        startMinigame.color = ccc3(66,53,32);
         CCMenu *menu = [CCMenu menuWithItems:startMinigame, nil];
         [menu setPosition:ccp( size.width/2, size.height/3)];
         [menu setVisible:YES];
@@ -83,9 +89,7 @@ MinigameLayer *minigamelayer;
         
         [self addChild: menu z:2];
         
-        
         [[CCDirector sharedDirector] pause];
-        
         
         //ruft timer ab
         [self schedule:@selector(timer:)interval:1.0];
