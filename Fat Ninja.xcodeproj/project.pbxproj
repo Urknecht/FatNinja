@@ -272,6 +272,11 @@
 		CC2D825716B56DEC00F331F7 /* BBCheckBox.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC2D825616B56DEC00F331F7 /* BBCheckBox.mm */; };
 		CC2D825A16B5761C00F331F7 /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D825816B5761C00F331F7 /* checkbox_checked.png */; };
 		CC2D825B16B5761C00F331F7 /* checkbox_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D825916B5761C00F331F7 /* checkbox_unchecked.png */; };
+		CC2D825E16B5DD1E00F331F7 /* Highscore.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC2D825D16B5DD1E00F331F7 /* Highscore.mm */; };
+		CC2D826016B80D6800F331F7 /* NinjaHead.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D825F16B80D6800F331F7 /* NinjaHead.png */; };
+		CC2D826416B833E600F331F7 /* SettingsScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC2D826316B833E500F331F7 /* SettingsScene.mm */; };
+		CC2D826916B864F700F331F7 /* HighscoreScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC2D826816B864F600F331F7 /* HighscoreScene.mm */; };
+		CC2D826B16B866A500F331F7 /* paperBg.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D826A16B866A500F331F7 /* paperBg.png */; };
 		CCD7354E16A028AB009EE560 /* NinjaDoubleJump.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */; };
 		CCD7354F16A028AB009EE560 /* NinjaDoubleJump.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */; };
 		CCD7355016A028AB009EE560 /* NinjaDoubleJump1.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */; };
@@ -775,6 +780,14 @@
 		CC2D825616B56DEC00F331F7 /* BBCheckBox.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BBCheckBox.mm; sourceTree = "<group>"; };
 		CC2D825816B5761C00F331F7 /* checkbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_checked.png; path = Resources/checkbox_checked.png; sourceTree = "<group>"; };
 		CC2D825916B5761C00F331F7 /* checkbox_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_unchecked.png; path = Resources/checkbox_unchecked.png; sourceTree = "<group>"; };
+		CC2D825C16B5DD1D00F331F7 /* Highscore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Highscore.h; sourceTree = "<group>"; };
+		CC2D825D16B5DD1E00F331F7 /* Highscore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Highscore.mm; sourceTree = "<group>"; };
+		CC2D825F16B80D6800F331F7 /* NinjaHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaHead.png; path = Resources/NinjaHead.png; sourceTree = "<group>"; };
+		CC2D826216B833E400F331F7 /* SettingsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsScene.h; sourceTree = "<group>"; };
+		CC2D826316B833E500F331F7 /* SettingsScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SettingsScene.mm; sourceTree = "<group>"; };
+		CC2D826516B834A000F331F7 /* HighscoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighscoreScene.h; sourceTree = "<group>"; };
+		CC2D826816B864F600F331F7 /* HighscoreScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HighscoreScene.mm; sourceTree = "<group>"; };
+		CC2D826A16B866A500F331F7 /* paperBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paperBg.png; path = Resources/paperBg.png; sourceTree = "<group>"; };
 		CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NinjaDoubleJump.plist; path = Resources/NinjaDoubleJump.plist; sourceTree = "<group>"; };
 		CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump.png; path = Resources/NinjaDoubleJump.png; sourceTree = "<group>"; };
 		CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump1.png; path = Resources/NinjaDoubleJump1.png; sourceTree = "<group>"; };
@@ -950,6 +963,8 @@
 		71C3C57316760B6600623738 /* Fat Ninja */ = {
 			isa = PBXGroup;
 			children = (
+				CC2D825C16B5DD1D00F331F7 /* Highscore.h */,
+				CC2D825D16B5DD1E00F331F7 /* Highscore.mm */,
 				CC2D825516B56DEC00F331F7 /* BBCheckBox.h */,
 				CC2D825616B56DEC00F331F7 /* BBCheckBox.mm */,
 				71C5075016B4146A00DCEF92 /* MyContactListener.mm */,
@@ -1541,9 +1556,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CC2D826116B8117A00F331F7 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
 		E7AC8B6416AC216D00621F05 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				CC2D826216B833E400F331F7 /* SettingsScene.h */,
+				CC2D826316B833E500F331F7 /* SettingsScene.mm */,
+				CC2D826516B834A000F331F7 /* HighscoreScene.h */,
+				CC2D826816B864F600F331F7 /* HighscoreScene.mm */,
 				CCE1490016AD6DCE00383797 /* TutorialScene.h */,
 				CCE1490116AD6DCE00383797 /* TutorialScene.m */,
 				E7A5EC731678C499006AA447 /* GameScene.h */,
@@ -1958,6 +1984,9 @@
 				71C5075116B4146A00DCEF92 /* MyContactListener.mm in Sources */,
 				71C5075816B4154A00DCEF92 /* MinigameBreakout.mm in Sources */,
 				CC2D825716B56DEC00F331F7 /* BBCheckBox.mm in Sources */,
+				CC2D825E16B5DD1E00F331F7 /* Highscore.mm in Sources */,
+				CC2D826416B833E600F331F7 /* SettingsScene.mm in Sources */,
+				CC2D826916B864F700F331F7 /* HighscoreScene.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

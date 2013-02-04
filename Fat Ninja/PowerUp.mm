@@ -10,6 +10,56 @@
 
 @implementation PowerUp
 
+
+-(id) initWith:(float)geschw andWinSize:(CGSize)wSize{
+    if ((self = [super init])) {
+        
+        self= [PowerUp spriteWithFile:@"powerup.png"];
+        isEatable=false;
+        isShootable=false;
+        isRollable=false;
+        isPowerUp=true;
+        isShootable=true;
+        enemyType=Powerup;
+        geschwindigkeit=geschw;
+        wiSize=wSize;
+        enemyType=Powerup;
+        type = arc4random()%2;
+        //lol
+    }
+    return self;
+}
+
+-(void) changeState:(CharacterStates)newState{
+    [self stopAllActions];
+    id action = nil;
+    [self setEnemyState:newState];
+    
+    switch (newState) {
+        case StateDie:
+            //sterbe animation  am ende muss gegner gelöscht werden
+            break;
+            
+        default:
+            break;
+    }
+    if (action != nil) {
+        [self runAction:action];
+    }
+}
+
+-(void)loadAnim{
+    
+    CCMoveTo * actionMove = [CCMoveTo actionWithDuration: geschwindigkeit
+                                                position:ccp(self.position.x
+                                                             -(wiSize.width+self.contentSize.width), wiSize.height/3)];
+    CCCallBlockN* actionMoveDone = [CCCallBlockN actionWithBlock:^(CCNode *node){
+    }];
+    CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
+    [self runAction:sequence];
+    
+}
+/*
 -(id) init{
     if ((self = [super init])) {
         type = arc4random()%3;
@@ -20,5 +70,6 @@
     }
     return self;
 }
+ */
 
 @end

@@ -53,7 +53,6 @@ CCMenuItem *next;
         [self addChild:backgroundImage z:0 tag:0];
         
         
-        BOOL showTutorial = true;
 
 #pragma mark descriptions
         

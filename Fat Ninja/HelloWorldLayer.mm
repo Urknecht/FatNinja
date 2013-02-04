@@ -17,6 +17,8 @@
 
 #import "GameScene.h"
 #import "TutorialScene.h"
+#import "HighscoreScene.h"
+#import "SettingsScene.h"
 
 
 enum {
@@ -124,32 +126,10 @@ enum {
 	;
 	
 	// Achievement Menu Item using blocks
-	CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Settings" block:^(id sender) {
-		
-		
-		GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
-		achivementViewController.achievementDelegate = self;
-		
-		AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-		
-		[[app navController] presentModalViewController:achivementViewController animated:YES];
-		
-		[achivementViewController release];
-	}];
+	CCMenuItemLabel *itemAchievement = [CCMenuItemFont itemWithString:@"Settings" target:self selector:@selector(showSettings:)];
 	
 	// Leaderboard Menu Item using blocks
-	CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Highscore" block:^(id sender) {
-		
-		
-		GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
-		leaderboardViewController.leaderboardDelegate = self;
-		
-		AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-		
-		[[app navController] presentModalViewController:leaderboardViewController animated:YES];
-		
-		[leaderboardViewController release];
-	}];
+	CCMenuItemLabel *itemLeaderboard = [CCMenuItemFont itemWithString:@"Highscore" target:self selector:@selector(showHighscore:)];
 	
 	CCMenu *menu = [CCMenu menuWithItems:reset, itemLeaderboard,itemAchievement, nil];
 	
@@ -305,7 +285,10 @@ enum {
 //wechselt auf die game scene um das spiel zu starten
 - (void) startGame: (id) sender
 {
-    bool showTuts = true;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    bool showTuts = [defaults boolForKey:@"showTutorial"];
+
     if(showTuts){
         [[CCDirector sharedDirector] replaceScene:[TutorialScene node]];
     
@@ -314,6 +297,14 @@ enum {
     }
     
 
+}
+
+-(void) showSettings: (id) sender{
+    [[CCDirector sharedDirector] replaceScene:[SettingsScene node]];
+}
+
+-(void) showHighscore: (id) sender{
+    [[CCDirector sharedDirector] replaceScene:[HighscoreScene node]];
 }
 
 
