@@ -262,6 +262,7 @@
 		CC2D826416B833E600F331F7 /* SettingsScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC2D826316B833E500F331F7 /* SettingsScene.mm */; };
 		CC2D826916B864F700F331F7 /* HighscoreScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = CC2D826816B864F600F331F7 /* HighscoreScene.mm */; };
 		CC2D826B16B866A500F331F7 /* paperBg.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2D826A16B866A500F331F7 /* paperBg.png */; };
+		CC4C1C8616B8B4DF00090980 /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4C1C8516B8B4DF00090980 /* mainmenu.png */; };
 		CCD7354E16A028AB009EE560 /* NinjaDoubleJump.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */; };
 		CCD7354F16A028AB009EE560 /* NinjaDoubleJump.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */; };
 		CCD7355016A028AB009EE560 /* NinjaDoubleJump1.png in Resources */ = {isa = PBXBuildFile; fileRef = CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */; };
@@ -758,6 +759,7 @@
 		CC2D826516B834A000F331F7 /* HighscoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighscoreScene.h; sourceTree = "<group>"; };
 		CC2D826816B864F600F331F7 /* HighscoreScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HighscoreScene.mm; sourceTree = "<group>"; };
 		CC2D826A16B866A500F331F7 /* paperBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paperBg.png; path = Resources/paperBg.png; sourceTree = "<group>"; };
+		CC4C1C8516B8B4DF00090980 /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
 		CCD7354116A028A2009EE560 /* NinjaDoubleJump.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NinjaDoubleJump.plist; path = Resources/NinjaDoubleJump.plist; sourceTree = "<group>"; };
 		CCD7354216A028A2009EE560 /* NinjaDoubleJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump.png; path = Resources/NinjaDoubleJump.png; sourceTree = "<group>"; };
 		CCD7354316A028A3009EE560 /* NinjaDoubleJump1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDoubleJump1.png; path = Resources/NinjaDoubleJump1.png; sourceTree = "<group>"; };
@@ -959,6 +961,7 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CC4C1C8516B8B4DF00090980 /* mainmenu.png */,
 				CC2D826A16B866A500F331F7 /* paperBg.png */,
 				CC2D826116B8117A00F331F7 /* Sound */,
 				CC2D825F16B80D6800F331F7 /* NinjaHead.png */,
@@ -1744,6 +1747,7 @@
 				CC2D825B16B5761C00F331F7 /* checkbox_unchecked.png in Resources */,
 				CC2D826016B80D6800F331F7 /* NinjaHead.png in Resources */,
 				CC2D826B16B866A500F331F7 /* paperBg.png in Resources */,
+				CC4C1C8616B8B4DF00090980 /* mainmenu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

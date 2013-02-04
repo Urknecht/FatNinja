@@ -22,7 +22,7 @@ CCSprite *pauseBackground;
         
         //Pause Button
         CCSprite *pauseImage= [CCSprite spriteWithFile:@"pauseButton.png"];
-        pauseBackground= [CCSprite spriteWithFile:@"pauseMenuBg.png"];
+        pauseBackground= [CCSprite spriteWithFile:@"paperBg.png"];
 
         CGSize winSize = [CCDirector sharedDirector].winSize;
         [pauseImage setPosition: CGPointMake(20, winSize.height-20)];
@@ -32,6 +32,12 @@ CCSprite *pauseBackground;
         [self addChild: pauseImage z:0];
         [self addChild: pauseBackground z:1];
         [pauseBackground setVisible:NO];
+        
+        CCLabelTTF *title = [CCLabelTTF labelWithString:@"Pause" fontName:@"Marker Felt" fontSize:30];
+        [self addChild:title z:2];
+        title.position = ccp( winSize.width/2, winSize.height-70);
+        title.color = ccc3(66,53,32);
+
 
 
         
