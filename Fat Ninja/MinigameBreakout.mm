@@ -21,7 +21,7 @@ float brokenBlocks;
         
         game = @"Roll-Jutsu";
         description = @"ROLLEN!\rOK!";
-        timeCount = 25;
+        timeCount = 1;
         blockCount = 0;
         brokenBlocks = 0;
 

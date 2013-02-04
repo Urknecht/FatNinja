@@ -36,7 +36,7 @@ int amountOfBombs;
         
         game = @"Omnom-Jutsu";
         description = @"Move the Ninja with your finger.\rTry to catch all the food.\rBut watch out for the bombs!";
-        timeCount = 20;
+        timeCount = 1;
         dropCount = 0;
         foodCount = 0;
         bombCount = 0;
