@@ -60,8 +60,6 @@ Highscore *highscore;
     [CCMenuItemFont setFontSize:24];
     
     CGSize size = [[CCDirector sharedDirector] winSize];
-    
-    
     CCMenuItemLabel *back = [CCMenuItemFont itemWithString:@"Back To Main Menu" target:self selector:@selector(backToMain)];
     back.color = ccc3(66,53,32);
     

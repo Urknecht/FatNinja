@@ -107,7 +107,7 @@ Highscore *highScore;
 
         // New Highscore Score
         CCSprite *newHighscoreLabel = [CCSprite spriteWithFile:@"newHighscore.png"];
-        newHighscoreLabel.visible = true;
+        newHighscoreLabel.visible = false;
         newHighscoreLabel.scale = 0.7;
         newHighscoreLabel.position = ccp( size.width*3/4, size.height-200);
         
