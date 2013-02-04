@@ -26,7 +26,8 @@ int localScoresLimit = 10;
 }
 
 - (void) insertLocalScore:(int)score{
-    if(! score < (int)[localScores objectAtIndex:[localScores count]-1]);{
+    if([localScores count] < localScoresLimit
+       or !score < (int)[localScores objectAtIndex:[localScores count]-1]);{
         [localScores addObject:[NSNumber numberWithInt:score]];
         NSSortDescriptor *highestToLowest = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:NO];
         [localScores sortUsingDescriptors:[NSArray arrayWithObject:highestToLowest]];
@@ -50,10 +51,14 @@ int localScoresLimit = 10;
 }
 
 - (bool) isLocalHighScore:(int)score{
-    if(score > (int)[localScores objectAtIndex:0]){
-        return true;
+    if([localScores count] > 0){
+        if(score > [[localScores objectAtIndex:0] integerValue]){
+            return true;
+        }else{
+            return false;
+        }
     }else{
-        return false;
+        return true;
     }
 
 }

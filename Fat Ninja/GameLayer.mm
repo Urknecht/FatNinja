@@ -561,6 +561,7 @@ double endSpeed;
       [CCCallBlockN actionWithBlock:^(CCNode *node) {
          // CCCallBlockN in ccTouchesEnded
          [_projectiles removeObject:node];
+         [self removeObstacle:projectile];
          [node removeFromParentAndCleanup:YES];
      }],
       nil]];

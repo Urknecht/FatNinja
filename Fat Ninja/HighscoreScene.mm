@@ -63,17 +63,22 @@ Highscore *highscore;
     
     
     CCMenuItemLabel *back = [CCMenuItemFont itemWithString:@"Back To Main Menu" target:self selector:@selector(backToMain)];
-    back.position = ccp(winSize.width/2, 30);
     back.color = ccc3(66,53,32);
-
     
-    CCMenu *backMenu = [CCMenu menuWithItems:back, nil];
-    backMenu.position = CGPointZero;
+    CCMenuItemLabel *reset = [CCMenuItemFont itemWithString:@"Reset Scores" target:self selector:@selector(resetScores)];
+    reset.color = ccc3(66,53,32);
+
+    CCMenu *backMenu = [CCMenu menuWithItems:back,reset, nil];
+    [backMenu alignItemsHorizontallyWithPadding:30];
+    backMenu.position = ccp(winSize.width/2, 30);
     [self addChild:backMenu z:1 tag:1];
 
 
 }
-
+-(void) resetScores{
+    [highscore resetLocalScore];
+    [[CCDirector sharedDirector] replaceScene:[HighscoreScene node]];
+}
 -(void) backToMain{
     [[CCDirector sharedDirector] replaceScene:[HelloWorldLayer node]];
 }

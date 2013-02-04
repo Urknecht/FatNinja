@@ -63,7 +63,7 @@
 @property (readwrite) int distance;
 
 
--(void)removeObstacle: (CCSprite*) enemy;
+-(void)removeObstacle: (CCPhysicsSprite*) enemy;
 -(void) stopAnimation;
 -(void) stopGame;
 -(void) pauseGame;

@@ -70,7 +70,7 @@ Highscore *highScore;
 	[menu alignItemsHorizontallyWithPadding:20];
 	
 	CGSize size = [[CCDirector sharedDirector] winSize];
-	[menu setPosition:ccp( size.width/2, size.height/3-20)];
+	[menu setPosition:ccp( size.width/2, size.height/3-40)];
 	
 	
 	[self addChild: menu z:1];
@@ -106,12 +106,12 @@ Highscore *highScore;
         scoreLabel.color = ccc3(66,53,32);
 
         // New Highscore Score
-        CCLabelTTF *newHighscoreLabel = [CCLabelTTF labelWithString:@"New Highscore!" fontName:@"Marker Felt" fontSize:25];
-        newHighscoreLabel.color = ccc3(66,53,32);
-        newHighscoreLabel.visible = false;
-        newHighscoreLabel.position = ccp( size.width/2, size.height-170);
+        CCSprite *newHighscoreLabel = [CCSprite spriteWithFile:@"newHighscore.png"];
+        newHighscoreLabel.visible = true;
+        newHighscoreLabel.scale = 0.7;
+        newHighscoreLabel.position = ccp( size.width*3/4, size.height-200);
         
-        [newHighscoreLabel setRotation:45];
+        [newHighscoreLabel setRotation:-10];
         [self addChild:newHighscoreLabel];
 
 
