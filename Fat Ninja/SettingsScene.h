@@ -13,7 +13,10 @@
 
 
 @interface SettingsScene : CCScene{
-    BBCheckBox *myCheckBox;
+    BBCheckBox *tutCheckBox;
+    BBCheckBox *muteSfxCheckBox;
+    BBCheckBox *muteMusicCheckbox;
+    BBCheckBox *introCheckBox;
     NSUserDefaults *defaults;
 }
 
