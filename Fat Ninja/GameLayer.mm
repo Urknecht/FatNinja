@@ -369,6 +369,26 @@ double endSpeed;
                             typePresentation++;
                         }
                         [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:type]];
+                        
+                        //ab hier kommt das was passiert wenn das minispiel zu ende ist
+                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                        int evaluation = [defaults integerForKey:@"evaluation"];
+                        //abstufung je nachdem wie gut man ein spiel geschafft hat
+                        if (evaluation == 0) {
+                            
+                        }else if (evaluation > 0 && evaluation <= 20){
+                            
+                        }else if (evaluation > 20 && evaluation <= 40){
+                            
+                        }else if (evaluation > 40 && evaluation <= 60){
+                            
+                        }else if (evaluation > 60 && evaluation <= 80){
+                            
+                        }else if (evaluation > 80 && evaluation < 100){
+                            
+                        }else if (evaluation == 100){
+                            
+                        }
                     }
                     else if(!enemy.enemyState==StateDie){
                         [ninja die:self];

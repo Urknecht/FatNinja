@@ -484,6 +484,8 @@ int amountOfBombs;
         evaluation = percent;
     }
     //NSLog(@"Win %f", evaluation);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:(int)evaluation forKey:@"evaluation"];
 }
 
 - (void)dealloc {
