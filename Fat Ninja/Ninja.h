@@ -22,7 +22,7 @@
     CCAction *_dieAction;
     CCAction *_throwAction;
     CCAction *_BIGAction;
-    CCAction *_walkSpeedAction;
+    id _walkSpeedAction;
     CCAction *_walkSpeedActionFast;
     CCSpriteBatchNode *_spriteSheetRunning;
     CCSpriteBatchNode *_spriteSheetRunningFast;

@@ -82,10 +82,11 @@ b2Body *bodyNinja;
                 [_spriteSheetThrow setVisible:(false)];
                 break;
                 
-                //        case StateInvincibru:
-                //            _isInvincibru = true;
-                //
-                //            break;
+//            case StateInvincibru:
+//                _isInvincibru = false;
+//                [_spriteSheetBIG setVisible:(false)];
+//                [_ninjaBIG stopAction:self.BIGAction];
+//                break;
                 
             default:
                 break;
@@ -140,10 +141,11 @@ b2Body *bodyNinja;
                 }
                 break;
                 
-                //        case StateInvincibru:
-                //            _isInvincibru = true;
-                //
-                //            break;
+//           case StateInvincibru:
+//               _isInvincibru = true;
+//                [_spriteSheetBIG setVisible:(true)];
+//                [_ninjaBIG runAction:self.BIGAction];
+//                break;
                 
             default:
                 break;
@@ -460,10 +462,15 @@ b2Body *bodyNinja;
     }
     
     CCAnimation *jumpAnim = [CCAnimation animationWithSpriteFrames:jumpAnimFrames delay:0.05f];
-    _ninjaJumping = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaJumping1.png"];
+    _ninjaJumping = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaJumping1.png"];    
     
-    self.jumpAction = [CCRepeatForever actionWithAction:
-                       [CCAnimate actionWithAnimation:jumpAnim]];
+    
+    self.jumpAction = [CCSpeed actionWithAction: [CCRepeatForever actionWithAction:
+                       [CCAnimate actionWithAnimation:jumpAnim restoreOriginalFrame:NO]] speed:1.0f];
+    
+    [self.jumpAction setTag:'jump'];
+    
+  
     _ninjaJumping.scale = (winSize.height / 400) ;
     [_ninjaJumping setPTMRatio:PTM_RATIO];
 	[_ninjaJumping setBody:bodyNinja];
@@ -619,9 +626,10 @@ b2Body *bodyNinja;
     if(characterState==StateStart){
         _geschToChange = false;
         
-        if(geschwindigkeit>5||_runningFast){
+        if(geschwindigkeit>2||_runningFast){
             id speedAction = [_ninjaRunning getActionByTag:'walk'];
             [speedAction setSpeed: (5.0f/geschwindigkeit)];
+
         }
         else if(!_runningFast){
             _runningFast=true;
