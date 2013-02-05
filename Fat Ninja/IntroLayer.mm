@@ -21,6 +21,7 @@
 
 MPMoviePlayerController *player;
 CCSprite *background;
+bool showIntro2;
 
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -43,7 +44,11 @@ CCSprite *background;
 -(id) init
 {
 	if( (self=[super init])) {
-		
+        
+
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        showIntro2 = [defaults boolForKey:@"showIntro"];
+
 		// ask director for the window size
 		
 		
@@ -53,50 +58,53 @@ CCSprite *background;
 		} else {
 			background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
 		}
-        
-        NSString *Path = [[NSBundle mainBundle] resourcePath];
-        NSString *filePath = [Path stringByAppendingPathComponent:@"Intro.mov"];
-        NSURL *url = [NSURL fileURLWithPath:filePath isDirectory:NO];
-        player = [[MPMoviePlayerController alloc] initWithContentURL:url];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(moviePlayBackDidFinish:)
-                                                     name:MPMoviePlayerPlaybackDidFinishNotification
-                                                   object:player];
-        
+
+
+        if(showIntro2){
+            
+            NSString *Path = [[NSBundle mainBundle] resourcePath];
+            NSString *filePath = [Path stringByAppendingPathComponent:@"Intro.mov"];
+            NSURL *url = [NSURL fileURLWithPath:filePath isDirectory:NO];
+            player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(moviePlayBackDidFinish:)
+                                                         name:MPMoviePlayerPlaybackDidFinishNotification
+                                                       object:player];
+            
             //Use the new 3.2 style API.
             player.controlStyle = MPMovieControlStyleNone;
-        player.fullscreen = true;
-        player.shouldAutoplay = NO;
-        CGSize winSize = [[CCDirector sharedDirector] winSize];
-        player.view.frame = CGRectMake(0, 0, winSize.width,winSize.height);
-        
-        [self removeChild:background];
-        [[[CCDirector sharedDirector] openGLView] addSubview:player.view];
-        
-        [self playMovie];
-		// add the label as a child to this Layer
-		[self addChild: background];
+            player.fullscreen = true;
+            player.shouldAutoplay = NO;
+            CGSize winSize = [[CCDirector sharedDirector] winSize];
+            player.view.frame = CGRectMake(0, 0, winSize.width,winSize.height);
+            
+            [[[CCDirector sharedDirector] openGLView] addSubview:player.view];
+            // add the label as a child to this Layer
+            
+        }
+        [self addChild: background];
+
 	}
 	
 	return self;
 }
 
 -(void)moviePlayBackDidFinish:(NSNotification*)notification {
-    [self removeChild:background];
 
     [self stopMovie];
 }
-    -(void)playMovie {
+
+-(void)playMovie {
         //We do not play the movie if it is already playing.
         MPMoviePlaybackState state = player.playbackState;
         if(state == MPMoviePlaybackStatePlaying) {
             NSLog(@"Movie is already playing.");
             return; }
         [player play];
-    }
+}
 
-    -(void)stopMovie {
+-(void)stopMovie {
         //We do not stop the movie if it is already stopped.
         MPMoviePlaybackState state = player.playbackState;
         if(state == MPMoviePlaybackStateStopped) {
@@ -106,15 +114,29 @@ CCSprite *background;
         [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
 
         [player.view removeFromSuperview];
-        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
         player.fullscreen = false;
-        [player release];
-
+        
+        [self continueToGame];
 
     }
 
+-(void) continueToGame{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
+}
+
 -(void) onEnter
 {
-	[super onEnter];
+    [super onEnter];
+    
+    if(showIntro2){
+        [self removeChild:background];
+        [self playMovie];
+    
+    }else{
+        [self continueToGame];
+    }
+
 }
+ 
+
 @end
