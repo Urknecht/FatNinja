@@ -22,7 +22,9 @@
     CCAction *_dieAction;
     CCAction *_throwAction;
     CCAction *_walkSpeedAction;
+      CCAction *_walkSpeedActionFast;
     CCSpriteBatchNode *_spriteSheetRunning;
+    CCSpriteBatchNode *_spriteSheetRunningFast;
     CCSpriteBatchNode *_spriteSheetJumping;
     CCSpriteBatchNode *_spriteSheetDoubleJump;
     CCSpriteBatchNode *_spriteSheetRoll;
@@ -38,6 +40,9 @@
     //gibt an ob der Ninja nach der animation sterben soll
     bool _shouldDie;
     
+    //gibt an ob der Ninja nach der animation sterben soll
+    bool _runningFast;
+    
     //Der Gamelayer an den nach Die zurückgegeben wird
     GameLayer *_gameLayer;
     
@@ -46,6 +51,7 @@
 
 
 @property (nonatomic, retain)CCPhysicsSprite *ninjaRunning;
+@property (nonatomic, retain)CCPhysicsSprite *ninjaRunningFast;
 @property (nonatomic, retain)CCPhysicsSprite *ninjaJumping;
 @property (nonatomic, retain)CCPhysicsSprite *ninjaDoubleJump;
 @property (nonatomic, retain)CCPhysicsSprite *ninjaRoll;
@@ -59,6 +65,7 @@
 
 
 @property (nonatomic,retain) id walkSpeedAction;
+@property (nonatomic,retain) id walkSpeedActionFast;
 @property (nonatomic, retain)CCAction *jumpAction;
 @property (nonatomic, retain)CCAction *doubleJumpAction;
 @property (nonatomic, retain)CCAction *rollAction;
@@ -66,6 +73,7 @@
 @property (nonatomic, retain)CCAnimation *throwAnim;
 
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetRunning;
+@property (nonatomic, retain)CCSpriteBatchNode *spriteSheetRunningFast;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetJumping;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetDoubleJump;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetRoll;
