@@ -434,19 +434,14 @@ double endSpeed;
                         [enemyToDelete addObject:enemy];
                     }
                 }
-                else{
-                    [projectilesToDelete addObject:projectile];
-                    
-                }
+                [projectilesToDelete addObject:projectile];
+
             }
         }
         for (ObstacleObject *enemy in enemyToDelete) {
             [self removeEnemy:(enemy)];
         }
         
-        if (enemyToDelete.count > 0) {
-            [projectilesToDelete addObject:projectile];
-        }
         [enemyToDelete release];
     }
     
