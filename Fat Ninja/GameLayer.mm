@@ -317,7 +317,7 @@ double endSpeed;
     if(nextStage){ //nach bestimmter anzahl
         if(self.geschwindigkeit>0.21){ // wird bis zu minimum geschwindigkeit
             self.geschwindigkeit-=0.2; // die geschiwndigkeit angepasst
-            [ninja reloadAnimsWithSpeed:self.geschwindigkeit];
+      
             
             [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
             
@@ -692,11 +692,13 @@ double endSpeed;
                 geschwindigkeitEnemy-=1.0;
                 
                 [bl reloadBackgroundWithSpeed:geschwindigkeitEnemy/geschwindigkeitAlt];
+                [ninja reloadAnimsWithSpeed:geschwindigkeitEnemy];
                 
             }else{
                 geschwindigkeitEnemy-=0.1;
                 endSpeed=endSpeed-0.05;
                 [bl reloadBackgroundWithSpeed:endSpeed];
+                [ninja reloadAnimsWithSpeed:geschwindigkeitEnemy];
             }
         }
         if(_geschwindigkeitSpawn>0.5){ // und der abstand zwischen den gegnern veringert

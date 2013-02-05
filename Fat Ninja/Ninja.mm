@@ -23,6 +23,7 @@ b2Body *bodyNinja;
         _jumpWasDouble = false;
         _wasJumpingAndThrowing = false;
         _shouldDie=false;
+        _runningFast=false;
         
         
         [self loadAnims];
@@ -321,8 +322,7 @@ b2Body *bodyNinja;
 }
 
 
--(void)loadAnims{
-    
+-(void)loadAnims{    
     
     
     //RUNNING###########################################################
@@ -370,6 +370,53 @@ b2Body *bodyNinja;
 	[_ninjaRunning setBody:bodyNinja];
 	[_ninjaRunning setPosition: location];
     [_spriteSheetRunning addChild:_ninjaRunning];
+    
+    
+    //RUNNING FAST###########################################################
+    //add the frames and coordinates to the cach
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"NinjaRunningFast.plist")];
+    
+    //load the sprite sheet into a CCSpriteBatchNode object. If you’re adding a new sprite
+    //to your scene, and the image exists in this sprite sheet you should add the sprite
+    //as a child of the same CCSpriteBatchNode object otherwise you could get an error.
+    _spriteSheetRunningFast = [CCSpriteBatchNode batchNodeWithFile:@"NinjaRunningFast.png"];
+    
+    //add the CCSpriteBatchNode to your scene
+    [self addChild: _spriteSheetRunningFast];
+    //load each frame included in the sprite sheet into an array for use with the CCAnimation object below
+    NSMutableArray *walkFastAnimFrames = [NSMutableArray array];
+    for(int i = 1; i <= 4; ++i) {
+        [walkFastAnimFrames addObject:
+         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+          [NSString stringWithFormat:@"NinjaRunningFast%d.png", i]]];
+    }
+    //Create the animation from the frame flyAnimFrames array
+    CCAnimation *walkAnimFast = [CCAnimation animationWithSpriteFrames:walkFastAnimFrames delay:0.1f];
+    
+    //create a sprite and set it to be the first image in the sprite sheet
+    _ninjaRunningFast = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaRunningFast1.png"];
+    
+    //create a looping action using the animation created above. This just continuosly
+    //loops through each frame in the CCAnimation object
+    
+    
+    self.walkSpeedActionFast = [CCSpeed actionWithAction: [CCRepeatForever actionWithAction:
+                                                       [CCAnimate actionWithAnimation:walkAnimFast restoreOriginalFrame:NO]] speed:1.0f];
+    [self.walkSpeedActionFast setTag:'walkf'];
+    
+    //start the action
+    //[_ninjaRunningFast runAction: self.walkSpeedActionFast];
+    
+    //set its position to be dead center, i.e. screen width and height divided by 2
+    _ninjaRunningFast.scale = (winSize.height / 400) ;
+    
+    [_ninjaRunningFast setPTMRatio:PTM_RATIO];
+	[_ninjaRunningFast setBody:bodyNinja];
+	[_ninjaRunningFast setPosition: location];
+    [_spriteSheetRunningFast addChild:_ninjaRunningFast];
+    
+    [_spriteSheetRunningFast setVisible:false];
+    
     
     //JUMPING###########################################################
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"NinjaJumping.plist")];
@@ -425,8 +472,7 @@ b2Body *bodyNinja;
     
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetDoubleJump addChild:_ninjaDoubleJump];
-    [_spriteSheetDoubleJump setVisible:(false)];
-    
+    [_spriteSheetDoubleJump setVisible:(false)];    
     
     
     //ROLLEN###########################################################
@@ -515,8 +561,24 @@ b2Body *bodyNinja;
 
 -(void) reloadAnimsWithSpeed:(double)geschwindigkeit{
     if(characterState!=StateDie){
+        if(geschwindigkeit>2){
         id speedAction = [_ninjaRunning getActionByTag:'walk'];
-        [speedAction setSpeed: (1.0f/geschwindigkeit)];
+        [speedAction setSpeed: (5.0f/geschwindigkeit)];
+        }
+        else if(!_runningFast){
+            _runningFast=true;
+            [_ninjaRunning stopAllActions];                        
+            //id speedAction2 = [_ninjaRunningFast getActionByTag:'walkf'];
+            self.walkSpeedAction = self.walkSpeedActionFast;
+            _spriteSheetRunning = _spriteSheetRunningFast;
+            _ninjaRunning = _ninjaRunningFast;
+            if(self.characterState == StateStart){
+                [_spriteSheetRunning setVisible:true];                
+                [_ninjaRunning runAction: self.walkSpeedAction];
+
+            }
+   
+        }
     }}
 
 
