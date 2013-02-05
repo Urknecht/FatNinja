@@ -537,10 +537,10 @@ double endSpeed;
     
     // Set up initial location of projectile
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    CCPhysicsSprite *projectile = [CCPhysicsSprite spriteWithFile:@"shuriken.png"];
-    [projectile setPTMRatio:PTM_RATIO];
-    [projectile setBody:[self createBodyFor: (GameObjectType) None AtLocation:[ninja getCurrentNinjaSprite].position withSize:projectile.contentSize]];
-    [projectile setPosition: [ninja getCurrentNinjaSprite].position];
+    CCSprite *projectile = [CCSprite spriteWithFile:@"shuriken.png"];
+//    [projectile setPTMRatio:PTM_RATIO];
+//	[projectile setBody:[self createBodyFor: (GameObjectType) None AtLocation:[ninja getCurrentNinjaSprite].position withSize:projectile.contentSize]];
+	[projectile setPosition: [ninja getCurrentNinjaSprite].position];
     
     
     // Determine offset of location to projectile

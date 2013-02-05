@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		313E770416B5A6C80039EDF0 /* backgroundElements1.png in Resources */ = {isa = PBXBuildFile; fileRef = 313E759916B5A6C80039EDF0 /* backgroundElements1.png */; };
-		313E770516B5A6C80039EDF0 /* backgroundElements2.png in Resources */ = {isa = PBXBuildFile; fileRef = 313E759A16B5A6C80039EDF0 /* backgroundElements2.png */; };
-		313E770616B5A6C80039EDF0 /* backgroundEmpty-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 313E759B16B5A6C80039EDF0 /* backgroundEmpty-1.png */; };
-		313E770716B5A6C80039EDF0 /* backgroundEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 313E759C16B5A6C80039EDF0 /* backgroundEmpty.png */; };
 		313E77A616B5A6C80039EDF0 /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 313E770316B5A6C80039EDF0 /* mainmenu.png */; };
 		313E77AA16B5A6F10039EDF0 /* skeletonDying.plist in Resources */ = {isa = PBXBuildFile; fileRef = 313E77A816B5A6F10039EDF0 /* skeletonDying.plist */; };
 		313E77AB16B5A6F10039EDF0 /* skeletonDying.png in Resources */ = {isa = PBXBuildFile; fileRef = 313E77A916B5A6F10039EDF0 /* skeletonDying.png */; };
@@ -321,10 +317,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		313E759916B5A6C80039EDF0 /* backgroundElements1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundElements1.png; sourceTree = "<group>"; };
-		313E759A16B5A6C80039EDF0 /* backgroundElements2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundElements2.png; sourceTree = "<group>"; };
-		313E759B16B5A6C80039EDF0 /* backgroundEmpty-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgroundEmpty-1.png"; sourceTree = "<group>"; };
-		313E759C16B5A6C80039EDF0 /* backgroundEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundEmpty.png; sourceTree = "<group>"; };
 		313E770316B5A6C80039EDF0 /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
 		313E77A816B5A6F10039EDF0 /* skeletonDying.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = skeletonDying.plist; path = Resources/skeletonDying.plist; sourceTree = "<group>"; };
 		313E77A916B5A6F10039EDF0 /* skeletonDying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = skeletonDying.png; path = Resources/skeletonDying.png; sourceTree = "<group>"; };
@@ -1026,10 +1018,6 @@
 				313E77B316B5A9D20039EDF0 /* skeletonDying08.png */,
 				313E77A816B5A6F10039EDF0 /* skeletonDying.plist */,
 				313E77A916B5A6F10039EDF0 /* skeletonDying.png */,
-				313E759916B5A6C80039EDF0 /* backgroundElements1.png */,
-				313E759A16B5A6C80039EDF0 /* backgroundElements2.png */,
-				313E759B16B5A6C80039EDF0 /* backgroundEmpty-1.png */,
-				313E759C16B5A6C80039EDF0 /* backgroundEmpty.png */,
 				313E770316B5A6C80039EDF0 /* mainmenu.png */,
 				CC2D825816B5761C00F331F7 /* checkbox_checked.png */,
 				CC2D825916B5761C00F331F7 /* checkbox_unchecked.png */,
@@ -1813,10 +1801,14 @@
 				CC2D825B16B5761C00F331F7 /* checkbox_unchecked.png in Resources */,
 				CC2D826016B80D6800F331F7 /* NinjaHead.png in Resources */,
 				CC2D826B16B866A500F331F7 /* paperBg.png in Resources */,
-				313E770416B5A6C80039EDF0 /* backgroundElements1.png in Resources */,
-				313E770516B5A6C80039EDF0 /* backgroundElements2.png in Resources */,
-				313E770616B5A6C80039EDF0 /* backgroundEmpty-1.png in Resources */,
-				313E770716B5A6C80039EDF0 /* backgroundEmpty.png in Resources */,
+				CC4C1C8616B8B4DF00090980 /* mainmenu.png in Resources */,
+				CCD1A5B916BFC68C00DEAD66 /* backgroundElements1.png in Resources */,
+				CCD1A5BA16BFC68C00DEAD66 /* backgroundElements2.png in Resources */,
+				CCD1A5BB16BFC68C00DEAD66 /* backgroundEmpty-1.png in Resources */,
+				CCD1A5BC16BFC68C00DEAD66 /* backgroundEmpty.png in Resources */,
+				CCD1A5BF16BFC7FB00DEAD66 /* powerup.png in Resources */,
+				CCD1A5C316BFC89F00DEAD66 /* obstacles.png in Resources */,
+				E79E76AF16C12BEF0065B630 /* newHighscore.png in Resources */,
 				313E77A616B5A6C80039EDF0 /* mainmenu.png in Resources */,
 				313E77AA16B5A6F10039EDF0 /* skeletonDying.plist in Resources */,
 				313E77AB16B5A6F10039EDF0 /* skeletonDying.png in Resources */,
