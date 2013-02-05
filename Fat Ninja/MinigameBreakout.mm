@@ -357,8 +357,25 @@ float brokenBlocks;
         evaluation = brokenBlocks/blockCount;
    ballBody->SetType(b2_staticBody);
     //NSLog(@"Win %f", evaluation);
+    int powerDuration;
+    //abstufung je nachdem wie gut man ein spiel geschafft hat
+    if (evaluation == 0) {
+        powerDuration = 0;
+    }else if (evaluation > 0 && evaluation <= 0.20){
+        powerDuration = 0;
+    }else if (evaluation > 20 && evaluation <= 0.40){
+        powerDuration = 3;
+    }else if (evaluation > 40 && evaluation <= 0.60){
+        powerDuration = 3;
+    }else if (evaluation > 60 && evaluation <= 0.80){
+        powerDuration = 6;
+    }else if (evaluation > 80 && evaluation < 0.100){
+        powerDuration = 6;
+    }else if (evaluation == 0.100){
+        powerDuration = 9;
+    }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:(int)evaluation forKey:@"evaluation"];
+    [defaults setInteger:(int)powerDuration forKey:@"powerDuration"];
 }
 
 - (void)dealloc {

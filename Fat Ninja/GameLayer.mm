@@ -54,6 +54,10 @@ double _geschwindigkeitSpawn;
 int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 //Für Präsentation Minispiel
 int typePresentation;
+//Die Zeit, die rausgekommen ist beim Powerup
+int powerupDuration;
+//Type vom PowerUp
+int powerupType;
 
 double endSpeed;
 
@@ -309,6 +313,37 @@ double endSpeed;
     world->Step(dt, velocityIterations, positionIterations);
 }
 
+
+-(void)powerupAnimation:(ccTime)dt{
+    int localduration = powerupDuration;
+    int type = powerupType;
+    if (localduration == powerupDuration) {
+        switch (type) {
+            case 0:
+                //FoodDrop
+                //Hier soll die großwerde Animation rein
+                break;
+                
+            case 1:
+                //BlockBreak
+                //Hier soll er sich solange drehen und invincibru sein wie die zeit dauert
+                break;
+                
+            default:
+                break;
+        }
+    }
+    if (localduration != 0) {
+        localduration--;
+        //NSLog(@"POWERUPANIMATIONOMG");
+    }
+    if (localduration == 0) {
+        //Hier wieder State auf normal laufen setzen
+        [self unschedule:@selector(powerupAnimation:)];
+    }
+    
+    
+}
 #pragma mark game methoden
 
 - (void)updateDistance:(ccTime)dt {
@@ -358,7 +393,7 @@ double endSpeed;
                     }
                     else if(enemy.isPowerUp){
                         //hier kommt das mit dem PowerUp rein
-                        [enemyToDelete addObject:enemy];
+                         [enemyToDelete addObject:enemy];
                         if(isRolling){
                             isRolling=false;
                             [ninja endRoll];
@@ -372,23 +407,16 @@ double endSpeed;
                         
                         //ab hier kommt das was passiert wenn das minispiel zu ende ist
                         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                        int evaluation = [defaults integerForKey:@"evaluation"];
-                        //abstufung je nachdem wie gut man ein spiel geschafft hat
-                        if (evaluation == 0) {
-                            
-                        }else if (evaluation > 0 && evaluation <= 20){
-                            
-                        }else if (evaluation > 20 && evaluation <= 40){
-                            
-                        }else if (evaluation > 40 && evaluation <= 60){
-                            
-                        }else if (evaluation > 60 && evaluation <= 80){
-                            
-                        }else if (evaluation > 80 && evaluation < 100){
-                            
-                        }else if (evaluation == 100){
-                            
-                        }
+                        int powerDuration = [defaults integerForKey:@"powerDuration"];
+                        powerupDuration = powerDuration;
+                        powerupType = type;
+                        //NSLog(@"%i" ,powerDuration);
+                        //NSLog(@"%i" ,type);
+                        [self schedule:@selector(powerupAnimation:)interval:1.0];
+                        
+                        
+                        
+                        
                     }
                     else if(!enemy.enemyState==StateDie){
                         [ninja die:self];
