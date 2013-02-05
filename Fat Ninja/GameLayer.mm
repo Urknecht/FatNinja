@@ -112,7 +112,7 @@ double endSpeed;
         
         //Sushi anzeige
         sushiCounter=0;
-        CCSprite *sushiImage= [CCSprite spriteWithFile:@"sushi.png"];
+        CCSprite *sushiImage= [CCSprite spriteWithFile:@"icon-sushi.png"];
         sushiImage.scale =0.5;
         [self addChild:sushiImage];
         sushiImage.position= ccp(winSize.width-80, winSize.height-50);
@@ -147,16 +147,16 @@ double endSpeed;
 	
 	world->SetContinuousPhysics(true);
 	
-	debugDraw = new GLESDebugDraw( PTM_RATIO );
-	world->SetDebugDraw(debugDraw);
-	
-	uint32 flags = 0;
-	flags += b2Draw::e_shapeBit;
-	//		flags += b2Draw::e_jointBit;
-	//		flags += b2Draw::e_aabbBit;
-	//		flags += b2Draw::e_pairBit;
-	//		flags += b2Draw::e_centerOfMassBit;
-	debugDraw->SetFlags(flags);
+//	debugDraw = new GLESDebugDraw( PTM_RATIO );
+//	world->SetDebugDraw(debugDraw);
+//	
+//	uint32 flags = 0;
+//	flags += b2Draw::e_shapeBit;
+//	//		flags += b2Draw::e_jointBit;
+//	//		flags += b2Draw::e_aabbBit;
+//	//		flags += b2Draw::e_pairBit;
+//	//		flags += b2Draw::e_centerOfMassBit;
+//	debugDraw->SetFlags(flags);
 	
 	
 	// Define the ground body.
@@ -285,23 +285,23 @@ double endSpeed;
     
 }
 
--(void) draw
-{
-	//
-	// IMPORTANT:
-	// This is only for debug purposes
-	// It is recommend to disable it
-	//
-	[super draw];
-	
-	ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
-	
-	kmGLPushMatrix();
-	
-	world->DrawDebugData();
-	
-	kmGLPopMatrix();
-}
+//-(void) draw
+//{
+//	//
+//	// IMPORTANT:
+//	// This is only for debug purposes
+//	// It is recommend to disable it
+//	//
+//	[super draw];
+//	
+//	ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
+//	
+//	kmGLPushMatrix();
+//	
+//	world->DrawDebugData();
+//	
+//	kmGLPopMatrix();
+//}
 
 -(void)update:(ccTime)dt {
     int32 velocityIterations = 3;
@@ -421,7 +421,7 @@ double endSpeed;
 //pruefen ob monster abgeschossen wurden
 - (void)updateMonsterIsHit:(ccTime)dt {
     NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
-    for (CCPhysicsSprite *projectile in _projectiles) {
+    for (CCSprite *projectile in _projectiles) {
         
         NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
         for (ObstacleObject *enemy in enemyArray) {
@@ -449,8 +449,8 @@ double endSpeed;
         [enemyToDelete release];
     }
     
-    for (CCPhysicsSprite *projectile in projectilesToDelete) {
-        world->DestroyBody(projectile.body);
+    for (CCSprite *projectile in projectilesToDelete) {
+        //world->DestroyBody(projectile.body);
         [_projectiles removeObject:projectile];
         [self removeChild:projectile cleanup:YES];
     }
@@ -752,10 +752,10 @@ double endSpeed;
         delete world;
         world = NULL;
     }
-    if (debugDraw) {
-        delete debugDraw;
-        debugDraw = nil;
-    }
+//    if (debugDraw) {
+//        delete debugDraw;
+//        debugDraw = nil;
+//    }
     [enemyArray release];
     enemyArray=nil;
     [_projectiles release];
