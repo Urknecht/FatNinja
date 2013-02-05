@@ -510,6 +510,34 @@ b2Body *bodyNinja;
     [_spriteSheetRoll addChild:_ninjaRoll];
     [_spriteSheetRoll setVisible:(false)];
     
+    //STAMPFEN###########################################################
+//    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"NinjaRoll.plist")];
+//    _spriteSheetRoll = [CCSpriteBatchNode batchNodeWithFile:@"NinjaRoll.png"];
+//    [self addChild:_spriteSheetRoll];
+//    
+//    //load each frame included in the sprite sheet into an array for use with the CCAnimation object below
+//    NSMutableArray *rollAnimFrames = [NSMutableArray array];
+//    for(int i = 1; i <= 8; ++i) {
+//        [rollAnimFrames addObject:
+//         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+//          [NSString stringWithFormat:@"NinjaRoll%d.png", i]]];
+//    }
+//    
+//    CCAnimation *rollAnim = [CCAnimation animationWithSpriteFrames:rollAnimFrames delay:0.02f];
+//    _ninjaRoll = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaRoll1.png"];
+//    
+//    self.rollAction = [CCRepeatForever actionWithAction:
+//                       [CCAnimate actionWithAnimation:rollAnim]];
+//    _ninjaRoll.scale = (winSize.height / 350) ;
+//    //_ninjaRoll.position = ccp(_ninjaRoll.contentSize.width, winSize.height / 3);
+//    [_ninjaRoll setPTMRatio:PTM_RATIO];
+//	[_ninjaRoll setBody:bodyNinja];
+//	[_ninjaRoll setPosition: location];
+//    //add the sprite to the CCSpriteBatchNode object
+//    [_spriteSheetRoll addChild:_ninjaRoll];
+//    [_spriteSheetRoll setVisible:(false)];
+    
+    
     //DIE##########################################################
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"NinjaDie.plist")];

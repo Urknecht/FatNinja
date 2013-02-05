@@ -407,6 +407,7 @@ double endSpeed;
     //Leider ging es nicht über Pause zu machen, deswegen eigene funktion:
     BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:backgroundLayerTag];
     [self unscheduleAllSelectors];
+    
     [bl stopBackgroundAnimation];
     [self stopAnimation];
 }
