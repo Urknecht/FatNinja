@@ -36,7 +36,7 @@ int amountOfBombs;
         
         game = @"Omnom-Jutsu";
         description = @"Move the Ninja with your finger.\rTry to catch all the food.\rBut watch out for the bombs!";
-        timeCount = 1;
+        timeCount = 20;
         dropCount = 0;
         foodCount = 0;
         bombCount = 0;
@@ -119,7 +119,7 @@ int amountOfBombs;
 	_world->SetAllowSleeping(false);
 	
 	_world->SetContinuousPhysics(true);
-	
+	/*
 	debugDraw = new GLESDebugDraw( PTM_RATIO );
 	_world->SetDebugDraw(debugDraw);
 	
@@ -130,7 +130,7 @@ int amountOfBombs;
 	//		flags += b2Draw::e_pairBit;
 	//		flags += b2Draw::e_centerOfMassBit;
 	debugDraw->SetFlags(flags);
-	
+	*/
     
 }
 
@@ -251,7 +251,7 @@ int amountOfBombs;
 - (void)drop:(ccTime)dt {
     
     
-    if (timeCount < 19 && dropCount != amountOfDrops-1) {
+    if (timeCount < 19 && dropCount != amountOfDrops) {
         int aktuell = [[dropStuff objectAtIndex:dropCount] intValue];
         CGPoint location1;
         
@@ -493,10 +493,12 @@ int amountOfBombs;
         _world = NULL;
     }
     _groundBody = NULL;
+    /*
     if (debugDraw) {
         delete debugDraw;
         debugDraw = nil;
     }
+     */
     delete _contactListener;
     if (_mouseJoint) {
         _world->DestroyJoint(_mouseJoint);

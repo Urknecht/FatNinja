@@ -13,7 +13,7 @@
 
 @interface MinigameBreakout : MinigameLayer{
     
-    GLESDebugDraw * debugDraw;
+    //GLESDebugDraw * debugDraw;
     
     b2Fixture *_ballFixture;
     b2Body *_paddleBody;

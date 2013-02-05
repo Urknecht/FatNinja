@@ -20,8 +20,8 @@ float brokenBlocks;
     if ((self=[super init])) {
         
         game = @"Roll-Jutsu";
-        description = @"ROLLEN!\rOK!";
-        timeCount = 1;
+        description = @"Destroy all the blocks!\rDon't let the ninja touch the ground!\rMove the paddle with your finger!";
+        timeCount = 35;
         blockCount = 0;
         brokenBlocks = 0;
 
@@ -65,6 +65,7 @@ float brokenBlocks;
 	
 	_world->SetContinuousPhysics(true);
 	
+    /*
 	debugDraw = new GLESDebugDraw( PTM_RATIO );
 	_world->SetDebugDraw(debugDraw);
 	
@@ -75,7 +76,7 @@ float brokenBlocks;
 	//		flags += b2Draw::e_pairBit;
 	//		flags += b2Draw::e_centerOfMassBit;
 	debugDraw->SetFlags(flags);
-	
+	*/
     
 }
 
@@ -104,7 +105,7 @@ float brokenBlocks;
     CCSprite *paddle = [CCSprite spriteWithFile:@"Paddle.jpg"];
     paddle.scale = 0.4;
     int positionX = winSize.width/2;
-    int positionY = marginbot+(paddle.contentSize.height*paddle.scale);
+    int positionY = 30+(paddle.contentSize.height*paddle.scale);
     paddle.position = ccp(positionX,positionY);
     [self addChild:paddle];
     
@@ -294,6 +295,7 @@ float brokenBlocks;
         timeCount = 3;
     }
     ballBody->SetType(b2_staticBody);
+    _paddleBody->SetType(b2_staticBody);
     
 }
 
@@ -363,10 +365,12 @@ float brokenBlocks;
         delete _world;
         _world = NULL;
     }
+    /*
     if (debugDraw) {
         delete debugDraw;
         debugDraw = nil;
     }
+     */
     _groundBody = NULL;
     delete _contactListener;
     if (_mouseJoint) {

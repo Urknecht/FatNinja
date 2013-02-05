@@ -18,7 +18,7 @@
 
 @interface MinigameFoodDrop : MinigameLayer{
     
-    GLESDebugDraw * debugDraw;
+    //GLESDebugDraw * debugDraw;
     
     
     b2MouseJoint *_mouseJoint;
