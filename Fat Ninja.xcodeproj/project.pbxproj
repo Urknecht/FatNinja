@@ -893,6 +893,8 @@
 		3173853D169C722700B86E48 /* Ninja */ = {
 			isa = PBXGroup;
 			children = (
+				CCD1A5CE16C1793C00DEAD66 /* NinjaBig.plist */,
+				CCD1A5CF16C1793C00DEAD66 /* NinjaBig.png */,
 				31A97276169DD7E70029DB0E /* NinjaDie.plist */,
 				31A97277169DD7E70029DB0E /* NinjaDie.png */,
 				CCD7355C16A028C5009EE560 /* NinjaRunningFast.plist */,
@@ -1026,8 +1028,6 @@
 			isa = PBXGroup;
 			children = (
 				CCD1A5DC16C1904100DEAD66 /* Intro.mov */,
-				CCD1A5CE16C1793C00DEAD66 /* NinjaBig.plist */,
-				CCD1A5CF16C1793C00DEAD66 /* NinjaBig.png */,
 				31A8AA9216C1404500300DAD /* brokenWall.plist */,
 				31A8AA9316C1404500300DAD /* brokenWall.png */,
 				31A8AA9416C1404500300DAD /* brokenWall1.png */,

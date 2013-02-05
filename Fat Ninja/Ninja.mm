@@ -24,7 +24,9 @@ b2Body *bodyNinja;
         _wasJumpingAndThrowing = false;
         _shouldDie=false;
         _runningFast=false;
-        
+        _geschToChange = false;
+        _isInvincibru = false;
+        _geschwindigkeit = 5;
         
         [self loadAnims];
         gameObjectType=Character;
@@ -46,76 +48,111 @@ b2Body *bodyNinja;
 }
 
 -(void) changeState:(CharacterStates)newState{
-    // [self stopAllActions];
-    //    id action = nil;
-    
-    
-    switch (newState) {
-        case StateJumping:
-            [_spriteSheetJumping setVisible:(true)];
-            [_spriteSheetRunning setVisible:(false)];
-             if(!_wasJumpingAndThrowing){
-                 [_ninjaJumping runAction:self.jumpAction];
-                 [_ninjaRunning stopAction: self.walkSpeedAction];
-             }
-                             _wasJumpingAndThrowing = false;
-                 break;
-        case StateStart:
-            [_spriteSheetRunning setVisible:(true)];
-            [_ninjaRunning runAction: self.walkSpeedAction];
-            if(_geschToChange){
-                [self reloadAnimsWithSpeed: _geschwindigkeit];
-            }                
-            break;
-            
-        case StateDoubleJumping:
-            [_spriteSheetDoubleJump setVisible:(true)];
-            [_spriteSheetRunning setVisible:(false)];
-            if(!_wasJumpingAndThrowing){
-            [_ninjaDoubleJump runAction:self.doubleJumpAction];
-            [_ninjaRunning stopAction: self.walkSpeedAction];
-            }
-                    _wasJumpingAndThrowing = false;
-            break;
-            
-        case StateRolling:
-            [_spriteSheetRoll setVisible:(true)];
-            [_spriteSheetRunning setVisible:(false)];
-            [_ninjaRoll runAction:self.rollAction];
-            [_ninjaRunning stopAction: self.walkSpeedAction];
-            break;
-            
-        case StateDie:
-            //sterbe animation, am ende muss gegner gelöscht werden
-            break;
-            
-        case StateThrowing:
-            [_spriteSheetThrow setVisible:(true)];
-            if(characterState==StateJumping){
-                _wasJumpingAndThrowing = true;
-                [_spriteSheetJumping setVisible:(false)];
-            }
-            else if(characterState==StateDoubleJumping){
-                _wasJumpingAndThrowing = true;
-                _jumpWasDouble = true;
-                [_spriteSheetDoubleJump setVisible:(false)];
-            }
-            else{
+    if(characterState!=newState){
+        // [self stopAllActions];
+        //    id action = nil;
+        
+        //BEENDE alte Animationen etc
+        switch (characterState) {
+            case StateStart:
                 [_spriteSheetRunning setVisible:(false)];
                 [_ninjaRunning stopAction: self.walkSpeedAction];
-            }
-
-            break;
-            
-        default:
-            break;
+                break;
+            case StateJumping:
+                [_spriteSheetJumping setVisible:(false)];
+                if(newState != StateThrowing){
+                    //Beende Jumpen
+                    [_ninjaJumping stopAction:self.jumpAction];
+                }
+                break;
+            case StateDoubleJumping:
+                [_spriteSheetDoubleJump setVisible:(false)];
+                if(newState != StateThrowing){
+                    //Beende DoubleJumpen
+                    [_ninjaDoubleJump stopAction:self.doubleJumpAction];
+                }
+                break;
+            case StateRolling:
+                //End Rolling
+                [_spriteSheetRoll setVisible:(false)];
+                [_ninjaRoll stopAction:self.rollAction];
+                break;
+            case StateThrowing:
+                //Beende Throw
+                [_spriteSheetThrow setVisible:(false)];
+                break;
+                
+                //        case StateInvincibru:
+                //            _isInvincibru = true;
+                //
+                //            break;
+                
+            default:
+                break;
+        }
+        
+        
+        //Starte neue
+        switch (newState) {
+                
+            case StateStart:
+                [_spriteSheetRunning setVisible:(true)];
+                [_ninjaRunning runAction: self.walkSpeedAction];
+                if(_geschToChange){
+                    [self reloadAnimsWithSpeed: _geschwindigkeit];
+                }
+                break;
+            case StateJumping:
+                [_spriteSheetJumping setVisible:(true)];
+                if(!_wasJumpingAndThrowing){
+                    [_ninjaJumping runAction:self.jumpAction];
+                }
+                _wasJumpingAndThrowing = false;
+                break;
+                
+            case StateDoubleJumping:
+                [_spriteSheetDoubleJump setVisible:(true)];
+                if(!_wasJumpingAndThrowing){
+                    [_ninjaDoubleJump runAction:self.doubleJumpAction];
+                }
+                _wasJumpingAndThrowing = false;
+                break;
+                
+            case StateRolling:
+                [_spriteSheetRoll setVisible:(true)];
+                [_ninjaRoll runAction:self.rollAction];
+                break;
+                
+            case StateDie:
+                //sterbe animation, am ende muss gegner gelöscht werden
+                break;
+                
+            case StateThrowing:
+                [_spriteSheetThrow setVisible:(true)];
+                
+                if(characterState==StateJumping){
+                    _wasJumpingAndThrowing = true;
+                    
+                }
+                else if(characterState==StateDoubleJumping){
+                    _wasJumpingAndThrowing = true;
+                    _jumpWasDouble = true;
+                }
+                break;
+                
+                //        case StateInvincibru:
+                //            _isInvincibru = true;
+                //
+                //            break;
+                
+            default:
+                break;
+        }
+        
+        [self setCharacterState:newState];
+        
+        
     }
-    
-    [self setCharacterState:newState];
-    
-    //    if (action != nil) {
-    //        [self runAction:action];
-    //    }
 }
 
 
@@ -131,16 +168,13 @@ b2Body *bodyNinja;
           self.ninjaJumpMove,
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
              
-             //Beende Jumpen
-             [_spriteSheetJumping setVisible:(false)];
-             [_ninjaJumping stopAction:self.jumpAction];
-             
              //Starte Neuen Status
              if(!_wasJumpingAndThrowing){//Falls kein Shuricen gleichzeitig geworfen wurde
                  [self changeState: StateStart];
              }
              else{
                  _wasJumpingAndThrowing = false;
+                  [_ninjaJumping stopAction:self.jumpAction];
              }
              if(_shouldDie){
                  [self die:_gameLayer];
@@ -166,9 +200,6 @@ b2Body *bodyNinja;
           
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
              
-             //Beende doubleJump
-             [_spriteSheetDoubleJump setVisible:(false)];
-             [_ninjaDoubleJump stopAction:self.doubleJumpAction];
              
              if(!_wasJumpingAndThrowing){//Falls ein Shuricen gleichzeitig geworfen wurde
                  [self changeState: StateStart];
@@ -176,6 +207,7 @@ b2Body *bodyNinja;
              }
              else{
                  _wasJumpingAndThrowing = false;
+                  [_ninjaDoubleJump stopAction:self.doubleJumpAction];
              }
              if(_shouldDie){
                  [self die:_gameLayer];
@@ -197,9 +229,6 @@ b2Body *bodyNinja;
 
 -(void) endRoll{
     if(characterState==StateRolling){
-        //End Rolling
-        [_spriteSheetRoll setVisible:(false)];
-        [_ninjaRoll stopAction:self.rollAction];
         
         [self changeState: StateStart];
         if(_shouldDie){
@@ -213,7 +242,7 @@ b2Body *bodyNinja;
     if(characterState!=StateRolling&&characterState!=StateThrowing&&characterState!=StateDie){
         
         
-
+        
         [self changeState: StateThrowing];
         
         
@@ -221,12 +250,9 @@ b2Body *bodyNinja;
          [CCSequence actions: [CCAnimate actionWithAnimation:self.throwAnim],
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
              
-             //Beende Throw
-             [_spriteSheetThrow setVisible:(false)];
-             
              
              if(_wasJumpingAndThrowing){
-
+                 
                  if(_jumpWasDouble){
                      [self changeState: StateDoubleJumping];
                  }
@@ -253,17 +279,11 @@ b2Body *bodyNinja;
 -(void) die:(GameLayer *)gameLayer{
     
     if(characterState!=StateJumping&&characterState!=StateThrowing&&characterState!=StateDie&&characterState!=StateDoubleJumping){
-
+        
+        [self setCharacterState: StateDie];
+        
         _shouldDie = false;
         [gameLayer stopGame];
-        
-        if(characterState==StateRolling){
-            [_ninjaRoll stopAction:self.rollAction];
-        }
-        else{
-            [_ninjaRunning stopAction: self.walkSpeedAction];
-        }
-        [self setCharacterState: StateDie];
         
         [self removeChild:(_spriteSheetRoll)];
         [self removeChild:(_spriteSheetRunning)];
@@ -271,8 +291,8 @@ b2Body *bodyNinja;
         [self removeChild:(_spriteSheetDoubleJump)];
         [self removeChild:(_spriteSheetThrow)];
         
-        
         [_spriteSheetDie setVisible:(true)];
+        
         [_ninjaDie runAction:self.dieAction];
         
         [_ninjaDie runAction:
@@ -390,7 +410,7 @@ b2Body *bodyNinja;
     _spriteSheetRunningFast = [CCSpriteBatchNode batchNodeWithFile:@"NinjaRunningFast.png"];
     
     //add the CCSpriteBatchNode to your scene
-      [self addChild: _spriteSheetRunningFast];
+    [self addChild: _spriteSheetRunningFast];
     //load each frame included in the sprite sheet into an array for use with the CCAnimation object below
     NSMutableArray *walkFastAnimFrames = [NSMutableArray array];
     for(int i = 1; i <= 4; ++i) {
@@ -510,32 +530,32 @@ b2Body *bodyNinja;
     [_spriteSheetRoll addChild:_ninjaRoll];
     [_spriteSheetRoll setVisible:(false)];
     
-    //STAMPFEN###########################################################
-//    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"NinjaRoll.plist")];
-//    _spriteSheetRoll = [CCSpriteBatchNode batchNodeWithFile:@"NinjaRoll.png"];
-//    [self addChild:_spriteSheetRoll];
-//    
-//    //load each frame included in the sprite sheet into an array for use with the CCAnimation object below
-//    NSMutableArray *rollAnimFrames = [NSMutableArray array];
-//    for(int i = 1; i <= 8; ++i) {
-//        [rollAnimFrames addObject:
-//         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
-//          [NSString stringWithFormat:@"NinjaRoll%d.png", i]]];
-//    }
-//    
-//    CCAnimation *rollAnim = [CCAnimation animationWithSpriteFrames:rollAnimFrames delay:0.02f];
-//    _ninjaRoll = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaRoll1.png"];
-//    
-//    self.rollAction = [CCRepeatForever actionWithAction:
-//                       [CCAnimate actionWithAnimation:rollAnim]];
-//    _ninjaRoll.scale = (winSize.height / 350) ;
-//    //_ninjaRoll.position = ccp(_ninjaRoll.contentSize.width, winSize.height / 3);
-//    [_ninjaRoll setPTMRatio:PTM_RATIO];
-//	[_ninjaRoll setBody:bodyNinja];
-//	[_ninjaRoll setPosition: location];
-//    //add the sprite to the CCSpriteBatchNode object
-//    [_spriteSheetRoll addChild:_ninjaRoll];
-//    [_spriteSheetRoll setVisible:(false)];
+    //STAMPFEN NINJA BIG###########################################################
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"NinjaBig.plist")];
+    _spriteSheetBIG= [CCSpriteBatchNode batchNodeWithFile:@"NinjaBig.png"];
+    [self addChild:_spriteSheetBIG];
+    
+    //load each frame included in the sprite sheet into an array for use with the CCAnimation object below
+    NSMutableArray *bigAnimFrames = [NSMutableArray array];
+    for(int i = 1; i <= 15; ++i) {
+        [bigAnimFrames addObject:
+         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+          [NSString stringWithFormat:@"NinjaBig%d.png", i]]];
+    }
+    
+    CCAnimation *bigAnim = [CCAnimation animationWithSpriteFrames:bigAnimFrames delay:0.02f];
+    _ninjaBIG = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaBig1.png"];
+    
+    self.BIGAction = [CCRepeatForever actionWithAction:
+                      [CCAnimate actionWithAnimation:bigAnim]];
+    _ninjaBIG.scale = (winSize.height / 350) ;
+    
+    [_ninjaBIG setPTMRatio:PTM_RATIO];
+	[_ninjaBIG setBody:bodyNinja];
+	[_ninjaBIG setPosition: location];
+    //add the sprite to the CCSpriteBatchNode object
+    [_spriteSheetBIG addChild:_ninjaBIG];
+    [_spriteSheetBIG setVisible:(false)];
     
     
     //DIE##########################################################
@@ -621,7 +641,7 @@ b2Body *bodyNinja;
         _geschToChange = true;
         _geschwindigkeit = geschwindigkeit;
     }
-
+    
 }
 
 

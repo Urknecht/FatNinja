@@ -21,14 +21,16 @@
     CCAction *_rollAction;
     CCAction *_dieAction;
     CCAction *_throwAction;
+    CCAction *_BIGAction;
     CCAction *_walkSpeedAction;
-      CCAction *_walkSpeedActionFast;
+    CCAction *_walkSpeedActionFast;
     CCSpriteBatchNode *_spriteSheetRunning;
     CCSpriteBatchNode *_spriteSheetRunningFast;
     CCSpriteBatchNode *_spriteSheetJumping;
     CCSpriteBatchNode *_spriteSheetDoubleJump;
     CCSpriteBatchNode *_spriteSheetRoll;
     CCSpriteBatchNode *_spriteSheetDie;
+    CCSpriteBatchNode *_spriteSheetBIG;
     CCSpriteBatchNode *_spriteSheetThrow;
     
     //prüft ob der Ninja hüpft während ein Shuricon geworfen wurde
@@ -46,6 +48,9 @@
     //gibt an die Geschwindigkeit der Animation angepasst werden muss
     bool _geschToChange;
     
+    //gibt an die Geschwindigkeit der Animation angepasst werden muss
+    bool _isInvincibru;
+    
     //Die zu setzende Geschwindigkeit
     int _geschwindigkeit;
     
@@ -62,6 +67,7 @@
 @property (nonatomic, retain)CCPhysicsSprite *ninjaDoubleJump;
 @property (nonatomic, retain)CCPhysicsSprite *ninjaRoll;
 @property (nonatomic, retain)CCPhysicsSprite *ninjaDie;
+@property (nonatomic, retain)CCPhysicsSprite *ninjaBIG;
 @property (nonatomic, retain)CCPhysicsSprite *ninjaThrow;
 
 //Jump Bewegungsanimation (hoch-runter)
@@ -76,6 +82,7 @@
 @property (nonatomic, retain)CCAction *doubleJumpAction;
 @property (nonatomic, retain)CCAction *rollAction;
 @property (nonatomic, retain)CCAction *dieAction;
+@property (nonatomic, retain)CCAction *BIGAction;
 @property (nonatomic, retain)CCAnimation *throwAnim;
 
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetRunning;
@@ -84,6 +91,7 @@
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetDoubleJump;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetRoll;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetDie;
+@property (nonatomic, retain)CCSpriteBatchNode *spriteSheetBIG;
 @property (nonatomic, retain)CCSpriteBatchNode *spriteSheetThrow;
 
 -(id) initWithWorld: (b2World*) world;

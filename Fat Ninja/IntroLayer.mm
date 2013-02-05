@@ -53,29 +53,30 @@ CCSprite *background;
 		} else {
 			background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
 		}
-        
-        NSString *Path = [[NSBundle mainBundle] resourcePath];
-        NSString *filePath = [Path stringByAppendingPathComponent:@"Intro.mov"];
-        NSURL *url = [NSURL fileURLWithPath:filePath isDirectory:NO];
-        player = [[MPMoviePlayerController alloc] initWithContentURL:url];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(moviePlayBackDidFinish:)
-                                                     name:MPMoviePlayerPlaybackDidFinishNotification
-                                                   object:player];
-        
-            //Use the new 3.2 style API.
-            player.controlStyle = MPMovieControlStyleNone;
-        player.fullscreen = true;
-        player.shouldAutoplay = NO;
-        CGSize winSize = [[CCDirector sharedDirector] winSize];
-        player.view.frame = CGRectMake(0, 0, winSize.width,winSize.height);
-        
-        [self removeChild:background];
-        [[[CCDirector sharedDirector] openGLView] addSubview:player.view];
-        
-        [self playMovie];
+//        
+//        NSString *Path = [[NSBundle mainBundle] resourcePath];
+//        NSString *filePath = [Path stringByAppendingPathComponent:@"Intro.mov"];
+//        NSURL *url = [NSURL fileURLWithPath:filePath isDirectory:NO];
+//        player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+//        
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//                                                 selector:@selector(moviePlayBackDidFinish:)
+//                                                     name:MPMoviePlayerPlaybackDidFinishNotification
+//                                                   object:player];
+//        
+//            //Use the new 3.2 style API.
+//            player.controlStyle = MPMovieControlStyleNone;
+//        player.fullscreen = true;
+//        player.shouldAutoplay = NO;
+//        CGSize winSize = [[CCDirector sharedDirector] winSize];
+//        player.view.frame = CGRectMake(0, 0, winSize.width,winSize.height);
+//        
+//        [self removeChild:background];
+//        [[[CCDirector sharedDirector] openGLView] addSubview:player.view];
+//        
+//        [self playMovie];
 		// add the label as a child to this Layer
+        
 		[self addChild: background];
 	}
 	
@@ -116,5 +117,6 @@ CCSprite *background;
 -(void) onEnter
 {
 	[super onEnter];
+      [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
 }
 @end
