@@ -59,6 +59,7 @@ MinigameLayer *minigamelayer;
         
         
         CCLabelTTF *label = [CCLabelTTF labelWithString:game fontName:@"Marker Felt" fontSize:30 ];
+        label.tag = 13;
         label.color = ccc3(66,53,32);
 
         [self addChild:label z:3];
@@ -66,7 +67,7 @@ MinigameLayer *minigamelayer;
         
         CCLabelTTF *labelDescription = [CCLabelTTF labelWithString:description fontName:@"Marker Felt" fontSize:20];
         labelDescription.tag = 11;
-        [self addChild:labelDescription z:0];
+        [self addChild:labelDescription z:3];
         labelDescription.position = ccp( size.width/2, size.height-95);
         labelDescription.color = ccc3(66,53,32);
 
@@ -113,10 +114,10 @@ MinigameLayer *minigamelayer;
         [minigamelayer calculateEvaluation];
         CGSize size = [[CCDirector sharedDirector] winSize];
         [CCMenuItemFont setFontSize:40];
-        CCMenuItemLabel *showScore = [CCMenuItemFont itemWithString:[NSString stringWithFormat:@"Congratulations for:\r%f",minigamelayer.evaluation] target:self selector:@selector(resumeMaingame:)];
+        CCMenuItemLabel *showScore = [CCMenuItemFont itemWithString:[NSString stringWithFormat:@"Congratulations for:\r%.0f %%",minigamelayer.evaluation*100] target:self selector:@selector(resumeMaingame:)];
         showScore.color = ccc3(0,255,0);
         CCMenu *menu = [CCMenu menuWithItems:showScore, nil];
-        [menu setPosition:ccp( size.width/2, size.height/3)];
+        [menu setPosition:ccp( size.width/2, size.height/2)];
         [menu setVisible:YES];
         menu.tag = 12;
         
@@ -135,9 +136,11 @@ MinigameLayer *minigamelayer;
 - (void) startMinigame: (id) sender
 {
     [[CCDirector sharedDirector] resume];
+    CGSize size = [[CCDirector sharedDirector] winSize];
     //lösche die Beschreibung und das Feld zum Starten
     [self removeChildByTag:10];
     [self removeChildByTag:11];
+    [[self getChildByTag:13] setPosition:ccp(size.width/2, 15)];
     
 }
 
