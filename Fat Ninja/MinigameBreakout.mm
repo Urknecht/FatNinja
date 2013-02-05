@@ -375,7 +375,7 @@ float brokenBlocks;
         powerDuration = 9;
     }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:(int)powerDuration forKey:@"powerDuration"];
+    [defaults setInteger:powerDuration forKey:@"powerDuration"];
 }
 
 - (void)dealloc {

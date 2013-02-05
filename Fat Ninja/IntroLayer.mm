@@ -21,6 +21,7 @@
 
 MPMoviePlayerController *player;
 CCSprite *background;
+bool showIntro2;
 
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -43,7 +44,11 @@ CCSprite *background;
 -(id) init
 {
 	if( (self=[super init])) {
-		
+        
+
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        showIntro2 = [defaults boolForKey:@"showIntro"];
+
 		// ask director for the window size
 		
 		
@@ -84,20 +89,20 @@ CCSprite *background;
 }
 
 -(void)moviePlayBackDidFinish:(NSNotification*)notification {
-    [self removeChild:background];
 
     [self stopMovie];
 }
-    -(void)playMovie {
+
+-(void)playMovie {
         //We do not play the movie if it is already playing.
         MPMoviePlaybackState state = player.playbackState;
         if(state == MPMoviePlaybackStatePlaying) {
             NSLog(@"Movie is already playing.");
             return; }
         [player play];
-    }
+}
 
-    -(void)stopMovie {
+-(void)stopMovie {
         //We do not stop the movie if it is already stopped.
         MPMoviePlaybackState state = player.playbackState;
         if(state == MPMoviePlaybackStateStopped) {
@@ -107,16 +112,21 @@ CCSprite *background;
         [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
 
         [player.view removeFromSuperview];
-        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
         player.fullscreen = false;
-        [player release];
-
+        
+        [self continueToGame];
 
     }
+
+-(void) continueToGame{
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
+}
 
 -(void) onEnter
 {
 	[super onEnter];
       [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
 }
+ 
+
 @end

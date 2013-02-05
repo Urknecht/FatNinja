@@ -1630,9 +1630,9 @@
 				E7A5EC731678C499006AA447 /* GameScene.h */,
 				E7A5EC741678C49A006AA447 /* GameScene.mm */,
 				71A43C7516A6C96200B79C04 /* MinigameScene.h */,
-				71A43C7616A6C96200B79C04 /* MinigameScene.mm */,
 				E7AA87541694326800C71551 /* GameOverScene.h */,
 				E7AA87551694326800C71551 /* GameOverScene.mm */,
+				71A43C7616A6C96200B79C04 /* MinigameScene.mm */,
 				71C3C79016760B6B00623738 /* HelloWorldLayer.h */,
 				71C3C79116760B6B00623738 /* HelloWorldLayer.mm */,
 			);

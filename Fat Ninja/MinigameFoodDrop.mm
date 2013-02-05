@@ -502,7 +502,7 @@ int amountOfBombs;
         powerDuration = 10;
     }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:(int)powerDuration forKey:@"powerDuration"];
+    [defaults setInteger:powerDuration forKey:@"powerDuration"];
 }
 
 - (void)dealloc {
