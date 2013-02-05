@@ -429,7 +429,7 @@ double endSpeed;
             if (CGRectIntersectsRect(projectile.boundingBox, enemy.boundingBox)) {
                 if(enemy.isShootable){
                     [enemy changeState:StateDie];
-                    if(enemy.isPowerUp){
+                    if(enemy.isPowerUp||enemy.isEatable){
                         [enemyToDelete addObject:enemy];
                     }
                 }
