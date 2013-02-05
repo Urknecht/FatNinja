@@ -12,7 +12,11 @@
 
 -(id) initWith:(float)geschw andWinSize:(CGSize)wSize{
     if ((self = [super init])) {
-        self= [WallOb spriteWithFile:@"brokenwall.png"];
+        //self= [WallOb spriteWithFile:@"brokenwall.png"];
+        
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"brokenWall.plist")];
+        self = [WallOb spriteWithSpriteFrameName: @"brokenWall1.png"];
+        
         isRollable=true;
         isShootable=false;
         geschwindigkeit=geschw;
@@ -29,7 +33,18 @@
     
     switch (newState) {
         case StateDie:
-            //sterbe animation  am ende muss gegner gelöscht werden
+            
+            NSLog(@"Break");
+            [self runAction: self.breakAction];
+            
+            [self runAction:
+             [CCSequence actions:
+              [CCFadeTo actionWithDuration:0.5f opacity:0],
+              [CCCallBlockN actionWithBlock:^(CCNode *node) {
+                 
+                 [(GameLayer *)[[self parent] parent] removeObstacle: self];
+                 
+             }], nil]];
             break;
             
         default:
@@ -50,6 +65,20 @@
     }];
     CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
     [self runAction:sequence];
+    
+    
+    
+    //load each frame included in the sprite sheet into an array for use with the CCAnimation object below
+    NSMutableArray *breakAnimFrames = [NSMutableArray array];
+    for(int i = 1; i <= 7; ++i) {
+        [breakAnimFrames addObject:
+         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+          [NSString stringWithFormat:@"brokenWall%d.png", i]]];
+    }
+    CCAnimation *breakAnim = [CCAnimation animationWithSpriteFrames:breakAnimFrames delay:0.05f];
+    self.breakAction =[CCAnimate actionWithAnimation:breakAnim];
+    
+    
     
 }
 @end

@@ -49,6 +49,15 @@
 		31738564169C726900B86E48 /* NinjaRunning7.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738550169C726900B86E48 /* NinjaRunning7.png */; };
 		31738565169C726900B86E48 /* NinjaRunning8.png in Resources */ = {isa = PBXBuildFile; fileRef = 31738551169C726900B86E48 /* NinjaRunning8.png */; };
 		31A2E74416AD7B20002023C0 /* WallOb.mm in Sources */ = {isa = PBXBuildFile; fileRef = 31A2E74016AD7B20002023C0 /* WallOb.mm */; };
+		31A8AA9B16C1404600300DAD /* brokenWall.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A8AA9216C1404500300DAD /* brokenWall.plist */; };
+		31A8AA9C16C1404600300DAD /* brokenWall.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A8AA9316C1404500300DAD /* brokenWall.png */; };
+		31A8AA9D16C1404600300DAD /* brokenWall1.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A8AA9416C1404500300DAD /* brokenWall1.png */; };
+		31A8AA9E16C1404600300DAD /* brokenWall2.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A8AA9516C1404500300DAD /* brokenWall2.png */; };
+		31A8AA9F16C1404600300DAD /* brokenWall3.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A8AA9616C1404500300DAD /* brokenWall3.png */; };
+		31A8AAA016C1404600300DAD /* brokenWall4.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A8AA9716C1404500300DAD /* brokenWall4.png */; };
+		31A8AAA116C1404600300DAD /* brokenWall5.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A8AA9816C1404500300DAD /* brokenWall5.png */; };
+		31A8AAA216C1404600300DAD /* brokenWall6.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A8AA9916C1404600300DAD /* brokenWall6.png */; };
+		31A8AAA316C1404600300DAD /* brokenWall7.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A8AA9A16C1404600300DAD /* brokenWall7.png */; };
 		31A97291169DD7E80029DB0E /* NinjaDie.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31A97276169DD7E70029DB0E /* NinjaDie.plist */; };
 		31A97292169DD7E80029DB0E /* NinjaDie.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A97277169DD7E70029DB0E /* NinjaDie.png */; };
 		31A97293169DD7E80029DB0E /* NinjaDie1.png in Resources */ = {isa = PBXBuildFile; fileRef = 31A97278169DD7E70029DB0E /* NinjaDie1.png */; };
@@ -360,6 +369,15 @@
 		31738551169C726900B86E48 /* NinjaRunning8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaRunning8.png; path = Resources/NinjaRunning8.png; sourceTree = "<group>"; };
 		31A2E73F16AD7B20002023C0 /* WallOb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallOb.h; sourceTree = "<group>"; };
 		31A2E74016AD7B20002023C0 /* WallOb.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WallOb.mm; sourceTree = "<group>"; };
+		31A8AA9216C1404500300DAD /* brokenWall.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = brokenWall.plist; path = Resources/brokenWall.plist; sourceTree = "<group>"; };
+		31A8AA9316C1404500300DAD /* brokenWall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brokenWall.png; path = Resources/brokenWall.png; sourceTree = "<group>"; };
+		31A8AA9416C1404500300DAD /* brokenWall1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brokenWall1.png; path = Resources/brokenWall1.png; sourceTree = "<group>"; };
+		31A8AA9516C1404500300DAD /* brokenWall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brokenWall2.png; path = Resources/brokenWall2.png; sourceTree = "<group>"; };
+		31A8AA9616C1404500300DAD /* brokenWall3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brokenWall3.png; path = Resources/brokenWall3.png; sourceTree = "<group>"; };
+		31A8AA9716C1404500300DAD /* brokenWall4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brokenWall4.png; path = Resources/brokenWall4.png; sourceTree = "<group>"; };
+		31A8AA9816C1404500300DAD /* brokenWall5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brokenWall5.png; path = Resources/brokenWall5.png; sourceTree = "<group>"; };
+		31A8AA9916C1404600300DAD /* brokenWall6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brokenWall6.png; path = Resources/brokenWall6.png; sourceTree = "<group>"; };
+		31A8AA9A16C1404600300DAD /* brokenWall7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brokenWall7.png; path = Resources/brokenWall7.png; sourceTree = "<group>"; };
 		31A97276169DD7E70029DB0E /* NinjaDie.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = NinjaDie.plist; path = Resources/NinjaDie.plist; sourceTree = "<group>"; };
 		31A97277169DD7E70029DB0E /* NinjaDie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDie.png; path = Resources/NinjaDie.png; sourceTree = "<group>"; };
 		31A97278169DD7E70029DB0E /* NinjaDie1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NinjaDie1.png; path = Resources/NinjaDie1.png; sourceTree = "<group>"; };
@@ -997,6 +1015,15 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				31A8AA9216C1404500300DAD /* brokenWall.plist */,
+				31A8AA9316C1404500300DAD /* brokenWall.png */,
+				31A8AA9416C1404500300DAD /* brokenWall1.png */,
+				31A8AA9516C1404500300DAD /* brokenWall2.png */,
+				31A8AA9616C1404500300DAD /* brokenWall3.png */,
+				31A8AA9716C1404500300DAD /* brokenWall4.png */,
+				31A8AA9816C1404500300DAD /* brokenWall5.png */,
+				31A8AA9916C1404600300DAD /* brokenWall6.png */,
+				31A8AA9A16C1404600300DAD /* brokenWall7.png */,
 				E79E76AE16C12BEF0065B630 /* newHighscore.png */,
 				CCD1A5C216BFC89F00DEAD66 /* obstacles.png */,
 				CCD1A5BE16BFC7FB00DEAD66 /* powerup.png */,
@@ -1820,6 +1847,15 @@
 				313E77B916B5A9D20039EDF0 /* skeletonDying06.png in Resources */,
 				313E77BA16B5A9D20039EDF0 /* skeletonDying07.png in Resources */,
 				313E77BB16B5A9D20039EDF0 /* skeletonDying08.png in Resources */,
+				31A8AA9B16C1404600300DAD /* brokenWall.plist in Resources */,
+				31A8AA9C16C1404600300DAD /* brokenWall.png in Resources */,
+				31A8AA9D16C1404600300DAD /* brokenWall1.png in Resources */,
+				31A8AA9E16C1404600300DAD /* brokenWall2.png in Resources */,
+				31A8AA9F16C1404600300DAD /* brokenWall3.png in Resources */,
+				31A8AAA016C1404600300DAD /* brokenWall4.png in Resources */,
+				31A8AAA116C1404600300DAD /* brokenWall5.png in Resources */,
+				31A8AAA216C1404600300DAD /* brokenWall6.png in Resources */,
+				31A8AAA316C1404600300DAD /* brokenWall7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

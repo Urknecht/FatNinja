@@ -5,178 +5,156 @@
 	<key>frames</key>
 	<dict>
 		
-		<key>NinjaDie1.png</key>
+		<key>brokenWall1.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {61, 85}}</string>
+			<string>{{1, 0}, {28, 100}}</string>
 			<key>spriteOffset</key>
 			<string>{0, 0}</string>
 			<key>spriteSize</key>
-			<string>{85, 85}</string>
+			<string>{30, 100}</string>
 			<key>spriteSourceSize</key>
-			<string>{85, 85}</string>
+			<string>{30, 100}</string>
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{0, 170}, {85, 85}}</string>
+			<string>{{100, 0}, {30, 100}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>NinjaDie2.png</key>
+		<key>brokenWall2.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {61, 85}}</string>
+			<string>{{1, 0}, {28, 100}}</string>
 			<key>spriteOffset</key>
 			<string>{0, 0}</string>
 			<key>spriteSize</key>
-			<string>{85, 85}</string>
+			<string>{30, 100}</string>
 			<key>spriteSourceSize</key>
-			<string>{85, 85}</string>
+			<string>{30, 100}</string>
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{0, 0}, {85, 85}}</string>
+			<string>{{150, 100}, {30, 100}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>NinjaDie3.png</key>
+		<key>brokenWall3.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 1}, {65, 83}}</string>
+			<string>{{0, 0}, {30, 100}}</string>
 			<key>spriteOffset</key>
 			<string>{0, 0}</string>
 			<key>spriteSize</key>
-			<string>{85, 85}</string>
+			<string>{30, 100}</string>
 			<key>spriteSourceSize</key>
-			<string>{85, 85}</string>
+			<string>{30, 100}</string>
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{85, 0}, {85, 85}}</string>
+			<string>{{130, 0}, {30, 100}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>NinjaDie4.png</key>
+		<key>brokenWall4.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 1}, {61, 83}}</string>
+			<string>{{0, 0}, {42, 108}}</string>
 			<key>spriteOffset</key>
 			<string>{0, 0}</string>
 			<key>spriteSize</key>
-			<string>{85, 85}</string>
+			<string>{42, 108}</string>
 			<key>spriteSourceSize</key>
-			<string>{85, 85}</string>
+			<string>{42, 108}</string>
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{0, 85}, {85, 85}}</string>
+			<string>{{58, 0}, {42, 108}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>NinjaDie5.png</key>
+		<key>brokenWall5.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 1}, {65, 83}}</string>
+			<string>{{0, 0}, {58, 118}}</string>
 			<key>spriteOffset</key>
 			<string>{0, 0}</string>
 			<key>spriteSize</key>
-			<string>{85, 85}</string>
+			<string>{58, 118}</string>
 			<key>spriteSourceSize</key>
-			<string>{85, 85}</string>
+			<string>{58, 118}</string>
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{85, 85}, {85, 85}}</string>
+			<string>{{0, 0}, {58, 118}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>NinjaDie6.png</key>
+		<key>brokenWall6.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 22}, {79, 63}}</string>
+			<string>{{0, 0}, {70, 115}}</string>
 			<key>spriteOffset</key>
 			<string>{0, 0}</string>
 			<key>spriteSize</key>
-			<string>{85, 85}</string>
+			<string>{70, 115}</string>
 			<key>spriteSourceSize</key>
-			<string>{85, 85}</string>
+			<string>{70, 115}</string>
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{85, 170}, {85, 85}}</string>
+			<string>{{0, 118}, {70, 115}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>NinjaDie7.png</key>
+		<key>brokenWall7.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 26}, {85, 59}}</string>
+			<string>{{0, 0}, {80, 104}}</string>
 			<key>spriteOffset</key>
 			<string>{0, 0}</string>
 			<key>spriteSize</key>
-			<string>{85, 85}</string>
+			<string>{80, 104}</string>
 			<key>spriteSourceSize</key>
-			<string>{85, 85}</string>
+			<string>{80, 104}</string>
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{170, 0}, {85, 85}}</string>
-			<key>textureRotated</key>
-			<false/>
-		</dict>
-		
-		<key>NinjaDie8.png</key>
-		<dict>
-			<key>aliases</key>
-			<array>
-			
-			</array>
-			<key>spriteColorRect</key>
-			<string>{{0, 34}, {85, 49}}</string>
-			<key>spriteOffset</key>
-			<string>{0, 0}</string>
-			<key>spriteSize</key>
-			<string>{85, 85}</string>
-			<key>spriteSourceSize</key>
-			<string>{85, 85}</string>
-			<key>spriteTrimmed</key>
-			<false/>
-			<key>textureRect</key>
-			<string>{{170, 85}, {85, 85}}</string>
+			<string>{{70, 108}, {80, 104}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -199,11 +177,11 @@
 			<key>name</key>
 			<string>default</string>
 			<key>textureFileName</key>
-			<string>NinjaDie</string>
+			<string>brokenWall</string>
 			<key>textureFileExtension</key>
 			<string>.png</string>
 			<key>coordinatesFileName</key>
-			<string>NinjaDie</string>
+			<string>brokenWall</string>
 			<key>coordinatesFileExtension</key>
 			<string>.plist</string>
 			<key>premultipliedAlpha</key>

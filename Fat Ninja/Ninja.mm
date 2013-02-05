@@ -269,6 +269,8 @@ b2Body *bodyNinja;
         [_ninjaDie runAction:
          [CCSequence actions:
           [CCFadeTo actionWithDuration:3 opacity:0],
+
+
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
              
              [gameLayer endGame];
@@ -468,7 +470,7 @@ b2Body *bodyNinja;
           [NSString stringWithFormat:@"NinjaDie%d.png", i]]];
     }
     
-    CCAnimation *dieAnim = [CCAnimation animationWithSpriteFrames:dieAnimFrames delay:0.08f];
+    CCAnimation *dieAnim = [CCAnimation animationWithSpriteFrames:dieAnimFrames delay:0.1f];
     _ninjaDie = [CCPhysicsSprite spriteWithSpriteFrameName:@"NinjaDie1.png"];
     
     self.dieAction =  [CCAnimate actionWithAnimation:dieAnim];

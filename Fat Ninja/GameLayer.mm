@@ -67,7 +67,7 @@ double endSpeed;
         [self addChild:_enemyBatchNode];
         _sushiBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"icon-sushi.png"];
         [self addChild:_sushiBatchNode];
-        _wallBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"brokenwall.png"];
+        _wallBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"brokenWall.png"];
         [self addChild:_wallBatchNode];
         _stoneBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"stone.png"];
         [self addChild:_stoneBatchNode];
@@ -352,8 +352,9 @@ double endSpeed;
                         [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
                         [enemyToDelete addObject:enemy];
                     }
-                    else if(enemy.isRollable and isRolling){
-                        [enemyToDelete addObject:enemy];
+                    else if(enemy.isRollable and isRolling and enemy.enemyState!= StateDie){
+                        [enemy changeState:StateDie];
+                        //[enemyToDelete addObject:enemy];
                     }
                     else if(enemy.isPowerUp){
                         //hier kommt das mit dem PowerUp rein
@@ -369,10 +370,9 @@ double endSpeed;
                         }
                         [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:type]];
                     }
-                    else{
+                    else if(!enemy.enemyState==StateDie){
                         [ninja die:self];
                         [self stopGame];
-                        
                     }
                 }
             }
@@ -429,6 +429,7 @@ double endSpeed;
             if (CGRectIntersectsRect(projectile.boundingBox, enemy.boundingBox)) {
                 if(enemy.isShootable){
                     [enemy changeState:StateDie];
+                    
                     if(enemy.isPowerUp||enemy.isEatable){
                         [enemyToDelete addObject:enemy];
                     }

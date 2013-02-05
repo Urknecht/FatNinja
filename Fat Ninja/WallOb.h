@@ -8,6 +8,10 @@
 
 #import "ObstacleObject.h"
 
-@interface WallOb : ObstacleObject
+@interface WallOb : ObstacleObject{
+    CCAction *_breakAction;
+}
+@property (nonatomic, retain)CCAction *breakAction;
+
 
 @end

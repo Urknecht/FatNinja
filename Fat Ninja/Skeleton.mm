@@ -65,10 +65,7 @@
         CCSequence *sequence=[CCSequence actionOne:actionMove two:actionMoveDone];
         [self runAction:sequence];
 
-    
-    
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: (@"skeletonDying.plist")];
-     
+         
     //load each frame included in the sprite sheet into an array for use with the CCAnimation object below
     NSMutableArray *dieAnimFrames = [NSMutableArray array];
     for(int i = 1; i <= 8; ++i) {
@@ -76,14 +73,10 @@
          [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
           [NSString stringWithFormat:@"skeletonDying0%d.png", i]]];
     }
-    CCAnimation *dieAnim = [CCAnimation animationWithSpriteFrames:dieAnimFrames delay:0.1f];
-    self.dieAction = [CCRepeatForever actionWithAction:
-                       [CCAnimate actionWithAnimation:dieAnim]];
-
-    
-   // self = [Skeleton spriteWithSpriteFrameName: @"skeletonDying01.png"];
-        self.scale = (wiSize.height / 400) ;
   
+    
+    CCAnimation *dieAnim = [CCAnimation animationWithSpriteFrames:dieAnimFrames delay:0.1f];
+    self.dieAction =    [CCAnimate actionWithAnimation:dieAnim];
 
 
 }

@@ -9,12 +9,9 @@
 #import "ObstacleObject.h"
 
 @interface Skeleton : ObstacleObject{
-        CCAction *_dieAction;
-    CCSpriteBatchNode *_spriteSheetDying;
-    
+        CCAction *_dieAction;    
 }
 @property (nonatomic, retain)CCAction *dieAction;
-@property (nonatomic, retain)CCPhysicsSprite *skeletonDie;
-@property (nonatomic, retain)CCSpriteBatchNode *spriteSheetDying;
+
 
 @end
