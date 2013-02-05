@@ -490,13 +490,13 @@ int amountOfBombs;
         powerDuration = 0;
     }else if (evaluation > 0 && evaluation <= 0.20){
         powerDuration = 2;
-    }else if (evaluation > 20 && evaluation <= 0.40){
+    }else if (evaluation > 0.20 && evaluation <= 0.40){
         powerDuration = 4;
-    }else if (evaluation > 40 && evaluation <= 0.60){
+    }else if (evaluation > 0.40 && evaluation <= 0.60){
         powerDuration = 4;
-    }else if (evaluation > 60 && evaluation <= 0.80){
+    }else if (evaluation > 0.60 && evaluation <= 0.80){
         powerDuration = 6;
-    }else if (evaluation > 80 && evaluation < 0.100){
+    }else if (evaluation > 0.80 && evaluation < 0.100){
         powerDuration = 8;
     }else if (evaluation == 0.100){
         powerDuration = 10;
