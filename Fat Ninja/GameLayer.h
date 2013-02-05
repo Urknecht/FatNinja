@@ -12,6 +12,7 @@
 #import "GLES-Render.h"
 #import "CCPhysicsSprite.h"
 #import "ObstacleObject.h"
+#import "Ninja.h"
 
 
 #define PTM_RATIO     32.0 //zum umrechnen von cocos2d pints in box2d meter, vlt muss man das noch anpassen
@@ -19,11 +20,12 @@
 @class GameObject;
 @class BackgroundLayer;
 @class ObstacleObject;
+@class Ninja;
 
 @interface GameLayer : CCLayerColor {
    
     //ninja 
-    GameObject *ninja;
+    Ninja *ninja;
         
     bool isPaused;
     bool isRolling;

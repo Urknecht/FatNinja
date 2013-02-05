@@ -82,11 +82,16 @@ b2Body *bodyNinja;
                 [_spriteSheetThrow setVisible:(false)];
                 break;
                 
-//            case StateInvincibru:
-//                _isInvincibru = false;
-//                [_spriteSheetBIG setVisible:(false)];
-//                [_ninjaBIG stopAction:self.BIGAction];
-//                break;
+            case StateInvincibruRolling:
+                self.isInvincibru = false;
+                [_spriteSheetRoll setVisible:(false)];
+                [_ninjaRoll stopAction:self.rollAction];
+                break;
+            case StateBIG:
+                self.isInvincibru = false;
+                [_spriteSheetBIG setVisible:(false)];
+                [_ninjaBIG stopAction:self.BIGAction];
+                break;
                 
             default:
                 break;
@@ -140,12 +145,18 @@ b2Body *bodyNinja;
                     _jumpWasDouble = true;
                 }
                 break;
-                
-//           case StateInvincibru:
-//               _isInvincibru = true;
-//                [_spriteSheetBIG setVisible:(true)];
-//                [_ninjaBIG runAction:self.BIGAction];
-//                break;
+           
+            case StateBIG:
+                   self.isInvincibru  = true;
+                [_spriteSheetBIG setVisible:(true)];
+                [_ninjaBIG runAction:self.BIGAction];
+                break;     
+            
+           case StateInvincibruRolling:
+               self.isInvincibru  = true;
+                [_spriteSheetRoll setVisible:(true)];
+                [_ninjaRoll runAction:self.rollAction];
+                break;
                 
             default:
                 break;

@@ -48,7 +48,7 @@
     //gibt an die Geschwindigkeit der Animation angepasst werden muss
     bool _geschToChange;
     
-    //gibt an die Geschwindigkeit der Animation angepasst werden muss
+    //gibt an ob der Ninja gerade unsterblich ist
     bool _isInvincibru;
     
     //Die zu setzende Geschwindigkeit
@@ -61,6 +61,7 @@
 }
 
 
+@property (nonatomic, readwrite) bool isInvincibru; //gibt an ob der Ninja gerade unsterblich ist
 @property (nonatomic, retain)CCPhysicsSprite *ninjaRunning;
 @property (nonatomic, retain)CCPhysicsSprite *ninjaRunningFast;
 @property (nonatomic, retain)CCPhysicsSprite *ninjaJumping;

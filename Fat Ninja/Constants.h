@@ -22,7 +22,10 @@ typedef enum {
     StateThrowing,
     StateAfterJumping,
     StateStart,
-    StateDoubleJumping
+    StateDoubleJumping,
+    StateInvincibruRolling,
+    StateBIG
+    
 } CharacterStates; // 1
 
 typedef enum {

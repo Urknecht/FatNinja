@@ -61,6 +61,8 @@ int powerupType;
 
 double endSpeed;
 
+bool powerupInitialized;
+
 - (id) init
 {
     if ((self = [super init])) {
@@ -92,6 +94,7 @@ double endSpeed;
         
         isRolling=false;
         isPaused=false;
+        powerupInitialized = false;
         
         //ninja
         ninja=[[Ninja alloc] initWithWorld: world];
@@ -151,16 +154,16 @@ double endSpeed;
 	
 	world->SetContinuousPhysics(true);
 	
-//	debugDraw = new GLESDebugDraw( PTM_RATIO );
-//	world->SetDebugDraw(debugDraw);
-//	
-//	uint32 flags = 0;
-//	flags += b2Draw::e_shapeBit;
-//	//		flags += b2Draw::e_jointBit;
-//	//		flags += b2Draw::e_aabbBit;
-//	//		flags += b2Draw::e_pairBit;
-//	//		flags += b2Draw::e_centerOfMassBit;
-//	debugDraw->SetFlags(flags);
+    //	debugDraw = new GLESDebugDraw( PTM_RATIO );
+    //	world->SetDebugDraw(debugDraw);
+    //
+    //	uint32 flags = 0;
+    //	flags += b2Draw::e_shapeBit;
+    //	//		flags += b2Draw::e_jointBit;
+    //	//		flags += b2Draw::e_aabbBit;
+    //	//		flags += b2Draw::e_pairBit;
+    //	//		flags += b2Draw::e_centerOfMassBit;
+    //	debugDraw->SetFlags(flags);
 	
 	
 	// Define the ground body.
@@ -297,13 +300,13 @@ double endSpeed;
 //	// It is recommend to disable it
 //	//
 //	[super draw];
-//	
+//
 //	ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
-//	
+//
 //	kmGLPushMatrix();
-//	
+//
 //	world->DrawDebugData();
-//	
+//
 //	kmGLPopMatrix();
 //}
 
@@ -313,19 +316,22 @@ double endSpeed;
     world->Step(dt, velocityIterations, positionIterations);
 }
 
-
 -(void)powerupAnimation:(ccTime)dt{
-    int localduration = powerupDuration;
     int type = powerupType;
-    if (localduration == powerupDuration) {
+    if (!powerupInitialized) {
+        powerupInitialized = true;
         switch (type) {
             case 0:
                 //FoodDrop
                 //Hier soll die großwerde Animation rein
+                NSLog(@"startBIG");
+                [ninja changeState: StateBIG];
                 break;
                 
             case 1:
                 //BlockBreak
+                      NSLog(@"startROLLING");
+                [ninja changeState: StateInvincibruRolling];
                 //Hier soll er sich solange drehen und invincibru sein wie die zeit dauert
                 break;
                 
@@ -333,15 +339,16 @@ double endSpeed;
                 break;
         }
     }
-    if (localduration != 0) {
-        localduration--;
-        //NSLog(@"POWERUPANIMATIONOMG");
+    else if (powerupDuration != 0) {
+        powerupDuration --;
+        NSLog(@"POWERUPANIMATIONOMG %d",powerupDuration);
     }
-    if (localduration == 0) {
+    else if (powerupDuration == 0) {
         //Hier wieder State auf normal laufen setzen
+              NSLog(@"END INVINCIBRU");
+        [ninja changeState: StateStart];
         [self unschedule:@selector(powerupAnimation:)];
-    }
-    
+    }  
     
 }
 #pragma mark game methoden
@@ -352,7 +359,7 @@ double endSpeed;
     if(nextStage){ //nach bestimmter anzahl
         if(self.geschwindigkeit>0.21){ // wird bis zu minimum geschwindigkeit
             self.geschwindigkeit-=0.2; // die geschiwndigkeit angepasst
-      
+            
             
             [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
             
@@ -367,6 +374,8 @@ double endSpeed;
 
 //ueberprueft ob ninja getroffen wurde
 -(void) updateNinjaIsHit:(ccTime)delta{
+    
+    
     NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
     
     for (ObstacleObject *enemy in enemyArray) {
@@ -379,7 +388,7 @@ double endSpeed;
             b2Body *bodyA = fixtureA->GetBody();
             b2Body *bodyB = fixtureB->GetBody();
             
-                 if (bodyA == enemy.body || bodyB == enemy.body) {
+            if (bodyA == enemy.body || bodyB == enemy.body) {
                 if(contact->IsTouching()){
                     
                     if(enemy.isEatable){
@@ -387,40 +396,41 @@ double endSpeed;
                         [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
                         [enemyToDelete addObject:enemy];
                     }
-                    else if(enemy.isRollable and isRolling and enemy.enemyState!= StateDie){
-                        [enemy changeState:StateDie];
-                        //[enemyToDelete addObject:enemy];
-                    }
-                    else if(enemy.isPowerUp){
-                        //hier kommt das mit dem PowerUp rein
-                         [enemyToDelete addObject:enemy];
-                        if(isRolling){
-                            isRolling=false;
-                            [ninja endRoll];
+                    
+                    else if(!ninja.isInvincibru){
+                        if(enemy.isRollable and isRolling and enemy.enemyState!= StateDie){
+                            [enemy changeState:StateDie];
+                            //[enemyToDelete addObject:enemy];
                         }
-                        int type = enemy.type;
-                        if (typePresentation < 2) {
-                            type = typePresentation;
-                            typePresentation++;
+                        else if(enemy.isPowerUp){
+                            //hier kommt das mit dem PowerUp rein
+                            [enemyToDelete addObject:enemy];
+                            if(isRolling){
+                                isRolling=false;
+                                [ninja endRoll];
+                            }
+                            int type = enemy.type;
+                            if (typePresentation < 2) {
+                                type = typePresentation;
+                                typePresentation++;
+                            }
+                            [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:type]];
+                            
+                            //ab hier kommt das was passiert wenn das minispiel zu ende ist
+                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                            int powerDuration = [defaults integerForKey:@"powerDuration"];
+                            powerupDuration = powerDuration;
+                            powerupInitialized = false;
+                            powerupType = type;
+                            //NSLog(@"%i" ,powerDuration);
+                            //NSLog(@"%i" ,type);
+                            [self schedule:@selector(powerupAnimation:)interval:1.0];
+                                                        
                         }
-                        [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:type]];
-                        
-                        //ab hier kommt das was passiert wenn das minispiel zu ende ist
-                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                        int powerDuration = [defaults integerForKey:@"powerDuration"];
-                        powerupDuration = powerDuration;
-                        powerupType = type;
-                        //NSLog(@"%i" ,powerDuration);
-                        //NSLog(@"%i" ,type);
-                        [self schedule:@selector(powerupAnimation:)interval:1.0];
-                        
-                        
-                        
-                        
-                    }
-                    else if(!enemy.enemyState==StateDie){
-                        [ninja die:self];
-                        [self stopGame];
+                        else if(!enemy.enemyState==StateDie){
+                            [ninja die:self];
+                            [self stopGame];
+                        }
                     }
                 }
             }
@@ -462,8 +472,8 @@ double endSpeed;
 
 -(void) endGame{
     NSLog(@"Zeige Highscore!");
-//    [ninja dealloc];
-//    [self dealloc];
+    //    [ninja dealloc];
+    //    [self dealloc];
     [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance andSushi: sushiCounter]];
 }
 
@@ -484,7 +494,7 @@ double endSpeed;
                     }
                 }
                 [projectilesToDelete addObject:projectile];
-
+                
             }
         }
         for (ObstacleObject *enemy in enemyToDelete) {
@@ -583,8 +593,8 @@ double endSpeed;
     // Set up initial location of projectile
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCSprite *projectile = [CCSprite spriteWithFile:@"shuriken.png"];
-//    [projectile setPTMRatio:PTM_RATIO];
-//	[projectile setBody:[self createBodyFor: (GameObjectType) None AtLocation:[ninja getCurrentNinjaSprite].position withSize:projectile.contentSize]];
+    //    [projectile setPTMRatio:PTM_RATIO];
+    //	[projectile setBody:[self createBodyFor: (GameObjectType) None AtLocation:[ninja getCurrentNinjaSprite].position withSize:projectile.contentSize]];
 	[projectile setPosition: [ninja getCurrentNinjaSprite].position];
     
     
@@ -799,10 +809,10 @@ double endSpeed;
         delete world;
         world = NULL;
     }
-//    if (debugDraw) {
-//        delete debugDraw;
-//        debugDraw = nil;
-//    }
+    //    if (debugDraw) {
+    //        delete debugDraw;
+    //        debugDraw = nil;
+    //    }
     [enemyArray release];
     enemyArray=nil;
     [_projectiles release];
