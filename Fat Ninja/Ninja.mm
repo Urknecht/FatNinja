@@ -19,7 +19,7 @@ b2Body *bodyNinja;
     self = [super init];
     if (self != nil) {
         world=physicworld;
-
+        
         _jumpWasDouble = false;
         _wasJumpingAndThrowing = false;
         _shouldDie=false;
@@ -54,19 +54,28 @@ b2Body *bodyNinja;
         case StateJumping:
             [_spriteSheetJumping setVisible:(true)];
             [_spriteSheetRunning setVisible:(false)];
-            [_ninjaJumping runAction:self.jumpAction];
-            [_ninjaRunning stopAction: self.walkSpeedAction];
-            break;
+             if(!_wasJumpingAndThrowing){
+                 [_ninjaJumping runAction:self.jumpAction];
+                 [_ninjaRunning stopAction: self.walkSpeedAction];
+             }
+                             _wasJumpingAndThrowing = false;
+                 break;
         case StateStart:
             [_spriteSheetRunning setVisible:(true)];
             [_ninjaRunning runAction: self.walkSpeedAction];
+            if(_geschToChange){
+                [self reloadAnimsWithSpeed: _geschwindigkeit];
+            }                
             break;
             
         case StateDoubleJumping:
             [_spriteSheetDoubleJump setVisible:(true)];
             [_spriteSheetRunning setVisible:(false)];
+            if(!_wasJumpingAndThrowing){
             [_ninjaDoubleJump runAction:self.doubleJumpAction];
             [_ninjaRunning stopAction: self.walkSpeedAction];
+            }
+                    _wasJumpingAndThrowing = false;
             break;
             
         case StateRolling:
@@ -78,6 +87,24 @@ b2Body *bodyNinja;
             
         case StateDie:
             //sterbe animation, am ende muss gegner gelöscht werden
+            break;
+            
+        case StateThrowing:
+            [_spriteSheetThrow setVisible:(true)];
+            if(characterState==StateJumping){
+                _wasJumpingAndThrowing = true;
+                [_spriteSheetJumping setVisible:(false)];
+            }
+            else if(characterState==StateDoubleJumping){
+                _wasJumpingAndThrowing = true;
+                _jumpWasDouble = true;
+                [_spriteSheetDoubleJump setVisible:(false)];
+            }
+            else{
+                [_spriteSheetRunning setVisible:(false)];
+                [_ninjaRunning stopAction: self.walkSpeedAction];
+            }
+
             break;
             
         default:
@@ -186,23 +213,8 @@ b2Body *bodyNinja;
     if(characterState!=StateRolling&&characterState!=StateThrowing&&characterState!=StateDie){
         
         
-        [_spriteSheetThrow setVisible:(true)];
-        
-        if(characterState==StateJumping){
-            _wasJumpingAndThrowing = true;
-            [_spriteSheetJumping setVisible:(false)];
-        }
-        else if(characterState==StateDoubleJumping){
-            _wasJumpingAndThrowing = true;
-            _jumpWasDouble = true;
-            [_spriteSheetDoubleJump setVisible:(false)];
-        }
-        else{
-            [_spriteSheetRunning setVisible:(false)];
-            [_ninjaRunning stopAction: self.walkSpeedAction];
-        }
-        
-        [self setCharacterState: StateThrowing];
+
+        [self changeState: StateThrowing];
         
         
         [_ninjaThrow runAction:
@@ -214,21 +226,17 @@ b2Body *bodyNinja;
              
              
              if(_wasJumpingAndThrowing){
-                 _wasJumpingAndThrowing = false;
+
                  if(_jumpWasDouble){
-                     [self setCharacterState: StateDoubleJumping];
-                     [_spriteSheetDoubleJump setVisible:(true)];
+                     [self changeState: StateDoubleJumping];
                  }
                  else{
-                     [self setCharacterState: StateJumping];
-                     [_spriteSheetJumping setVisible:(true)];
+                     [self changeState: StateJumping];
                      
                  }}
              
              else{
-                 [self setCharacterState: StateStart];
-                 [_spriteSheetRunning setVisible:(true)];
-                 [_ninjaRunning runAction: self.walkSpeedAction];
+                 [self changeState: StateStart];
                  
              }
              if(_shouldDie){
@@ -245,7 +253,7 @@ b2Body *bodyNinja;
 -(void) die:(GameLayer *)gameLayer{
     
     if(characterState!=StateJumping&&characterState!=StateThrowing&&characterState!=StateDie&&characterState!=StateDoubleJumping){
-        [self setCharacterState: StateDie];
+
         _shouldDie = false;
         [gameLayer stopGame];
         
@@ -255,7 +263,7 @@ b2Body *bodyNinja;
         else{
             [_ninjaRunning stopAction: self.walkSpeedAction];
         }
-        
+        [self setCharacterState: StateDie];
         
         [self removeChild:(_spriteSheetRoll)];
         [self removeChild:(_spriteSheetRunning)];
@@ -270,8 +278,8 @@ b2Body *bodyNinja;
         [_ninjaDie runAction:
          [CCSequence actions:
           [CCFadeTo actionWithDuration:3 opacity:0],
-
-
+          
+          
           [CCCallBlockN actionWithBlock:^(CCNode *node) {
              
              [gameLayer endGame];
@@ -322,7 +330,7 @@ b2Body *bodyNinja;
 }
 
 
--(void)loadAnims{    
+-(void)loadAnims{
     
     
     //RUNNING###########################################################
@@ -382,7 +390,7 @@ b2Body *bodyNinja;
     _spriteSheetRunningFast = [CCSpriteBatchNode batchNodeWithFile:@"NinjaRunningFast.png"];
     
     //add the CCSpriteBatchNode to your scene
-    [self addChild: _spriteSheetRunningFast];
+      [self addChild: _spriteSheetRunningFast];
     //load each frame included in the sprite sheet into an array for use with the CCAnimation object below
     NSMutableArray *walkFastAnimFrames = [NSMutableArray array];
     for(int i = 1; i <= 4; ++i) {
@@ -401,7 +409,7 @@ b2Body *bodyNinja;
     
     
     self.walkSpeedActionFast = [CCSpeed actionWithAction: [CCRepeatForever actionWithAction:
-                                                       [CCAnimate actionWithAnimation:walkAnimFast restoreOriginalFrame:NO]] speed:1.0f];
+                                                           [CCAnimate actionWithAnimation:walkAnimFast restoreOriginalFrame:NO]] speed:1.0f];
     [self.walkSpeedActionFast setTag:'walkf'];
     
     //start the action
@@ -472,7 +480,7 @@ b2Body *bodyNinja;
     
     //add the sprite to the CCSpriteBatchNode object
     [_spriteSheetDoubleJump addChild:_ninjaDoubleJump];
-    [_spriteSheetDoubleJump setVisible:(false)];    
+    [_spriteSheetDoubleJump setVisible:(false)];
     
     
     //ROLLEN###########################################################
@@ -560,26 +568,33 @@ b2Body *bodyNinja;
 
 
 -(void) reloadAnimsWithSpeed:(double)geschwindigkeit{
-    if(characterState!=StateDie){
-        if(geschwindigkeit>2){
-        id speedAction = [_ninjaRunning getActionByTag:'walk'];
-        [speedAction setSpeed: (5.0f/geschwindigkeit)];
+    if(characterState==StateStart){
+        _geschToChange = false;
+        
+        if(geschwindigkeit>5||_runningFast){
+            id speedAction = [_ninjaRunning getActionByTag:'walk'];
+            [speedAction setSpeed: (5.0f/geschwindigkeit)];
         }
         else if(!_runningFast){
             _runningFast=true;
-            [_ninjaRunning stopAllActions];                        
-            //id speedAction2 = [_ninjaRunningFast getActionByTag:'walkf'];
+            [_ninjaRunning stopAllActions];
+            [self removeChild:_spriteSheetRunning];
+            
             self.walkSpeedAction = self.walkSpeedActionFast;
             _spriteSheetRunning = _spriteSheetRunningFast;
             _ninjaRunning = _ninjaRunningFast;
-            if(self.characterState == StateStart){
-                [_spriteSheetRunning setVisible:true];                
-                [_ninjaRunning runAction: self.walkSpeedAction];
-
-            }
-   
+            [_spriteSheetRunning setVisible:true];
+            [_ninjaRunning runAction: self.walkSpeedAction];
+            
+            
         }
-    }}
+    }
+    else{
+        _geschToChange = true;
+        _geschwindigkeit = geschwindigkeit;
+    }
+
+}
 
 
 -(CCPhysicsSprite*)getCurrentNinjaSprite{

@@ -40,8 +40,14 @@
     //gibt an ob der Ninja nach der animation sterben soll
     bool _shouldDie;
     
-    //gibt an ob der Ninja nach der animation sterben soll
+    //gibt an ob bereits die FastRunAnimation verwendet wird
     bool _runningFast;
+    
+    //gibt an die Geschwindigkeit der Animation angepasst werden muss
+    bool _geschToChange;
+    
+    //Die zu setzende Geschwindigkeit
+    int _geschwindigkeit;
     
     //Der Gamelayer an den nach Die zurückgegeben wird
     GameLayer *_gameLayer;

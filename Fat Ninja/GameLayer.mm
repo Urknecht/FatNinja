@@ -427,7 +427,7 @@ double endSpeed;
         for (ObstacleObject *enemy in enemyArray) {
             
             if (CGRectIntersectsRect(projectile.boundingBox, enemy.boundingBox)) {
-                if(enemy.isShootable){
+                if(enemy.isShootable && enemy.enemyState!=StateDie){
                     [enemy changeState:StateDie];
                     
                     if(enemy.isPowerUp||enemy.isEatable){
