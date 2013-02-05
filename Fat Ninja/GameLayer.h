@@ -30,7 +30,7 @@
     
     //box2d
     b2World * world;
-    GLESDebugDraw * debugDraw;
+    //GLESDebugDraw * debugDraw;
     
     NSMutableArray *enemyArray;
     
