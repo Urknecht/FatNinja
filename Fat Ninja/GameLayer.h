@@ -11,12 +11,14 @@
 #import "Box2D.h"
 #import "GLES-Render.h"
 #import "CCPhysicsSprite.h"
+#import "ObstacleObject.h"
 
 
 #define PTM_RATIO     32.0 //zum umrechnen von cocos2d pints in box2d meter, vlt muss man das noch anpassen
 
 @class GameObject;
 @class BackgroundLayer;
+@class ObstacleObject;
 
 @interface GameLayer : CCLayerColor {
    
@@ -62,7 +64,7 @@
 @property (readwrite) bool isPaused;
 @property (readwrite) int distance;
 
-
+-(void)removeEnemy: (ObstacleObject*) enemy;
 -(void)removeObstacle: (CCSprite*) enemy;
 -(void) stopAnimation;
 -(void) stopGame;

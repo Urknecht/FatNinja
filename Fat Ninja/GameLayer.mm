@@ -13,7 +13,6 @@
 #import "BackgroundLayer.h"
 #import "math.h"
 #import "Constants.h"
-#import "ObstacleObject.h"
 #import "MinigameScene.h"
 #import "Skeleton.h"
 #import "SushiOb.h"
@@ -64,7 +63,7 @@ double endSpeed;
         //box2d
         [self initPhysics];
         [self scheduleUpdate];
-        _enemyBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"enemy.png"];
+        _enemyBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"skeletonDying.png"];
         [self addChild:_enemyBatchNode];
         _sushiBatchNode =[CCSpriteBatchNode batchNodeWithFile:@"icon-sushi.png"];
         [self addChild:_sushiBatchNode];
@@ -90,11 +89,11 @@ double endSpeed;
         isRolling=false;
         isPaused=false;
         
-        //ninja 
+        //ninja
         ninja=[[Ninja alloc] initWithWorld: world];
-        [self addChild:ninja z:1];        
+        [self addChild:ninja z:1];
         [self schedule:@selector(updateNinjaIsHit:)]; //immer wieder pruefen ob ninja getroffen wurde
-                
+        
         
         _projectiles = [[NSMutableArray alloc] init];
         
@@ -122,7 +121,7 @@ double endSpeed;
         [self addChild:sushiLabel];
         sushiLabel.position = ccp(winSize.width-20, winSize.height-50);
         endSpeed=0.66;
-
+        
         
     }
     
@@ -198,7 +197,7 @@ double endSpeed;
     b2Body *body = world->CreateBody(&bodyDef);
     b2PolygonShape shape;           //shape erstellen
     b2FixtureDef fixtureDef;
-
+    
     switch (type) {
         case Enemy:{
             //row 1, col 1
@@ -207,30 +206,30 @@ double endSpeed;
                 b2Vec2(-5.0f / PTM_RATIO, 14.7f / PTM_RATIO),
                 b2Vec2(-10.3f / PTM_RATIO, 10.9f / PTM_RATIO),
                 b2Vec2(-9.7f / PTM_RATIO, -0.7f / PTM_RATIO),
-               b2Vec2(-3.6f / PTM_RATIO, -14.1f / PTM_RATIO),
+                b2Vec2(-3.6f / PTM_RATIO, -14.1f / PTM_RATIO),
                 b2Vec2(5.4f / PTM_RATIO, -14.6f / PTM_RATIO),
                 b2Vec2(11.3f / PTM_RATIO, 3.7f / PTM_RATIO),
                 b2Vec2(10.9f / PTM_RATIO, 10.5f / PTM_RATIO),
                 b2Vec2(-4.0f / PTM_RATIO, 14.2f / PTM_RATIO)};
             shape.Set(verts, num);
             fixtureDef.shape = &shape;
-
-
+            
+            
         }
             break;
         case Sushi:{
             int num = 8;
             b2Vec2 verts[] = {
-            b2Vec2(-15.8f*0.7 / PTM_RATIO, 24.6f*0.7 / PTM_RATIO),
-            b2Vec2(-27.1f*0.7 / PTM_RATIO, 17.4f*0.7 / PTM_RATIO),
-            b2Vec2(-26.9f*0.7 / PTM_RATIO, -15.4f*0.7 / PTM_RATIO),
-            b2Vec2(0.9f*0.7 / PTM_RATIO, -23.6f*0.7 / PTM_RATIO),
-            b2Vec2(27.1f*0.7 / PTM_RATIO, -13.8f*0.7 / PTM_RATIO),
-            b2Vec2(28.4f*0.7 / PTM_RATIO, 14.3f*0.7 / PTM_RATIO),
-            b2Vec2(12.0f*0.7 / PTM_RATIO, 23.6f*0.7 / PTM_RATIO),
-            b2Vec2(-15.7f*0.7 / PTM_RATIO, 23.3f*0.7 / PTM_RATIO)};
+                b2Vec2(-15.8f*0.7 / PTM_RATIO, 24.6f*0.7 / PTM_RATIO),
+                b2Vec2(-27.1f*0.7 / PTM_RATIO, 17.4f*0.7 / PTM_RATIO),
+                b2Vec2(-26.9f*0.7 / PTM_RATIO, -15.4f*0.7 / PTM_RATIO),
+                b2Vec2(0.9f*0.7 / PTM_RATIO, -23.6f*0.7 / PTM_RATIO),
+                b2Vec2(27.1f*0.7 / PTM_RATIO, -13.8f*0.7 / PTM_RATIO),
+                b2Vec2(28.4f*0.7 / PTM_RATIO, 14.3f*0.7 / PTM_RATIO),
+                b2Vec2(12.0f*0.7 / PTM_RATIO, 23.6f*0.7 / PTM_RATIO),
+                b2Vec2(-15.7f*0.7 / PTM_RATIO, 23.3f*0.7 / PTM_RATIO)};
             shape.Set(verts, num);
-
+            
             fixtureDef.shape = &shape;
             // fixtureDef.density = 0;           //für gewicht,desto hoeher desto schwerer, bei 0 wird es static bewegt sich nicht mehr !, default ist 0
             //mass=density*volume
@@ -260,15 +259,15 @@ double endSpeed;
         case Powerup:{
             int num = 5;
             b2Vec2 verts[] = {
-
-            b2Vec2 (-17.3f / PTM_RATIO, 21.4f / PTM_RATIO),
-            b2Vec2 (-17.2f / PTM_RATIO, -18.4f / PTM_RATIO),
-            b2Vec2 (17.2f / PTM_RATIO, -19.3f / PTM_RATIO),
-            b2Vec2 (16.6f / PTM_RATIO, 20.8f / PTM_RATIO),
-                b2Vec2 (-16.3f / PTM_RATIO, 20.7f / PTM_RATIO)};
-                shape.Set(verts, num);
                 
-                fixtureDef.shape = &shape;
+                b2Vec2 (-17.3f / PTM_RATIO, 21.4f / PTM_RATIO),
+                b2Vec2 (-17.2f / PTM_RATIO, -18.4f / PTM_RATIO),
+                b2Vec2 (17.2f / PTM_RATIO, -19.3f / PTM_RATIO),
+                b2Vec2 (16.6f / PTM_RATIO, 20.8f / PTM_RATIO),
+                b2Vec2 (-16.3f / PTM_RATIO, 20.7f / PTM_RATIO)};
+            shape.Set(verts, num);
+            
+            fixtureDef.shape = &shape;
         }
             break;
         case None:
@@ -280,7 +279,7 @@ double endSpeed;
         default:
             break;
     }
-
+    
     body->CreateFixture(&fixtureDef);
     return body;
     
@@ -319,9 +318,9 @@ double endSpeed;
         if(self.geschwindigkeit>0.21){ // wird bis zu minimum geschwindigkeit
             self.geschwindigkeit-=0.2; // die geschiwndigkeit angepasst
             [ninja reloadAnimsWithSpeed:self.geschwindigkeit];
-           
+            
             [self schedule:@selector(updateDistance:)interval:self.geschwindigkeit];
-
+            
         }
         nextStage=false;
         
@@ -334,7 +333,7 @@ double endSpeed;
 //ueberprueft ob ninja getroffen wurde
 -(void) updateNinjaIsHit:(ccTime)delta{
     NSMutableArray *enemyToDelete = [[NSMutableArray alloc] init];
-
+    
     for (ObstacleObject *enemy in enemyArray) {
         b2ContactEdge* edge = [ninja getCurrentBody]->GetContactList();
         while (edge)
@@ -344,57 +343,58 @@ double endSpeed;
             b2Fixture* fixtureB = contact->GetFixtureB();
             b2Body *bodyA = fixtureA->GetBody();
             b2Body *bodyB = fixtureB->GetBody();
-            if (bodyA == enemy.body || bodyB == enemy.body) {
+            
+                 if (bodyA == enemy.body || bodyB == enemy.body) {
                 if(contact->IsTouching()){
-
-                if(enemy.isEatable){
-                    sushiCounter++;
-                    [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
-                    [enemyToDelete addObject:enemy];
-                }
-                else if(enemy.isRollable and isRolling){
-                    [enemyToDelete addObject:enemy];
-                }
-                else if(enemy.isPowerUp){
-                    //hier kommt das mit dem PowerUp rein
-                    [enemyToDelete addObject:enemy];
-                    if(isRolling){
-                        isRolling=false;
-                        [ninja endRoll];
-                    }
-                    int type = enemy.type;
-                    if (typePresentation < 2) {
-                        type = typePresentation;
-                        typePresentation++;
-                    }
-                    [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:type]];
-                }
-                else{
-                    [ninja die:self];
-                    [self stopGame];
                     
-                }
+                    if(enemy.isEatable){
+                        sushiCounter++;
+                        [sushiLabel setString:[NSString stringWithFormat:@"%i",sushiCounter]]; // anzeige anpassen
+                        [enemyToDelete addObject:enemy];
+                    }
+                    else if(enemy.isRollable and isRolling){
+                        [enemyToDelete addObject:enemy];
+                    }
+                    else if(enemy.isPowerUp){
+                        //hier kommt das mit dem PowerUp rein
+                        [enemyToDelete addObject:enemy];
+                        if(isRolling){
+                            isRolling=false;
+                            [ninja endRoll];
+                        }
+                        int type = enemy.type;
+                        if (typePresentation < 2) {
+                            type = typePresentation;
+                            typePresentation++;
+                        }
+                        [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:type]];
+                    }
+                    else{
+                        [ninja die:self];
+                        [self stopGame];
+                        
+                    }
                 }
             }
             edge = edge->next;
-        
+            
         }
         if(enemy.position.x==0){
             [enemyToDelete addObject:enemy];
         }
-       
+        
         for(b2Body *b = world->GetBodyList(); b != NULL; b = b->GetNext()) {
             if (b->GetUserData() != NULL) {
                 CCPhysicsSprite *sprite = (CCPhysicsSprite *) b->GetUserData();
                 sprite.position = ccp(b->GetPosition().x * PTM_RATIO,
                                       b->GetPosition().y * PTM_RATIO);
                 sprite.rotation = CC_RADIANS_TO_DEGREES(b->GetAngle() * -1);
-        
+                
             }
         }
-
+        
     }
-
+    
     for (ObstacleObject *enemy in enemyToDelete) {
         [self removeObstacle:enemy];
     }
@@ -412,6 +412,9 @@ double endSpeed;
 }
 
 -(void) endGame{
+    NSLog(@"Zeige Highscore!");
+//    [ninja dealloc];
+//    [self dealloc];
     [[CCDirector sharedDirector] replaceScene:[[GameOverScene alloc] initWith:distance andSushi: sushiCounter]];
 }
 
@@ -427,18 +430,17 @@ double endSpeed;
                 if(enemy.isShootable){
                     [enemy changeState:StateDie];
                     if(enemy.isPowerUp){
-                    [enemyToDelete addObject:enemy];
+                        [enemyToDelete addObject:enemy];
                     }
                 }
                 else{
                     [projectilesToDelete addObject:projectile];
-
+                    
                 }
             }
-        }        
+        }
         for (ObstacleObject *enemy in enemyToDelete) {
-            [self removeObstacle:enemy];
-            [self removeChild:enemy cleanup:YES];
+            [self removeEnemy:(enemy)];
         }
         
         if (enemyToDelete.count > 0) {
@@ -455,6 +457,11 @@ double endSpeed;
     [projectilesToDelete release];
     
     
+}
+
+-(void)removeEnemy:(ObstacleObject *)enemy{
+    [self removeObstacle:enemy];
+    [self removeChild:enemy cleanup:YES];
 }
 
 
@@ -495,7 +502,7 @@ double endSpeed;
         location = [[CCDirector sharedDirector] convertToGL:location];
         _endPoint = location;
     }
-
+    
     if(isRolling){
         isRolling=false;
         [ninja endRoll];
@@ -532,8 +539,8 @@ double endSpeed;
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCPhysicsSprite *projectile = [CCPhysicsSprite spriteWithFile:@"shuriken.png"];
     [projectile setPTMRatio:PTM_RATIO];
-	[projectile setBody:[self createBodyFor: (GameObjectType) None AtLocation:[ninja getCurrentNinjaSprite].position withSize:projectile.contentSize]];
-	[projectile setPosition: [ninja getCurrentNinjaSprite].position];
+    [projectile setBody:[self createBodyFor: (GameObjectType) None AtLocation:[ninja getCurrentNinjaSprite].position withSize:projectile.contentSize]];
+    [projectile setPosition: [ninja getCurrentNinjaSprite].position];
     
     
     // Determine offset of location to projectile
@@ -616,7 +623,7 @@ double endSpeed;
             enemy=[[SushiOb alloc] initWith:geschwindigkeitEnemy andWinSize:winSize];
             enemy.scale =0.7;
             [_sushiBatchNode addChild:enemy];
-
+            
             break;
         case 2:
             tag++;
@@ -640,56 +647,56 @@ double endSpeed;
             break;
     }
     /*
-    if (randomPowerUp == 0) {
-        ObstacleObject *powerUp = [[PowerUp alloc] init];
-        //spawnPowerUp = true;
-        [enemyArray addObject:powerUp];
-        int randomHeight = (arc4random() % 51)*2.5;
-        CGPoint location =CGPointMake(winSize.width, winSize.height/3+randomHeight);
-        b2Body *body=[self createBodyFor:powerUp.enemyType AtLocation:location withSize:powerUp.contentSize];
-        [powerUp setPTMRatio:PTM_RATIO];
-        [powerUp setBody:body];
-        [powerUp setPosition: location];
-        [self addChild:powerUp];
-        
-        CCMoveTo * actionMovePowerUp = [CCMoveTo actionWithDuration: geschwindigkeitEnemy*0.5
-                                                           position:ccp(self.position.x
-                                                                        -winSize.width, winSize.height/3+randomHeight)];
-        CCCallBlockN* actionMoveDonePowerUp = [CCCallBlockN actionWithBlock:^(CCNode *node){
-            [node removeFromParentAndCleanup:YES];
-            [enemyArray removeObject:node];
-            //spawnPowerUp = false;
-        }];
-        CCSequence *sequencePowerUp=[CCSequence actionOne:actionMovePowerUp two:actionMoveDonePowerUp];
-        [powerUp runAction:sequencePowerUp];
-        
-    }
-    */
+     if (randomPowerUp == 0) {
+     ObstacleObject *powerUp = [[PowerUp alloc] init];
+     //spawnPowerUp = true;
+     [enemyArray addObject:powerUp];
+     int randomHeight = (arc4random() % 51)*2.5;
+     CGPoint location =CGPointMake(winSize.width, winSize.height/3+randomHeight);
+     b2Body *body=[self createBodyFor:powerUp.enemyType AtLocation:location withSize:powerUp.contentSize];
+     [powerUp setPTMRatio:PTM_RATIO];
+     [powerUp setBody:body];
+     [powerUp setPosition: location];
+     [self addChild:powerUp];
+     
+     CCMoveTo * actionMovePowerUp = [CCMoveTo actionWithDuration: geschwindigkeitEnemy*0.5
+     position:ccp(self.position.x
+     -winSize.width, winSize.height/3+randomHeight)];
+     CCCallBlockN* actionMoveDonePowerUp = [CCCallBlockN actionWithBlock:^(CCNode *node){
+     [node removeFromParentAndCleanup:YES];
+     [enemyArray removeObject:node];
+     //spawnPowerUp = false;
+     }];
+     CCSequence *sequencePowerUp=[CCSequence actionOne:actionMovePowerUp two:actionMoveDonePowerUp];
+     [powerUp runAction:sequencePowerUp];
+     
+     }
+     */
     
     
     [enemyArray addObject:enemy];
     CGPoint location= ccp(winSize.width, winSize.height/3);
     b2Body *body=[self createBodyFor: enemy.enemyType AtLocation:location withSize:enemy.contentSize];
-
+    
     [enemy setPTMRatio:PTM_RATIO];
-	[enemy setBody:body];
-	[enemy setPosition: location];
+    [enemy setBody:body];
+    [enemy setPosition: location];
     [enemy loadAnim];
-
+    
     
     enemyCounter++;
-
+    
     if(enemyCounter==5){ // nach 5 gegnern
         nextStage=true;
         BackgroundLayer *bl = (BackgroundLayer *)[self.parent getChildByTag:backgroundLayerTag];
         double geschwindigkeitAlt=geschwindigkeitEnemy;
-
+        
         if(geschwindigkeitEnemy>1.0){ // wird die geschwindigkeit der animation bis zu einem miminum erhoeht
             if (geschwindigkeitEnemy>2.0) {
                 geschwindigkeitEnemy-=1.0;
                 
                 [bl reloadBackgroundWithSpeed:geschwindigkeitEnemy/geschwindigkeitAlt];
-
+                
             }else{
                 geschwindigkeitEnemy-=0.1;
                 endSpeed=endSpeed-0.05;
@@ -700,7 +707,7 @@ double endSpeed;
             if (_geschwindigkeitSpawn>2.0) {
                 _geschwindigkeitSpawn-=0.5;
             }else{
-            _geschwindigkeitSpawn-=0.1;
+                _geschwindigkeitSpawn-=0.1;
             }
             [self schedule:@selector(spawnEnemy:)interval:_geschwindigkeitSpawn];
         }
@@ -710,6 +717,7 @@ double endSpeed;
 
 
 -(void) removeObstacle: (ObstacleObject*) obstacle{
+    
     world->DestroyBody(obstacle.body);
     [enemyArray removeObject:obstacle];
     if(obstacle.class==Skeleton.class){
@@ -739,7 +747,7 @@ double endSpeed;
 - (void) dealloc
 {
     [super dealloc];
-
+    
     if (world) {        //dealloc world
         delete world;
         world = NULL;
@@ -751,8 +759,7 @@ double endSpeed;
     [enemyArray release];
     enemyArray=nil;
     [_projectiles release];
-    _projectiles = nil;
-    
+    _projectiles = nil;    
     
 }
 

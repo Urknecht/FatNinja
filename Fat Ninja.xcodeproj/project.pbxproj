@@ -989,6 +989,9 @@
 		71C3C57416760B6600623738 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CC2D826A16B866A500F331F7 /* paperBg.png */,
+				CC2D826116B8117A00F331F7 /* Sound */,
+				CC2D825F16B80D6800F331F7 /* NinjaHead.png */,
 				313E77AC16B5A9D20039EDF0 /* skeletonDying01.png */,
 				313E77AD16B5A9D20039EDF0 /* skeletonDying02.png */,
 				313E77AE16B5A9D20039EDF0 /* skeletonDying03.png */,
@@ -1784,6 +1787,8 @@
 				CC2D824B16B4BA6300F331F7 /* tutorialSpriteSheet.png in Resources */,
 				CC2D825A16B5761C00F331F7 /* checkbox_checked.png in Resources */,
 				CC2D825B16B5761C00F331F7 /* checkbox_unchecked.png in Resources */,
+				CC2D826016B80D6800F331F7 /* NinjaHead.png in Resources */,
+				CC2D826B16B866A500F331F7 /* paperBg.png in Resources */,
 				313E770416B5A6C80039EDF0 /* backgroundElements1.png in Resources */,
 				313E770516B5A6C80039EDF0 /* backgroundElements2.png in Resources */,
 				313E770616B5A6C80039EDF0 /* backgroundEmpty-1.png in Resources */,

@@ -542,6 +542,7 @@ b2Body *bodyNinja;
 -(void) dealloc {
     [super dealloc];
 }
+
 -(int)getWeaponDamage {
     // Default to zero damage
     CCLOG(@"getWeaponDamage should be overridden");
