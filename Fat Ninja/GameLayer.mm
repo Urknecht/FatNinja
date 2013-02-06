@@ -420,7 +420,6 @@ double endSpeed;
                             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                             int powerDuration = [defaults integerForKey:@"powerDuration"];
                             powerupDuration = powerDuration;
-                            powerupInitialized = false;
                             powerupType = type;
                             //NSLog(@"%i" ,powerDuration);
                             //NSLog(@"%i" ,type);
