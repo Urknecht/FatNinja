@@ -484,7 +484,7 @@ int amountOfBombs;
         evaluation = percent;
     }
     //NSLog(@"Win %f", evaluation);
-    int powerDuration;
+    NSInteger powerDuration;
     //abstufung je nachdem wie gut man ein spiel geschafft hat
     if (evaluation == 0) {
         powerDuration = 0;
