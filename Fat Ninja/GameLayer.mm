@@ -393,7 +393,7 @@ double endSpeed;
                             }
                             //[self pauseGame];
                             [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:type]];
-                            switch (powerupType) {
+                            switch (type) {
                                 case 0:
                                     //FoodDrop
                                     //Hier soll die großwerde Animation rein
