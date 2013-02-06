@@ -496,9 +496,9 @@ int amountOfBombs;
         powerDuration = 4;
     }else if (evaluation > 0.60 && evaluation <= 0.80){
         powerDuration = 6;
-    }else if (evaluation > 0.80 && evaluation < 0.100){
+    }else if (evaluation > 0.80 && evaluation < 1.00){
         powerDuration = 8;
-    }else if (evaluation == 0.100){
+    }else if (evaluation == 1.000){
         powerDuration = 10;
     }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
