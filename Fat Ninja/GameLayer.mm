@@ -428,13 +428,14 @@ double endSpeed;
                                 default:
                                     break;
                             }
-                                 [powerUpTimelabel setVisible:true];
+                                 
                                     
                             //ab hier kommt das was passiert wenn das minispiel zu ende ist
                             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                             int powerDuration = [defaults integerForKey:@"powerDuration"];
                             powerupDuration = powerDuration;
                             [powerUpTimelabel setString:[NSString stringWithFormat:@"%i:00",powerupDuration]]; // anzeige anpassen
+                            [powerUpTimelabel setVisible:true];
                             powerupType = type;
                             //NSLog(@"%i" ,powerDuration);
                             //NSLog(@"%i" ,type);

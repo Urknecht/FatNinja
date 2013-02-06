@@ -501,6 +501,7 @@ int amountOfBombs;
     }else if (evaluation == 1.00){
         powerDuration = 10;
     }
+    NSLog(@"POWERURATION----- %d",powerDuration);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:powerDuration forKey:@"powerDuration"];
 }
