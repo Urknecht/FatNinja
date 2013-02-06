@@ -45,6 +45,8 @@ CCLabelTTF *punkte;
 //Punkte Label
 CCLabelTTF *sushiLabel;
 
+CCLabelTTF *powerUpTimelabel;
+
 UITouch *lastTouch;
 
 int enemyCounter;
@@ -125,6 +127,14 @@ double endSpeed;
         sushiLabel = [CCLabelTTF labelWithString:@"0" fontName:@"Marker Felt" fontSize:25];
         [self addChild:sushiLabel];
         sushiLabel.position = ccp(winSize.width-20, winSize.height-50);
+        
+        powerUpTimelabel =[CCLabelTTF labelWithString:@"22" fontName:@"Marker Felt" fontSize:25];
+        [self addChild:powerUpTimelabel];
+        powerUpTimelabel.position = ccp(winSize.width-300, winSize.height-35);
+        [powerUpTimelabel setVisible:false];
+
+        
+        
         endSpeed=0.66;
         
         
@@ -315,13 +325,17 @@ double endSpeed;
 }
 
 -(void)powerupAnimation:(ccTime)dt{
+
+    
     if (powerupDuration != 0) {
         powerupDuration --;
+        [powerUpTimelabel setString:[NSString stringWithFormat:@"%i:00",powerupDuration]]; // anzeige anpassen
         NSLog(@"POWERUPANIMATIONOMG %d",powerupDuration);
     }
     else if (powerupDuration == 0) {
         //Hier wieder State auf normal laufen setzen
               NSLog(@"END INVINCIBRU");
+            [powerUpTimelabel setVisible:false];
         [ninja changeState: StateStart];
         [self setTouchEnabled:YES];
         [self unschedule:@selector(powerupAnimation:)];
@@ -414,12 +428,13 @@ double endSpeed;
                                 default:
                                     break;
                             }
-                             [self pauseGame];
-                            
+                                 [powerUpTimelabel setVisible:true];
+                                    
                             //ab hier kommt das was passiert wenn das minispiel zu ende ist
                             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                             int powerDuration = [defaults integerForKey:@"powerDuration"];
                             powerupDuration = powerDuration;
+                            [powerUpTimelabel setString:[NSString stringWithFormat:@"%i:00",powerupDuration]]; // anzeige anpassen
                             powerupType = type;
                             //NSLog(@"%i" ,powerDuration);
                             //NSLog(@"%i" ,type);

@@ -103,7 +103,9 @@ b2Body *bodyNinja;
                 
             case StateStart:
                 [_spriteSheetRunning setVisible:(true)];
-                [_ninjaRunning runAction: self.walkSpeedAction];
+                if(![_ninjaRunning numberOfRunningActions]){
+                    [_ninjaRunning runAction: self.walkSpeedAction];
+                }
                 if(_geschToChange){
                     [self reloadAnimsWithSpeed: _geschwindigkeit];
                 }
@@ -111,7 +113,9 @@ b2Body *bodyNinja;
             case StateJumping:
                 [_spriteSheetJumping setVisible:(true)];
                 if(!_wasJumpingAndThrowing){
+                                    if(![_ninjaJumping numberOfRunningActions]){
                     [_ninjaJumping runAction:self.jumpAction];
+                                    }
                 }
                 _wasJumpingAndThrowing = false;
                 break;
@@ -119,14 +123,18 @@ b2Body *bodyNinja;
             case StateDoubleJumping:
                 [_spriteSheetDoubleJump setVisible:(true)];
                 if(!_wasJumpingAndThrowing){
+                                    if(![_ninjaDoubleJump numberOfRunningActions]){
                     [_ninjaDoubleJump runAction:self.doubleJumpAction];
+                                    }
                 }
                 _wasJumpingAndThrowing = false;
                 break;
                 
             case StateRolling:
                 [_spriteSheetRoll setVisible:(true)];
+                                if(![_ninjaRoll numberOfRunningActions]){
                 [_ninjaRoll runAction:self.rollAction];
+                                }
                 break;
                 
             case StateDie:
@@ -149,13 +157,17 @@ b2Body *bodyNinja;
             case StateBIG:
                    self.isInvincibru  = true;
                 [_spriteSheetBIG setVisible:(true)];
+                                if(![_ninjaBIG numberOfRunningActions]){
                 [_ninjaBIG runAction:self.BIGAction];
-                break;     
+                                }
+                break;
             
            case StateInvincibruRolling:
                self.isInvincibru  = true;
                 [_spriteSheetRoll setVisible:(true)];
+                                if(![_ninjaRoll numberOfRunningActions]){
                 [_ninjaRoll runAction:self.rollAction];
+                                }
                 break;
                 
             default:
@@ -306,8 +318,9 @@ b2Body *bodyNinja;
         
         [_spriteSheetDie setVisible:(true)];
         
+                        if(![_ninjaDie numberOfRunningActions]){
         [_ninjaDie runAction:self.dieAction];
-        
+                                    
         [_ninjaDie runAction:
          [CCSequence actions:
           [CCFadeTo actionWithDuration:3 opacity:0],
@@ -318,7 +331,7 @@ b2Body *bodyNinja;
              [gameLayer endGame];
              //self.isDying = false;
          }], nil]];
-    }
+                        }}
     
     else{
         [self setCharacterState: StateDie];
@@ -651,7 +664,9 @@ b2Body *bodyNinja;
             _spriteSheetRunning = _spriteSheetRunningFast;
             _ninjaRunning = _ninjaRunningFast;
             [_spriteSheetRunning setVisible:true];
+                            if(![_ninjaRunning numberOfRunningActions]){
             [_ninjaRunning runAction: self.walkSpeedAction];
+                            }
             
             
         }
