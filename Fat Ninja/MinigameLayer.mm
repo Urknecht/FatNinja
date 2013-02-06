@@ -16,6 +16,7 @@
 @synthesize description;
 @synthesize timeCount;
 @synthesize evaluation;
+@synthesize powerDuration;
 
 - (id) init
 {

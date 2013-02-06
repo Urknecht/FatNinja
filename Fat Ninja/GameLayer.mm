@@ -19,6 +19,7 @@
 #import "WallOb.h"
 #import "PowerUp.h"
 #import "Stone.h"
+#import "math.h"
 
 
 
@@ -56,12 +57,15 @@ double _geschwindigkeitSpawn;
 int tag; //vorlaeufige variable zum auswaehlen welcher gegner auftaucht
 //Für Präsentation Minispiel
 int typePresentation;
-//Die Zeit, die rausgekommen ist beim Powerup
-int powerupDuration;
+
 //Type vom PowerUp
 int powerupType;
 
+NSInteger test;
+
 double endSpeed;
+
+bool isInvincibruInit;
 
 
 - (id) init
@@ -85,6 +89,8 @@ double endSpeed;
         enemyCounter=0;
         praesentationCounter = 0;
         typePresentation = 0;
+        test = 20;
+        pointer = &test;
         
         geschwindigkeitEnemy=5.0;
         _geschwindigkeitSpawn=3.5;
@@ -326,15 +332,19 @@ double endSpeed;
 
 -(void)powerupAnimation:(ccTime)dt{
 
-    
-    if (powerupDuration != 0) {
-        powerupDuration --;
-        [powerUpTimelabel setString:[NSString stringWithFormat:@"%i:00",powerupDuration]]; // anzeige anpassen
-        NSLog(@"POWERUPANIMATIONOMG %d",powerupDuration);
+    if(isInvincibruInit){
+        isInvincibruInit=false;
+        powerupDuration = *(pointer);
+        [powerUpTimelabel setString:[NSString stringWithFormat:@"%1.1f",powerupDuration]]; // anzeige anpassen
+        [powerUpTimelabel setVisible:true];
     }
-    else if (powerupDuration == 0) {
+    else if (powerupDuration >=0.1 ) {
+        powerupDuration= powerupDuration -0.1f;
+        [powerUpTimelabel setString:[NSString stringWithFormat:@"%1.1f",powerupDuration]]; // anzeige anpassen
+
+    }
+    else  {
         //Hier wieder State auf normal laufen setzen
-              NSLog(@"END INVINCIBRU");
             [powerUpTimelabel setVisible:false];
         [ninja changeState: StateStart];
         [self setTouchEnabled:YES];
@@ -406,8 +416,9 @@ double endSpeed;
                                 typePresentation++;
                             }
                             //[self pauseGame];
-                            [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:type]];
-                            switch (powerupType) {
+                            [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:type andPointer: pointer]];
+                            
+                            switch (type) {
                                 case 0:
                                     //FoodDrop
                                     //Hier soll die großwerde Animation rein
@@ -428,19 +439,16 @@ double endSpeed;
                                 default:
                                     break;
                             }
-                                 
+                            isInvincibruInit = true;
                                     
-                            //ab hier kommt das was passiert wenn das minispiel zu ende ist
-                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                            int powerDuration = [defaults integerForKey:@"powerDuration"];
-                            powerupDuration = powerDuration;
-                            [powerUpTimelabel setString:[NSString stringWithFormat:@"%i:00",powerupDuration]]; // anzeige anpassen
-                            [powerUpTimelabel setVisible:true];
-                            powerupType = type;
+//                            //ab hier kommt das was passiert wenn das minispiel zu ende ist
+//                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//                            NSInteger powerDuration = [defaults integerForKey:@"powerDuration"];
+                                                       powerupType = type;
                             //NSLog(@"%i" ,powerDuration);
                             //NSLog(@"%i" ,type);
-                            [self schedule:@selector(powerupAnimation:)interval:1.0];
-                                                        
+                            [self schedule:@selector(powerupAnimation:)interval:0.1];
+
                         }
                         else if(!enemy.enemyState==StateDie){
                             [ninja die:self];

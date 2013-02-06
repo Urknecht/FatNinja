@@ -7,6 +7,7 @@
 //
 
 #import "MinigameFoodDrop.h"
+#import "MinigameScene.h"
 
 @implementation MinigameFoodDrop
 
@@ -43,6 +44,7 @@ int amountOfBombs;
         amountOfDrops = 15;
         amountOfFood = 12;
         amountOfBombs = amountOfDrops - amountOfFood;
+
         
         dropStuff = [[NSMutableArray alloc] init];
         
@@ -484,7 +486,7 @@ int amountOfBombs;
         evaluation = percent;
     }
     //NSLog(@"Win %f", evaluation);
-    NSInteger powerDuration;
+
     //abstufung je nachdem wie gut man ein spiel geschafft hat
     if (evaluation == 0) {
         powerDuration = 0;
@@ -501,9 +503,11 @@ int amountOfBombs;
     }else if (evaluation == 1.00){
         powerDuration = 10;
     }
-    NSLog(@"POWERURATION----- %d",powerDuration);
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:powerDuration forKey:@"powerDuration"];
+    
+    
+    NSLog(@"POWERURATION----- %1f",powerDuration);
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setInteger:powerDuration forKey:@"powerDuration"];
 }
 
 - (void)dealloc {

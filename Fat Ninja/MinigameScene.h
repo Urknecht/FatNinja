@@ -13,9 +13,11 @@
     
     NSString *game;
     NSString *description;
+    NSInteger*_pointer;
     
 }
+@property (nonatomic, readwrite)NSInteger* pointer;
 
--(id)initWith: (int) gametype;
+-(id)initWith: (int) gametype andPointer: (NSInteger*)pointer;
 
 @end

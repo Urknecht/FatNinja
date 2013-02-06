@@ -46,11 +46,15 @@
     CCSpriteBatchNode *_wallBatchNode;
     CCSpriteBatchNode *_stoneBatchNode;
     CCSpriteBatchNode *_powerUpBatchNode;
-
-
+    
+    //Die Zeit, die rausgekommen ist beim Powerup
+    float powerupDuration;
+    
+     NSInteger*pointer;
 
     
 }
+@property(nonatomic, readwrite)  NSInteger*pointer;
 @property(nonatomic, strong) NSMutableArray *enemyArray;
 @property(nonatomic,strong)  CCSpriteBatchNode *_enemyBatchNode;
 @property(nonatomic,strong)  CCSpriteBatchNode *_sushiBatchNode;
@@ -58,6 +62,9 @@
 @property(nonatomic,strong)  CCSpriteBatchNode *_stoneBatchNode;
 @property(nonatomic,strong)  CCSpriteBatchNode *_powerUpBatchNode;
 
+
+//Die Zeit, die rausgekommen ist beim Powerup
+@property(readwrite) NSInteger powerupDuration;
 
 @property(readwrite) bool nextStage;
 @property(readonly) double geschwindigkeitEnemy;

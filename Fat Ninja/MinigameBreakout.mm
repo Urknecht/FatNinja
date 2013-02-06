@@ -24,7 +24,6 @@ float brokenBlocks;
         timeCount = 35;
         blockCount = 0;
         brokenBlocks = 0;
-
         
         [self initPhysics];
         [self createGround];
@@ -357,7 +356,7 @@ float brokenBlocks;
         evaluation = brokenBlocks/blockCount;
    ballBody->SetType(b2_staticBody);
     //NSLog(@"Win %f", evaluation);
-    NSInteger powerDuration;
+
     //abstufung je nachdem wie gut man ein spiel geschafft hat
     if (evaluation == 0) {
         powerDuration = 0;
@@ -374,8 +373,8 @@ float brokenBlocks;
     }else if (evaluation == 1.00){
         powerDuration = 9;
     }
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:powerDuration forKey:@"powerDuration"];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setInteger:powerDuration forKey:@"powerDuration"];
 }
 
 - (void)dealloc {

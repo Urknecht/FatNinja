@@ -12,6 +12,7 @@
 #import "MinigameFoodDrop.h"
 #import "MinigameBreakout.h"
 
+
 @implementation MinigameScene
 
 int _gametype;
@@ -22,10 +23,12 @@ CCLabelTTF *timeLabel;
 MinigameLayer *minigamelayer;
 
 
-- (id) initWith:(int)gametype{
+
+- (id) initWith:(int)gametype andPointer: (NSInteger*)pointer{
     self = [super init];
     if (self != nil) {
         
+
         CCSprite *backgroundImage= [CCSprite spriteWithFile:@"gameOverBackground.png"];
         CGSize winSize = [CCDirector sharedDirector].winSize;
         [backgroundImage setPosition: CGPointMake(winSize.width/2, winSize.height/2)];
@@ -34,7 +37,7 @@ MinigameLayer *minigamelayer;
         
         // Default font size will be 30 points.
         [CCMenuItemFont setFontSize:30];
-        
+        _pointer = pointer;
         _gametype = gametype;
         
         switch (_gametype) {
@@ -112,6 +115,10 @@ MinigameLayer *minigamelayer;
     // NSLog(@"TimerAufruf");
     if (timeCount == 0) {
         [minigamelayer calculateEvaluation];
+        float inte =minigamelayer.powerDuration;
+        NSLog(@"INTE IN MINIGAMESCENE : %1f",minigamelayer.powerDuration);
+        *(_pointer) = inte;
+        
         CGSize size = [[CCDirector sharedDirector] winSize];
         [CCMenuItemFont setFontSize:40];
         CCMenuItemLabel *showScore = [CCMenuItemFont itemWithString:[NSString stringWithFormat:@"Congratulations for:\r%.0f %%",minigamelayer.evaluation*100] target:self selector:@selector(resumeMaingame:)];
@@ -120,6 +127,8 @@ MinigameLayer *minigamelayer;
         [menu setPosition:ccp( size.width/2, size.height/2)];
         [menu setVisible:YES];
         menu.tag = 12;
+        
+
         
         [self addChild: menu z:5];
         //mach die Zeitanzeige raus

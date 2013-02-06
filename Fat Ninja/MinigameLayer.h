@@ -45,12 +45,14 @@ UIUserInterfaceIdiomPad) ? 100.0 : 50.0)
     
     //% der erreichten Punkte zwischen 1 und 0
     float evaluation;
+     float powerDuration;
 }
 
 @property(nonatomic, strong) NSString *game;
 @property(nonatomic, strong) NSString *description;
 @property (readwrite) int timeCount;
 @property (readwrite) float evaluation;
+@property (readwrite) float powerDuration;
 
 - (void)timer:(ccTime)dt;
 
