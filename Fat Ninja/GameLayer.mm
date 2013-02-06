@@ -61,7 +61,6 @@ int powerupType;
 
 double endSpeed;
 
-bool powerupInitialized;
 
 - (id) init
 {
@@ -94,7 +93,6 @@ bool powerupInitialized;
         
         isRolling=false;
         isPaused=false;
-        powerupInitialized = false;
         
         //ninja
         ninja=[[Ninja alloc] initWithWorld: world];
@@ -317,29 +315,7 @@ bool powerupInitialized;
 }
 
 -(void)powerupAnimation:(ccTime)dt{
-    int type = powerupType;
-    if (!powerupInitialized) {
-        powerupInitialized = true;
-        switch (type) {
-            case 0:
-                //FoodDrop
-                //Hier soll die großwerde Animation rein
-                NSLog(@"startBIG");
-                [ninja changeState: StateBIG];
-                break;
-                
-            case 1:
-                //BlockBreak
-                      NSLog(@"startROLLING");
-                [ninja changeState: StateInvincibruRolling];
-                //Hier soll er sich solange drehen und invincibru sein wie die zeit dauert
-                break;
-                
-            default:
-                break;
-        }
-    }
-    else if (powerupDuration != 0) {
+    if (powerupDuration != 0) {
         powerupDuration --;
         NSLog(@"POWERUPANIMATIONOMG %d",powerupDuration);
     }
@@ -347,6 +323,7 @@ bool powerupInitialized;
         //Hier wieder State auf normal laufen setzen
               NSLog(@"END INVINCIBRU");
         [ninja changeState: StateStart];
+        [self setTouchEnabled:YES];
         [self unschedule:@selector(powerupAnimation:)];
     }  
     
@@ -414,7 +391,30 @@ bool powerupInitialized;
                                 type = typePresentation;
                                 typePresentation++;
                             }
+                            //[self pauseGame];
                             [[CCDirector sharedDirector] pushScene:[[MinigameScene alloc] initWith:type]];
+                            switch (powerupType) {
+                                case 0:
+                                    //FoodDrop
+                                    //Hier soll die großwerde Animation rein
+                                    NSLog(@"startBIG");
+                                    [ninja changeState: StateBIG];
+                                    [self setTouchEnabled:NO];
+                                    break;
+                                    
+                                case 1:
+                                    //BlockBreak
+                                    NSLog(@"startROLLING");
+                                    [self setTouchEnabled:NO];
+                                    
+                                    [ninja changeState: StateInvincibruRolling];
+                                    //Hier soll er sich solange drehen und invincibru sein wie die zeit dauert
+                                    break;
+                                    
+                                default:
+                                    break;
+                            }
+                             [self pauseGame];
                             
                             //ab hier kommt das was passiert wenn das minispiel zu ende ist
                             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
